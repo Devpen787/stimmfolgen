@@ -2,15 +2,16 @@
 
 | Area | Status | Evidence or blocker |
 | --- | --- | --- |
-| Official Track 2B template | PRESENT | Repository generated from HackApertus/project-template; required track directory retained |
-| Architecture, journeys, privacy, schema docs | STAGED | v0.1 authored design, not implemented |
-| Source registry | STAGED | References only; production adapter availability is unverified |
-| Interactive UX prototype | STAGED | Static illustrated HTML, not live model or personal vault |
-| Public JSON schema & synthetic validation | TO MIGRATE / VERIFY | The original blueprint ZIP contains machine files; must verify migrated bytes |
-| Actual Apertus v1.5 inference | NOT STARTED | Model endpoint/local capability not verified |
-| Real referendum evidence and evaluation | NOT STARTED | Human-reviewed labelled cases and recorded model traces required |
-| Privacy implementation | NOT STARTED | Local encrypted vault is design-only; no security claims |
-| Docker `make run` | NOT IMPLEMENTED | Original template placeholder exits with failure |
-| Demo, report and submission | NOT PREPARED | Event deadline 16 October 2026 |
+| Official Track 2B template | PRESENT | Generated from `HackApertus/project-template`; `track_2b/` directory retained |
+| Architecture, journeys, privacy, schema docs | STAGED | v0.1 authored design; not an implemented product |
+| Source registry | STAGED | References only; live retrieval, licensing and page mapping not verified |
+| Illustrative UX concept | STAGED | Static HTML; not a deployed product |
+| Public/private JSON schemas, fixture, design tool | STAGED | Text transferred from blueprint ZIP; local original-ZIP synthetic validator PASS, GitHub CI NOT_RUN |
+| ZIP original checksum manifest | STAGED | Manifest included; PNG screenshots missing from repository; see `MIGRATION_AUDIT.md` |
+| Actual Apertus v1.5 inference | NOT_RUN | Runtime/model access and genuine trace not demonstrated |
+| Real 13th-AHV source evidence, temporal controls | NOT_RUN | Need checked official document bytes, passage, dates, labels |
+| Privacy implementation | NOT_RUN | Encrypted/private vault exists only as a design |
+| Docker `make run` | FAIL / NOT IMPLEMENTED | Organiser placeholder still exits with an error |
+| Demo, report and submission | NOT STARTED | Hack Apertus deadline 16 October 2026 |
 
-**Immediate priorities:** real inference capability and a sourced 13th-AHV 2024 dry-run; stabilize output schema + validation; complete honest end-to-end journey; second distinct referendum; cold judge test, demo and report. Verify source/version dates and copyright before copying public documents into `data/`.
+Next action: risk-first `CODEX_IMPLEMENTATION_PLAN.md`. Prove actual Apertus v1.5 inference and verified federal source passage before surfacing generated consequences. Never call candidate schema validation a successful policy inference.

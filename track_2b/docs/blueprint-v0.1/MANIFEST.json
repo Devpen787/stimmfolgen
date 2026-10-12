@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-12",
+  "description": "StimmFolgen v0.1 design and UX concept, not implemented product",
+  "files": {
+    "01_SYSTEM_AND_SOURCES.md": {
+      "sha256": "95bc6a3a2589ee79394f3d9fa57125059c74e7a50ee2c81cb03e8b9f6c27aa48",
+      "bytes": 9093
+    },
+    "02_JOURNEYS_AND_UX.md": {
+      "sha256": "5887a81bad0d2a1e7121823c142b01d61615fd046be1758532a438bc3ada925d",
+      "bytes": 8697
+    },
+    "03_PRIVACY_AND_UPDATES.md": {
+      "sha256": "e56d43848ebf99faffe4d9a386ba226d2ed163ca400e9b12f54a6e00187746f0",
+      "bytes": 8480
+    },
+    "04_PRODUCT_SCHEMA.md": {
+      "sha256": "8bd16aeec401b87a34c6df437a6f8952bc13be009ebe20109bb901f5051c5fcc",
+      "bytes": 13721
+    },
+    "05_GATES_AND_EXECUTION.md": {
+      "sha256": "80e0cd2ca71a7df26e5bc305f1fdcc23ca9cf567636776b9d7f50058ed3b0dd6",
+      "bytes": 8303
+    },
+    "BUILD_HANDOFF.md": {
+      "sha256": "85e32479928d5bb7bf7d4719a0b6ff562872c41d91ef67236086e69a00d3ce3e",
+      "bytes": 4113
+    },
+    "INGEST_RUNBOOK.md": {
+      "sha256": "c9b882de6f8d64b2d419445ea27716d027b7a0ebc9ef98dc1266186be10d27e7",
+      "bytes": 3707
+    },
+    "README.md": {
+      "sha256": "2ceaf890de8d6c22915d58a96e3c05adb1fc951df27014a6505dc0fee69d5477",
+      "bytes": 5565
+    },
+    "SOURCE_REGISTRY.csv": {
+      "sha256": "dd89af327f348f633b4781638bb9d03c683413733c4a3a9eb7b6cda2193fce74",
+      "bytes": 2713
+    },
+    "UX_CONCEPT.html": {
+      "sha256": "cf97919f7081890b194397b264fb84eefce91ecc217df28325f16e893d782859",
+      "bytes": 16657
+    },
+    "UX_PREVIEW_desktop.png": {
+      "sha256": "bd3406db0b646f7196e84117926531db6c914e479dc1d5dac3257347c3fdabea",
+      "bytes": 142856
+    },
+    "UX_PREVIEW_mobile.png": {
+      "sha256": "fbf4d06fed1c67d43d5f4278a0a0deb2977cae5ab7afe5712e893bb48e10e743",
+      "bytes": 137599
+    },
+    "fixtures/synthetic_case.json": {
+      "sha256": "592ad861d0a88f216689a30c5908b6685b874950691657c2ef079e12d6b3377c",
+      "bytes": 2153
+    },
+    "schemas/private_vault.schema.json": {
+      "sha256": "2d8c29e5f133c6e1794da6f286cf741625f49364b71f4ae48efd1f054f43360a",
+      "bytes": 2592
+    },
+    "schemas/public_case.schema.json": {
+      "sha256": "1b9e37832aed4be5d5827ee9cf082cf500d5c352f2b342c8db71d7f14a5d508d",
+      "bytes": 7311
+    },
+    "tools/validate_design.py": {
+      "sha256": "5012e63834f397b681ddde7e3959441042960e7645e9e7d725e0b0962a5f284a",
+      "bytes": 1348
+    }
+  }
+}
