@@ -3,8 +3,8 @@
   "renderer": "pdftoppm version 26.02.0",
   "files": {
     "REVIEW.md": {
-      "bytes": 13038,
-      "sha256": "3d7677df62b461544da1ac07e5d7def8ce90040a370f34f19e08fa05dd8fe473"
+      "bytes": 13377,
+      "sha256": "b1558395b8e57396f3772f1a8db584d60058aa47bbd241623637c938fbf0ee40"
     },
     "cdx-response.json": {
       "bytes": 1460,
@@ -18,9 +18,17 @@
       "bytes": 276532,
       "sha256": "3f6262cca40c3311c9b3ed44348ab7cf9e4487f75c735bd7530681beba7a594b"
     },
+    "pages/page-15.png": {
+      "bytes": 116092,
+      "sha256": "7193b5869703d7bae2658491a01c2bf2ce214756ebb5f952ec44863dc20782ab"
+    },
     "pages/page-16.png": {
       "bytes": 313840,
       "sha256": "46beec014eccd68182307e8a40db38a22aa7539b1851e905b25552da5488a62f"
+    },
+    "pages/page-17.png": {
+      "bytes": 131260,
+      "sha256": "a5002c3e0b2cab6b7bbb8a8ccbc127daae3b07783e9facd9659d0cb11dd39972"
     },
     "pages/page-18.png": {
       "bytes": 238072,
@@ -39,8 +47,8 @@
       "sha256": "ade60a1c71b54839779bc5d33bb50f3019106d756174aecbdfba0174ffe9ee31"
     },
     "review-bundle.json": {
-      "bytes": 16946,
-      "sha256": "b502322f2bfb8d69350db9a6653fb8ee5ee99187f98d9800bd46bbe160c53ea6"
+      "bytes": 17328,
+      "sha256": "223b7d9414bc670fe9b08ff3b4042a2a8b58dbbacc1bcf72f801318c411f4fdf"
     },
     "review-response.template.json": {
       "bytes": 1722,

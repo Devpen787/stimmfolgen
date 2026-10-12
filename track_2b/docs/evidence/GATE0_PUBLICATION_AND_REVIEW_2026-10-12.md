@@ -18,7 +18,7 @@ The original diagnostic reports used `as_of: 2023-11-29` for content knowledge. 
 
 ## Ready for the user's semantic review
 
-Open the [review packet](ahv-semantic-review-2026-10-12/REVIEW.md). It contains five proposition decisions (P01-P05), seven actual-trial decisions (T01-T07), exact normalized spans and hashes, candidate outputs copied from the immutable final-repeat traces, six unannotated source page images, and a [blank response template](ahv-semantic-review-2026-10-12/review-response.template.json).
+Open the [review packet](ahv-semantic-review-2026-10-12/REVIEW.md). It contains five proposition decisions (P01-P05), seven actual-trial decisions (T01-T07), exact normalized spans and hashes, candidate outputs copied from the immutable final-repeat traces, eight unannotated source page images, and a [blank response template](ahv-semantic-review-2026-10-12/review-response.template.json).
 
 Important review distinctions: page 18 defines an annual supplement of one twelfth; page 9 explains the payment-frequency change. Page 11 concerns old-age pensions, forecasts and hypothetical financing options. The five-year cost is a reference-only entry, not a returned final extraction answer. Page 16 is jointly labelled Federal Council and Parliament; `GOVERNMENT` is the pipeline's coarse enum for that section. The actor-conflict outcome is a policy comparison of two real Apertus completions; the full happy path is a three-response aggregate. These distinctions are surfaced for acceptance, rejection or correction rather than pre-approved by the packet author.
 

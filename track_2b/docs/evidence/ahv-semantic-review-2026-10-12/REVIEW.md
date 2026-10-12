@@ -42,7 +42,7 @@ Source: [sp-9acf2ebeaa24c5dacbab](https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4
 
 > Durch diese Erhöhung würden die Kosten für die 13. AHV- Rente bei der Einführung voraussichtlich etwa 4,1 Milliarden Franken betragen; davon müsste der Bund rund 800 Millionen Franken bezahlen.
 
-[Page 11 context](pages/page-11.png)
+[Page 11 context](pages/page-11.png) | [Committee financing context, page 15](pages/page-15.png)
 
 ### P03 - Five-year annual cost projection (reference only)
 
@@ -54,13 +54,13 @@ Source: [sp-2275e83fa97bea1e8eee](https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4
 
 > Fünf Jahre nach Einführung würden die Kosten voraussichtlich rund 5 Milliarden Franken betragen.
 
-[Page 11 context](pages/page-11.png)
+[Page 11 context](pages/page-11.png) | [Committee financing context, page 15](pages/page-15.png)
 
 ### P04 - Financing left unspecified / definite personal CHF refusal
 
 Candidate: `{"predicate": "FINANCING_SPECIFIED", "kind": "UNRESOLVED", "actor": "GOVERNMENT", "value": {"value": false}}`. **Decision: PENDING.**
 
-Does the original initiative leave method/rate open? Are page 11 payroll/VAT examples hypothetical rather than enacted financing? Unknown personal CHF is not zero.
+Does the original initiative leave method/rate open? Are page 11 payroll/VAT examples hypothetical rather than enacted financing? Also read the committee financing example on page 15 as an attributed proposal, not an enacted rule. Unknown personal CHF is not zero.
 
 Source: [sp-bf43dc012a35bce8bbd2](https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11), PDF/printed page 11, offsets 985:1103, text SHA-256 `849c5c2ebc67384d026b06f2dadf15006dc13050a8de5bde740a455142015da4`.
 
@@ -70,7 +70,7 @@ Source: [sp-3c5b9fb6a0283b70075b](https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4
 
 > Die Initiative lässt die Frage der Finanzierung offen.
 
-[Page 11 context](pages/page-11.png)
+[Page 11 context](pages/page-11.png) | [Committee financing context, page 15](pages/page-15.png)
 
 ### P05 - Budget forecast attribution
 
@@ -82,7 +82,7 @@ Source: [sp-92f4ef4f294b8ca65441](https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4
 
 > Der Bund müsste seine Steuern erhöhen oder Ausgaben kürzen.
 
-[Committee, page 14](pages/page-14.png) | [Federal Council and Parliament, page 16](pages/page-16.png)
+[Committee, pages 14](pages/page-14.png) [and 15](pages/page-15.png) | [Federal Council and Parliament, pages 16](pages/page-16.png) [and 17](pages/page-17.png)
 
 ## Seven actual-trial decisions
 

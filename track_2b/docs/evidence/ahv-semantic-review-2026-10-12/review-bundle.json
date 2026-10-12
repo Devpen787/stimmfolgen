@@ -452,5 +452,19 @@
       "decision": "PENDING",
       "reviewer_notes": null
     }
+  ],
+  "additional_context_pages": [
+    {
+      "pdf_page": 15,
+      "role": "INITIATIVE_COMMITTEE_CONTINUATION",
+      "file": "pages/page-15.png",
+      "provided_to_recorded_model_trials": false
+    },
+    {
+      "pdf_page": 17,
+      "role": "FEDERAL_COUNCIL_PARLIAMENT_CONTINUATION",
+      "file": "pages/page-17.png",
+      "provided_to_recorded_model_trials": false
+    }
   ]
 }
