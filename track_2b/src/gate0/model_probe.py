@@ -95,7 +95,7 @@ def run_inference(report, model_id, base_url, api_key):
             {"role": "user", "content": prompt_for(report)},
         ],
     }
-    headers = {"Content-Type": "application/json"}
+    headers = {"Content-Type": "application/json", "User-Agent": "StimmFolgen-Gate0/0.1"}
     if api_key:
         headers["Authorization"] = f"Bearer {api_key}"
     req = urllib.request.Request(
