@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/stimmfolgen/private_vault.schema.json",
+  "$comment": "Private plaintext payload before encryption or after unlock, NOT safe to persist unencrypted. Define encrypted envelope in implementation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "created_at",
+    "saved_cases",
+    "notes",
+    "optional_vote_memory"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "saved_cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "case_id",
+          "pinned_case_version",
+          "saved_at"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string"
+          },
+          "pinned_case_version": {
+            "type": "string"
+          },
+          "saved_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "brief_text": {
+            "type": "string"
+          },
+          "scenario_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "case_id",
+          "text",
+          "created_at"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "case_id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "optional_vote_memory": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "proposal_id",
+          "opt_in",
+          "self_recorded_choice"
+        ],
+        "properties": {
+          "proposal_id": {
+            "type": "string"
+          },
+          "opt_in": {
+            "const": true
+          },
+          "self_recorded_choice": {
+            "type": "string"
+          },
+          "recorded_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  }
+}
