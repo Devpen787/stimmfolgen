@@ -1,0 +1,46 @@
+name: Gate 0 — REAL Apertus inference (manual, requires credentials)
+on:
+  workflow_dispatch:
+    inputs:
+      model_id:
+        description: Exact Apertus model ID available at your authorised endpoint
+        required: true
+        default: swiss-ai/apertus-v1.5-8b
+        type: string
+
+jobs:
+  real-apertus:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      LLM_NAME: ${{ inputs.model_id }}
+      LLM_BASE_URL: ${{ vars.APERTUS_BASE_URL || 'https://api.publicai.co/v1' }}
+      LLM_API_KEY: ${{ secrets.APERTUS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install source tooling
+        run: python -m pip install 'pymupdf>=1.24,<2'
+      - name: Check access configuration without exposing credentials
+        shell: bash
+        run: |
+          if [ -z "$LLM_BASE_URL" ] || [ -z "$LLM_API_KEY" ]; then
+            echo "::error::Set GitHub Actions secret APERTUS_API_KEY first; optional APERTUS_BASE_URL variable overrides default Public AI endpoint"
+            exit 1
+          fi
+          echo "Apertus inference requested. Secrets will not be printed."
+      - name: Retrieve exact source and extract reference pages
+        run: python track_2b/src/gate0/source_probe.py --out /tmp/gate0-source.json
+      - name: Invoke actual configured Apertus model
+        run: python track_2b/src/gate0/model_probe.py --source-report /tmp/gate0-source.json --out /tmp/gate0-model.json
+      - name: Upload raw evidence for independent review
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate0-actual-apertus-unreviewed
+          path: |
+            /tmp/gate0-source.json
+            /tmp/gate0-model.json
+          retention-days: 7
