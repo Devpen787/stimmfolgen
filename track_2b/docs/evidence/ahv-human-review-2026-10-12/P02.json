@@ -1,0 +1,34 @@
+{
+  "review_id": "P02",
+  "decision": "ACCEPT",
+  "qualification": "WITH_SUGGESTED_WORDING",
+  "accepted_wording": "According to the government’s pre-vote estimate, introducing the 13th AHV old-age pension would add approximately CHF 4.1 billion a year to AHV spending.",
+  "reviewer": "Human user in this task",
+  "reviewer_supplied_date": null,
+  "recorded_at_utc": "2026-10-12T15:37:07Z",
+  "authorization_verbatim": "Accept P02 with your suggested wording. Record that decision and walk me through P03 next. Keep the frontend blocked.",
+  "packet_version": "ahv-semantic-review-v1",
+  "packet_manifest_sha256": "ea9a6b9c9c5a67d8d76a5b8c9d7980f23802433a23a1e7cd126ddc3b2c237fe8",
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "catalog_sha256": "8d98a741550f450a64bb8103ece1efa561b0c75436b8096bf47ac6c74508d618",
+  "semantic_reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+  "trace_commit": "0436dc9a44e5c4be28c67864500d447b59d324d5",
+  "original_candidate": {
+    "predicate": "ADDITIONAL_ANNUAL_COST",
+    "kind": "COST_PROJECTION",
+    "actor": "GOVERNMENT",
+    "value": {
+      "amount_chf": 4100000000,
+      "horizon": "INTRODUCTION"
+    }
+  },
+  "scope": "Approximate government pre-vote projection of additional annual AHV expenditure at introduction; does not approve other claims or recorded trial outputs",
+  "supporting_context_pages": [
+    4,
+    11
+  ],
+  "implementation_applied": false,
+  "full_human_semantic_review_complete": false,
+  "gate0_cleared": false,
+  "frontend_authorized": false
+}
