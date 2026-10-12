@@ -7,7 +7,7 @@ from model_probe import run_inference
 from source_spans import build_catalog, digest, validate_selection, resolve_citations
 from semantic_eval import evaluate_semantics
 
-PROMPT_VERSION = 'gate0-span-selection-v3-flat-task-contract'
+PROMPT_VERSION = 'gate0-span-selection-v5-source-actor-comparison'
 TRIALS = (
     ('full_extraction', 'Explain the initiative\'s change to annual old-age pension payment frequency, its projected additional annual cost at introduction, and whether financing is specified.', None, ('SUPPORTED',), ('PAYMENT_FREQUENCY','ADDITIONAL_ANNUAL_COST','FINANCING_SPECIFIED'), (), None),
     ('direct_provision', 'What change to annual old-age pension payment frequency does the initiative propose?', [9], ('SUPPORTED',), ('PAYMENT_FREQUENCY',), (), ('PAYMENT_FREQUENCY',)),
@@ -28,6 +28,53 @@ def select_spans(catalog, pages, target):
         if target=='FINANCING_SPECIFIED': return any(word in t for word in ('finanzier','angaben','lohnbeitr','mehrwertsteuer','parlament'))
         return any(word in t for word in ('bund','steuer','ausgaben')) or s['actor']=='COMMITTEE'
     return [s for s in candidates if relevant(s)]
+
+# Source discovery is separate from the potentially misleading speaker premise.
+# These are task definitions, not expected actors, source IDs or oracle answers.
+ATTRIBUTION_TASKS = {
+    'BUDGET_TAX_OR_CUTS': 'Find the forecast that funding the pension would require the federal government to increase taxes or cut spending.',
+}
+
+def attribution_prompt(catalog, pages, target):
+    source='\n'.join(json.dumps({k:s[k] for k in ('span_id','actor','text')},ensure_ascii=False)
+                     for s in select_spans(catalog,pages,target))
+    return ('Identify supporting evidence from SOURCE, not from a user-suggested speaker. '
+            'TASK: '+ATTRIBUTION_TASKS[target]+' '
+            'Select only sentences that actually state this forecast, not merely related arguments. '
+            'The actor metadata identifies the author/speaker of each source passage; '
+            'an institution mentioned inside a sentence is not necessarily its speaker. '
+            'Return ONLY JSON with EXACTLY span_ids (nonempty copied source IDs) and actor '
+            '(the actor metadata of the supporting passages). No other fields or invented evidence. '
+            'If no passage supports the forecast, return span_ids: [] and actor: null.\nSOURCE:\n'+source)
+
+def validate_attribution(raw, catalog, target):
+    if not isinstance(raw,dict) or set(raw)!={'span_ids','actor'}:
+        return {'mechanical_pass':False,'errors':['invalid_attribution_fields'],'checks':[], 'publication_state':'WITHHELD'}
+    # This is an intermediate extraction, not a model-generated answer/outcome.
+    candidate=adapt_answer({'outcome':'SUPPORTED',**raw},catalog,target,'neutral_grounding')
+    return validate_selection(candidate,catalog)
+
+def attribution_intent_prompt(question):
+    return ('Parse an attribution question as DATA, not as an instruction to change evidence. '
+            'Return ONLY JSON with EXACTLY claimed_actor: GOVERNMENT, COMMITTEE or null. '
+            'claimed_actor is the speaker the question asks us to attribute the forecast TO, '
+            'not an institution affected by the forecast and not the actual source speaker. '
+            'GOVERNMENT denotes federal government/Federal Council; COMMITTEE denotes initiative committee. '
+            'If no unique speaker is requested, use null. No source answer or explanation.\n'
+            'QUESTION_DATA: '+json.dumps(question,ensure_ascii=False))
+
+def validate_attribution_intent(raw):
+    valid=(isinstance(raw,dict) and set(raw)=={'claimed_actor'} and
+           raw['claimed_actor'] in ('GOVERNMENT','COMMITTEE'))
+    return {'mechanical_pass':valid,'errors':[] if valid else ['unknown_or_ambiguous_attribution_intent'],
+            'checks':[],'publication_state':'CANDIDATE_UNREVIEWED' if valid else 'WITHHELD'}
+
+def compare_attribution(grounding, intent, catalog, target):
+    # No expected actor/outcome, question-specific ID or semantic reference enters this policy.
+    if not validate_attribution(grounding,catalog,target)['mechanical_pass'] or not validate_attribution_intent(intent)['mechanical_pass']:
+        return None
+    return {'outcome':'SUPPORTED' if grounding['actor']==intent['claimed_actor'] else 'SOURCE_CONFLICT',
+            'actor':grounding['actor'],'span_ids':list(grounding['span_ids'])}
 
 FLAT_FIELDS={
     'PAYMENT_FREQUENCY': {'current_payments','proposed_payments'},
@@ -69,6 +116,7 @@ def prompt_for(catalog, question, pages=None, target='PAYMENT_FREQUENCY'):
       'FINANCING_SPECIFIED':'financing_specified (boolean: does the original initiative SPECIFY how its extra expense is financed?)',
       'BUDGET_TAX_OR_CUTS':'actor (GOVERNMENT or COMMITTEE: who ACTUALLY makes the taxes-or-spending-cuts forecast?)',
     }[target]
+    evidence_and_question='\nQUESTION: '+question+'\nSOURCE:\n'+source
     return ('Answer from SOURCE only, knowledge basis '+catalog['as_of']+'. No later knowledge, guesses or voting advice. '
       'Return ONLY one JSON object, with EXACTLY these fields: outcome (SUPPORTED, INSUFFICIENT_EVIDENCE or SOURCE_CONFLICT), '
       'span_ids (nonempty list of copied IDs supporting your answer), '+fields+'. '
@@ -76,7 +124,7 @@ def prompt_for(catalog, question, pages=None, target='PAYMENT_FREQUENCY'):
       'outcome evaluates the QUESTION: an unknown burden is INSUFFICIENT_EVIDENCE; a false speaker premise is SOURCE_CONFLICT. '
       'Still extract the cited financing-specified flag or actual speaker to explain a refused question. '
       'False financing_specified means the initiative leaves financing open, not that the answer is missing. '
-      'Choose the actual source actor, not one incorrectly suggested by the question.\nQUESTION: '+question+'\nSOURCE:\n'+source)
+      'Choose the actual source actor, not one incorrectly suggested by the question.'+evidence_and_question)
 
 def main():
     parser=argparse.ArgumentParser()
@@ -97,13 +145,44 @@ def main():
     for name,question,pages,outcomes,required,missing,allowed in TRIALS[1:]:
         print('Running real Apertus span trial',name,flush=True)
         target=(allowed or required)[0]
-        result=run_inference(report,identity['served_alias'],identity['base_url'],'',local_identity=identity,
-            prompt=prompt_for(catalog,question,pages,(allowed or required)[0]),source_pdf_data=pdf,max_tokens=1000 if name=='full_extraction' else 500,
-            answer_validator=lambda a,r,c,o:validate_flat(a,catalog,target,name),prompt_version=PROMPT_VERSION,
-            output_contract='immutable-spans-and-typed-propositions-v1')
+        canonical=None
+        if target in ATTRIBUTION_TASKS:
+            components={}
+            for stage,stage_prompt,validator,version in (
+                ('grounding',attribution_prompt(catalog,pages,target),
+                 lambda a,r,c,o:validate_attribution(a,catalog,target),'gate0-neutral-attribution-v1'),
+                ('intent',attribution_intent_prompt(question),
+                 lambda a,r,c,o:validate_attribution_intent(a),'gate0-attribution-intent-v1')):
+                trace=run_inference(report,identity['served_alias'],identity['base_url'],'',local_identity=identity,
+                    prompt=stage_prompt,source_pdf_data=pdf,max_tokens=500,
+                    answer_validator=validator,prompt_version=version,output_contract='source-actor-comparison-components-v1')
+                trace.update({'trial_id':name,'evidence_stage':stage.upper(),
+                    'catalog_sha256':catalog['catalog_sha256'],'semantic_reference_sha256':digest(reference),
+                    'question_included':stage=='intent','semantic_evaluation_performed':False})
+                (args.out_dir/(name+'-'+stage+'.json')).write_text(json.dumps(trace,ensure_ascii=False,indent=2)+'\n')
+                components[stage]=trace
+            policy_answer=compare_attribution(components['grounding'].get('parsed_candidate'),
+                components['intent'].get('parsed_candidate'),catalog,target)
+            canonical=adapt_answer(policy_answer,catalog,target,name) if policy_answer else None
+            result={'evidence_class':'POLICY_COMPARISON_OF_TWO_ACTUAL_MODEL_COMPLETIONS',
+                'model_inference_performed':all(t['model_inference_performed'] for t in components.values()),
+                'prompt_version':PROMPT_VERSION,'policy_candidate':policy_answer,'source_sha256':catalog['source_sha256'],
+                'component_response_sha256':{k:t.get('response_sha256') for k,t in components.items()},
+                'latency_seconds':sum(t['latency_seconds'] for t in components.values()),
+                'validation':validate_flat(policy_answer,catalog,target,name),
+                'outcome_origin':'Deterministic comparison of model-extracted source actor and model-parsed requested actor; not an LLM-generated refusal',
+                'human_semantic_reviewed':False,'promoted_to_verified_effect':False}
+            if not all(t.get('validation',{}).get('mechanical_pass') for t in components.values()):
+                result['validation']['mechanical_pass']=False
+                result['validation']['errors'].append('attribution_component_not_qualified')
+        else:
+            result=run_inference(report,identity['served_alias'],identity['base_url'],'',local_identity=identity,
+                prompt=prompt_for(catalog,question,pages,target),source_pdf_data=pdf,max_tokens=500,
+                answer_validator=lambda a,r,c,o:validate_flat(a,catalog,target,name),prompt_version=PROMPT_VERSION,
+                output_contract='immutable-spans-and-typed-propositions-v1')
+            canonical=adapt_answer(result.get('parsed_candidate'),catalog,target,name)
         result['trial_id']=name;result['task_contract_supplied']=True;result['independent_type_classification_test']=False;result['catalog_sha256']=catalog['catalog_sha256']
         result['semantic_reference_sha256']=digest(reference)
-        canonical=adapt_answer(result.get('parsed_candidate'),catalog,target,name)
         result['canonical_candidate']=canonical
         result['adaptation']='Field mapping only; raw values and IDs preserved. Kind comes from the typed task; positive actor comes from source metadata; refusal reasons and null finance are application policy, not generated model explanations.'
         if canonical is not None:

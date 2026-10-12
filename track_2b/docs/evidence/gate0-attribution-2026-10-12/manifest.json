@@ -1,0 +1,165 @@
+{
+  "scope": "Genuine local Apertus v1.5 continuation; failed v4 and unchanged v5 runs retained; policy aggregates distinguished from raw completions",
+  "files": {
+    "run-attribution-v4/actor_mixup-grounding.json": {
+      "bytes": 11680,
+      "sha256": "abecf476460bf5d7239055a8ecf3b20f9baad13e73f42499e16556d7f3da6759"
+    },
+    "run-attribution-v4/actor_mixup.json": {
+      "bytes": 14775,
+      "sha256": "0f250eee246ff1ce95aa5ca3523c4710ce690cabab80e49b119d1002c12c38ed"
+    },
+    "run-attribution-v4/cost_projection.json": {
+      "bytes": 11384,
+      "sha256": "e6103a38a020a0dd0e27f3306983f982713adb58ad62ac50d6efc962f46c0168"
+    },
+    "run-attribution-v4/direct_provision.json": {
+      "bytes": 9762,
+      "sha256": "577731690cd4b97bc0968cdae56b8a28301851130b00118610e7a63ddbe3c18c"
+    },
+    "run-attribution-v4/fake_quote.json": {
+      "bytes": 12106,
+      "sha256": "3a461df96e903037936079299764f27496f8264205cc67a82743a5acf5775935"
+    },
+    "run-attribution-v4/financing_refusal.json": {
+      "bytes": 14877,
+      "sha256": "bcdb44b4d426b0ce0218648dad2198710f54b51707d4eb8bc7c603796f8f16d1"
+    },
+    "run-attribution-v4/full_extraction.json": {
+      "bytes": 3392,
+      "sha256": "438855fa061968b6fd7eb7ca6796b2f5a35eb2f27a16f8baff8a3195dc6aa4aa"
+    },
+    "run-attribution-v4/semantic-reference-used.json": {
+      "bytes": 4879,
+      "sha256": "f685432f71088edafe58233ca6f15149e13de213e1fb219d02395e7f610d44f2"
+    },
+    "run-attribution-v4/source-spans.json": {
+      "bytes": 90905,
+      "sha256": "90ed5d5bbc654741e84269a013ed4cfedb78d1df7a58e18c292c2b82cae20caa"
+    },
+    "run-attribution-v4/summary.json": {
+      "bytes": 2883,
+      "sha256": "fd76d45a27db1e57c7e26a33876ff905bbdb77453bca90b6f84bb3dbe0ae8419"
+    },
+    "run-attribution-v4/temporal_leakage.json": {
+      "bytes": 14843,
+      "sha256": "8a6895bdf2b6d1f18ebe06579a09b8b6af1c8fdd1180ff195ad87d1874fed203"
+    },
+    "run-attribution-v4/unsupported_chf.json": {
+      "bytes": 12243,
+      "sha256": "e7e3725fd4eedbfbe8d924af47d81ce630ee5f7270a15ba2ef8bdd42889411c7"
+    },
+    "run-attribution-v5/actor_mixup-grounding.json": {
+      "bytes": 11668,
+      "sha256": "ca5bce20f605c79b93c96814eb7640c7528e5e6f570be822b2bc5a4d98c94c38"
+    },
+    "run-attribution-v5/actor_mixup-intent.json": {
+      "bytes": 5998,
+      "sha256": "f6d858e6e82ddb23c89e7e45c417d94fc45a8d8a4d66270f277f6cc4fd33d63d"
+    },
+    "run-attribution-v5/actor_mixup.json": {
+      "bytes": 6655,
+      "sha256": "059bc79c20af9ba1f366b8ba8b8ed9a235f10d15c65e6edc95ee083c58e8a3e8"
+    },
+    "run-attribution-v5/cost_projection.json": {
+      "bytes": 11262,
+      "sha256": "8a19d787e70e3a3ec561b3c6b4e50976198f4e2998e6e132dfd4cf1687ec7af8"
+    },
+    "run-attribution-v5/direct_provision.json": {
+      "bytes": 9709,
+      "sha256": "2812304bf6e8b4eb24b6064b992886803a3d1f5a5d8ed86b95341c7e8a360c04"
+    },
+    "run-attribution-v5/fake_quote.json": {
+      "bytes": 16030,
+      "sha256": "58c0101794f37ed3bc8e15ba1cc2a88c8b382f3a6e5231bd2da7fb645ffd4ab9"
+    },
+    "run-attribution-v5/financing_refusal.json": {
+      "bytes": 16105,
+      "sha256": "68eca95e5180d7fd7c9ab83a29d16d27f9d90b1398e3ab1b585b30e222808530"
+    },
+    "run-attribution-v5/full_extraction.json": {
+      "bytes": 3317,
+      "sha256": "637f60bbffc38036790a7a8e3dcb7c0c265a69f52228360fa4b54ef09af705f6"
+    },
+    "run-attribution-v5/semantic-reference-used.json": {
+      "bytes": 4879,
+      "sha256": "f685432f71088edafe58233ca6f15149e13de213e1fb219d02395e7f610d44f2"
+    },
+    "run-attribution-v5/source-spans.json": {
+      "bytes": 90905,
+      "sha256": "90ed5d5bbc654741e84269a013ed4cfedb78d1df7a58e18c292c2b82cae20caa"
+    },
+    "run-attribution-v5/summary.json": {
+      "bytes": 2306,
+      "sha256": "7c9ffe226f309db7033c96406edf02930fb24a7eed5aef12927fcbc38a99ff22"
+    },
+    "run-attribution-v5/temporal_leakage.json": {
+      "bytes": 16069,
+      "sha256": "efe857d9a1765e1ded468a39c1f63701b12dfe510bd61f37796f0e06a7e0e0c3"
+    },
+    "run-attribution-v5/unsupported_chf.json": {
+      "bytes": 14824,
+      "sha256": "4603210cccc3462311932be86bd899512fd7748b720df13d73f751a77bd3dcdb"
+    },
+    "run-attribution-v5-repeat/actor_mixup-grounding.json": {
+      "bytes": 11668,
+      "sha256": "81174f18bc1465b3fe6def54d9431c6d5036435e6edd708fef6421440d93b866"
+    },
+    "run-attribution-v5-repeat/actor_mixup-intent.json": {
+      "bytes": 5998,
+      "sha256": "733409807ea09d89bb19d9e9a43fc77c0f2990b89124f9ce6a37c9f68e72d1f3"
+    },
+    "run-attribution-v5-repeat/actor_mixup.json": {
+      "bytes": 6654,
+      "sha256": "f470900c83589a3416cdfa77f20097c6891d4a35b558a0cf07b25bb1b83aba6a"
+    },
+    "run-attribution-v5-repeat/cost_projection.json": {
+      "bytes": 11263,
+      "sha256": "01956208cea8f86b79d5801df37be05d4139704fca7c1c807c55a85b6701a235"
+    },
+    "run-attribution-v5-repeat/direct_provision.json": {
+      "bytes": 9709,
+      "sha256": "927c908d3897309c3b0deea0c2a9a7fbd7f1e73adc56462bddab4cdae2e19d1b"
+    },
+    "run-attribution-v5-repeat/fake_quote.json": {
+      "bytes": 16030,
+      "sha256": "427f9cbd8f8e495bd82f47a7bf5a06d096e6f6775e15bda6e749d44567a07ca1"
+    },
+    "run-attribution-v5-repeat/financing_refusal.json": {
+      "bytes": 16105,
+      "sha256": "b97bdd54f4886470b22b66c6570b81c22cef7d9a1fcf67927a5dd8f18d8e9cc2"
+    },
+    "run-attribution-v5-repeat/full_extraction.json": {
+      "bytes": 3317,
+      "sha256": "6e9981ecde78b422476f1f42b2b9b9e72188abd1753b525b16b305bf32dc93ed"
+    },
+    "run-attribution-v5-repeat/semantic-reference-used.json": {
+      "bytes": 4879,
+      "sha256": "f685432f71088edafe58233ca6f15149e13de213e1fb219d02395e7f610d44f2"
+    },
+    "run-attribution-v5-repeat/source-spans.json": {
+      "bytes": 90905,
+      "sha256": "90ed5d5bbc654741e84269a013ed4cfedb78d1df7a58e18c292c2b82cae20caa"
+    },
+    "run-attribution-v5-repeat/summary.json": {
+      "bytes": 2307,
+      "sha256": "3b311b69c704cbf942083f665cd706ae5c75895084b71562eb772735a2be39cf"
+    },
+    "run-attribution-v5-repeat/temporal_leakage.json": {
+      "bytes": 16069,
+      "sha256": "8d88bafbb6649747ed6047eecc6b998593de5567397eb885ef4bc464c8365688"
+    },
+    "run-attribution-v5-repeat/unsupported_chf.json": {
+      "bytes": 14825,
+      "sha256": "aecec186c9cf819cfac776fe01b5489cbec53c024cca5789508e55b3677209de"
+    },
+    "source.json": {
+      "bytes": 34029,
+      "sha256": "c0c3cf86e10ad3ace6b2c163d79aa2eb718f42060e99f95f72b445c46760eec4"
+    },
+    "verification.json": {
+      "bytes": 843,
+      "sha256": "b8c018631550fddf8dd21cd039a95b2485c8cae268d4eb4723ccb7762ae59408"
+    }
+  }
+}

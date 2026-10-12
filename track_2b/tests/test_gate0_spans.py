@@ -149,6 +149,66 @@ class SpanProtocolTests(unittest.TestCase):
         self.assertFalse(semantic_eval.evaluate_semantics(candidate,self.catalog,self.reference,
             expected_outcomes=('SOURCE_CONFLICT',))['semantic_reference_pass'])
 
+    def test_neutral_attribution_uses_source_actor_not_a_fixed_government_answer(self):
+        for actor in ('GOVERNMENT','COMMITTEE'):
+            with self.subTest(actor=actor):
+                self.span['actor']=actor
+                self.assertTrue(span_probe.validate_attribution({'span_ids':['sp-fixture'],'actor':actor},
+                    self.catalog,'BUDGET_TAX_OR_CUTS')['mechanical_pass'])
+                other='COMMITTEE' if actor=='GOVERNMENT' else 'GOVERNMENT'
+                self.assertFalse(span_probe.validate_attribution({'span_ids':['sp-fixture'],'actor':other},
+                    self.catalog,'BUDGET_TAX_OR_CUTS')['mechanical_pass'])
+
+    def test_neutral_prompt_contains_both_speakers_and_no_user_premise_or_oracle(self):
+        c={'as_of':'2023-11-29','spans':[
+            {'span_id':'sp-neutral-a','actor':'COMMITTEE','pdf_page':14,'text':'Steuern steigen nach unserer Prognose.'},
+            {'span_id':'sp-neutral-b','actor':'GOVERNMENT','pdf_page':16,'text':'Der Bund kann Ausgaben kürzen.'}]}
+        text=span_probe.attribution_prompt(c,[14,16],'BUDGET_TAX_OR_CUTS')
+        self.assertIn('sp-neutral-a',text);self.assertIn('sp-neutral-b',text)
+        self.assertNotIn('Attribute this budget forecast to the committee',text)
+        self.assertNotIn('semantic_reference',text)
+        self.assertNotIn('sp-92f4ef4f294b8ca65441',text)
+        c['spans'][0]['actor']='GOVERNMENT';c['spans'][1]['actor']='COMMITTEE'
+        swapped=span_probe.attribution_prompt(c,[14,16],'BUDGET_TAX_OR_CUTS')
+        self.assertNotEqual(text,swapped)
+        self.assertIn('"actor": "COMMITTEE", "text": "Der Bund',swapped)
+
+    def test_neutral_grounding_cannot_admit_unknown_ids_empty_or_mixed_actors(self):
+        other=copy.deepcopy(self.span);other.update(span_id='sp-other',actor='COMMITTEE')
+        self.catalog['spans'].append(other)
+        for raw in ({'span_ids':[],'actor':None},{'span_ids':['sp-invented'],'actor':'GOVERNMENT'},
+                    {'span_ids':['sp-fixture','sp-other'],'actor':'GOVERNMENT'},
+                    {'span_ids':['sp-fixture'],'actor':'GOVERNMENT','quote':'made up'}):
+            with self.subTest(raw=raw):
+                self.assertFalse(span_probe.validate_attribution(raw,self.catalog,'BUDGET_TAX_OR_CUTS')['mechanical_pass'])
+
+    def test_actor_comparison_handles_both_actors_without_fixed_expected_answer(self):
+        for actual in ('GOVERNMENT','COMMITTEE'):
+            for requested in ('GOVERNMENT','COMMITTEE'):
+                with self.subTest(actual=actual,requested=requested):
+                    self.span['actor']=actual
+                    raw={'actor':actual,'span_ids':['sp-fixture']}
+                    answer=span_probe.compare_attribution(raw,{'claimed_actor':requested},self.catalog,'BUDGET_TAX_OR_CUTS')
+                    self.assertEqual(answer['outcome'],'SUPPORTED' if actual==requested else 'SOURCE_CONFLICT')
+                    self.assertEqual(answer['actor'],actual)
+                    self.assertEqual(answer['span_ids'],raw['span_ids'])
+
+    def test_actor_comparison_withholds_unknown_intent_and_invalid_grounding(self):
+        grounding={'actor':'GOVERNMENT','span_ids':['sp-fixture']}
+        for intent in (None,{}, {'claimed_actor':None},{'claimed_actor':['COMMITTEE']},
+                       {'claimed_actor':'COMMITTEE','answer':'GOVERNMENT'}):
+            self.assertIsNone(span_probe.compare_attribution(grounding,intent,self.catalog,'BUDGET_TAX_OR_CUTS'))
+        self.assertIsNone(span_probe.compare_attribution({'actor':'COMMITTEE','span_ids':['sp-fixture']},
+            {'claimed_actor':'COMMITTEE'},self.catalog,'BUDGET_TAX_OR_CUTS'))
+
+    def test_valid_actor_comparison_still_fails_independent_meaning_for_unrelated_span(self):
+        raw=span_probe.compare_attribution({'actor':'GOVERNMENT','span_ids':['sp-fixture']},
+            {'claimed_actor':'COMMITTEE'},self.catalog,'BUDGET_TAX_OR_CUTS')
+        candidate=span_probe.adapt_answer(raw,self.catalog,'BUDGET_TAX_OR_CUTS','actor_mixup')
+        self.assertTrue(source_spans.validate_selection(candidate,self.catalog)['mechanical_pass'])
+        self.assertFalse(semantic_eval.evaluate_semantics(candidate,self.catalog,self.reference,
+            expected_outcomes=('SOURCE_CONFLICT',))['semantic_reference_pass'])
+
     def test_sentence_ranges_do_not_split_13th_or_decimal(self):
         text='Die 13. AHV-Rente kostet 4,1 Milliarden Franken.2 Davon trägt der Bund einen Anteil.'
         parts=[text[a:b] for a,b in source_spans.sentence_ranges(text)]

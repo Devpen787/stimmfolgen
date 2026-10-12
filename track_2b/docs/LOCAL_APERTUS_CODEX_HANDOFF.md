@@ -93,3 +93,7 @@ Give the user a link to the focused PR, a plain-English outcome of the real loca
 ## Current continuation: immutable spans (12 October 2026)
 
 Use `src/gate0/span_probe.py` for the active local test, not the historical generated-quote diagnostic. [Latest evidence and reproduction commands](evidence/GATE0_SPANS_2026-10-12.md) preserve all four span runs and independently revalidate their source-grounded typed propositions. Two unchanged final Apertus v1.5 runs pass six of seven live trials but fail actor attribution. Gate 0 and the frontend remain blocked; do not promote coding-agent-authored reference results to human review. CI validates source/trace integrity only; no cloud model runtime or self-hosted Actions runner was provisioned.
+
+## Latest attribution continuation (12 October 2026)
+
+[The corrected local v1.5 pipeline](evidence/GATE0_ATTRIBUTION_2026-10-12.md) passes all seven bounded trials and the combined happy path in two unchanged runs. Apertus extracts the source actor and separately parses the requested actor; application comparison returns source conflict when they differ. No expected actor or gold ID enters generation or comparison. All prior failures, including the failed first fix, remain preserved. The composed refusal is not a single model answer. Human semantic review and publication availability remain outstanding; frontend work stays blocked.

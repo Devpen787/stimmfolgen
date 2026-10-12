@@ -1,0 +1,17 @@
+{
+  "synthetic_unit_tests_pass": 66,
+  "design_contract_validator": "PASS",
+  "original_failed_traces_modified": false,
+  "semantic_reference_changed": false,
+  "semantic_reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+  "unchanged_final_runs_bounded_machine_pass": 2,
+  "actor_candidate_identical_between_runs": true,
+  "actor_outcome_origin": "Policy compares separately model-extracted source and requested actors; not a model-generated refusal",
+  "gate_status": "HUMAN_REVIEW_REQUIRED",
+  "human_semantic_reviewed": false,
+  "public_availability_verified": false,
+  "frontend_started": false,
+  "paid_inference_api_used": false,
+  "six_non_attribution_prompts_byte_identical_to_v3": true,
+  "model_dir_redaction": "Only absolute local model directories redacted; raw requests/responses unchanged"
+}

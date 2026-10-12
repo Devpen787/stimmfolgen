@@ -1,0 +1,126 @@
+{
+  "evidence_class": "PIPELINE_AGGREGATE_NOT_SINGLE_MODEL_COMPLETION",
+  "component_trials": [
+    "direct_provision",
+    "cost_projection",
+    "financing_refusal"
+  ],
+  "component_response_sha256": [
+    "979826c25e700b085663ee2a26fd8a46baa7c33c1573e81ab746ea9112f8e384",
+    "cfdd65c3f20432e860c46f779290f3c2a8218811034855c885a354daf3873ea0",
+    "058a9254c4c4cd8d494c95364fcb3e7444d28e90771fc71ebefa0ef1877f38c6"
+  ],
+  "parsed_candidate": {
+    "outcome": "SUPPORTED",
+    "claims": [
+      {
+        "predicate": "PAYMENT_FREQUENCY",
+        "kind": "DIRECT_PROVISION",
+        "actor": "GOVERNMENT",
+        "value": {
+          "before": 12,
+          "after": 13
+        },
+        "span_ids": [
+          "sp-8ac6e0fa1c5a02a4f80f"
+        ]
+      },
+      {
+        "predicate": "ADDITIONAL_ANNUAL_COST",
+        "kind": "COST_PROJECTION",
+        "actor": "GOVERNMENT",
+        "value": {
+          "amount_chf": 4100,
+          "horizon": "INTRODUCTION"
+        },
+        "span_ids": [
+          "sp-f2d89f437b4fb79c2216",
+          "sp-2275e83fa97bea1e8eee"
+        ]
+      },
+      {
+        "predicate": "FINANCING_SPECIFIED",
+        "kind": "UNRESOLVED",
+        "actor": "GOVERNMENT",
+        "value": {
+          "value": false
+        },
+        "span_ids": [
+          "sp-bf43dc012a35bce8bbd2",
+          "sp-557da79f3b5e7c6cd940",
+          "sp-b5abbb814ae726a3ecdc",
+          "sp-592289b0703e1084509a"
+        ]
+      }
+    ],
+    "missing_facts": [
+      "FINANCING_METHOD",
+      "FINANCING_RATE"
+    ],
+    "personal_financing_chf": null
+  },
+  "validation": {
+    "mechanical_pass": false,
+    "errors": [
+      "component_trial_not_qualified"
+    ],
+    "checks": [
+      {
+        "valid": true,
+        "errors": [],
+        "span_ids": [
+          "sp-8ac6e0fa1c5a02a4f80f"
+        ]
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "span_ids": [
+          "sp-f2d89f437b4fb79c2216",
+          "sp-2275e83fa97bea1e8eee"
+        ]
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "span_ids": [
+          "sp-bf43dc012a35bce8bbd2",
+          "sp-557da79f3b5e7c6cd940",
+          "sp-b5abbb814ae726a3ecdc",
+          "sp-592289b0703e1084509a"
+        ]
+      }
+    ],
+    "publication_state": "CANDIDATE_UNREVIEWED",
+    "semantic_support_verified": false
+  },
+  "semantic_evaluation": {
+    "semantic_reference_pass": false,
+    "errors": [
+      "claim_1:unsupported_meaning_value_kind_actor_or_span",
+      "required_value_missing:ADDITIONAL_ANNUAL_COST"
+    ],
+    "checks": [
+      {
+        "predicate": "PAYMENT_FREQUENCY",
+        "reference_match": true
+      },
+      {
+        "predicate": "ADDITIONAL_ANNUAL_COST",
+        "reference_match": false
+      },
+      {
+        "predicate": "FINANCING_SPECIFIED",
+        "reference_match": true
+      }
+    ],
+    "reference_version": "ahv13-semantic-reference-v1",
+    "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+    "human_semantic_reviewed": false,
+    "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+    "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+    "publication_state": "WITHHELD"
+  },
+  "human_semantic_reviewed": false,
+  "frontend_authorized_by_this_run": false
+}
