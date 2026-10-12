@@ -5,7 +5,7 @@ on:
       model_id:
         description: Exact Apertus model ID available at your authorised endpoint
         required: true
-        default: swiss-ai/Apertus-v1.5-8B
+        default: swiss-ai/apertus-v1.5-8b
         type: string
 
 jobs:
@@ -14,7 +14,7 @@ jobs:
     timeout-minutes: 15
     env:
       LLM_NAME: ${{ inputs.model_id }}
-      LLM_BASE_URL: ${{ vars.APERTUS_BASE_URL }}
+      LLM_BASE_URL: ${{ vars.APERTUS_BASE_URL || 'https://api.publicai.co/v1' }}
       LLM_API_KEY: ${{ secrets.APERTUS_API_KEY }}
     steps:
       - uses: actions/checkout@v4
@@ -27,7 +27,7 @@ jobs:
         shell: bash
         run: |
           if [ -z "$LLM_BASE_URL" ] || [ -z "$LLM_API_KEY" ]; then
-            echo "::error::Set repository variable APERTUS_BASE_URL and secret APERTUS_API_KEY first"
+            echo "::error::Set GitHub Actions secret APERTUS_API_KEY first; optional APERTUS_BASE_URL variable overrides default Public AI endpoint"
             exit 1
           fi
           echo "Apertus inference requested. Secrets will not be printed."
