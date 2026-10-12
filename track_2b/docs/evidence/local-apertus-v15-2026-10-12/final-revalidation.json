@@ -1,0 +1,345 @@
+{
+  "evidence_class": "DETERMINISTIC_REVALIDATION_NOT_NEW_INFERENCE",
+  "source_report": "source-final.json",
+  "note": "Adds quote-length guard; unknown publication date is separated from editorial cutoff. Original raw responses and at-run validation are unchanged. All semantic support remains unverified.",
+  "results": {
+    "corrected/actor_mixup.json": {
+      "mechanical_pass": false,
+      "errors": [
+        "claim_0:quote_in_page",
+        "claim_0:quote_length_valid"
+      ],
+      "checks": [
+        {
+          "kind": "ATTRIBUTED_PREDICTION",
+          "pdf_page": 14,
+          "page_exists": true,
+          "quote_in_page": false,
+          "role_matches_page": true,
+          "known_kind": true,
+          "statement_present": true,
+          "quote_length_valid": false,
+          "as_of_matches": true,
+          "role_kind_compatible": true,
+          "quote_start": null,
+          "quote_end": null,
+          "quote_sha256": null,
+          "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=14",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        }
+      ],
+      "publication_state": "WITHHELD",
+      "semantic_support_verified": false
+    },
+    "corrected/baseline_full_booklet.json": {
+      "mechanical_pass": false,
+      "errors": [
+        "claim_0:quote_in_page",
+        "claim_0:role_matches_page",
+        "unsupported_personal_financing",
+        "required_kind_coverage_missing"
+      ],
+      "checks": [
+        {
+          "kind": "DIRECT_PROVISION",
+          "pdf_page": 4,
+          "page_exists": true,
+          "quote_in_page": false,
+          "role_matches_page": false,
+          "known_kind": true,
+          "statement_present": true,
+          "quote_length_valid": true,
+          "as_of_matches": true,
+          "role_kind_compatible": true,
+          "quote_start": null,
+          "quote_end": null,
+          "quote_sha256": null,
+          "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=4",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        }
+      ],
+      "publication_state": "WITHHELD",
+      "semantic_support_verified": false
+    },
+    "corrected/cost_projection.json": {
+      "mechanical_pass": false,
+      "errors": [
+        "wrong_outcome"
+      ],
+      "checks": [
+        {
+          "kind": "COST_PROJECTION",
+          "pdf_page": 11,
+          "page_exists": true,
+          "quote_in_page": true,
+          "role_matches_page": true,
+          "known_kind": true,
+          "statement_present": true,
+          "quote_length_valid": true,
+          "as_of_matches": true,
+          "role_kind_compatible": true,
+          "quote_start": 325,
+          "quote_end": 450,
+          "quote_sha256": "d4be8a261bd0f088345afbad34a9b867b72cd845a4a1221eda6705f10eb76c38",
+          "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        }
+      ],
+      "publication_state": "WITHHELD",
+      "semantic_support_verified": false
+    },
+    "corrected/direct_provision.json": {
+      "mechanical_pass": false,
+      "errors": [
+        "claim_0:quote_in_page",
+        "wrong_outcome"
+      ],
+      "checks": [
+        {
+          "kind": "DIRECT_PROVISION",
+          "pdf_page": 9,
+          "page_exists": true,
+          "quote_in_page": false,
+          "role_matches_page": true,
+          "known_kind": true,
+          "statement_present": true,
+          "quote_length_valid": true,
+          "as_of_matches": true,
+          "role_kind_compatible": true,
+          "quote_start": null,
+          "quote_end": null,
+          "quote_sha256": null,
+          "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=9",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        }
+      ],
+      "publication_state": "WITHHELD",
+      "semantic_support_verified": false
+    },
+    "corrected/fake_quote.json": {
+      "mechanical_pass": false,
+      "errors": [
+        "claim_0:quote_in_page"
+      ],
+      "checks": [
+        {
+          "kind": "DIRECT_PROVISION",
+          "pdf_page": 11,
+          "page_exists": true,
+          "quote_in_page": false,
+          "role_matches_page": true,
+          "known_kind": true,
+          "statement_present": true,
+          "quote_length_valid": true,
+          "as_of_matches": true,
+          "role_kind_compatible": true,
+          "quote_start": null,
+          "quote_end": null,
+          "quote_sha256": null,
+          "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        }
+      ],
+      "publication_state": "WITHHELD",
+      "semantic_support_verified": false
+    },
+    "corrected/financing_refusal.json": {
+      "mechanical_pass": true,
+      "errors": [],
+      "checks": [
+        {
+          "kind": "UNRESOLVED",
+          "pdf_page": 11,
+          "page_exists": true,
+          "quote_in_page": true,
+          "role_matches_page": true,
+          "known_kind": true,
+          "statement_present": true,
+          "quote_length_valid": true,
+          "as_of_matches": true,
+          "role_kind_compatible": true,
+          "quote_start": 985,
+          "quote_end": 1145,
+          "quote_sha256": "0495f58fa57b990cfbc738cf690ef4968ac70c6d931fe57cf2a21c7764f43ddb",
+          "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        }
+      ],
+      "publication_state": "CANDIDATE_UNREVIEWED",
+      "semantic_support_verified": false
+    },
+    "corrected/full_extraction.json": {
+      "mechanical_pass": false,
+      "errors": [
+        "unsupported_personal_financing",
+        "required_kind_coverage_missing"
+      ],
+      "checks": [
+        {
+          "kind": "DIRECT_PROVISION",
+          "pdf_page": 4,
+          "page_exists": true,
+          "quote_in_page": true,
+          "role_matches_page": true,
+          "known_kind": true,
+          "statement_present": true,
+          "quote_length_valid": true,
+          "as_of_matches": true,
+          "role_kind_compatible": true,
+          "quote_start": 587,
+          "quote_end": 720,
+          "quote_sha256": "5f872fd4350a0b97d205f5b2b8e9bb9896a8c3491323100f8e2be148c27bf66f",
+          "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=4",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        }
+      ],
+      "publication_state": "WITHHELD",
+      "semantic_support_verified": false
+    },
+    "corrected/temporal_leakage.json": {
+      "mechanical_pass": true,
+      "errors": [],
+      "checks": [
+        {
+          "kind": "COST_PROJECTION",
+          "pdf_page": 11,
+          "page_exists": true,
+          "quote_in_page": true,
+          "role_matches_page": true,
+          "known_kind": true,
+          "statement_present": true,
+          "quote_length_valid": true,
+          "as_of_matches": true,
+          "role_kind_compatible": true,
+          "quote_start": 325,
+          "quote_end": 450,
+          "quote_sha256": "d4be8a261bd0f088345afbad34a9b867b72cd845a4a1221eda6705f10eb76c38",
+          "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        }
+      ],
+      "publication_state": "CANDIDATE_UNREVIEWED",
+      "semantic_support_verified": false
+    },
+    "corrected/unsupported_chf.json": {
+      "mechanical_pass": false,
+      "errors": [
+        "claim_0:quote_in_page",
+        "claim_0:quote_length_valid",
+        "unsupported_personal_financing"
+      ],
+      "checks": [
+        {
+          "kind": "COST_PROJECTION",
+          "pdf_page": 11,
+          "page_exists": true,
+          "quote_in_page": false,
+          "role_matches_page": true,
+          "known_kind": true,
+          "statement_present": true,
+          "quote_length_valid": false,
+          "as_of_matches": true,
+          "role_kind_compatible": true,
+          "quote_start": null,
+          "quote_end": null,
+          "quote_sha256": null,
+          "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        }
+      ],
+      "publication_state": "WITHHELD",
+      "semantic_support_verified": false
+    },
+    "focused/projection.json": {
+      "mechanical_pass": true,
+      "errors": [],
+      "checks": [
+        {
+          "kind": "COST_PROJECTION",
+          "pdf_page": 11,
+          "page_exists": true,
+          "quote_in_page": true,
+          "role_matches_page": true,
+          "known_kind": true,
+          "statement_present": true,
+          "quote_length_valid": true,
+          "as_of_matches": true,
+          "role_kind_compatible": true,
+          "quote_start": 566,
+          "quote_end": 733,
+          "quote_sha256": "15fc27f89cc318a9f840175fdabdbea2851bc9f8fa753c3ab254b2f1b10d5f9f",
+          "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        }
+      ],
+      "publication_state": "CANDIDATE_UNREVIEWED",
+      "semantic_support_verified": false
+    },
+    "focused/provision.json": {
+      "mechanical_pass": false,
+      "errors": [
+        "claim_0:quote_in_page"
+      ],
+      "checks": [
+        {
+          "kind": "DIRECT_PROVISION",
+          "pdf_page": 9,
+          "page_exists": true,
+          "quote_in_page": false,
+          "role_matches_page": true,
+          "known_kind": true,
+          "statement_present": true,
+          "quote_length_valid": true,
+          "as_of_matches": true,
+          "role_kind_compatible": true,
+          "quote_start": null,
+          "quote_end": null,
+          "quote_sha256": null,
+          "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=9",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        }
+      ],
+      "publication_state": "WITHHELD",
+      "semantic_support_verified": false
+    },
+    "focused/refusal.json": {
+      "mechanical_pass": false,
+      "errors": [
+        "abstention_requires_unknown"
+      ],
+      "checks": [
+        {
+          "kind": "UNRESOLVED",
+          "pdf_page": 11,
+          "page_exists": true,
+          "quote_in_page": true,
+          "role_matches_page": true,
+          "known_kind": true,
+          "statement_present": true,
+          "quote_length_valid": true,
+          "as_of_matches": true,
+          "role_kind_compatible": true,
+          "quote_start": 966,
+          "quote_end": 1145,
+          "quote_sha256": "6494c0d6f46b27c8258c6d9e73b7a3b1eb89a329bfae2bc48161e9899a25d025",
+          "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        }
+      ],
+      "publication_state": "WITHHELD",
+      "semantic_support_verified": false
+    }
+  }
+}

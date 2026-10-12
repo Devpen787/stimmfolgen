@@ -1,0 +1,187 @@
+{
+  "evidence_class": "ACTUAL_MODEL_ATTEMPT_UNREVIEWED",
+  "observed_at_utc": "2026-10-12T09:14:12.434321+00:00",
+  "model": "default_model",
+  "base_url": "http://127.0.0.1:8766/v1",
+  "local_identity": {
+    "evidence_class": "LOCAL_MODEL_INSPECTION",
+    "observed_at_utc": "2026-10-12T09:14:12.433119+00:00",
+    "model_id": "tokimoa/apertus-v1.5-8b-mlx-4bit",
+    "backing_checkpoint": "swiss-ai/Apertus-v1.5-8B",
+    "source_revision": "f08ed532a657bef7d322bd0cbca43dac13a9d0a3",
+    "declared_upstream_revision": "a411d838600baf0e3635a3daf66fb7c55fc97bb6",
+    "served_alias": "default_model",
+    "base_url": "http://127.0.0.1:8766/v1",
+    "model_dir": "<LOCAL_MODEL_DIR>",
+    "format": "MLX safetensors",
+    "quantization": {
+      "group_size": 64,
+      "bits": 4,
+      "mode": "affine"
+    },
+    "artifacts": {
+      "README.md": {
+        "sha256": "e372a8b2775b02fecf5fe488fd494c561900910aa4ea2893f6ab52596c95b6bd",
+        "bytes": 3529
+      },
+      "config.json": {
+        "sha256": "fb3073b923ff444de21b48c8984745665280cc29354c368200aecd596bbf51c0",
+        "bytes": 1082
+      },
+      "model.safetensors": {
+        "sha256": "d0478edeb06bf18e5f4f7b50db77d89b839730b2d16cb1020015e6099e42074b",
+        "bytes": 4530491646
+      },
+      "model.safetensors.index.json": {
+        "sha256": "acbd6ca819d5f39ef920397429bfa3d04c77b288d0cddb4f97bf1a000bdd036d",
+        "bytes": 58759
+      },
+      "tokenizer.json": {
+        "sha256": "1f2f6198ea5789e5a90ec7c5ec5cf0d5242cf5b8de007105537c91d777581582",
+        "bytes": 44028400
+      },
+      "tokenizer_config.json": {
+        "sha256": "4e4125a5f2eb5bba3d8c55c8265c46ac566b50512d0a490b9d2a70cf6a142c7c",
+        "bytes": 2108
+      },
+      "chat_template.jinja": {
+        "sha256": "d23af2850029e9df88bb017e06e0c14a0462604588f1dbe4f519cdfac3e260e0",
+        "bytes": 16614
+      },
+      "generation_config.json": {
+        "sha256": "9131f56adebe0d591ba8ddc2d18d18edaf762a1ebce6750b24319c86b1d7d6d5",
+        "bytes": 157
+      }
+    },
+    "tensor_count": 839,
+    "v1_5_verified": true,
+    "alias_binding": "mlx_lm.server --model path; /v1/models advertises resolved path; MLX default_model mapping",
+    "provenance_limit": "Pinned locally downloaded conversion with publisher-declared base model; no independent conversion-equivalence test or signed runtime attestation",
+    "redaction": "Absolute model path redacted; raw HTTP content unchanged."
+  },
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "source_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf",
+  "as_of": "2023-11-29",
+  "source_pdf_reverified": true,
+  "prompt_version": "gate0-v2-bounded-json",
+  "raw_request": {
+    "model": "default_model",
+    "temperature": 0,
+    "max_tokens": 600,
+    "messages": [
+      {
+        "role": "system",
+        "content": "Extract candidate evidence with faithful, attributed citations. No voting advice."
+      },
+      {
+        "role": "user",
+        "content": "Read ONLY the following archived Swiss referendum booklet, as known BEFORE the 3 March 2024 vote. The knowledge cutoff/as_of is 2023-11-29. No later knowledge, voting advice, or invented personal financing. Return ONLY one JSON object, without markdown. Schema:\n{\"outcome\":\"SUPPORTED or INSUFFICIENT_EVIDENCE\",\"claims\":[{\"kind\":\"DIRECT_PROVISION or ATTRIBUTED_PREDICTION or COST_PROJECTION or UNRESOLVED\",\"statement\":\"plain German or English\",\"pdf_page\":11,\"quote\":\"EXACT contiguous text copied from a supplied page\",\"attribution\":\"EXACT ROLE tag of that page\",\"as_of\":\"2023-11-29\"}],\"unknowns\":[\"missing facts, if any\"],\"personal_financing_chf\":null}\nNo invented page numbers. Do not change quote wording, punctuation, capitalisation or word spacing. ROLE tags are identifiers; do not translate them. Government/committee forecasts are predictions, never DIRECT_PROVISION. A sourced UNRESOLVED claim may explain an abstention. Unknowns must be strings. If a requested statement is absent or contradicted, use INSUFFICIENT_EVIDENCE and explain the gap; do not output the requested false claim. The booklet does not establish an enacted financing formula, so personal_financing_chf must stay null.\nTASK: Extract ONE DIRECT_PROVISION about paying AHV old-age pensions 13 rather than 12 times annually. Do not extract a cost forecast.\n\nPDF PAGE 9 — ROLE FEDERAL_COUNCIL_DETAIL:\n9 Der Auftrag Die Alters- und Hinterlassenenversicherung (AHV) ist das der AHV wichtigste Sozialwerk der Schweiz: Alle Menschen in der Schweiz haben im Alter Anspruch auf eine Rente der AHV. Die Verfassung legt fest, dass die AHV-Renten den Existenzbedarf angemessen decken müssen. Die Mehrheit der Pensionierten bestreitet ihren Lebensunterhalt mit zusätzlichen Einkünften, insbesondere mit Renten aus der Pensionskasse. Wer den Existenzbedarf damit nicht decken kann, hat Anspruch auf Ergänzungsleistungen (EL). Die Altersrenten Die minimale ganze AHV-Altersrente beträgt zurzeit der AHV 1225 Franken, die maximale Rente 2450 Franken pro Monat.1 Ehepaare und Paare in eingetragener Partnerschaft erhalten zusammen höchstens das Anderthalbfache einer maximalen Einzelrente, also 3675 Franken. Übersteigen die beiden Renten diesen Betrag, werden sie gekürzt. Der Bundesrat passt alle AHV-Renten regelmässig an die Preis- und Lohnentwicklung an. Die letzte Anpassung erfolgte auf Anfang 2023. Initiative will eine Die Initiative fordert, dass die monatliche Rente nicht nur 13. AHV-Rente 12 Mal, sondern 13 Mal pro Jahr ausbezahlt wird. Dies in An lehnung an den 13. Monatslohn, den viele Arbeitnehmerinnen und Arbeitnehmer erhalten. Dies entspricht einer Erhöhung der jährlichen AHV-Rente um 8,3 Prozent. Die minimale jährliche Altersrente würde von 14 700 auf 15 925 Franken, die maximale Altersrente von 29 400 auf 31 850 Franken steigen. Paare hätten statt 44 100 Franken maximal 47 775 Franken zugut. 1 Die Höhe der AHV-Rente ist abhängig vom durchschnittlichen Einkommen während der Beitragspflicht sowie von Erziehungs- und Betreuungsgutschriften. Personen, die Beitragslücken haben, also nicht jedes Jahr in die AHV einbezahlt haben, erhalten nicht eine ganze AHV-Rente, sondern eine Teilrente."
+      }
+    ]
+  },
+  "request_sha256": "6b046713b42155d8e568974ac6d7ce687410091b89dcb69aefbae6f4100bac6d",
+  "generation": {
+    "temperature": 0,
+    "max_tokens": 600
+  },
+  "model_inference_performed": true,
+  "human_semantic_reviewed": false,
+  "promoted_to_verified_effect": false,
+  "v1_5_verified": true,
+  "gate_status": "FAIL_MECHANICAL",
+  "raw_response_text": "{\"id\": \"chatcmpl-60993ce9-1238-488c-9655-a1eae817b935\", \"system_fingerprint\": \"0.31.3-0.32.0-macOS-26.6.2-arm64-arm-64bit-Mach-O-applegpu_g15s\", \"object\": \"chat.completion\", \"model\": \"default_model\", \"created\": 1791796452, \"choices\": [{\"index\": 0, \"finish_reason\": \"stop\", \"message\": {\"role\": \"assistant\", \"content\": \"{\\\"outcome\\\":\\\"DIRECT_PROVISION\\\",\\\"claims\\\":[{\\\"kind\\\":\\\"DIRECT_PROVISION\\\",\\\"statement\\\":\\\"The initiative demands that the monthly AHV pension be paid out 13 times per year instead of 12 times.\\\",\\\"pdf_page\\\":9,\\\"quote\\\":\\\"Die Initiative fordert, dass die monatliche Rente nicht nur 12 Mal, sondern 13 Mal pro Jahr ausbezahlt wird. Dies entspricht einer Erh\\u00f6hung der j\\u00e4hrlichen AHV-Rente um 8,3 Prozent.\\\",\\\"attribution\\\":\\\"FEDERAL_COUNCIL_DETAIL\\\",\\\"as_of\\\":\\\"2023-11-29\\\"}],\\\"unknowns\\\":[\\\"missing facts, if any\\\"],\\\"personal_financing_chf\\\":null}\"}}], \"usage\": {\"prompt_tokens\": 883, \"completion_tokens\": 159, \"total_tokens\": 1042, \"prompt_tokens_details\": {\"cached_tokens\": 343}}}",
+  "response_sha256": "b48bc61b4c31e7acc4cba1b491c7edbd610e137f9d027a35ecb15ddb342b5735",
+  "latency_seconds": 11.018714750000072,
+  "raw_api_response": {
+    "id": "chatcmpl-60993ce9-1238-488c-9655-a1eae817b935",
+    "system_fingerprint": "0.31.3-0.32.0-macOS-26.6.2-arm64-arm-64bit-Mach-O-applegpu_g15s",
+    "object": "chat.completion",
+    "model": "default_model",
+    "created": 1791796452,
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"outcome\":\"DIRECT_PROVISION\",\"claims\":[{\"kind\":\"DIRECT_PROVISION\",\"statement\":\"The initiative demands that the monthly AHV pension be paid out 13 times per year instead of 12 times.\",\"pdf_page\":9,\"quote\":\"Die Initiative fordert, dass die monatliche Rente nicht nur 12 Mal, sondern 13 Mal pro Jahr ausbezahlt wird. Dies entspricht einer Erhöhung der jährlichen AHV-Rente um 8,3 Prozent.\",\"attribution\":\"FEDERAL_COUNCIL_DETAIL\",\"as_of\":\"2023-11-29\"}],\"unknowns\":[\"missing facts, if any\"],\"personal_financing_chf\":null}"
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 883,
+      "completion_tokens": 159,
+      "total_tokens": 1042,
+      "prompt_tokens_details": {
+        "cached_tokens": 343
+      }
+    }
+  },
+  "parsed_candidate": {
+    "outcome": "DIRECT_PROVISION",
+    "claims": [
+      {
+        "kind": "DIRECT_PROVISION",
+        "statement": "The initiative demands that the monthly AHV pension be paid out 13 times per year instead of 12 times.",
+        "pdf_page": 9,
+        "quote": "Die Initiative fordert, dass die monatliche Rente nicht nur 12 Mal, sondern 13 Mal pro Jahr ausbezahlt wird. Dies entspricht einer Erhöhung der jährlichen AHV-Rente um 8,3 Prozent.",
+        "attribution": "FEDERAL_COUNCIL_DETAIL",
+        "as_of": "2023-11-29"
+      }
+    ],
+    "unknowns": [
+      "missing facts, if any"
+    ],
+    "personal_financing_chf": null
+  },
+  "validation": {
+    "mechanical_pass": false,
+    "errors": [
+      "claim_0:quote_in_page",
+      "invalid_outcome",
+      "wrong_outcome"
+    ],
+    "checks": [
+      {
+        "kind": "DIRECT_PROVISION",
+        "pdf_page": 9,
+        "page_exists": true,
+        "quote_in_page": false,
+        "role_matches_page": true,
+        "known_kind": true,
+        "statement_present": true,
+        "as_of_matches": true,
+        "role_kind_compatible": true,
+        "quote_start": null,
+        "quote_end": null,
+        "quote_sha256": null,
+        "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+        "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=9",
+        "publication_state": "CANDIDATE_UNREVIEWED"
+      }
+    ],
+    "publication_state": "WITHHELD",
+    "semantic_support_verified": false
+  },
+  "mechanical_grounding_checks": [
+    {
+      "kind": "DIRECT_PROVISION",
+      "pdf_page": 9,
+      "page_exists": true,
+      "quote_in_page": false,
+      "role_matches_page": true,
+      "known_kind": true,
+      "statement_present": true,
+      "as_of_matches": true,
+      "role_kind_compatible": true,
+      "quote_start": null,
+      "quote_end": null,
+      "quote_sha256": null,
+      "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+      "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=9",
+      "publication_state": "CANDIDATE_UNREVIEWED"
+    }
+  ],
+  "trial_id": "direct_provision",
+  "expected_outcome": "SUPPORTED"
+}

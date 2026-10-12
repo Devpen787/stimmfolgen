@@ -4,6 +4,7 @@ on:
     paths:
       - 'track_2b/src/gate0/**'
       - 'track_2b/tests/test_gate0.py'
+      - 'track_2b/tests/test_gate0*.py'
       - '.github/workflows/gate0-source.yml'
   workflow_dispatch:
 

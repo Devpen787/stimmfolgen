@@ -1,38 +1,15 @@
-# Gate 0 — Real official source / real Apertus experiment
+# Gate 0 — official source and actual local Apertus
 
-**State:** SOURCE TEST ready. Model call prepared, but not yet executed. Never claim a completed Apertus inference until an actual model trace and semantic human check exist.
+The [current observed run](../../docs/evidence/GATE0_APERTUS_V15_2026-10-12.md) verifies genuine local v1.5 text-model inference. **The real AHV diagnostic FAILS; the frontend remains stopped.** The report includes hardware, pinned model/source hashes, exact commands and genuine failure traces. The existing 2509 checkpoint was also tested; its historical diagnostic is retained separately.
 
-## Why this is the first gate
+`source_probe.py` acquires/checks the pinned official PDF, editorial cutoff and five pages. Block extraction preserves sidebar order and soft-hyphen continuations. Raw block geometry and hashes are recorded. Publication date/availability remain unknown; editorial cutoff is only the knowledge basis.
 
-In the official March 2024 booklet, the 13th AHV provision is defined but its financing is not. Payroll and VAT changes are hypothetical alternatives, not enacted financing decisions. A model must not invent a person's precise CHF burden.
+`local_model.py` verifies one of two explicitly pinned MLX conversions and the local endpoint/path binding. `model_probe.py` requires original PDF bytes, records every actual attempt and performs mechanical validation. Unverified local aliases and arbitrary Apertus-like names are rejected. Legacy inference requires `--allow-legacy-diagnostic` and cannot pass the checkpoint gate.
 
-## Get the source (public document)
+`evaluate_local.py` runs actual extraction and the fake-quote, actor, CHF and hindsight controls. `--full-booklet-baseline` adds a same-model, same-generation-budget baseline; the extractive baseline is explicitly not model output. `focused_probe.py` reproduces template-guided trials whose metadata/type/outcome are supplied, so their results are not independent classification accuracy.
 
-The official source URL is hard-coded/allowlisted in `source_probe.py`. It downloads the bytes, SHA-256 hashes them and extracts 5 pages with PyMuPDF. The editorial cutoff is **29 November 2023** as printed on PDF page 2. `gate0-source.json` contains page-level extracts and source metadata. It is labelled `SOURCE`, not model-generated evidence.
+All actual outputs remain candidate/unreviewed or withheld. Exact quotes and role identifiers do not prove interpretation. No human semantic reviewer approved this run. A wrong source-grounded interpretation is explicitly demonstrated and tested. A zero CLI exit code means mechanical success only.
 
-```bash
-pip install 'pymupdf>=1.24,<2'
-python track_2b/src/gate0/source_probe.py --out /tmp/gate0-source.json
-python -m unittest discover -s track_2b/tests -p 'test_gate0.py' -v
-```
+Start the loopback server and run the commands in the evidence report. A configured real hosted endpoint is also supported via `LLM_NAME`, `LLM_BASE_URL`, and securely supplied `LLM_API_KEY`; none was used in this session. `.local/` keeps weights, raw PDFs and temporary logs ignored. Never commit credentials or private voter notes.
 
-For an externally obtained, trusted exact PDF, specify `--pdf /path/to/booklet.pdf` instead of download.
-
-## Only when real model access is configured
-
-```bash
-export LLM_NAME='swiss-ai/Apertus-v1.5-8B'
-export LLM_BASE_URL='https://api.inference.cscs.ch/v1' # example; requires authorisation
-# Set LLM_API_KEY securely in your runner or secret manager. Do not commit credentials.
-python track_2b/src/gate0/model_probe.py --source-report /tmp/gate0-source.json --out /tmp/gate0-model.json
-```
-
-The output records actual response, provenance, model ID and mechanical quote-presence checks. **A matching quotation proves only that the words appear on the PDF page; it does not prove the claim or prediction is true.** All model findings remain `CANDIDATE_UNREVIEWED` until a human checks meaning, attribution and dates.
-
-## Limits and next decision
-
-- This is a small experiment, **not** the final `make run` end-to-end application.
-- Network access is required to acquire the official PDF; offline/on-prem deployment must use vetted cached sources.
-- No local private voter notes are collected.
-- No source text is assumed neutral just because it appears inside the official booklet.
-- Negative findings and inability to access the model must be recorded without simulating a pass.
+This probe is not the final Docker `make run` application, an encrypted vault, or a held-out policy-reasoning benchmark.

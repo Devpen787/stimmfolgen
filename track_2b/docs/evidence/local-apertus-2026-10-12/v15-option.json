@@ -1,0 +1,111 @@
+{
+  "model_id": "tokimoa/apertus-v1.5-8b-mlx-4bit",
+  "revision": "f08ed532a657bef7d322bd0cbca43dac13a9d0a3",
+  "base_model": "swiss-ai/Apertus-v1.5-8B",
+  "upstream_revision": "a411d838600baf0e3635a3daf66fb7c55fc97bb6",
+  "gated": false,
+  "config": {
+    "architectures": [
+      "ApertusForCausalLM"
+    ],
+    "attention_bias": false,
+    "bos_token_id": 1,
+    "dtype": "bfloat16",
+    "eos_token_id": [
+      2,
+      68,
+      72
+    ],
+    "hidden_act": "xielu",
+    "hidden_size": 4096,
+    "intermediate_size": 21504,
+    "max_position_embeddings": 262144,
+    "mlp_bias": false,
+    "model_type": "apertus",
+    "num_attention_heads": 32,
+    "num_hidden_layers": 32,
+    "num_key_value_heads": 8,
+    "pad_token_id": 3,
+    "post_norm": false,
+    "qk_norm": true,
+    "quantization": {
+      "group_size": 64,
+      "bits": 4,
+      "mode": "affine"
+    },
+    "quantization_config": {
+      "group_size": 64,
+      "bits": 4,
+      "mode": "affine"
+    },
+    "rms_norm_eps": 1e-05,
+    "rope_scaling": {
+      "factor": 32.0,
+      "high_freq_factor": 4.0,
+      "low_freq_factor": 1.0,
+      "original_max_position_embeddings": 8192,
+      "rope_theta": 4000000,
+      "rope_type": "llama3"
+    },
+    "rope_theta": 4000000,
+    "tie_word_embeddings": false,
+    "vocab_size": 131072
+  },
+  "files": [
+    {
+      "rfilename": ".gitattributes",
+      "size": 1570,
+      "lfs": null
+    },
+    {
+      "rfilename": "README.md",
+      "size": 3529,
+      "lfs": null
+    },
+    {
+      "rfilename": "chat_template.jinja",
+      "size": 16614,
+      "lfs": null
+    },
+    {
+      "rfilename": "config.json",
+      "size": 1082,
+      "lfs": null
+    },
+    {
+      "rfilename": "generation_config.json",
+      "size": 157,
+      "lfs": null
+    },
+    {
+      "rfilename": "model.safetensors",
+      "size": 4530491646,
+      "lfs": {
+        "sha256": "d0478edeb06bf18e5f4f7b50db77d89b839730b2d16cb1020015e6099e42074b",
+        "size": 4530491646,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model.safetensors.index.json",
+      "size": 58759,
+      "lfs": null
+    },
+    {
+      "rfilename": "tokenizer.json",
+      "size": 44028400,
+      "lfs": {
+        "sha256": "1f2f6198ea5789e5a90ec7c5ec5cf0d5242cf5b8de007105537c91d777581582",
+        "size": 44028400,
+        "pointerSize": 133
+      }
+    },
+    {
+      "rfilename": "tokenizer_config.json",
+      "size": 2108,
+      "lfs": null
+    }
+  ],
+  "weights_downloaded": false,
+  "option_only_not_runtime_verified": true
+}

@@ -1,0 +1,39 @@
+{
+  "evidence_class": "EXTRACTIVE_BASELINE_NO_MODEL",
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "as_of": "2023-11-29",
+  "model_inference_performed": false,
+  "selected_spans": [
+    {
+      "retrieval_label": "payment_candidate",
+      "pdf_page": 9,
+      "quote": "Die Initiative fordert, dass die monatliche Rente nicht nur 13. AHV-Rente 12 Mal, sondern 13 Mal pro Jahr ausbezahlt wird.",
+      "quote_start": 1013,
+      "quote_end": 1135,
+      "quote_sha256": "3d5a274c2c31c95c7b3e971c7d2e67e666a5149376a38b7d7a9544420ab80661",
+      "role": "FEDERAL_COUNCIL_DETAIL",
+      "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=9"
+    },
+    {
+      "retrieval_label": "cost_candidate",
+      "pdf_page": 11,
+      "quote": "Die 13. AHV-Rente würde bei der Ein der Initiative führung voraussichtlich etwa 4,1 Milliarden Franken zusätzlich kosten.2",
+      "quote_start": 553,
+      "quote_end": 675,
+      "quote_sha256": "79f82e3b34d90b80ed6c9708bd8c64a440c7f42ccd5bd89a4e80079af8a72f06",
+      "role": "FEDERAL_COUNCIL_DETAIL_FINANCING",
+      "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11"
+    },
+    {
+      "retrieval_label": "financing_gap_candidate",
+      "pdf_page": 11,
+      "quote": "Die Initiative macht keine Angaben dazu, wie die zusätz lichen Ausgaben für die 13. AHV-Rente finanziert werden sollen. Das müsste vom Parlament bestimmt werden.",
+      "quote_start": 988,
+      "quote_end": 1149,
+      "quote_sha256": "47f01961ac8bb6bca5ab22748c3ebe14ff1add9e21d83ca730032b5185b1286a",
+      "role": "FEDERAL_COUNCIL_DETAIL_FINANCING",
+      "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11"
+    }
+  ],
+  "limit": "Authored AHV retrieval cues. No generated interpretation, independent classification, or generalisation proof."
+}

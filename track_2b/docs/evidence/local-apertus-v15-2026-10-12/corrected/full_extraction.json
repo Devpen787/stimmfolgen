@@ -1,0 +1,186 @@
+{
+  "evidence_class": "ACTUAL_MODEL_ATTEMPT_UNREVIEWED",
+  "observed_at_utc": "2026-10-12T09:19:29.310092+00:00",
+  "model": "default_model",
+  "base_url": "http://127.0.0.1:8766/v1",
+  "local_identity": {
+    "evidence_class": "LOCAL_MODEL_INSPECTION",
+    "observed_at_utc": "2026-10-12T09:19:29.309812+00:00",
+    "model_id": "tokimoa/apertus-v1.5-8b-mlx-4bit",
+    "backing_checkpoint": "swiss-ai/Apertus-v1.5-8B",
+    "source_revision": "f08ed532a657bef7d322bd0cbca43dac13a9d0a3",
+    "declared_upstream_revision": "a411d838600baf0e3635a3daf66fb7c55fc97bb6",
+    "served_alias": "default_model",
+    "base_url": "http://127.0.0.1:8766/v1",
+    "model_dir": "<LOCAL_MODEL_DIR>",
+    "format": "MLX safetensors",
+    "quantization": {
+      "group_size": 64,
+      "bits": 4,
+      "mode": "affine"
+    },
+    "artifacts": {
+      "README.md": {
+        "sha256": "e372a8b2775b02fecf5fe488fd494c561900910aa4ea2893f6ab52596c95b6bd",
+        "bytes": 3529
+      },
+      "config.json": {
+        "sha256": "fb3073b923ff444de21b48c8984745665280cc29354c368200aecd596bbf51c0",
+        "bytes": 1082
+      },
+      "model.safetensors": {
+        "sha256": "d0478edeb06bf18e5f4f7b50db77d89b839730b2d16cb1020015e6099e42074b",
+        "bytes": 4530491646
+      },
+      "model.safetensors.index.json": {
+        "sha256": "acbd6ca819d5f39ef920397429bfa3d04c77b288d0cddb4f97bf1a000bdd036d",
+        "bytes": 58759
+      },
+      "tokenizer.json": {
+        "sha256": "1f2f6198ea5789e5a90ec7c5ec5cf0d5242cf5b8de007105537c91d777581582",
+        "bytes": 44028400
+      },
+      "tokenizer_config.json": {
+        "sha256": "4e4125a5f2eb5bba3d8c55c8265c46ac566b50512d0a490b9d2a70cf6a142c7c",
+        "bytes": 2108
+      },
+      "chat_template.jinja": {
+        "sha256": "d23af2850029e9df88bb017e06e0c14a0462604588f1dbe4f519cdfac3e260e0",
+        "bytes": 16614
+      },
+      "generation_config.json": {
+        "sha256": "9131f56adebe0d591ba8ddc2d18d18edaf762a1ebce6750b24319c86b1d7d6d5",
+        "bytes": 157
+      }
+    },
+    "tensor_count": 839,
+    "v1_5_verified": true,
+    "alias_binding": "mlx_lm.server --model path; /v1/models advertises resolved path; MLX default_model mapping",
+    "provenance_limit": "Pinned locally downloaded conversion with publisher-declared base model; no independent conversion-equivalence test or signed runtime attestation",
+    "redaction": "Absolute model path redacted; raw HTTP content unchanged."
+  },
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "source_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf",
+  "as_of": "2023-11-29",
+  "source_pdf_reverified": true,
+  "prompt_version": "gate0-v3-schema-and-blocks",
+  "raw_request": {
+    "model": "default_model",
+    "temperature": 0,
+    "max_tokens": 1400,
+    "messages": [
+      {
+        "role": "system",
+        "content": "Extract candidate evidence with faithful, attributed citations. No voting advice."
+      },
+      {
+        "role": "user",
+        "content": "Historical mode: BEFORE the 3 March 2024 vote, as_of=2023-11-29. No invented page numbers.\nExtrahiere nur aus den unten stehenden Quellen. Kein späteres Wissen, keine Abstimmungsempfehlung. Gib ausschließlich EIN JSON-Objekt gemäß dem Schema zurück, nicht das Schema selbst. Alle Pflichtfelder müssen enthalten sein. Keine Markdown-Blöcke oder Einleitung.\nstatement ist eine kurze Antwort auf die Aufgabe. quote ist ein kurzes, wortgetreu kopiertes zusammenhängendes Zitat (höchstens 240 Zeichen); niemals getrennte Sätze zusammenkleben. attribution ist exakt der Identifier zur gewählten Seite aus ROLE_MAP, keine Übersetzung oder Umschreibung. as_of muss für JEDEN claim 2023-11-29 sein. Vorhersagen/Kostenschätzungen sind keine DIRECT_PROVISION. Nur belegt Vorhandenes extrahieren: falsche Zitate, falsche Urheber und spätere Entscheidungen nicht bestätigen. Bei nicht belegbaren Anfragen: outcome=INSUFFICIENT_EVIDENCE und mindestens ein konkreter unknown. claims darf dann leer sein, oder einen tatsächlich belegten UNRESOLVED Sachverhalt enthalten. Die Finanzierung ist in der Initiative nicht beschlossen: niemals eine definitive persönliche CHF-Belastung berechnen, personal_financing_chf bleibt null. Eine hypothetische Finanzierungsoption ist kein Gesetz.\nROLE_MAP={\"4\": \"FEDERAL_COUNCIL_SUMMARY\", \"9\": \"FEDERAL_COUNCIL_DETAIL\", \"11\": \"FEDERAL_COUNCIL_DETAIL_FINANCING\", \"14\": \"INITIATIVE_COMMITTEE_ARGUMENTS\", \"16\": \"FEDERAL_COUNCIL_PARLIAMENT_ARGUMENTS\"}\nJSON_SCHEMA={\"type\": \"object\", \"required\": [\"outcome\", \"claims\", \"unknowns\", \"personal_financing_chf\"], \"properties\": {\"outcome\": {\"enum\": [\"SUPPORTED\", \"INSUFFICIENT_EVIDENCE\"]}, \"claims\": {\"type\": \"array\", \"items\": {\"type\": \"object\", \"required\": [\"kind\", \"statement\", \"pdf_page\", \"quote\", \"attribution\", \"as_of\"], \"properties\": {\"kind\": {\"enum\": [\"ATTRIBUTED_PREDICTION\", \"COST_PROJECTION\", \"DIRECT_PROVISION\", \"UNRESOLVED\"]}, \"statement\": {\"type\": \"string\"}, \"pdf_page\": {\"enum\": [4, 9, 11, 14, 16]}, \"quote\": {\"type\": \"string\", \"maxLength\": 240}, \"attribution\": {\"enum\": [\"FEDERAL_COUNCIL_DETAIL\", \"FEDERAL_COUNCIL_DETAIL_FINANCING\", \"FEDERAL_COUNCIL_PARLIAMENT_ARGUMENTS\", \"FEDERAL_COUNCIL_SUMMARY\", \"INITIATIVE_COMMITTEE_ARGUMENTS\"]}, \"as_of\": {\"const\": \"2023-11-29\"}}}}, \"unknowns\": {\"type\": \"array\", \"items\": {\"type\": \"string\"}}, \"personal_financing_chf\": {\"type\": \"null\"}}}\nTASK: Extract exactly three short claims: one DIRECT_PROVISION about 13 instead of 12 old-age pension payments, one COST_PROJECTION or ATTRIBUTED_PREDICTION, and one UNRESOLVED financing issue. Include a concrete unknown about an employed person's precise financing burden; the document leaves financing open.\n\nSOURCE_PAGE 4 | attribution=FEDERAL_COUNCIL_SUMMARY:\n4 Erste Vorlage: 13. AHV-Rente In Kürze Volksinitiative «Für ein besseres Leben im Alter (Initiative für eine 13. AHV-Rente)» Ausgangslage Die Alters- und Hinterlassenenversicherung (AHV) ist das Fundament der schweizerischen Altersvorsorge. Mehr als 2,5 Millionen Pensionierte erhalten gegenwärtig eine AHV- Rente. Die AHV-Rente soll den Existenzbedarf im Alter angemessen decken. Die meisten Pensionierten haben weitere Einkommen, insbesondere eine Pensionskassenrente. Wer seinen Lebensunterhalt damit nicht bestreiten kann, hat Anspruch auf Ergänzungsleistungen (EL). Die Initiative Die Initiative will die Altersrenten der AHV um eine Monatsrente erhöhen. Zu den 12 Monatsrenten käme jedes Jahr eine 13. Rente dazu. Die Initiative bestimmt auch, dass die Ergänzungsleistungen wegen der 13. Rente nicht gekürzt werden dürfen. Die maximale jährliche Altersrente würde für Einzelpersonen um 2450 Franken auf 31 850 Franken und für Ehepaare um 3675 Franken auf 47 775 Franken steigen. Durch diese Erhöhung würden die Kosten für die 13. AHV- Rente bei der Einführung voraussichtlich etwa 4,1 Milliarden Franken betragen; davon müsste der Bund rund 800 Millionen Franken bezahlen. Danach würden die Kosten schnell weiter zunehmen. Die Initiative lässt die Frage der Finanzierung offen. Dank verschiedenen Reformen sind die Leistungen der AHV heute gut finanziert; nach 2030 ist jedoch mit Defiziten zu rechnen – auch ohne 13. AHV-Rente. Würde die 13. Rente eingeführt, bräuchte die AHV noch zusätzliche Einnahmen oder sie müsste Leistungen kürzen. Vorlage im Detail \b 8 Argumente \b 14 Abstimmungstext \b 18\n\nSOURCE_PAGE 9 | attribution=FEDERAL_COUNCIL_DETAIL:\n9 Der Auftrag der AHV Die Alters- und Hinterlassenenversicherung (AHV) ist das wichtigste Sozialwerk der Schweiz: Alle Menschen in der Schweiz haben im Alter Anspruch auf eine Rente der AHV. Die Verfassung legt fest, dass die AHV-Renten den Existenzbedarf angemessen decken müssen. Die Mehrheit der Pensionierten bestreitet ihren Lebensunterhalt mit zusätzlichen Einkünften, insbesondere mit Renten aus der Pensionskasse. Wer den Existenzbedarf damit nicht decken kann, hat Anspruch auf Ergänzungsleistungen (EL). Die Altersrenten der AHV Die minimale ganze AHV-Altersrente beträgt zurzeit 1225 Franken, die maximale Rente 2450 Franken pro Monat.1 Ehepaare und Paare in eingetragener Partnerschaft erhalten zusammen höchstens das Anderthalbfache einer maximalen Einzelrente, also 3675 Franken. Übersteigen die beiden Renten diesen Betrag, werden sie gekürzt. Der Bundesrat passt alle AHV-Renten regelmässig an die Preis- und Lohnentwicklung an. Die letzte Anpassung erfolgte auf Anfang 2023. Initiative will eine 13. AHV-Rente Die Initiative fordert, dass die monatliche Rente nicht nur 12 Mal, sondern 13 Mal pro Jahr ausbezahlt wird. Dies in Anlehnung an den 13. Monatslohn, den viele Arbeitnehmerinnen und Arbeitnehmer erhalten. Dies entspricht einer Erhöhung der jährlichen AHV-Rente um 8,3 Prozent. Die minimale jährliche Altersrente würde von 14 700 auf 15 925 Franken, die maximale Altersrente von 29 400 auf 31 850 Franken steigen. Paare hätten statt 44 100 Franken maximal 47 775 Franken zugut. 1 Die Höhe der AHV-Rente ist abhängig vom durchschnittlichen Einkommen während der Beitragspflicht sowie von Erziehungs- und Betreuungsgutschriften. Personen, die Beitragslücken haben, also nicht jedes Jahr in die AHV einbezahlt haben, erhalten nicht eine ganze AHV-Rente, sondern eine Teilrente.\n\nSOURCE_PAGE 11 | attribution=FEDERAL_COUNCIL_DETAIL_FINANCING:\n11 Andere Renten bleiben gleich Die AHV bezahlt nicht nur Altersrenten, sondern auch Hinterlassenenrenten an Witwen, Witwer und Waisen. Zusätzlich sorgt die Invalidenversicherung (IV) für die Existenzsicherung von Personen mit gesundheitlichen Einschränkungen. Alle diese Leistungen der 1. Säule sind aufeinander abgestimmt. Mit der Initiative würden nur die Altersrenten der AHV erhöht, die anderen Renten hingegen weiterhin 12 Mal pro Jahr bezahlt. Finanzielle Auswirkungen der Initiative Die jährlichen Ausgaben der AHV betragen heute rund 50 Milliarden Franken. Die 13. AHV-Rente würde bei der Einführung voraussichtlich etwa 4,1 Milliarden Franken zusätzlich kosten.2 Davon müsste der Bund rund 800 Millionen Franken übernehmen. Die zusätzlichen Kosten für die 13. AHV-Rente würden Jahr für Jahr ansteigen, weil die Zahl der Rentnerinnen und Rentner stark wächst. Fünf Jahre nach Einführung würden die Kosten voraussichtlich rund 5 Milliarden Franken betragen. Finanzierung offen Die Initiative macht keine Angaben dazu, wie die zusätzlichen Ausgaben für die 13. AHV-Rente finanziert werden sollen. Das müsste vom Parlament bestimmt werden. Heute wird die AHV hauptsächlich mit Lohnbeiträgen, mit dem Beitrag des Bundes und mit Einnahmen aus der Mehrwertsteuer gespeist. Würden die zu erwartenden zusätzlichen Ausgaben der AHV für die 13. Rente bei deren Einführung über die Lohnbeiträge finanziert, müssten diese von 8,7 auf 9,4 Prozent erhöht werden. Diese Erhöhung ginge je zur Hälfte zulasten der Arbeitnehmenden und der Arbeitgebenden. Bei einer Finanzierung über die Mehrwertsteuer müsste diese von 8,1 auf 9,1 Prozent angehoben werden. In Frage kämen auch andere Finanzierungsmassnahmen oder eine Kombination davon. 2 Finanzperspektiven der AHV des Bundesamts für Sozialversicherungen BSV ( bsv.admin.ch > Sozialversicherungen > AHV > Reformen & Revisionen > Volksinitiative «Für ein besseres Leben im Alter»)\n\nSOURCE_PAGE 14 | attribution=INITIATIVE_COMMITTEE_ARGUMENTS:\nErste Vorlage: 13. AHV-Rente 14 Argumente Initiativkomitee Mieten, Krankenkassenprämien, Lebensmittel: Alles ist teurer. Die Rente reicht immer weniger weit. Wer ein Leben lang gearbeitet und in die Altersvorsorge einbezahlt hat, verdient eine anständige Rente. Deshalb braucht es nun eine 13. AHV-Rente. Sie verbessert die Situation der heutigen und zukünftigen Rentnerinnen und Rentner rasch und effizient. Deshalb: Ja zur 13. AHV-Rente. Darum geht es Das Stimmvolk hat die AHV eingeführt, damit alle in der Schweiz nach einem langen Erwerbsleben anständig leben können. Doch heute haben immer mehr Rentnerinnen und Rentner Mühe, über die Runden zu kommen. Bei Annahme der Initiative wird eine 13. AHV-Rente ausbezahlt, analog zum 13. Monatslohn. Auch Bezügerinnen und Bezüger von Ergänzungsleistungen bekommen die zusätzliche Rente. Das gleicht schnell und effizient die gestiegenen Preise aus. Die Rente reicht nicht mehr Mieten, Krankenkassenprämien, Strom und Lebensmittel sind teurer. Die höheren Lebenshaltungskosten fressen eine Monatsrente weg. Und die Pensionskassenrenten sinken seit Jahren. Darum braucht es rasch eine Erhöhung der Altersrenten für aktuelle und zukünftige Rentnerinnen und Rentner. Beste Lösung für anständige Renten Die AHV kommt allen in der Schweiz zugute. Für die meisten Arbeitnehmenden lohnt sie sich: Die Arbeitgeber tragen die Hälfte der Beiträge. Auch Topverdienende zahlen einen Teil der Rente, weil ihre Millionen-Boni AHV-pflichtig sind. Ausserdem hat die AHV stabile und tiefe Kosten. Alle Erträge fliessen direkt in die Renten, ohne dass Banken, Vermittler oder Aktionäre mitverdienen. AHV ist für Frauen besonders wichtig Die höheren Preise treffen Menschen mit tieferer Rente besonders hart. Darunter sind überdurchschnittlich viele Frauen. Eine 13. AHV-Rente bringt ihnen am meisten: Nur aus der AHV haben alle eine Rente. Nur die AHV anerkennt die unbezahlte Betreuungsarbeit, die hauptsächlich von Frauen geleistet wird: Ein Kind grosszuziehen, erhöht die AHV-Rente.\n\nSOURCE_PAGE 16 | attribution=FEDERAL_COUNCIL_PARLIAMENT_ARGUMENTS:\nErste Vorlage: 13. AHV-Rente 16 Argumente Bundesrat und Parlament Die Initiative für eine 13. AHV-Rente hätte zusätzliche Kosten in Milliardenhöhe zur Folge und würde die Finanzierungsprobleme der AHV erheblich verschärfen. Auch ohne 13. AHV-Rente ist die finanzielle Stabilität der AHV mittelfristig gefährdet: Geburtenstarke Jahrgänge erreichen das AHV-Alter und die Lebenserwartung steigt. Eine 13. AHV-Rente ist auch gar nicht nötig: Die grosse Mehrheit der Pensionierten ist darauf nicht angewiesen. Bundesrat und Parlament lehnen die Vorlage insbesondere aus folgenden Gründen ab: Mehrkosten belasten AHV zu stark Die Initiative würde die AHV finanziell zu stark belasten. Die Ausgaben der AHV würden auf einen Schlag um mehr als 4 Milliarden steigen und danach schnell weiter zunehmen. Die Rechnung der AHV würde rasch aus dem Gleichgewicht geraten. Die Zusatzkosten wären für die AHV ohne substanzielle neue Einnahmen oder kostensenkende Massnahmen wie die Erhöhung des Rentenalters nicht zu verkraften. Initiative verteuert Arbeit oder Konsum Die Finanzierung der 13. Rente ginge auf Kosten der arbeitenden Bevölkerung und der Unternehmen oder der Konsumentinnen und Konsumenten. Um die hohen Kosten für eine 13. AHV-Altersrente zu decken, müssten beispielsweise die Lohnabzüge oder die Mehrwertsteuer weiter erhöht werden. Damit würde die Arbeit verteuert oder die Preise würden steigen. Höhere Steuern oder weniger Ausgaben Eine 13. AHV-Altersrente hätte auch negative Auswirkungen auf den Bundeshaushalt, weil der Bund rund einen Fünftel der jährlichen Ausgaben der AHV bezahlen muss. Er hätte auf einen Schlag Mehrkosten von mehr als 800 Millionen Franken, die Jahr für Jahr zunehmen würden. Der Bund müsste seine Steuern erhöhen oder Ausgaben kürzen. Hohe Kosten, geringer sozialer Nutzen Der soziale Nutzen der 13. AHV-Rente wäre gering. Eine grosse Mehrheit der Pensionierten erhält neben der AHV-Rente Leistungen der Pensionskasse; viele haben zudem noch andere Einkommen oder Vermögen. Mit der Initiative würden viele Pensionierte eine 13. AHV-Rente erhalten, obwohl sie darauf nicht angewiesen sind. Rentnerinnen und Rentner, die ihren Existenzbedarf nicht decken können, haben Anspruch auf Ergänzungsleistungen."
+      }
+    ]
+  },
+  "request_sha256": "a9ae3742438ed03fbd59af84743525ecf7652e1b2fae8e6afd85c24971ad61ad",
+  "generation": {
+    "temperature": 0,
+    "max_tokens": 1400
+  },
+  "model_inference_performed": true,
+  "human_semantic_reviewed": false,
+  "promoted_to_verified_effect": false,
+  "v1_5_verified": true,
+  "gate_status": "FAIL_MECHANICAL",
+  "raw_response_text": "{\"id\": \"chatcmpl-6f368e44-4c20-47d5-953d-7c6c5328e7c2\", \"system_fingerprint\": \"0.31.3-0.32.0-macOS-26.6.2-arm64-arm-64bit-Mach-O-applegpu_g15s\", \"object\": \"chat.completion\", \"model\": \"default_model\", \"created\": 1791796769, \"choices\": [{\"index\": 0, \"finish_reason\": \"stop\", \"message\": {\"role\": \"assistant\", \"content\": \"{\\\"outcome\\\": \\\"INSUFFICIENT_EVIDENCE\\\", \\\"claims\\\": [{\\\"kind\\\": \\\"DIRECT_PROVISION\\\", \\\"statement\\\": \\\"Die Initiative sieht eine 13. AHV-Rente vor, die monatlich 12 statt 13 Mal ausbezahlt wird.\\\", \\\"pdf_page\\\": 4, \\\"quote\\\": \\\"Die Initiative will die Altersrenten der AHV um eine Monatsrente erh\\u00f6hen. Zu den 12 Monatsrenten k\\u00e4me jedes Jahr eine 13. Rente dazu.\\\", \\\"attribution\\\": \\\"FEDERAL_COUNCIL_SUMMARY\\\", \\\"as_of\\\": \\\"2023-11-29\\\"}], \\\"unknowns\\\": [\\\"Pr\\u00e4zise individuelle Finanzierungsbelastung f\\u00fcr eine spezifische Person\\\"], \\\"personal_financing_chf\\\": 0}\"}}], \"usage\": {\"prompt_tokens\": 3418, \"completion_tokens\": 185, \"total_tokens\": 3603, \"prompt_tokens_details\": {\"cached_tokens\": 30}}}",
+  "response_sha256": "35499c0809c84d376105efa4405655d27eebac252ff86453c994a9f1055bc1dc",
+  "latency_seconds": 47.89785075000145,
+  "raw_api_response": {
+    "id": "chatcmpl-6f368e44-4c20-47d5-953d-7c6c5328e7c2",
+    "system_fingerprint": "0.31.3-0.32.0-macOS-26.6.2-arm64-arm-64bit-Mach-O-applegpu_g15s",
+    "object": "chat.completion",
+    "model": "default_model",
+    "created": 1791796769,
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"outcome\": \"INSUFFICIENT_EVIDENCE\", \"claims\": [{\"kind\": \"DIRECT_PROVISION\", \"statement\": \"Die Initiative sieht eine 13. AHV-Rente vor, die monatlich 12 statt 13 Mal ausbezahlt wird.\", \"pdf_page\": 4, \"quote\": \"Die Initiative will die Altersrenten der AHV um eine Monatsrente erhöhen. Zu den 12 Monatsrenten käme jedes Jahr eine 13. Rente dazu.\", \"attribution\": \"FEDERAL_COUNCIL_SUMMARY\", \"as_of\": \"2023-11-29\"}], \"unknowns\": [\"Präzise individuelle Finanzierungsbelastung für eine spezifische Person\"], \"personal_financing_chf\": 0}"
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 3418,
+      "completion_tokens": 185,
+      "total_tokens": 3603,
+      "prompt_tokens_details": {
+        "cached_tokens": 30
+      }
+    }
+  },
+  "parsed_candidate": {
+    "outcome": "INSUFFICIENT_EVIDENCE",
+    "claims": [
+      {
+        "kind": "DIRECT_PROVISION",
+        "statement": "Die Initiative sieht eine 13. AHV-Rente vor, die monatlich 12 statt 13 Mal ausbezahlt wird.",
+        "pdf_page": 4,
+        "quote": "Die Initiative will die Altersrenten der AHV um eine Monatsrente erhöhen. Zu den 12 Monatsrenten käme jedes Jahr eine 13. Rente dazu.",
+        "attribution": "FEDERAL_COUNCIL_SUMMARY",
+        "as_of": "2023-11-29"
+      }
+    ],
+    "unknowns": [
+      "Präzise individuelle Finanzierungsbelastung für eine spezifische Person"
+    ],
+    "personal_financing_chf": 0
+  },
+  "validation": {
+    "mechanical_pass": false,
+    "errors": [
+      "unsupported_personal_financing",
+      "required_kind_coverage_missing"
+    ],
+    "checks": [
+      {
+        "kind": "DIRECT_PROVISION",
+        "pdf_page": 4,
+        "page_exists": true,
+        "quote_in_page": true,
+        "role_matches_page": true,
+        "known_kind": true,
+        "statement_present": true,
+        "as_of_matches": true,
+        "role_kind_compatible": true,
+        "quote_start": 587,
+        "quote_end": 720,
+        "quote_sha256": "5f872fd4350a0b97d205f5b2b8e9bb9896a8c3491323100f8e2be148c27bf66f",
+        "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+        "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=4",
+        "publication_state": "CANDIDATE_UNREVIEWED"
+      }
+    ],
+    "publication_state": "WITHHELD",
+    "semantic_support_verified": false
+  },
+  "mechanical_grounding_checks": [
+    {
+      "kind": "DIRECT_PROVISION",
+      "pdf_page": 4,
+      "page_exists": true,
+      "quote_in_page": true,
+      "role_matches_page": true,
+      "known_kind": true,
+      "statement_present": true,
+      "as_of_matches": true,
+      "role_kind_compatible": true,
+      "quote_start": 587,
+      "quote_end": 720,
+      "quote_sha256": "5f872fd4350a0b97d205f5b2b8e9bb9896a8c3491323100f8e2be148c27bf66f",
+      "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+      "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=4",
+      "publication_state": "CANDIDATE_UNREVIEWED"
+    }
+  ],
+  "trial_id": "full_extraction",
+  "expected_outcome": null
+}

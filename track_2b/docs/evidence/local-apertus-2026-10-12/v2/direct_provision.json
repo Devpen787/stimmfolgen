@@ -1,0 +1,173 @@
+{
+  "evidence_class": "ACTUAL_MODEL_ATTEMPT_UNREVIEWED",
+  "observed_at_utc": "2026-10-12T08:53:20.351089+00:00",
+  "model": "default_model",
+  "base_url": "http://127.0.0.1:8766/v1",
+  "local_identity": {
+    "evidence_class": "LOCAL_MODEL_INSPECTION",
+    "observed_at_utc": "2026-10-12T08:53:20.350387+00:00",
+    "model_id": "mlx-community/Apertus-8B-Instruct-2509-4bit",
+    "backing_checkpoint": "swiss-ai/Apertus-8B-Instruct-2509",
+    "source_revision": "c5e6ae2e52c4149f36cb8e47b7ab1489ef885fed",
+    "served_alias": "default_model",
+    "base_url": "http://127.0.0.1:8766/v1",
+    "model_dir": "<LOCAL_MODEL_DIR>",
+    "format": "MLX safetensors",
+    "quantization": {
+      "group_size": 64,
+      "bits": 4,
+      "mode": "affine"
+    },
+    "artifacts": {
+      "README.md": {
+        "sha256": "ce070eee707e8a97e13580002d1dd5c9a70220069e590e11fec68710bdf1a6d1",
+        "bytes": 2343
+      },
+      "config.json": {
+        "sha256": "05b7f71584cd565fb53f6fd5cf49e55163e29e8bdb4159982714d275ea8462da",
+        "bytes": 1192
+      },
+      "model.safetensors": {
+        "sha256": "bcde62001035dd38e9a8b2642f29e0d7b98ef7a6e69b50a6e55be26a8b1c0a9a",
+        "bytes": 4530491710
+      },
+      "model.safetensors.index.json": {
+        "sha256": "acbd6ca819d5f39ef920397429bfa3d04c77b288d0cddb4f97bf1a000bdd036d",
+        "bytes": 58759
+      },
+      "tokenizer.json": {
+        "sha256": "3d5f2074cd9c771f2d3f35a75ea4c86886ac629fa40580128a1f66c9acb58cc0",
+        "bytes": 17078483
+      },
+      "tokenizer_config.json": {
+        "sha256": "934fd39ce21d29f4c3e556651d598d9238f5656512dae7673e03235ca26950fd",
+        "bytes": 191866
+      }
+    },
+    "tensor_count": 839,
+    "v1_5_verified": false,
+    "alias_binding": "mlx_lm.server --model path; /v1/models advertises resolved path; MLX default_model mapping",
+    "provenance_limit": "Pinned locally downloaded conversion; no signed runtime attestation",
+    "redaction": "Absolute model path redacted; artifact hashes and raw HTTP requests/responses unchanged."
+  },
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "source_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf",
+  "as_of": "2023-11-29",
+  "source_pdf_reverified": true,
+  "prompt_version": "gate0-v2-bounded-json",
+  "raw_request": {
+    "model": "default_model",
+    "temperature": 0,
+    "max_tokens": 600,
+    "messages": [
+      {
+        "role": "system",
+        "content": "Extract candidate evidence with faithful, attributed citations. No voting advice."
+      },
+      {
+        "role": "user",
+        "content": "Read ONLY the following archived Swiss referendum booklet, as known BEFORE the 3 March 2024 vote. The knowledge cutoff/as_of is 2023-11-29. No later knowledge, voting advice, or invented personal financing. Return ONLY one JSON object, without markdown. Schema:\n{\"outcome\":\"SUPPORTED or INSUFFICIENT_EVIDENCE\",\"claims\":[{\"kind\":\"DIRECT_PROVISION or ATTRIBUTED_PREDICTION or COST_PROJECTION or UNRESOLVED\",\"statement\":\"plain German or English\",\"pdf_page\":11,\"quote\":\"EXACT contiguous text copied from a supplied page\",\"attribution\":\"EXACT ROLE tag of that page\",\"as_of\":\"2023-11-29\"}],\"unknowns\":[\"missing facts, if any\"],\"personal_financing_chf\":null}\nDo not change quote wording, punctuation, capitalisation or word spacing. ROLE tags are identifiers; do not translate them. Government/committee forecasts are predictions, never DIRECT_PROVISION. A sourced UNRESOLVED claim may explain an abstention. Unknowns must be strings. If a requested statement is absent or contradicted, use INSUFFICIENT_EVIDENCE and explain the gap; do not output the requested false claim. The booklet does not establish an enacted financing formula, so personal_financing_chf must stay null.\nTASK: Extract ONE DIRECT_PROVISION about paying AHV old-age pensions 13 rather than 12 times annually. Do not extract a cost forecast.\n\nPDF PAGE 9 — ROLE FEDERAL_COUNCIL_DETAIL:\n9 Der Auftrag Die Alters- und Hinterlassenenversicherung (AHV) ist das der AHV wichtigste Sozialwerk der Schweiz: Alle Menschen in der Schweiz haben im Alter Anspruch auf eine Rente der AHV. Die Verfassung legt fest, dass die AHV-Renten den Existenzbedarf angemessen decken müssen. Die Mehrheit der Pensionierten bestreitet ihren Lebensunterhalt mit zusätzlichen Einkünften, insbesondere mit Renten aus der Pensionskasse. Wer den Existenzbedarf damit nicht decken kann, hat Anspruch auf Ergänzungsleistungen (EL). Die Altersrenten Die minimale ganze AHV-Altersrente beträgt zurzeit der AHV 1225 Franken, die maximale Rente 2450 Franken pro Monat.1 Ehepaare und Paare in eingetragener Partnerschaft erhalten zusammen höchstens das Anderthalbfache einer maximalen Einzelrente, also 3675 Franken. Übersteigen die beiden Renten diesen Betrag, werden sie gekürzt. Der Bundesrat passt alle AHV-Renten regelmässig an die Preis- und Lohnentwicklung an. Die letzte Anpassung erfolgte auf Anfang 2023. Initiative will eine Die Initiative fordert, dass die monatliche Rente nicht nur 13. AHV-Rente 12 Mal, sondern 13 Mal pro Jahr ausbezahlt wird. Dies in An lehnung an den 13. Monatslohn, den viele Arbeitnehmerinnen und Arbeitnehmer erhalten. Dies entspricht einer Erhöhung der jährlichen AHV-Rente um 8,3 Prozent. Die minimale jährliche Altersrente würde von 14 700 auf 15 925 Franken, die maximale Altersrente von 29 400 auf 31 850 Franken steigen. Paare hätten statt 44 100 Franken maximal 47 775 Franken zugut. 1 Die Höhe der AHV-Rente ist abhängig vom durchschnittlichen Einkommen während der Beitragspflicht sowie von Erziehungs- und Betreuungsgutschriften. Personen, die Beitragslücken haben, also nicht jedes Jahr in die AHV einbezahlt haben, erhalten nicht eine ganze AHV-Rente, sondern eine Teilrente."
+      }
+    ]
+  },
+  "request_sha256": "477840c37689397a9dd616eb2028f6ce838e1c8e0dfb250105de551fa23e01bf",
+  "generation": {
+    "temperature": 0,
+    "max_tokens": 600
+  },
+  "model_inference_performed": true,
+  "human_semantic_reviewed": false,
+  "promoted_to_verified_effect": false,
+  "v1_5_verified": false,
+  "gate_status": "BLOCKED_CHECKPOINT_MISMATCH",
+  "raw_response_text": "{\"id\": \"chatcmpl-015c1f4d-0127-41ef-8bc8-3b8d883bacd2\", \"system_fingerprint\": \"0.31.3-0.32.0-macOS-26.6.2-arm64-arm-64bit-Mach-O-applegpu_g15s\", \"object\": \"chat.completion\", \"model\": \"default_model\", \"created\": 1791795200, \"choices\": [{\"index\": 0, \"finish_reason\": \"stop\", \"message\": {\"role\": \"assistant\", \"content\": \"{\\\"outcome\\\": \\\"SUPPORTED\\\", \\\"claims\\\": [{\\\"kind\\\": \\\"DIRECT_PROVISION\\\", \\\"statement\\\": \\\"paying AHV old-age pensions 13 rather than 12 times annually\\\", \\\"pdf_page\\\": 9, \\\"quote\\\": \\\"Die minimale ganze AHV-Altersrente betr\\u00e4gt zurzeit der AHV 1225 Franken, die maximale Rente 2450 Franken pro Monat.1 Ehepaare und Paare in eingetragener Partnerschaft erhalten zusammen h\\u00f6chstens das Anderthalbfache einer maximalen Einzelrente, also 3675 Franken.\\\", \\\"attribution\\\": \\\"FEDERAL_COUNCIL_DETAIL\\\", \\\"as_of\\\": \\\"2023-11-29\\\"}]}\"}}], \"usage\": {\"prompt_tokens\": 878, \"completion_tokens\": 163, \"total_tokens\": 1041, \"prompt_tokens_details\": {\"cached_tokens\": 338}}}",
+  "response_sha256": "94f4088c9dcd1df7ee7a1bb6eeb85c42d1fe4ac3bf01439033d7c5c0962c8550",
+  "latency_seconds": 10.071505957999761,
+  "raw_api_response": {
+    "id": "chatcmpl-015c1f4d-0127-41ef-8bc8-3b8d883bacd2",
+    "system_fingerprint": "0.31.3-0.32.0-macOS-26.6.2-arm64-arm-64bit-Mach-O-applegpu_g15s",
+    "object": "chat.completion",
+    "model": "default_model",
+    "created": 1791795200,
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"outcome\": \"SUPPORTED\", \"claims\": [{\"kind\": \"DIRECT_PROVISION\", \"statement\": \"paying AHV old-age pensions 13 rather than 12 times annually\", \"pdf_page\": 9, \"quote\": \"Die minimale ganze AHV-Altersrente beträgt zurzeit der AHV 1225 Franken, die maximale Rente 2450 Franken pro Monat.1 Ehepaare und Paare in eingetragener Partnerschaft erhalten zusammen höchstens das Anderthalbfache einer maximalen Einzelrente, also 3675 Franken.\", \"attribution\": \"FEDERAL_COUNCIL_DETAIL\", \"as_of\": \"2023-11-29\"}]}"
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 878,
+      "completion_tokens": 163,
+      "total_tokens": 1041,
+      "prompt_tokens_details": {
+        "cached_tokens": 338
+      }
+    }
+  },
+  "parsed_candidate": {
+    "outcome": "SUPPORTED",
+    "claims": [
+      {
+        "kind": "DIRECT_PROVISION",
+        "statement": "paying AHV old-age pensions 13 rather than 12 times annually",
+        "pdf_page": 9,
+        "quote": "Die minimale ganze AHV-Altersrente beträgt zurzeit der AHV 1225 Franken, die maximale Rente 2450 Franken pro Monat.1 Ehepaare und Paare in eingetragener Partnerschaft erhalten zusammen höchstens das Anderthalbfache einer maximalen Einzelrente, also 3675 Franken.",
+        "attribution": "FEDERAL_COUNCIL_DETAIL",
+        "as_of": "2023-11-29"
+      }
+    ]
+  },
+  "validation": {
+    "mechanical_pass": false,
+    "errors": [
+      "unknowns_not_string_array",
+      "unsupported_personal_financing"
+    ],
+    "checks": [
+      {
+        "kind": "DIRECT_PROVISION",
+        "pdf_page": 9,
+        "page_exists": true,
+        "quote_in_page": true,
+        "role_matches_page": true,
+        "known_kind": true,
+        "statement_present": true,
+        "as_of_matches": true,
+        "role_kind_compatible": true,
+        "quote_start": 531,
+        "quote_end": 793,
+        "quote_sha256": "2cfc0ec4610db4bea967654412188a97f87b98984d48e8b4b13888303b622dee",
+        "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+        "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=9",
+        "publication_state": "CANDIDATE_UNREVIEWED"
+      }
+    ],
+    "publication_state": "WITHHELD",
+    "semantic_support_verified": false
+  },
+  "mechanical_grounding_checks": [
+    {
+      "kind": "DIRECT_PROVISION",
+      "pdf_page": 9,
+      "page_exists": true,
+      "quote_in_page": true,
+      "role_matches_page": true,
+      "known_kind": true,
+      "statement_present": true,
+      "as_of_matches": true,
+      "role_kind_compatible": true,
+      "quote_start": 531,
+      "quote_end": 793,
+      "quote_sha256": "2cfc0ec4610db4bea967654412188a97f87b98984d48e8b4b13888303b622dee",
+      "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+      "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=9",
+      "publication_state": "CANDIDATE_UNREVIEWED"
+    }
+  ],
+  "trial_id": "direct_provision",
+  "expected_outcome": "SUPPORTED"
+}

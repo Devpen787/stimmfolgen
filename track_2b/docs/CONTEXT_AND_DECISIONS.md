@@ -44,7 +44,7 @@ Apertus supplies candidate extraction and interpretation; the verifier controls 
 
 ## Scope and quality gates
 
-- Prove real Apertus v1.5 inference **before** ambitious product UI work. This is an unresolved blocker.
+- Prove real Apertus v1.5 inference **before** ambitious product UI work. Local inference is now observed, but its failed AHV quality gate remains a blocker; see the current evidence report.
 - Preserve exact model IDs/configuration, prompts, document version/hashes, outputs and human ground truth.
 - Compare against direct-booklet and extractive baselines; report failures, unanswered cases and omissions.
 - Enforce a single schema through public evidence → published explanations → private brief and render no raw unreviewed answer as established.
@@ -64,4 +64,4 @@ Apertus supplies candidate extraction and interpretation; the verifier controls 
 
 The October 12 v0.1 architecture ZIP contained documentation, JSON schemas, a synthetic fixture, a validation script, a clickable HTML concept and two screenshots. This GitHub staging branch includes text documentation and the HTML UX concept. The schema JSON, fixture, script, manifest and screenshots still need verbatim migration from the original ZIP before they can be claimed to be on GitHub.
 
-This material represents **designed**, not **implemented** or **validated**, work. There is currently no authenticated Apertus run, measured reasoning accuracy or secure personal-data vault to claim.
+This material represents **designed**, not **implemented** or **validated**, work. The subsequent [actual local Apertus v1.5 run](evidence/GATE0_APERTUS_V15_2026-10-12.md) records a FAIL result and genuine traces. It does not establish policy-reasoning accuracy or a secure personal-data vault.

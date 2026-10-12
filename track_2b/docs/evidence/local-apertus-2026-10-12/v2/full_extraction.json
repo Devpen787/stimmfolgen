@@ -1,0 +1,121 @@
+{
+  "evidence_class": "ACTUAL_MODEL_ATTEMPT_UNREVIEWED",
+  "observed_at_utc": "2026-10-12T08:52:23.630806+00:00",
+  "model": "default_model",
+  "base_url": "http://127.0.0.1:8766/v1",
+  "local_identity": {
+    "evidence_class": "LOCAL_MODEL_INSPECTION",
+    "observed_at_utc": "2026-10-12T08:52:23.630472+00:00",
+    "model_id": "mlx-community/Apertus-8B-Instruct-2509-4bit",
+    "backing_checkpoint": "swiss-ai/Apertus-8B-Instruct-2509",
+    "source_revision": "c5e6ae2e52c4149f36cb8e47b7ab1489ef885fed",
+    "served_alias": "default_model",
+    "base_url": "http://127.0.0.1:8766/v1",
+    "model_dir": "<LOCAL_MODEL_DIR>",
+    "format": "MLX safetensors",
+    "quantization": {
+      "group_size": 64,
+      "bits": 4,
+      "mode": "affine"
+    },
+    "artifacts": {
+      "README.md": {
+        "sha256": "ce070eee707e8a97e13580002d1dd5c9a70220069e590e11fec68710bdf1a6d1",
+        "bytes": 2343
+      },
+      "config.json": {
+        "sha256": "05b7f71584cd565fb53f6fd5cf49e55163e29e8bdb4159982714d275ea8462da",
+        "bytes": 1192
+      },
+      "model.safetensors": {
+        "sha256": "bcde62001035dd38e9a8b2642f29e0d7b98ef7a6e69b50a6e55be26a8b1c0a9a",
+        "bytes": 4530491710
+      },
+      "model.safetensors.index.json": {
+        "sha256": "acbd6ca819d5f39ef920397429bfa3d04c77b288d0cddb4f97bf1a000bdd036d",
+        "bytes": 58759
+      },
+      "tokenizer.json": {
+        "sha256": "3d5f2074cd9c771f2d3f35a75ea4c86886ac629fa40580128a1f66c9acb58cc0",
+        "bytes": 17078483
+      },
+      "tokenizer_config.json": {
+        "sha256": "934fd39ce21d29f4c3e556651d598d9238f5656512dae7673e03235ca26950fd",
+        "bytes": 191866
+      }
+    },
+    "tensor_count": 839,
+    "v1_5_verified": false,
+    "alias_binding": "mlx_lm.server --model path; /v1/models advertises resolved path; MLX default_model mapping",
+    "provenance_limit": "Pinned locally downloaded conversion; no signed runtime attestation",
+    "redaction": "Absolute model path redacted; artifact hashes and raw HTTP requests/responses unchanged."
+  },
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "source_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf",
+  "as_of": "2023-11-29",
+  "source_pdf_reverified": true,
+  "prompt_version": "gate0-v2-bounded-json",
+  "raw_request": {
+    "model": "default_model",
+    "temperature": 0,
+    "max_tokens": 1400,
+    "messages": [
+      {
+        "role": "system",
+        "content": "Extract candidate evidence with faithful, attributed citations. No voting advice."
+      },
+      {
+        "role": "user",
+        "content": "Read ONLY the following archived Swiss referendum booklet, as known BEFORE the 3 March 2024 vote. The knowledge cutoff/as_of is 2023-11-29. No later knowledge, voting advice, or invented personal financing. Return ONLY one JSON object, without markdown. Schema:\n{\"outcome\":\"SUPPORTED or INSUFFICIENT_EVIDENCE\",\"claims\":[{\"kind\":\"DIRECT_PROVISION or ATTRIBUTED_PREDICTION or COST_PROJECTION or UNRESOLVED\",\"statement\":\"plain German or English\",\"pdf_page\":11,\"quote\":\"EXACT contiguous text copied from a supplied page\",\"attribution\":\"EXACT ROLE tag of that page\",\"as_of\":\"2023-11-29\"}],\"unknowns\":[\"missing facts, if any\"],\"personal_financing_chf\":null}\nDo not change quote wording, punctuation, capitalisation or word spacing. ROLE tags are identifiers; do not translate them. Government/committee forecasts are predictions, never DIRECT_PROVISION. A sourced UNRESOLVED claim may explain an abstention. Unknowns must be strings. If a requested statement is absent or contradicted, use INSUFFICIENT_EVIDENCE and explain the gap; do not output the requested false claim. The booklet does not establish an enacted financing formula, so personal_financing_chf must stay null.\nTASK: Extract exactly three claims: one DIRECT_PROVISION, one COST_PROJECTION or ATTRIBUTED_PREDICTION, and one UNRESOLVED financing issue. Include at least one unknown about an exact employed person's future financing burden because actual financing is open.\n\nPDF PAGE 4 — ROLE FEDERAL_COUNCIL_SUMMARY:\n4 Erste Vorlage: 13. AHV-Rente In Kürze Volksinitiative «Für ein besseres Leben im Alter (Initiative für eine 13. AHV-Rente)» Ausgangslage Die Alters- und Hinterlassenenversicherung (AHV) ist das Fundament der schweizerischen Altersvorsorge. Mehr als 2,5 Millionen Pensionierte erhalten gegenwärtig eine AHV- Rente. Die AHV-Rente soll den Existenzbedarf im Alter ange messen decken. Die meisten Pensionierten haben weitere Einkommen, insbesondere eine Pensionskassenrente. Wer seinen Lebensunterhalt damit nicht bestreiten kann, hat Anspruch auf Ergänzungsleistungen (EL). Die Initiative Die Initiative will die Altersrenten der AHV um eine Monatsrente erhöhen. Zu den 12 Monatsrenten käme jedes Jahr eine 13. Rente dazu. Die Initiative bestimmt auch, dass die Ergänzungsleistungen wegen der 13. Rente nicht gekürzt werden dürfen. Die maximale jährliche Altersrente würde für Einzelpersonen um 2450 Franken auf 31 850 Franken und für Ehepaare um 3675 Franken auf 47 775 Franken steigen. Durch diese Erhöhung würden die Kosten für die 13. AHV- Rente bei der Einführung voraussichtlich etwa 4,1 Milliarden Franken betragen; davon müsste der Bund rund 800 Millionen Franken bezahlen. Danach würden die Kosten schnell weiter zunehmen. Die Initiative lässt die Frage der Finanzierung offen. Dank verschiedenen Reformen sind die Leistungen der AHV heute gut finanziert; nach 2030 ist jedoch mit Defiziten zu rechnen – auch ohne 13. AHV-Rente. Würde die 13. Rente eingeführt, bräuchte die AHV noch zusätzliche Einnahmen oder sie müsste Leistungen kürzen. Vorlage im Detail 8 Argumente 14 Abstimmungstext 18\n\nPDF PAGE 9 — ROLE FEDERAL_COUNCIL_DETAIL:\n9 Der Auftrag Die Alters- und Hinterlassenenversicherung (AHV) ist das der AHV wichtigste Sozialwerk der Schweiz: Alle Menschen in der Schweiz haben im Alter Anspruch auf eine Rente der AHV. Die Verfassung legt fest, dass die AHV-Renten den Existenzbedarf angemessen decken müssen. Die Mehrheit der Pensionierten bestreitet ihren Lebensunterhalt mit zusätzlichen Einkünften, insbesondere mit Renten aus der Pensionskasse. Wer den Existenzbedarf damit nicht decken kann, hat Anspruch auf Ergänzungsleistungen (EL). Die Altersrenten Die minimale ganze AHV-Altersrente beträgt zurzeit der AHV 1225 Franken, die maximale Rente 2450 Franken pro Monat.1 Ehepaare und Paare in eingetragener Partnerschaft erhalten zusammen höchstens das Anderthalbfache einer maximalen Einzelrente, also 3675 Franken. Übersteigen die beiden Renten diesen Betrag, werden sie gekürzt. Der Bundesrat passt alle AHV-Renten regelmässig an die Preis- und Lohnentwicklung an. Die letzte Anpassung erfolgte auf Anfang 2023. Initiative will eine Die Initiative fordert, dass die monatliche Rente nicht nur 13. AHV-Rente 12 Mal, sondern 13 Mal pro Jahr ausbezahlt wird. Dies in An lehnung an den 13. Monatslohn, den viele Arbeitnehmerinnen und Arbeitnehmer erhalten. Dies entspricht einer Erhöhung der jährlichen AHV-Rente um 8,3 Prozent. Die minimale jährliche Altersrente würde von 14 700 auf 15 925 Franken, die maximale Altersrente von 29 400 auf 31 850 Franken steigen. Paare hätten statt 44 100 Franken maximal 47 775 Franken zugut. 1 Die Höhe der AHV-Rente ist abhängig vom durchschnittlichen Einkommen während der Beitragspflicht sowie von Erziehungs- und Betreuungsgutschriften. Personen, die Beitragslücken haben, also nicht jedes Jahr in die AHV einbezahlt haben, erhalten nicht eine ganze AHV-Rente, sondern eine Teilrente.\n\nPDF PAGE 11 — ROLE FEDERAL_COUNCIL_DETAIL_FINANCING:\n11 Andere Renten Die AHV bezahlt nicht nur Altersrenten, sondern auch bleiben gleich Hinterlassenenrenten an Witwen, Witwer und Waisen. Zusätz lich sorgt die Invalidenversicherung (IV) für die Existenzsiche rung von Personen mit gesundheitlichen Einschränkungen. Alle diese Leistungen der 1. Säule sind aufeinander abgestimmt. Mit der Initiative würden nur die Altersrenten der AHV erhöht, die anderen Renten hingegen weiterhin 12 Mal pro Jahr bezahlt. Finanzielle Die jährlichen Ausgaben der AHV betragen heute rund Auswirkungen 50 Milliarden Franken. Die 13. AHV-Rente würde bei der Ein der Initiative führung voraussichtlich etwa 4,1 Milliarden Franken zusätzlich kosten.2 Davon müsste der Bund rund 800 Millionen Franken übernehmen. Die zusätzlichen Kosten für die 13. AHV-Rente würden Jahr für Jahr ansteigen, weil die Zahl der Rentnerinnen und Rentner stark wächst. Fünf Jahre nach Einführung würden die Kosten voraussichtlich rund 5 Milliarden Franken betragen. Finanzierung offen Die Initiative macht keine Angaben dazu, wie die zusätz lichen Ausgaben für die 13. AHV-Rente finanziert werden sollen. Das müsste vom Parlament bestimmt werden. Heute wird die AHV hauptsächlich mit Lohnbeiträgen, mit dem Beitrag des Bundes und mit Einnahmen aus der Mehrwertsteuer gespeist. Würden die zu erwartenden zusätzlichen Ausgaben der AHV für die 13. Rente bei deren Einführung über die Lohnbeiträge finanziert, müssten diese von 8,7 auf 9,4 Prozent erhöht wer den. Diese Erhöhung ginge je zur Hälfte zulasten der Arbeit nehmenden und der Arbeitgebenden. Bei einer Finanzierung über die Mehrwertsteuer müsste diese von 8,1 auf 9,1 Prozent angehoben werden. In Frage kämen auch andere Finanzie rungsmassnahmen oder eine Kombination davon. 2 Finanzperspektiven der AHV des Bundesamts für Sozialversicherungen BSV ( bsv.admin.ch > Sozialversicherungen > AHV > Reformen & Revisionen > Volksinitiative «Für ein besseres Leben im Alter»)\n\nPDF PAGE 14 — ROLE INITIATIVE_COMMITTEE_ARGUMENTS:\n14 Erste Vorlage: 13. AHV-Rente Argumente Initiativkomitee Mieten, Krankenkassenprämien, Lebensmittel: Alles ist teurer. Die Rente reicht immer weniger weit. Wer ein Leben lang gearbeitet und in die Altersvorsorge einbezahlt hat, verdient eine anständige Rente. Deshalb braucht es nun eine 13. AHV-Rente. Sie verbessert die Situation der heutigen und zukünftigen Rentnerinnen und Rentner rasch und effizient. Deshalb: Ja zur 13. AHV-Rente. Darum geht es Das Stimmvolk hat die AHV eingeführt, damit alle in der Schweiz nach einem langen Erwerbsleben anständig leben können. Doch heute haben immer mehr Rentnerinnen und Rentner Mühe, über die Runden zu kommen. Bei Annahme der Initiative wird eine 13. AHV-Rente ausbezahlt, analog zum 13. Monatslohn. Auch Bezügerinnen und Bezüger von Ergänzungsleistungen bekommen die zusätzliche Rente. Das gleicht schnell und effizient die gestiegenen Preise aus. Die Rente reicht Mieten, Krankenkassenprämien, Strom und Lebensmittel nicht mehr sind teurer. Die höheren Lebenshaltungskosten fressen eine Monatsrente weg. Und die Pensionskassenrenten sinken seit Jahren. Darum braucht es rasch eine Erhöhung der Altersrenten für aktuelle und zukünftige Rentnerinnen und Rentner. Beste Lösung für Die AHV kommt allen in der Schweiz zugute. Für die anständige Renten meisten Arbeitnehmenden lohnt sie sich: Die Arbeitgeber tragen die Hälfte der Beiträge. Auch Topverdienende zahlen einen Teil der Rente, weil ihre Millionen-Boni AHV-pflichtig sind. Ausserdem hat die AHV stabile und tiefe Kosten. Alle Erträge fliessen direkt in die Renten, ohne dass Banken, Vermittler oder Aktionäre mitverdienen. AHV ist für Frauen Die höheren Preise treffen Menschen mit tieferer Rente besonders wichtig besonders hart. Darunter sind überdurchschnittlich viele Frauen. Eine 13. AHV-Rente bringt ihnen am meisten: Nur aus der AHV haben alle eine Rente. Nur die AHV anerkennt die unbezahlte Betreuungsarbeit, die hauptsächlich von Frauen geleistet wird: Ein Kind grosszuziehen, erhöht die AHV-Rente.\n\nPDF PAGE 16 — ROLE FEDERAL_COUNCIL_PARLIAMENT_ARGUMENTS:\n16 Erste Vorlage: 13. AHV-Rente Argumente Bundesrat und Parlament Die Initiative für eine 13. AHV-Rente hätte zusätzliche Kosten in Milliardenhöhe zur Folge und würde die Finanzierungspro bleme der AHV erheblich verschärfen. Auch ohne 13. AHV-Rente ist die finanzielle Stabilität der AHV mittelfristig gefährdet: Geburtenstarke Jahrgänge erreichen das AHV-Alter und die Lebenserwartung steigt. Eine 13. AHV-Rente ist auch gar nicht nötig: Die grosse Mehrheit der Pensionierten ist darauf nicht angewiesen. Bundesrat und Parlament lehnen die Vorlage insbesondere aus folgenden Gründen ab: Mehrkosten Die Initiative würde die AHV finanziell zu stark belasten. belasten AHV Die Ausgaben der AHV würden auf einen Schlag um mehr als zu stark 4 Milliarden steigen und danach schnell weiter zunehmen. Die Rechnung der AHV würde rasch aus dem Gleichgewicht gera ten. Die Zusatzkosten wären für die AHV ohne substanzielle neue Einnahmen oder kostensenkende Massnahmen wie die Erhöhung des Rentenalters nicht zu verkraften. Initiative Die Finanzierung der 13. Rente ginge auf Kosten der verteuert Arbeit arbeitenden Bevölkerung und der Unternehmen oder der oder Konsum Konsumentinnen und Konsumenten. Um die hohen Kosten für eine 13. AHV-Altersrente zu decken, müssten beispielsweise die Lohnabzüge oder die Mehrwertsteuer weiter erhöht werden. Damit würde die Arbeit verteuert oder die Preise würden steigen. Höhere Steuern Eine 13. AHV-Altersrente hätte auch negative Auswirkun oder weniger gen auf den Bundeshaushalt, weil der Bund rund einen Fünftel Ausgaben der jährlichen Ausgaben der AHV bezahlen muss. Er hätte auf einen Schlag Mehrkosten von mehr als 800 Millionen Franken, die Jahr für Jahr zunehmen würden. Der Bund müsste seine Steuern erhöhen oder Ausgaben kürzen. Hohe Kosten, Der soziale Nutzen der 13. AHV-Rente wäre gering. Eine geringer sozialer grosse Mehrheit der Pensionierten erhält neben der AHV-Rente Nutzen Leistungen der Pensionskasse; viele haben zudem noch andere Einkommen oder Vermögen. Mit der Initiative würden viele Pensionierte eine 13. AHV-Rente erhalten, obwohl sie darauf nicht angewiesen sind. Rentnerinnen und Rentner, die ihren Existenzbedarf nicht decken können, haben Anspruch auf Ergänzungsleistungen."
+      }
+    ]
+  },
+  "request_sha256": "4fac4dd9a7b7a8fda4692f20e1eb6e3785a9ae2d50f354a40d46ac85d65f7d84",
+  "generation": {
+    "temperature": 0,
+    "max_tokens": 1400
+  },
+  "model_inference_performed": true,
+  "human_semantic_reviewed": false,
+  "promoted_to_verified_effect": false,
+  "v1_5_verified": false,
+  "gate_status": "BLOCKED_CHECKPOINT_MISMATCH",
+  "raw_response_text": "{\"id\": \"chatcmpl-5e7d3cff-c8e4-4599-9745-50326fa92c27\", \"system_fingerprint\": \"0.31.3-0.32.0-macOS-26.6.2-arm64-arm-64bit-Mach-O-applegpu_g15s\", \"object\": \"chat.completion\", \"model\": \"default_model\", \"created\": 1791795143, \"choices\": [{\"index\": 0, \"finish_reason\": \"stop\", \"message\": {\"role\": \"assistant\", \"content\": \"Based on the provided information, here are the three claims:\\n\\n1. **DIRECT_PROVISION**: \\\"Die Alters- und Hinterlassenenversicherung (AHV) ist das Fundament der schweizerischen Altersvorsorge. Mehr als 2,5 Millionen Pensionierte erhalten gegenw\\u00e4rtig eine AHV-Rente. Die Altersrenten sollen den Existenzbedarf im Alter angemessen decken. Die meisten Pensionierten haben weitere Einkommen, insbesondere eine Pensionskassenrente. Wer seinen Lebensunterhalt damit nicht bestreiten kann, hat Anspruch auf Erg\\u00e4nzungsleistungen (EL). Die Initiative Die Initiative will die Altersrenten der AHV um eine Monatsrente erh\\u00f6hen. Zu den 12 Monatsrenten k\\u00e4me jedes Jahr eine 13. Rente dazu. Die Initiative bestimmt auch, dass die Erg\\u00e4nzungsleistungen wegen der 13. Rente nicht gek\\u00fcrzt werden d\\u00fcrfen. Die maximale j\\u00e4hrliche Altersrente w\\u00fcrde f\\u00fcr Einzelpersonen um 2450 Franken auf 31 850 Franken und f\\u00fcr Ehepaare um 3675 Franken auf 47 775 Franken steigen. Durch diese Erh\\u00f6hung w\\u00fcrden die Kosten f\\u00fcr die 13. AHV-Rente bei der Einf\\u00fchrung voraussichtlich etwa 4,1 Milliarden Franken betragen; davon m\\u00fcsste der Bund rund 800 Millionen Franken bezahlen. Danach w\\u00fcrden die Kosten schnell weiter zunehmen. Die Initiative l\\u00e4sst die Frage der Finanzierung offen. Dank verschiedener Reformen sind die Leistungen der AHV heute gut finanziert; nach 2030 ist jedoch mit Defiziten zu rechnen \\u2013 auch ohne 13. AHV-Rente. W\\u00fcrde die 13. Rente eingef\\u00fchrt, br\\u00e4uchte die AHV noch zus\\u00e4tzliche Einnahmen oder sie m\\u00fcsste Leistungen k\\u00fcrzen.\\\"\\n\\n2. **COST_PROJECTION**: \\\"Die j\\u00e4hrlichen Ausgaben der AHV betragen heute rund 50 Milliarden Franken. Die 13. AHV-Rente w\\u00fcrde bei der Einf\\u00fchrung voraussichtlich etwa 4,1 Milliarden Franken zus\\u00e4tzlich kosten; davon m\\u00fcsste der Bund rund 800 Millionen Franken bezahlen. Danach w\\u00fcrden die Kosten schnell weiter zunehmen. Die Initiative l\\u00e4sst die Frage der Finanzierung offen. Dank verschiedener Reformen sind die Leistungen der AHV heute gut finanziert; nach 2030 ist jedoch mit Defiziten zu rechnen \\u2013 auch ohne 13. AHV-Rente. W\\u00fcrde die 13. Rente eingef\\u00fchrt, br\\u00e4uchte die AHV noch zus\\u00e4tzliche Einnahmen oder sie m\\u00fcsste Leistungen k\\u00fcrzen.\\\"\\n\\n3. **UNRESOLVED**: \\\"Die Initiative macht keine Angaben dazu, wie die zus\\u00e4tzlichen Ausgaben f\\u00fcr die 13. AHV-Rente finanziert werden sollen. Das m\\u00fcsste vom Parlament bestimmt werden. Heute wird die AHV haupts\\u00e4chlich mit Lohnbeitr\\u00e4gen, mit dem Beitrag des Bundes und mit Einnahmen aus der Mehrwertsteuer gespeist. W\\u00fcrden die zu erwartenden zus\\u00e4tzlichen Ausgaben der AHV f\\u00fcr die 13. Rente bei deren Einf\\u00fchrung \\u00fcber die Lohnbeitr\\u00e4ge finanziert, m\\u00fcssten diese von 8,7 auf 9,4 Prozent erh\\u00f6ht werden. Diese Erh\\u00f6hung ginge je zur H\\u00e4lfte zulasten der Arbeitnehmenden und der Arbeitgebenden. Bei einer Finanzierung \\u00fcber die Mehrwertsteuer m\\u00fcsste diese von 8,1 auf 9,1 Prozent angehoben werden. In Frage k\\u00e4men auch andere Finanzierungsmassnahmen oder eine Kombination davon.\\\"\"}}], \"usage\": {\"prompt_tokens\": 2976, \"completion_tokens\": 747, \"total_tokens\": 3723, \"prompt_tokens_details\": {\"cached_tokens\": 30}}}",
+  "response_sha256": "f59b104ad09b331872a35b4bad946217e8a11ddd365020dac8d74aa76be0efb5",
+  "latency_seconds": 51.98491641700002,
+  "raw_api_response": {
+    "id": "chatcmpl-5e7d3cff-c8e4-4599-9745-50326fa92c27",
+    "system_fingerprint": "0.31.3-0.32.0-macOS-26.6.2-arm64-arm-64bit-Mach-O-applegpu_g15s",
+    "object": "chat.completion",
+    "model": "default_model",
+    "created": 1791795143,
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "Based on the provided information, here are the three claims:\n\n1. **DIRECT_PROVISION**: \"Die Alters- und Hinterlassenenversicherung (AHV) ist das Fundament der schweizerischen Altersvorsorge. Mehr als 2,5 Millionen Pensionierte erhalten gegenwärtig eine AHV-Rente. Die Altersrenten sollen den Existenzbedarf im Alter angemessen decken. Die meisten Pensionierten haben weitere Einkommen, insbesondere eine Pensionskassenrente. Wer seinen Lebensunterhalt damit nicht bestreiten kann, hat Anspruch auf Ergänzungsleistungen (EL). Die Initiative Die Initiative will die Altersrenten der AHV um eine Monatsrente erhöhen. Zu den 12 Monatsrenten käme jedes Jahr eine 13. Rente dazu. Die Initiative bestimmt auch, dass die Ergänzungsleistungen wegen der 13. Rente nicht gekürzt werden dürfen. Die maximale jährliche Altersrente würde für Einzelpersonen um 2450 Franken auf 31 850 Franken und für Ehepaare um 3675 Franken auf 47 775 Franken steigen. Durch diese Erhöhung würden die Kosten für die 13. AHV-Rente bei der Einführung voraussichtlich etwa 4,1 Milliarden Franken betragen; davon müsste der Bund rund 800 Millionen Franken bezahlen. Danach würden die Kosten schnell weiter zunehmen. Die Initiative lässt die Frage der Finanzierung offen. Dank verschiedener Reformen sind die Leistungen der AHV heute gut finanziert; nach 2030 ist jedoch mit Defiziten zu rechnen – auch ohne 13. AHV-Rente. Würde die 13. Rente eingeführt, bräuchte die AHV noch zusätzliche Einnahmen oder sie müsste Leistungen kürzen.\"\n\n2. **COST_PROJECTION**: \"Die jährlichen Ausgaben der AHV betragen heute rund 50 Milliarden Franken. Die 13. AHV-Rente würde bei der Einführung voraussichtlich etwa 4,1 Milliarden Franken zusätzlich kosten; davon müsste der Bund rund 800 Millionen Franken bezahlen. Danach würden die Kosten schnell weiter zunehmen. Die Initiative lässt die Frage der Finanzierung offen. Dank verschiedener Reformen sind die Leistungen der AHV heute gut finanziert; nach 2030 ist jedoch mit Defiziten zu rechnen – auch ohne 13. AHV-Rente. Würde die 13. Rente eingeführt, bräuchte die AHV noch zusätzliche Einnahmen oder sie müsste Leistungen kürzen.\"\n\n3. **UNRESOLVED**: \"Die Initiative macht keine Angaben dazu, wie die zusätzlichen Ausgaben für die 13. AHV-Rente finanziert werden sollen. Das müsste vom Parlament bestimmt werden. Heute wird die AHV hauptsächlich mit Lohnbeiträgen, mit dem Beitrag des Bundes und mit Einnahmen aus der Mehrwertsteuer gespeist. Würden die zu erwartenden zusätzlichen Ausgaben der AHV für die 13. Rente bei deren Einführung über die Lohnbeiträge finanziert, müssten diese von 8,7 auf 9,4 Prozent erhöht werden. Diese Erhöhung ginge je zur Hälfte zulasten der Arbeitnehmenden und der Arbeitgebenden. Bei einer Finanzierung über die Mehrwertsteuer müsste diese von 8,1 auf 9,1 Prozent angehoben werden. In Frage kämen auch andere Finanzierungsmassnahmen oder eine Kombination davon.\""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2976,
+      "completion_tokens": 747,
+      "total_tokens": 3723,
+      "prompt_tokens_details": {
+        "cached_tokens": 30
+      }
+    }
+  },
+  "parse_error": "Expecting value: line 1 column 1 (char 0)",
+  "validation": {
+    "mechanical_pass": false,
+    "errors": [
+      "invalid_completion"
+    ],
+    "publication_state": "WITHHELD"
+  },
+  "trial_id": "full_extraction",
+  "expected_outcome": null
+}

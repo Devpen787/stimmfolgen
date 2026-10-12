@@ -32,11 +32,11 @@ jobs:
           fi
           echo "Apertus inference requested. Secrets will not be printed."
       - name: Retrieve exact source and extract reference pages
-        run: python track_2b/src/gate0/source_probe.py --out /tmp/gate0-source.json
+        run: python track_2b/src/gate0/source_probe.py --out /tmp/gate0-source.json --pdf-out /tmp/gate0-source.pdf
       - name: Invoke actual configured Apertus model
-        run: python track_2b/src/gate0/model_probe.py --source-report /tmp/gate0-source.json --out /tmp/gate0-model.json
+        run: python track_2b/src/gate0/model_probe.py --source-report /tmp/gate0-source.json --source-pdf /tmp/gate0-source.pdf --out /tmp/gate0-model.json
       - name: Upload raw evidence for independent review
-        if: success()
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: gate0-actual-apertus-unreviewed

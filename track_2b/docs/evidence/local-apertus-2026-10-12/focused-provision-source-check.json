@@ -1,0 +1,15 @@
+{
+  "evidence_class": "DETERMINISTIC_CHECK_OF_ACTUAL_PLAIN_MODEL_OUTPUT",
+  "trace": "focused-provision.json",
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "pdf_page": 9,
+  "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=9",
+  "output_sha256": "e74354de808dc8718042d9b29585ae8bed8af5bb7a425fd34683f5114f1a537a",
+  "entire_plain_output_exact_substring": true,
+  "start": 1013,
+  "end": 1801,
+  "structured_contract_pass": false,
+  "human_semantic_reviewed": false,
+  "publication_state": "WITHHELD",
+  "limit": "Exact copied paragraph is real source-grounding evidence, not a passing JSON pipeline or independent classification test."
+}

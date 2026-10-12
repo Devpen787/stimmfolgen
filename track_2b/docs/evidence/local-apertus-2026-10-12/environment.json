@@ -1,0 +1,55 @@
+{
+  "observed_at_utc": "2026-10-12T09:00:25.812750+00:00",
+  "hardware": {
+    "architecture": "arm64",
+    "chip": "Apple M3 Pro",
+    "cpu_cores": 12,
+    "gpu_cores": 18,
+    "ram_bytes": 19327352832
+  },
+  "macos_version": "26.6.2",
+  "disk_free_bytes": 271421173760,
+  "source_python": "3.14.6 (main, Jun 10 2026, 10:03:53) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "source_pymupdf": "1.28.2",
+  "runtime_versions": {
+    "mlx": "0.32.0",
+    "mlx-lm": "0.31.3",
+    "transformers": "5.15.0"
+  },
+  "endpoint": "http://127.0.0.1:8766/v1",
+  "runtime": "Dedicated mlx_lm.server process; existing AutoBots runtime executable read only",
+  "offline_environment": {
+    "HF_HUB_OFFLINE": "1",
+    "TRANSFORMERS_OFFLINE": "1",
+    "HF_HUB_DISABLE_TELEMETRY": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "network_boundary": "Source/dependency/metadata acquisition used network. Model inference used loopback with offline Hugging Face modes; OS network was not disabled.",
+  "paid_api_used": false,
+  "additional_model_weights_downloaded": false,
+  "server_arguments": [
+    "-m",
+    "mlx_lm",
+    "server",
+    "--model",
+    "<LOCAL_MODEL_DIR>",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8766",
+    "--temp",
+    "0",
+    "--max-tokens",
+    "1800",
+    "--chat-template-args",
+    "{\"enable_thinking\":false}",
+    "--decode-concurrency",
+    "1",
+    "--prompt-concurrency",
+    "1",
+    "--prompt-cache-size",
+    "1",
+    "--prefill-step-size",
+    "512"
+  ]
+}

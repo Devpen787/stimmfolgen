@@ -1,0 +1,5 @@
+{
+  "error": "Gate 0 requires actual Apertus; refuses substitute models",
+  "network_call_performed": false,
+  "model": "default_model"
+}
