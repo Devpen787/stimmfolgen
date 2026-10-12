@@ -65,3 +65,7 @@ Apertus supplies candidate extraction and interpretation; the verifier controls 
 The October 12 v0.1 architecture ZIP contained documentation, JSON schemas, a synthetic fixture, a validation script, a clickable HTML concept and two screenshots. This GitHub staging branch includes text documentation and the HTML UX concept. The schema JSON, fixture, script, manifest and screenshots still need verbatim migration from the original ZIP before they can be claimed to be on GitHub.
 
 This material represents **designed**, not **implemented** or **validated**, work. The subsequent [actual local Apertus v1.5 run](evidence/GATE0_APERTUS_V15_2026-10-12.md) records a FAIL result and genuine traces. It does not establish policy-reasoning accuracy or a secure personal-data vault.
+
+## Current Gate 0 continuation
+
+The [immutable span diagnostic](evidence/GATE0_SPANS_2026-10-12.md) replaces generated quotations with authenticated source IDs, adds a separate bounded semantic reference, and records two unchanged real local v1.5 runs. Six of seven live checks pass; actor attribution fails both times. The reference is coding-agent-authored, not human reviewed. Types/retrieval and refusal policy are supplied by the application. Full extraction is a recorded three-response aggregate. Gate 0 remains FAIL and frontend implementation is blocked. Cloud CI verifies sources and safeguards; cloud Apertus inference is not configured.

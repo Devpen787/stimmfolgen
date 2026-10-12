@@ -1,0 +1,252 @@
+{
+  "evidence_class": "PIPELINE_AGGREGATE_NOT_SINGLE_MODEL_COMPLETION",
+  "component_trials": [
+    "direct_provision",
+    "cost_projection",
+    "financing_refusal"
+  ],
+  "component_response_sha256": [
+    "f5d679df6abd418ca2d0886546e767ba12779996d852a07f4dd37068d60bd28f",
+    "51d4652731c25b01645ef890075c5801056f8d74c7ff389032e28cc3b252e1ac",
+    "b8fffd7d440db7fadab06c1e44d13a364008d90827fe68cabd421bb0bdb7408e"
+  ],
+  "parsed_candidate": {
+    "outcome": "SUPPORTED",
+    "claims": [
+      {
+        "predicate": "PAYMENT_FREQUENCY",
+        "kind": "DIRECT_PROVISION",
+        "actor": "GOVERNMENT",
+        "value": {
+          "before": null,
+          "after": 13
+        },
+        "span_ids": [
+          "sp-8ac6e0fa1c5a02a4f80f",
+          "sp-9c8a8400c8e8db18fd8f"
+        ]
+      },
+      {
+        "predicate": "RATE_CHANGE",
+        "kind": "NUMERICAL_CHANGE",
+        "actor": "GOVERNMENT",
+        "value": {
+          "before": null,
+          "after": 8.3
+        },
+        "span_ids": [
+          "sp-24a1ba6f87a2c95d38b0"
+        ]
+      },
+      {
+        "predicate": "ADDITIONAL_ANNUAL_COST",
+        "kind": "COST_PROJECTION",
+        "actor": "GOVERNMENT",
+        "value": {
+          "amount_chf": 4100000000,
+          "horizon": "INTRODUCTION"
+        },
+        "span_ids": [
+          "sp-f2d89f437b4fb79c2216"
+        ]
+      },
+      {
+        "predicate": "FUTURE_ANNUAL_COST",
+        "kind": "COST_PROJECTION",
+        "actor": "GOVERNMENT",
+        "value": {
+          "amount_chf": 5000000000,
+          "horizon": "FIVE_YEARS"
+        },
+        "span_ids": [
+          "sp-2275e83fa97bea1e8eee"
+        ]
+      },
+      {
+        "predicate": "FINANCING_SPECIFIED",
+        "kind": "UNRESOLVED",
+        "actor": "GOVERNMENT",
+        "value": {
+          "value": null,
+          "span_ids": [
+            "sp-b5abbb814ae726a3ecdc",
+            "sp-e0827b05bc8eb626bf5e"
+          ]
+        }
+      },
+      {
+        "predicate": "FINANCING_RATE",
+        "kind": "UNRESOLVED",
+        "actor": "GOVERNMENT",
+        "value": {
+          "value": null,
+          "span_ids": []
+        }
+      },
+      {
+        "predicate": "SOURCE_SUPPORT",
+        "kind": "UNRESOLVED",
+        "actor": "GOVERNMENT",
+        "value": {
+          "value": null,
+          "span_ids": [
+            "sp-b5abbb814ae726a3ecdc",
+            "sp-e0827b05bc8eb626bf5e"
+          ]
+        }
+      },
+      {
+        "predicate": "PERSONAL_FINANCING_CHF",
+        "kind": "NULL",
+        "actor": null,
+        "value": null,
+        "span_ids": []
+      }
+    ],
+    "missing_facts": [
+      "FINANCING_METHOD",
+      "FINANCING_RATE"
+    ],
+    "personal_financing_chf": null
+  },
+  "validation": {
+    "mechanical_pass": false,
+    "errors": [
+      "claim_0:invalid_typed_proposition",
+      "claim_1:invalid_typed_proposition",
+      "claim_1:invalid_kind",
+      "claim_3:invalid_typed_proposition",
+      "claim_4:invalid_fields_generated_text_is_forbidden",
+      "claim_5:invalid_fields_generated_text_is_forbidden",
+      "claim_6:invalid_fields_generated_text_is_forbidden",
+      "claim_7:invalid_typed_proposition",
+      "claim_7:invalid_kind",
+      "claim_7:invalid_actor",
+      "claim_7:invalid_span_references"
+    ],
+    "checks": [
+      {
+        "valid": false,
+        "errors": [
+          "invalid_typed_proposition"
+        ],
+        "span_ids": [
+          "sp-8ac6e0fa1c5a02a4f80f",
+          "sp-9c8a8400c8e8db18fd8f"
+        ]
+      },
+      {
+        "valid": false,
+        "errors": [
+          "invalid_typed_proposition",
+          "invalid_kind"
+        ],
+        "span_ids": [
+          "sp-24a1ba6f87a2c95d38b0"
+        ]
+      },
+      {
+        "valid": true,
+        "errors": [],
+        "span_ids": [
+          "sp-f2d89f437b4fb79c2216"
+        ]
+      },
+      {
+        "valid": false,
+        "errors": [
+          "invalid_typed_proposition"
+        ],
+        "span_ids": [
+          "sp-2275e83fa97bea1e8eee"
+        ]
+      },
+      {
+        "valid": false,
+        "errors": [
+          "invalid_fields"
+        ]
+      },
+      {
+        "valid": false,
+        "errors": [
+          "invalid_fields"
+        ]
+      },
+      {
+        "valid": false,
+        "errors": [
+          "invalid_fields"
+        ]
+      },
+      {
+        "valid": false,
+        "errors": [
+          "invalid_typed_proposition",
+          "invalid_kind",
+          "invalid_actor",
+          "invalid_span_references"
+        ],
+        "span_ids": []
+      }
+    ],
+    "publication_state": "WITHHELD",
+    "semantic_support_verified": false
+  },
+  "semantic_evaluation": {
+    "semantic_reference_pass": false,
+    "errors": [
+      "claim_0:unsupported_meaning_value_kind_actor_or_span",
+      "claim_1:unsupported_meaning_value_kind_actor_or_span",
+      "claim_3:unsupported_meaning_value_kind_actor_or_span",
+      "claim_4:unsupported_meaning_value_kind_actor_or_span",
+      "claim_5:unsupported_meaning_value_kind_actor_or_span",
+      "claim_6:unsupported_meaning_value_kind_actor_or_span",
+      "claim_7:unsupported_meaning_value_kind_actor_or_span",
+      "required_value_missing:PAYMENT_FREQUENCY",
+      "required_value_missing:FINANCING_SPECIFIED"
+    ],
+    "checks": [
+      {
+        "predicate": "PAYMENT_FREQUENCY",
+        "reference_match": false
+      },
+      {
+        "predicate": "RATE_CHANGE",
+        "reference_match": false
+      },
+      {
+        "predicate": "ADDITIONAL_ANNUAL_COST",
+        "reference_match": true
+      },
+      {
+        "predicate": "FUTURE_ANNUAL_COST",
+        "reference_match": false
+      },
+      {
+        "predicate": "FINANCING_SPECIFIED",
+        "reference_match": false
+      },
+      {
+        "predicate": "FINANCING_RATE",
+        "reference_match": false
+      },
+      {
+        "predicate": "SOURCE_SUPPORT",
+        "reference_match": false
+      },
+      {
+        "predicate": "PERSONAL_FINANCING_CHF",
+        "reference_match": false
+      }
+    ],
+    "reference_version": "ahv13-semantic-reference-v1",
+    "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+    "human_semantic_reviewed": false,
+    "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+    "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+    "publication_state": "WITHHELD"
+  },
+  "human_semantic_reviewed": false,
+  "frontend_authorized_by_this_run": false
+}

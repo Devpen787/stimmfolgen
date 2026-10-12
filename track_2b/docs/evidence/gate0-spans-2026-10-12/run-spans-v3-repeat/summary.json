@@ -1,0 +1,78 @@
+{
+  "bounded_machine_suite_pass": false,
+  "gate_status": "FAIL",
+  "trials": [
+    {
+      "trial_id": "direct_provision",
+      "inference_performed": true,
+      "mechanical_pass": true,
+      "semantic_reference_pass": true,
+      "latency_seconds": 4.3762449999994715,
+      "errors": []
+    },
+    {
+      "trial_id": "cost_projection",
+      "inference_performed": true,
+      "mechanical_pass": true,
+      "semantic_reference_pass": true,
+      "latency_seconds": 5.057094249999864,
+      "errors": []
+    },
+    {
+      "trial_id": "financing_refusal",
+      "inference_performed": true,
+      "mechanical_pass": true,
+      "semantic_reference_pass": true,
+      "latency_seconds": 8.019604999999501,
+      "errors": []
+    },
+    {
+      "trial_id": "fake_quote",
+      "inference_performed": true,
+      "mechanical_pass": true,
+      "semantic_reference_pass": true,
+      "latency_seconds": 7.5403786249989935,
+      "errors": []
+    },
+    {
+      "trial_id": "actor_mixup",
+      "inference_performed": true,
+      "mechanical_pass": true,
+      "semantic_reference_pass": false,
+      "latency_seconds": 13.024508915999832,
+      "errors": [
+        "claim_0:unsupported_meaning_value_kind_actor_or_span"
+      ]
+    },
+    {
+      "trial_id": "unsupported_chf",
+      "inference_performed": true,
+      "mechanical_pass": true,
+      "semantic_reference_pass": true,
+      "latency_seconds": 7.534725957999399,
+      "errors": []
+    },
+    {
+      "trial_id": "temporal_leakage",
+      "inference_performed": true,
+      "mechanical_pass": true,
+      "semantic_reference_pass": true,
+      "latency_seconds": 7.892817833000663,
+      "errors": []
+    },
+    {
+      "trial_id": "full_extraction",
+      "inference_performed": false,
+      "evidence_class": "PIPELINE_AGGREGATE_NOT_SINGLE_MODEL_COMPLETION",
+      "mechanical_pass": true,
+      "semantic_reference_pass": true,
+      "errors": []
+    }
+  ],
+  "catalog_sha256": "8d98a741550f450a64bb8103ece1efa561b0c75436b8096bf47ac6c74508d618",
+  "semantic_reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+  "human_semantic_reviewed": false,
+  "public_availability_verified": false,
+  "frontend_authorized_by_this_run": false,
+  "scope": "Single AHV development case, bounded typed propositions; no free-text semantic entailment or generalisation proof"
+}

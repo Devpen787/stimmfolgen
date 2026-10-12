@@ -1,46 +1,39 @@
-name: Gate 0 — REAL Apertus inference (manual, requires credentials)
+name: Gate 0 — local Apertus span inference (manual, self-hosted Mac)
 on:
   workflow_dispatch:
-    inputs:
-      model_id:
-        description: Exact Apertus model ID available at your authorised endpoint
-        required: true
-        default: swiss-ai/apertus-v1.5-8b
-        type: string
 
+# No hosted/paid fallback. This runner and loopback MLX server must be explicitly
+# provisioned before dispatch. Ordinary GitHub cloud CI verifies source/tests only.
 jobs:
   real-apertus:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, macOS, ARM64, apertus]
     timeout-minutes: 15
     env:
-      LLM_NAME: ${{ inputs.model_id }}
-      LLM_BASE_URL: ${{ vars.APERTUS_BASE_URL || 'https://api.publicai.co/v1' }}
-      LLM_API_KEY: ${{ secrets.APERTUS_API_KEY }}
+      APERTUS_MODEL_DIR: ${{ vars.APERTUS_MODEL_DIR }}
+      HF_HUB_OFFLINE: '1'
+      TRANSFORMERS_OFFLINE: '1'
+      HF_HUB_DISABLE_TELEMETRY: '1'
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Install source tooling
-        run: python -m pip install 'pymupdf>=1.24,<2'
-      - name: Check access configuration without exposing credentials
-        shell: bash
+      - name: Check explicitly provisioned local model
+        run: test -n "$APERTUS_MODEL_DIR" && test -d "$APERTUS_MODEL_DIR"
+      - name: Install pinned source tooling in isolated environment
         run: |
-          if [ -z "$LLM_BASE_URL" ] || [ -z "$LLM_API_KEY" ]; then
-            echo "::error::Set GitHub Actions secret APERTUS_API_KEY first; optional APERTUS_BASE_URL variable overrides default Public AI endpoint"
-            exit 1
-          fi
-          echo "Apertus inference requested. Secrets will not be printed."
-      - name: Retrieve exact source and extract reference pages
-        run: python track_2b/src/gate0/source_probe.py --out /tmp/gate0-source.json --pdf-out /tmp/gate0-source.pdf
-      - name: Invoke actual configured Apertus model
-        run: python track_2b/src/gate0/model_probe.py --source-report /tmp/gate0-source.json --source-pdf /tmp/gate0-source.pdf --out /tmp/gate0-model.json
+          python3 -m venv .venv-gate0
+          .venv-gate0/bin/python -m pip install 'pymupdf==1.28.2'
+      - name: Retrieve and authenticate official source
+        run: .venv-gate0/bin/python track_2b/src/gate0/source_probe.py --out /tmp/gate0-source.json --pdf-out /tmp/gate0-source.pdf --spans-out /tmp/gate0-spans.json
+      - name: Verify pinned local weights and running loopback server
+        run: .venv-gate0/bin/python track_2b/src/gate0/local_model.py --model-dir "$APERTUS_MODEL_DIR" --base-url http://127.0.0.1:8766/v1 --out /tmp/gate0-local-model.json
+      - name: Invoke actual Apertus and independently evaluate span selections
+        run: .venv-gate0/bin/python track_2b/src/gate0/span_probe.py --source-report /tmp/gate0-source.json --source-pdf /tmp/gate0-source.pdf --local-model-report /tmp/gate0-local-model.json --out-dir /tmp/gate0-span-run
       - name: Upload raw evidence for independent review
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: gate0-actual-apertus-unreviewed
+          name: gate0-local-apertus-unreviewed
           path: |
             /tmp/gate0-source.json
-            /tmp/gate0-model.json
+            /tmp/gate0-spans.json
+            /tmp/gate0-span-run/
           retention-days: 7

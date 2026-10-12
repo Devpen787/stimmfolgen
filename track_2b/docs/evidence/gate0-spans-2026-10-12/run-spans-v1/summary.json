@@ -1,0 +1,99 @@
+{
+  "bounded_machine_suite_pass": false,
+  "gate_status": "FAIL",
+  "trials": [
+    {
+      "trial_id": "full_extraction",
+      "inference_performed": true,
+      "mechanical_pass": false,
+      "semantic_reference_pass": false,
+      "latency_seconds": 36.37061933299992,
+      "errors": [
+        "invalid_completion"
+      ]
+    },
+    {
+      "trial_id": "direct_provision",
+      "inference_performed": true,
+      "mechanical_pass": false,
+      "semantic_reference_pass": false,
+      "latency_seconds": 14.653240084000572,
+      "errors": [
+        "claim_1:invalid_typed_proposition",
+        "claim_1:invalid_span_references",
+        "claim_0:unsupported_meaning_value_kind_actor_or_span",
+        "claim_1:unsupported_meaning_value_kind_actor_or_span",
+        "required_proposition_missing"
+      ]
+    },
+    {
+      "trial_id": "cost_projection",
+      "inference_performed": true,
+      "mechanical_pass": false,
+      "semantic_reference_pass": false,
+      "latency_seconds": 15.520804375000807,
+      "errors": [
+        "claim_0:invalid_typed_proposition",
+        "claim_1:invalid_typed_proposition",
+        "claim_0:unsupported_meaning_value_kind_actor_or_span",
+        "claim_1:unsupported_meaning_value_kind_actor_or_span"
+      ]
+    },
+    {
+      "trial_id": "financing_refusal",
+      "inference_performed": true,
+      "mechanical_pass": true,
+      "semantic_reference_pass": false,
+      "latency_seconds": 7.997485666999637,
+      "errors": [
+        "required_proposition_missing"
+      ]
+    },
+    {
+      "trial_id": "fake_quote",
+      "inference_performed": true,
+      "mechanical_pass": true,
+      "semantic_reference_pass": true,
+      "latency_seconds": 8.259647000000768,
+      "errors": []
+    },
+    {
+      "trial_id": "actor_mixup",
+      "inference_performed": true,
+      "mechanical_pass": true,
+      "semantic_reference_pass": true,
+      "latency_seconds": 14.140810708000572,
+      "errors": []
+    },
+    {
+      "trial_id": "unsupported_chf",
+      "inference_performed": true,
+      "mechanical_pass": true,
+      "semantic_reference_pass": false,
+      "latency_seconds": 8.580016875001093,
+      "errors": [
+        "required_proposition_missing"
+      ]
+    },
+    {
+      "trial_id": "temporal_leakage",
+      "inference_performed": true,
+      "mechanical_pass": false,
+      "semantic_reference_pass": false,
+      "latency_seconds": 19.58540045799964,
+      "errors": [
+        "claim_1:invalid_typed_proposition",
+        "claim_2:invalid_typed_proposition",
+        "claim_0:unsupported_meaning_value_kind_actor_or_span",
+        "claim_1:unsupported_meaning_value_kind_actor_or_span",
+        "claim_2:unsupported_meaning_value_kind_actor_or_span"
+      ]
+    }
+  ],
+  "catalog_sha256": "8d98a741550f450a64bb8103ece1efa561b0c75436b8096bf47ac6c74508d618",
+  "semantic_reference_sha256": "4f3d730b4fa121940e596bdec7d1f794b357cb2ac5993c057d6b55cfe31ad77a",
+  "human_semantic_reviewed": false,
+  "public_availability_verified": false,
+  "frontend_authorized_by_this_run": false,
+  "scope": "Single AHV development case, bounded typed propositions; no free-text semantic entailment or generalisation proof"
+}

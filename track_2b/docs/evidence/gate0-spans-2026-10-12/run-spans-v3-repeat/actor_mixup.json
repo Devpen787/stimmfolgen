@@ -1,0 +1,340 @@
+{
+  "evidence_class": "ACTUAL_MODEL_ATTEMPT_UNREVIEWED",
+  "observed_at_utc": "2026-10-12T10:35:29.221614+00:00",
+  "model": "default_model",
+  "base_url": "http://127.0.0.1:8766/v1",
+  "local_identity": {
+    "evidence_class": "LOCAL_MODEL_INSPECTION",
+    "observed_at_utc": "2026-10-12T10:35:29.221409+00:00",
+    "model_id": "tokimoa/apertus-v1.5-8b-mlx-4bit",
+    "backing_checkpoint": "swiss-ai/Apertus-v1.5-8B",
+    "source_revision": "f08ed532a657bef7d322bd0cbca43dac13a9d0a3",
+    "declared_upstream_revision": "a411d838600baf0e3635a3daf66fb7c55fc97bb6",
+    "served_alias": "default_model",
+    "base_url": "http://127.0.0.1:8766/v1",
+    "model_dir": "[LOCAL_MODEL_DIR]",
+    "format": "MLX safetensors",
+    "quantization": {
+      "group_size": 64,
+      "bits": 4,
+      "mode": "affine"
+    },
+    "artifacts": {
+      "README.md": {
+        "sha256": "e372a8b2775b02fecf5fe488fd494c561900910aa4ea2893f6ab52596c95b6bd",
+        "bytes": 3529
+      },
+      "config.json": {
+        "sha256": "fb3073b923ff444de21b48c8984745665280cc29354c368200aecd596bbf51c0",
+        "bytes": 1082
+      },
+      "model.safetensors": {
+        "sha256": "d0478edeb06bf18e5f4f7b50db77d89b839730b2d16cb1020015e6099e42074b",
+        "bytes": 4530491646
+      },
+      "model.safetensors.index.json": {
+        "sha256": "acbd6ca819d5f39ef920397429bfa3d04c77b288d0cddb4f97bf1a000bdd036d",
+        "bytes": 58759
+      },
+      "tokenizer.json": {
+        "sha256": "1f2f6198ea5789e5a90ec7c5ec5cf0d5242cf5b8de007105537c91d777581582",
+        "bytes": 44028400
+      },
+      "tokenizer_config.json": {
+        "sha256": "4e4125a5f2eb5bba3d8c55c8265c46ac566b50512d0a490b9d2a70cf6a142c7c",
+        "bytes": 2108
+      },
+      "chat_template.jinja": {
+        "sha256": "d23af2850029e9df88bb017e06e0c14a0462604588f1dbe4f519cdfac3e260e0",
+        "bytes": 16614
+      },
+      "generation_config.json": {
+        "sha256": "9131f56adebe0d591ba8ddc2d18d18edaf762a1ebce6750b24319c86b1d7d6d5",
+        "bytes": 157
+      }
+    },
+    "tensor_count": 839,
+    "v1_5_verified": true,
+    "alias_binding": "mlx_lm.server --model path; /v1/models advertises resolved path; MLX default_model mapping",
+    "provenance_limit": "Pinned locally downloaded conversion with publisher-declared base model; no independent conversion-equivalence test or signed runtime attestation"
+  },
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "source_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf",
+  "as_of": "2023-11-29",
+  "source_pdf_reverified": true,
+  "prompt_version": "gate0-span-selection-v3-flat-task-contract",
+  "output_contract": "immutable-spans-and-typed-propositions-v1",
+  "raw_request": {
+    "model": "default_model",
+    "temperature": 0,
+    "max_tokens": 500,
+    "messages": [
+      {
+        "role": "system",
+        "content": "Extract candidate evidence with faithful, attributed citations. No voting advice."
+      },
+      {
+        "role": "user",
+        "content": "Answer from SOURCE only, knowledge basis 2023-11-29. No later knowledge, guesses or voting advice. Return ONLY one JSON object, with EXACTLY these fields: outcome (SUPPORTED, INSUFFICIENT_EVIDENCE or SOURCE_CONFLICT), span_ids (nonempty list of copied IDs supporting your answer), actor (GOVERNMENT or COMMITTEE: who ACTUALLY makes the taxes-or-spending-cuts forecast?). Do not add claims, explanations, quotes, money calculations for an employee, or any other field. outcome evaluates the QUESTION: an unknown burden is INSUFFICIENT_EVIDENCE; a false speaker premise is SOURCE_CONFLICT. Still extract the cited financing-specified flag or actual speaker to explain a refused question. False financing_specified means the initiative leaves financing open, not that the answer is missing. Choose the actual source actor, not one incorrectly suggested by the question.\nQUESTION: Confirm that the initiative committee predicts the federal government must increase taxes or cut expenditure to fund the 13th pension. Attribute this budget forecast to the committee.\nSOURCE:\n{\"span_id\": \"sp-3447ba48efee56d950bc\", \"actor\": \"COMMITTEE\", \"text\": \"Mieten, Krankenkassenprämien, Lebensmittel: Alles ist teurer.\"}\n{\"span_id\": \"sp-a7649186dd743c0b6c8f\", \"actor\": \"COMMITTEE\", \"text\": \"Die Rente reicht immer weniger weit.\"}\n{\"span_id\": \"sp-61db64b8218c5f7d170e\", \"actor\": \"COMMITTEE\", \"text\": \"Wer ein Leben lang gearbeitet und in die Altersvorsorge einbezahlt hat, verdient eine anständige Rente.\"}\n{\"span_id\": \"sp-314f38ddb323c24393e4\", \"actor\": \"COMMITTEE\", \"text\": \"Deshalb braucht es nun eine 13. AHV-Rente.\"}\n{\"span_id\": \"sp-d880af2249edd61c6625\", \"actor\": \"COMMITTEE\", \"text\": \"Sie verbessert die Situation der heutigen und zukünftigen Rentnerinnen und Rentner rasch und effizient.\"}\n{\"span_id\": \"sp-144645a2ae665c933973\", \"actor\": \"COMMITTEE\", \"text\": \"Deshalb: Ja zur 13. AHV-Rente.\"}\n{\"span_id\": \"sp-2c61ba5179f63b3a5489\", \"actor\": \"COMMITTEE\", \"text\": \"Das Stimmvolk hat die AHV eingeführt, damit alle in der Schweiz nach einem langen Erwerbsleben anständig leben können.\"}\n{\"span_id\": \"sp-2a6bd7e253ab2da2c777\", \"actor\": \"COMMITTEE\", \"text\": \"Doch heute haben immer mehr Rentnerinnen und Rentner Mühe, über die Runden zu kommen.\"}\n{\"span_id\": \"sp-314d0f0a853ccf56a2c2\", \"actor\": \"COMMITTEE\", \"text\": \"Bei Annahme der Initiative wird eine 13. AHV-Rente ausbezahlt, analog zum 13. Monatslohn.\"}\n{\"span_id\": \"sp-1d265f9dc84033d78052\", \"actor\": \"COMMITTEE\", \"text\": \"Auch Bezügerinnen und Bezüger von Ergänzungsleistungen bekommen die zusätzliche Rente.\"}\n{\"span_id\": \"sp-f6da3c63301b9ec094e3\", \"actor\": \"COMMITTEE\", \"text\": \"Das gleicht schnell und effizient die gestiegenen Preise aus.\"}\n{\"span_id\": \"sp-6d53187c9f669209ca39\", \"actor\": \"COMMITTEE\", \"text\": \"Mieten, Krankenkassenprämien, Strom und Lebensmittel sind teurer.\"}\n{\"span_id\": \"sp-9d93404b42c438677799\", \"actor\": \"COMMITTEE\", \"text\": \"Die höheren Lebenshaltungskosten fressen eine Monatsrente weg.\"}\n{\"span_id\": \"sp-2edcbcc876bd0d46d64a\", \"actor\": \"COMMITTEE\", \"text\": \"Und die Pensionskassenrenten sinken seit Jahren.\"}\n{\"span_id\": \"sp-ae1a95ac8ec36264ef47\", \"actor\": \"COMMITTEE\", \"text\": \"Darum braucht es rasch eine Erhöhung der Altersrenten für aktuelle und zukünftige Rentnerinnen und Rentner.\"}\n{\"span_id\": \"sp-7ec493a6458e69463a62\", \"actor\": \"COMMITTEE\", \"text\": \"Die AHV kommt allen in der Schweiz zugute.\"}\n{\"span_id\": \"sp-112eed26abbdb0c99ab5\", \"actor\": \"COMMITTEE\", \"text\": \"Für die meisten Arbeitnehmenden lohnt sie sich: Die Arbeitgeber tragen die Hälfte der Beiträge.\"}\n{\"span_id\": \"sp-48d0dfa479b8e95b7d2d\", \"actor\": \"COMMITTEE\", \"text\": \"Auch Topverdienende zahlen einen Teil der Rente, weil ihre Millionen-Boni AHV-pflichtig sind.\"}\n{\"span_id\": \"sp-f5117622bf1406cb6104\", \"actor\": \"COMMITTEE\", \"text\": \"Ausserdem hat die AHV stabile und tiefe Kosten.\"}\n{\"span_id\": \"sp-2cdb91d0b5f9680bc224\", \"actor\": \"COMMITTEE\", \"text\": \"Alle Erträge fliessen direkt in die Renten, ohne dass Banken, Vermittler oder Aktionäre mitverdienen.\"}\n{\"span_id\": \"sp-29dce2a88f71f6399762\", \"actor\": \"COMMITTEE\", \"text\": \"Die höheren Preise treffen Menschen mit tieferer Rente besonders hart.\"}\n{\"span_id\": \"sp-ee6a5fff27f77b358bf0\", \"actor\": \"COMMITTEE\", \"text\": \"Darunter sind überdurchschnittlich viele Frauen.\"}\n{\"span_id\": \"sp-0165d6c216dc798be30a\", \"actor\": \"COMMITTEE\", \"text\": \"Eine 13. AHV-Rente bringt ihnen am meisten: Nur aus der AHV haben alle eine Rente.\"}\n{\"span_id\": \"sp-c72e75d1de9dac83b519\", \"actor\": \"COMMITTEE\", \"text\": \"Nur die AHV anerkennt die unbezahlte Betreuungsarbeit, die hauptsächlich von Frauen geleistet wird: Ein Kind grosszuziehen, erhöht die AHV-Rente.\"}\n{\"span_id\": \"sp-9110bbd1ae1d95cdc528\", \"actor\": \"GOVERNMENT\", \"text\": \"Bundesrat und Parlament lehnen die Vorlage insbesondere aus folgenden Gründen ab:\"}\n{\"span_id\": \"sp-c17b3513421de3804b09\", \"actor\": \"GOVERNMENT\", \"text\": \"Die Ausgaben der AHV würden auf einen Schlag um mehr als 4 Milliarden steigen und danach schnell weiter zunehmen.\"}\n{\"span_id\": \"sp-8fa7ba3419d9690f45e2\", \"actor\": \"GOVERNMENT\", \"text\": \"Um die hohen Kosten für eine 13. AHV-Altersrente zu decken, müssten beispielsweise die Lohnabzüge oder die Mehrwertsteuer weiter erhöht werden.\"}\n{\"span_id\": \"sp-eac0d0ebb7b34dc40b9b\", \"actor\": \"GOVERNMENT\", \"text\": \"Eine 13. AHV-Altersrente hätte auch negative Auswirkungen auf den Bundeshaushalt, weil der Bund rund einen Fünftel der jährlichen Ausgaben der AHV bezahlen muss.\"}\n{\"span_id\": \"sp-92f4ef4f294b8ca65441\", \"actor\": \"GOVERNMENT\", \"text\": \"Der Bund müsste seine Steuern erhöhen oder Ausgaben kürzen.\"}"
+      }
+    ]
+  },
+  "request_sha256": "bbc384053b0a70500369d9962eba4b749de3878fe87935946a044edf1698d4df",
+  "generation": {
+    "temperature": 0,
+    "max_tokens": 500
+  },
+  "model_inference_performed": true,
+  "human_semantic_reviewed": false,
+  "promoted_to_verified_effect": false,
+  "v1_5_verified": true,
+  "gate_status": "FAIL",
+  "raw_response_text": "{\"id\": \"chatcmpl-d9ab548e-50e6-464d-954b-0b2aede7ab5c\", \"system_fingerprint\": \"0.31.3-0.32.0-macOS-26.6.2-arm64-arm-64bit-Mach-O-applegpu_g15s\", \"object\": \"chat.completion\", \"model\": \"default_model\", \"created\": 1791801329, \"choices\": [{\"index\": 0, \"finish_reason\": \"stop\", \"message\": {\"role\": \"assistant\", \"content\": \"{\\\"outcome\\\": \\\"INSUFFICIENT_EVIDENCE\\\", \\\"span_ids\\\": [\\\"sp-314d0f0a853ccf56a2c2\\\", \\\"sp-1d265f9dc84033d78052\\\", \\\"sp-ee6a5fff27f77b358bf0\\\", \\\"sp-0165d6c216dc798be30a\\\", \\\"sp-c72e75d1de9dac83b519\\\"], \\\"actor\\\": \\\"COMMITTEE\\\"}\"}}], \"usage\": {\"prompt_tokens\": 2043, \"completion_tokens\": 137, \"total_tokens\": 2180, \"prompt_tokens_details\": {\"cached_tokens\": 107}}}",
+  "response_sha256": "afc79de2d9459f2e133f01b8d817a5c00c9279a5e0a0e62f5d530c5ddf6322f0",
+  "latency_seconds": 13.024508915999832,
+  "raw_api_response": {
+    "id": "chatcmpl-d9ab548e-50e6-464d-954b-0b2aede7ab5c",
+    "system_fingerprint": "0.31.3-0.32.0-macOS-26.6.2-arm64-arm-64bit-Mach-O-applegpu_g15s",
+    "object": "chat.completion",
+    "model": "default_model",
+    "created": 1791801329,
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"outcome\": \"INSUFFICIENT_EVIDENCE\", \"span_ids\": [\"sp-314d0f0a853ccf56a2c2\", \"sp-1d265f9dc84033d78052\", \"sp-ee6a5fff27f77b358bf0\", \"sp-0165d6c216dc798be30a\", \"sp-c72e75d1de9dac83b519\"], \"actor\": \"COMMITTEE\"}"
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 2043,
+      "completion_tokens": 137,
+      "total_tokens": 2180,
+      "prompt_tokens_details": {
+        "cached_tokens": 107
+      }
+    }
+  },
+  "parsed_candidate": {
+    "outcome": "INSUFFICIENT_EVIDENCE",
+    "span_ids": [
+      "sp-314d0f0a853ccf56a2c2",
+      "sp-1d265f9dc84033d78052",
+      "sp-ee6a5fff27f77b358bf0",
+      "sp-0165d6c216dc798be30a",
+      "sp-c72e75d1de9dac83b519"
+    ],
+    "actor": "COMMITTEE"
+  },
+  "validation": {
+    "mechanical_pass": true,
+    "errors": [],
+    "checks": [
+      {
+        "valid": true,
+        "errors": [],
+        "span_ids": [
+          "sp-314d0f0a853ccf56a2c2",
+          "sp-1d265f9dc84033d78052",
+          "sp-ee6a5fff27f77b358bf0",
+          "sp-0165d6c216dc798be30a",
+          "sp-c72e75d1de9dac83b519"
+        ]
+      }
+    ],
+    "publication_state": "CANDIDATE_UNREVIEWED",
+    "semantic_support_verified": false
+  },
+  "mechanical_grounding_checks": [
+    {
+      "valid": true,
+      "errors": [],
+      "span_ids": [
+        "sp-314d0f0a853ccf56a2c2",
+        "sp-1d265f9dc84033d78052",
+        "sp-ee6a5fff27f77b358bf0",
+        "sp-0165d6c216dc798be30a",
+        "sp-c72e75d1de9dac83b519"
+      ]
+    }
+  ],
+  "trial_id": "actor_mixup",
+  "task_contract_supplied": true,
+  "independent_type_classification_test": false,
+  "catalog_sha256": "8d98a741550f450a64bb8103ece1efa561b0c75436b8096bf47ac6c74508d618",
+  "semantic_reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+  "canonical_candidate": {
+    "outcome": "INSUFFICIENT_EVIDENCE",
+    "claims": [
+      {
+        "predicate": "BUDGET_TAX_OR_CUTS",
+        "kind": "ATTRIBUTED_PREDICTION",
+        "actor": "COMMITTEE",
+        "value": {
+          "value": true
+        },
+        "span_ids": [
+          "sp-314d0f0a853ccf56a2c2",
+          "sp-1d265f9dc84033d78052",
+          "sp-ee6a5fff27f77b358bf0",
+          "sp-0165d6c216dc798be30a",
+          "sp-c72e75d1de9dac83b519"
+        ]
+      }
+    ],
+    "missing_facts": [
+      "SOURCE_SUPPORT"
+    ],
+    "personal_financing_chf": null
+  },
+  "adaptation": "Field mapping only; raw values and IDs preserved. Kind comes from the typed task; positive actor comes from source metadata; refusal reasons and null finance are application policy, not generated model explanations.",
+  "semantic_evaluation": {
+    "semantic_reference_pass": false,
+    "errors": [
+      "claim_0:unsupported_meaning_value_kind_actor_or_span"
+    ],
+    "checks": [
+      {
+        "predicate": "BUDGET_TAX_OR_CUTS",
+        "reference_match": false
+      }
+    ],
+    "reference_version": "ahv13-semantic-reference-v1",
+    "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+    "human_semantic_reviewed": false,
+    "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+    "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+    "publication_state": "WITHHELD"
+  },
+  "resolved_citations": [
+    {
+      "predicate": "BUDGET_TAX_OR_CUTS",
+      "citations": [
+        {
+          "document_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "extraction_version": "blocks-v3",
+          "segmentation_version": "source-sentences-v1",
+          "pdf_page": 14,
+          "block_number": 2,
+          "start": 659,
+          "end": 748,
+          "text_sha256": "cc7143cc8c2b932ea7c7a3849923dc6a931aa3e745ffaad6c0114f800601f835",
+          "role": "INITIATIVE_COMMITTEE_ARGUMENTS",
+          "knowledge_cutoff_at": "2023-11-29",
+          "span_id": "sp-314d0f0a853ccf56a2c2",
+          "identity_sha256": "314d0f0a853ccf56a2c20314d045ee7974c2036b3d88d24d5b80713e9e652e81",
+          "text": "Bei Annahme der Initiative wird eine 13. AHV-Rente ausbezahlt, analog zum 13. Monatslohn.",
+          "bbox": [
+            121.8898,
+            185.9949,
+            387.6982,
+            280.6599
+          ],
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=14",
+          "available_at": null,
+          "actor": "COMMITTEE"
+        },
+        {
+          "document_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "extraction_version": "blocks-v3",
+          "segmentation_version": "source-sentences-v1",
+          "pdf_page": 14,
+          "block_number": 2,
+          "start": 749,
+          "end": 835,
+          "text_sha256": "b502fc3a9b0249aacce0a0d32254b08a91d4940ed8b4810b35809155561a75ba",
+          "role": "INITIATIVE_COMMITTEE_ARGUMENTS",
+          "knowledge_cutoff_at": "2023-11-29",
+          "span_id": "sp-1d265f9dc84033d78052",
+          "identity_sha256": "1d265f9dc84033d78052e4de3763279cae2333a90b3c4a5ae1e2c8d27d5648cb",
+          "text": "Auch Bezügerinnen und Bezüger von Ergänzungsleistungen bekommen die zusätzliche Rente.",
+          "bbox": [
+            121.8898,
+            185.9949,
+            387.6982,
+            280.6599
+          ],
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=14",
+          "available_at": null,
+          "actor": "COMMITTEE"
+        },
+        {
+          "document_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "extraction_version": "blocks-v3",
+          "segmentation_version": "source-sentences-v1",
+          "pdf_page": 14,
+          "block_number": 5,
+          "start": 1738,
+          "end": 1786,
+          "text_sha256": "12e52c569af2d6d1dfc1ab47b071da5c3b2523c4d5afea0bf994bf65caafc78d",
+          "role": "INITIATIVE_COMMITTEE_ARGUMENTS",
+          "knowledge_cutoff_at": "2023-11-29",
+          "span_id": "sp-ee6a5fff27f77b358bf0",
+          "identity_sha256": "ee6a5fff27f77b358bf03a38d765abf616640e88dc3add5f02e2b4da86064add",
+          "text": "Darunter sind überdurchschnittlich viele Frauen.",
+          "bbox": [
+            121.8898,
+            461.9949,
+            392.3626,
+            532.6599
+          ],
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=14",
+          "available_at": null,
+          "actor": "COMMITTEE"
+        },
+        {
+          "document_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "extraction_version": "blocks-v3",
+          "segmentation_version": "source-sentences-v1",
+          "pdf_page": 14,
+          "block_number": 5,
+          "start": 1787,
+          "end": 1869,
+          "text_sha256": "e9dade148af43a338cba4cdc308bbf0af1ac505808392fdeaa1b6fca62eab2c8",
+          "role": "INITIATIVE_COMMITTEE_ARGUMENTS",
+          "knowledge_cutoff_at": "2023-11-29",
+          "span_id": "sp-0165d6c216dc798be30a",
+          "identity_sha256": "0165d6c216dc798be30a7c900ad40eb52140d3401240bacf17ee2585617c418a",
+          "text": "Eine 13. AHV-Rente bringt ihnen am meisten: Nur aus der AHV haben alle eine Rente.",
+          "bbox": [
+            121.8898,
+            461.9949,
+            392.3626,
+            532.6599
+          ],
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=14",
+          "available_at": null,
+          "actor": "COMMITTEE"
+        },
+        {
+          "document_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "extraction_version": "blocks-v3",
+          "segmentation_version": "source-sentences-v1",
+          "pdf_page": 14,
+          "block_number": 5,
+          "start": 1870,
+          "end": 2015,
+          "text_sha256": "009e4f0efdc5733d818eae551049c6a09af5965e808acca5c34de56218a6ec1a",
+          "role": "INITIATIVE_COMMITTEE_ARGUMENTS",
+          "knowledge_cutoff_at": "2023-11-29",
+          "span_id": "sp-c72e75d1de9dac83b519",
+          "identity_sha256": "c72e75d1de9dac83b5192c111c553f55bc2797acb60867c4221c84d42b5b5b6e",
+          "text": "Nur die AHV anerkennt die unbezahlte Betreuungsarbeit, die hauptsächlich von Frauen geleistet wird: Ein Kind grosszuziehen, erhöht die AHV-Rente.",
+          "bbox": [
+            121.8898,
+            461.9949,
+            392.3626,
+            532.6599
+          ],
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=14",
+          "available_at": null,
+          "actor": "COMMITTEE"
+        }
+      ]
+    }
+  ],
+  "bounded_machine_test_pass": false,
+  "publication_state": "WITHHELD"
+}

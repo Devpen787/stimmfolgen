@@ -152,6 +152,7 @@ def main():
     p.add_argument("--out", type=Path, default=Path("gate0-source.json"))
     p.add_argument("--pdf-out", type=Path, help="Cache the exact source bytes for model verification")
     p.add_argument("--extraction-version", choices=("lines-v1", "blocks-v2", "blocks-v3"), default="blocks-v3")
+    p.add_argument("--spans-out", type=Path, help="Compile immutable spans authenticated against original bytes")
     args = p.parse_args()
     if args.pdf:
         data = args.pdf.read_bytes()
@@ -165,6 +166,14 @@ def main():
         args.pdf_out.write_bytes(data)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
+    if args.spans_out:
+        from source_spans import build_catalog
+        from semantic_eval import validate_reference
+        catalog = build_catalog(report, data)
+        reference = json.loads((Path(__file__).resolve().parents[2] / "tests/references/ahv13_semantics.json").read_text())
+        validate_reference(reference, catalog)
+        args.spans_out.parent.mkdir(parents=True, exist_ok=True)
+        args.spans_out.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps({
         "evidence_class": "SOURCE",
         "sha256": report["sha256"],

@@ -131,7 +131,8 @@ def validate_answer(answer, report, require_coverage=True, expected_outcome=None
             "publication_state": "CANDIDATE_UNREVIEWED" if not errors else "WITHHELD", "semantic_support_verified": False}
 
 def run_inference(report, model_id, base_url, api_key, *, local_identity=None, allow_legacy_diagnostic=False,
-                  prompt=None, require_coverage=True, expected_outcome=None, max_tokens=1800, source_pdf_data=None):
+                  prompt=None, require_coverage=True, expected_outcome=None, max_tokens=1800, source_pdf_data=None,
+                  answer_validator=None, prompt_version=None, output_contract="generated-quotes-v1"):
     if not base_url:
         raise RuntimeError("LLM_BASE_URL is required; configure a real Apertus endpoint")
     if model_id.lower() not in MODEL_IDS and local_identity is None:
@@ -158,7 +159,8 @@ def run_inference(report, model_id, base_url, api_key, *, local_identity=None, a
         "evidence_class": "ACTUAL_MODEL_ATTEMPT_UNREVIEWED", "observed_at_utc": datetime.now(timezone.utc).isoformat(),
         "model": model_id, "base_url": endpoint, "local_identity": identity,
         "source_sha256": report["sha256"], "source_url": report["source_url"], "as_of": report["as_of"],
-        "source_pdf_reverified": True, "prompt_version": PROMPT_VERSION, "raw_request": payload,
+        "source_pdf_reverified": True, "prompt_version": prompt_version or PROMPT_VERSION,
+        "output_contract": output_contract, "raw_request": payload,
         "request_sha256": hashlib.sha256(request_bytes).hexdigest(), "generation": {"temperature": 0, "max_tokens": max_tokens},
         "model_inference_performed": False, "human_semantic_reviewed": False, "promoted_to_verified_effect": False,
         "v1_5_verified": v1_5, "gate_status": "REVIEW_REQUIRED" if v1_5 else "BLOCKED_CHECKPOINT_MISMATCH",
@@ -191,7 +193,8 @@ def run_inference(report, model_id, base_url, api_key, *, local_identity=None, a
             raise ValueError("Completion did not stop normally (possibly truncated)")
         answer = parse_response(body)
         result["parsed_candidate"] = answer
-        result["validation"] = validate_answer(answer, report, require_coverage, expected_outcome)
+        validator = answer_validator or validate_answer
+        result["validation"] = validator(answer, report, require_coverage, expected_outcome)
         result["mechanical_grounding_checks"] = result["validation"]["checks"]
     except (ValueError, KeyError, TypeError, IndexError) as exc:
         result.update({"parse_error": str(exc), "validation": {"mechanical_pass": False, "errors": ["invalid_completion"], "publication_state": "WITHHELD"}})

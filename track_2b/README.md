@@ -101,3 +101,9 @@ https://hackapertus.ch/terms-and-conditions
 
 ## Contact
 💬 In case you have questions, join the conversation on Discord or send an email to “hello@hackapertus.ch”
+
+## StimmFolgen Gate 0: current implementation
+
+The active local diagnostic is `src/gate0/span_probe.py`: Apertus selects immutable source IDs and minimal typed fields; quotations resolve from the authenticated primary-source ledger. A separate evaluation-only semantic reference rejects unsupported meaning/actor/value combinations. Historical generated-quote probes are retained as failed baselines. See [reproduction commands and actual results](docs/evidence/GATE0_SPANS_2026-10-12.md) and [ADR 0002](docs/adr/0002-immutable-spans-and-independent-reference.md).
+
+Actual local v1.5 inference is verified. Gate 0 remains **FAIL**: the actor-attribution failure repeats, human review is absent and publication availability is unknown. Frontend work is blocked. GitHub cloud CI checks source/spans/safeguards; model inference still requires a provisioned local Mac runtime.
