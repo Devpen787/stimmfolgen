@@ -1,0 +1,338 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/stimmfolgen/public_case.schema.json",
+  "$comment": "PROPOSED schema for public case exchange; structural validation is not semantic verification",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 160,
+      "pattern": "^[a-zA-Z0-9_.:\\/-]+$"
+    },
+    "citationId": {
+      "type": "string",
+      "minLength": 3
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "mode",
+    "as_of",
+    "proposal",
+    "documents",
+    "source_spans",
+    "impacts",
+    "uncertainties",
+    "review_status",
+    "generated_by"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "case_id": {
+      "$ref": "#/$defs/id"
+    },
+    "mode": {
+      "enum": [
+        "PRE_VOTE",
+        "RETROSPECTIVE"
+      ]
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date"
+    },
+    "proposal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "jurisdiction",
+        "vote_date",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "jurisdiction": {
+          "type": "string",
+          "minLength": 1
+        },
+        "vote_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "status": {
+          "enum": [
+            "PLANNED",
+            "VOTED",
+            "IMPLEMENTED",
+            "UNKNOWN"
+          ]
+        }
+      }
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "url",
+          "sha256",
+          "language",
+          "publisher",
+          "published_at"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "url": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "language": {
+            "type": "string"
+          },
+          "publisher": {
+            "type": "string"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "editorial_cutoff": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "retrieved_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "source_spans": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "document_id",
+          "pdf_page",
+          "excerpt",
+          "available_at"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "document_id": {
+            "$ref": "#/$defs/id"
+          },
+          "pdf_page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "printed_page": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "excerpt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "available_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "attribution": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "impacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "proposal_id",
+          "statement",
+          "scope",
+          "epistemic_type",
+          "source_span_ids",
+          "affected_group",
+          "uncertainty_ids",
+          "review_status"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "proposal_id": {
+            "$ref": "#/$defs/id"
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 3
+          },
+          "scope": {
+            "enum": [
+              "PERSONAL_SCENARIO",
+              "PEOPLE_AROUND",
+              "SWITZERLAND",
+              "CROSS_BORDER"
+            ]
+          },
+          "epistemic_type": {
+            "enum": [
+              "DIRECT_PROVISION",
+              "CONDITIONAL_APPLICABILITY",
+              "ATTRIBUTED_PREDICTION",
+              "EVIDENCE_BACKED_ESTIMATE",
+              "POST_VOTE_OBSERVATION",
+              "UNRESOLVED",
+              "DISPUTED"
+            ]
+          },
+          "source_span_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/id"
+            },
+            "uniqueItems": true
+          },
+          "affected_group": {
+            "type": "string"
+          },
+          "uncertainty_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/id"
+            },
+            "uniqueItems": true
+          },
+          "review_status": {
+            "enum": [
+              "CANDIDATE",
+              "MECHANICALLY_VALID",
+              "HUMAN_REVIEWED",
+              "CONTESTED",
+              "WITHHELD"
+            ]
+          },
+          "attributed_actor": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "horizon": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "assumptions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "uncertainties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "reason",
+          "missing_information"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "missing_information": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "review_status": {
+      "enum": [
+        "CANDIDATE",
+        "MECHANICALLY_VALID",
+        "HUMAN_REVIEWED",
+        "CONTESTED",
+        "WITHHELD"
+      ]
+    },
+    "generated_by": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "apertus_inference_verified"
+      ],
+      "properties": {
+        "method": {
+          "type": "string"
+        },
+        "apertus_inference_verified": {
+          "type": "boolean"
+        },
+        "model_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "prompt_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}
