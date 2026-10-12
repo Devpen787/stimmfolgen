@@ -1,0 +1,50 @@
+{
+  "scope": "Primary-source review evidence and pending human decisions; source page images are unannotated renders, not frontend work",
+  "renderer": "pdftoppm version 26.02.0",
+  "files": {
+    "REVIEW.md": {
+      "bytes": 13038,
+      "sha256": "3d7677df62b461544da1ac07e5d7def8ce90040a370f34f19e08fa05dd8fe473"
+    },
+    "cdx-response.json": {
+      "bytes": 1460,
+      "sha256": "ace9b1985bc928b004289af2bde0b920e69bd33a2933986a3ff6c7b7ac3249ba"
+    },
+    "pages/page-11.png": {
+      "bytes": 262873,
+      "sha256": "5747cf6178e8a853e24e5d3ebf62d46f0d9f0e81fdf82fb0ab198b3b75bff24c"
+    },
+    "pages/page-14.png": {
+      "bytes": 276532,
+      "sha256": "3f6262cca40c3311c9b3ed44348ab7cf9e4487f75c735bd7530681beba7a594b"
+    },
+    "pages/page-16.png": {
+      "bytes": 313840,
+      "sha256": "46beec014eccd68182307e8a40db38a22aa7539b1851e905b25552da5488a62f"
+    },
+    "pages/page-18.png": {
+      "bytes": 238072,
+      "sha256": "2878c906987c799fed12f312cbf611d2aad7db9a1ecad13031319375ffa694af"
+    },
+    "pages/page-2.png": {
+      "bytes": 25511,
+      "sha256": "2394f9c037207b8fbeab98b4e8513e0d74124b22db3d1abf0fc42ada6f37bbd6"
+    },
+    "pages/page-9.png": {
+      "bytes": 245402,
+      "sha256": "4e0aab01fce12ae8571b8362a52dd7e30f06d6e9cefdb22e33d396bdaf5a71e5"
+    },
+    "publication-availability.json": {
+      "bytes": 3231,
+      "sha256": "ade60a1c71b54839779bc5d33bb50f3019106d756174aecbdfba0174ffe9ee31"
+    },
+    "review-bundle.json": {
+      "bytes": 16946,
+      "sha256": "b502322f2bfb8d69350db9a6653fb8ee5ee99187f98d9800bd46bbe160c53ea6"
+    },
+    "review-response.template.json": {
+      "bytes": 1722,
+      "sha256": "b8f70086db6fe599abdbd8ce50e4348d4f8d043f9118ff1d28ad81b2c3c00dd4"
+    }
+  }
+}

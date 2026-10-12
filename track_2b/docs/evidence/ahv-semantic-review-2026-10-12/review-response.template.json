@@ -1,0 +1,79 @@
+{
+  "packet_version": "ahv-semantic-review-v1",
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "catalog_sha256": "8d98a741550f450a64bb8103ece1efa561b0c75436b8096bf47ac6c74508d618",
+  "semantic_reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+  "trace_commit": "0436dc9a44e5c4be28c67864500d447b59d324d5",
+  "reviewer_name": null,
+  "reviewed_at": null,
+  "decision_options": [
+    "ACCEPT",
+    "REJECT",
+    "NEEDS_CHANGE"
+  ],
+  "decisions": [
+    {
+      "review_id": "P01",
+      "decision": "PENDING",
+      "notes": null
+    },
+    {
+      "review_id": "P02",
+      "decision": "PENDING",
+      "notes": null
+    },
+    {
+      "review_id": "P03",
+      "decision": "PENDING",
+      "notes": null
+    },
+    {
+      "review_id": "P04",
+      "decision": "PENDING",
+      "notes": null
+    },
+    {
+      "review_id": "P05",
+      "decision": "PENDING",
+      "notes": null
+    },
+    {
+      "review_id": "T01",
+      "decision": "PENDING",
+      "notes": null
+    },
+    {
+      "review_id": "T02",
+      "decision": "PENDING",
+      "notes": null
+    },
+    {
+      "review_id": "T03",
+      "decision": "PENDING",
+      "notes": null
+    },
+    {
+      "review_id": "T04",
+      "decision": "PENDING",
+      "notes": null
+    },
+    {
+      "review_id": "T05",
+      "decision": "PENDING",
+      "notes": null
+    },
+    {
+      "review_id": "T06",
+      "decision": "PENDING",
+      "notes": null
+    },
+    {
+      "review_id": "T07",
+      "decision": "PENDING",
+      "notes": null
+    }
+  ],
+  "temporal_frame_decision": "PENDING",
+  "scope_and_composed_output_limitations_decision": "PENDING",
+  "overall_decision": "PENDING"
+}

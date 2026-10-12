@@ -73,3 +73,7 @@ The [immutable span diagnostic](evidence/GATE0_SPANS_2026-10-12.md) replaces gen
 ## Latest attribution continuation (12 October 2026)
 
 [The corrected local v1.5 pipeline](evidence/GATE0_ATTRIBUTION_2026-10-12.md) passes all seven bounded trials and the combined happy path in two unchanged runs. Apertus extracts the source actor and separately parses the requested actor; application comparison returns source conflict when they differ. No expected actor or gold ID enters generation or comparison. All prior failures, including the failed first fix, remain preserved. The composed refusal is not a single model answer. Human semantic review and publication availability remain outstanding; frontend work stays blocked.
+
+## Publication availability and review preparation (12 October 2026)
+
+The [exact-byte historical archive witness](evidence/GATE0_PUBLICATION_AND_REVIEW_2026-10-12.md) verifies public availability by 11 January 2024, 12:11:17 UTC. Keep editorial cutoff (29 November 2023) separate from the proposed public review frame (2 March 2024, 23:59:59 CET). Historical traces are unchanged. The [human review packet](evidence/ahv-semantic-review-2026-10-12/REVIEW.md) contains five propositions, seven pipeline outcomes, context pages and pending decision fields. No human sign-off has been supplied; temporal-frame adoption and final Gate 0 clearance remain outstanding. Frontend work stays blocked.
