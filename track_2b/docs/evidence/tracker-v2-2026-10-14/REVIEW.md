@@ -22,3 +22,7 @@ Primary references: https://www.admin.ch/de/volksabstimmung-vom-29-november-2026
 Screenshots depict synthetic tracking on isolated QA origins, never real user choices or notes: [mobile](mobile-final.png), [Explore](mobile-explore.png), [desktop](desktop-final.png), [selected design comparison](option3-comparison.png). See root design-qa.md. The old report is preserved byte-for-byte in historical-report-v1 for its historical manifest; the old demo remains unchanged and describes the previous interface.
 
 Limits: no independent security audit, user comprehension study, exhaustive accessibility audit, second reviewed case, live per-click inference, cross-device sync or deployed public service. Encryption protects stored ciphertext, not an unlocked/compromised device. A lost passphrase has no recovery service. Fresh local cold-clone and remote check results are recorded separately when complete.
+
+## Cold delivery result
+
+Clean committed checkout 6bb0368 launched using root make run, with no model endpoint or local working files. Real HTTP journey, offline Gate replay and all five deliberate failures passed. Exact image/commit and certificate: cold-clone.json. Current file hashes: artifact-hashes.json. This is publication replay, not a fresh inference run.
