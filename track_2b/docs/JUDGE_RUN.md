@@ -14,12 +14,12 @@ This is **REVIEWED_RECORDED_CASE**, not fresh inference on each click. Actual Ap
 
 Try the complete journey:
 
-1. Overview: distinguish provision, government cost projection and unresolved financing.
-2. Source and context: inspect verbatim authenticated passages, source actor, PDF page, hashes and dates.
-3. Who is affected?: compare an old-age pension recipient and a working-age person.
-4. Check what is known: the personal CHF amount stays unknown, with missing financing facts. Unknown is not zero.
-5. Why would it happen?: inspect all five statements and both argument sections.
-6. My understanding: add a test note, explicitly export a plaintext brief, reload and confirm the note is gone. No notes are sent to the backend.
+1. Start with empty My votes: no fabricated personal choice or history.
+2. Search AHV, track the past proposal, return to My votes and Explore my vote.
+3. Inspect the original passage and source dates; compare Me, Others and Switzerland. Personal CHF cost remains unknown.
+4. View the separately dated October 2026 official update and related November financing proposal. Unreviewed votes say analysis is unavailable.
+5. Keep a synthetic choice/note for this visit, or explicitly create a passphrase-protected local vault. Reload locks persisted data; unlock restores it.
+6. Download an encrypted backup and restore it locally. The backup is not uploaded. A forgotten passphrase cannot be recovered.
 
 For actual **new local inference**, use the existing downloaded MLX weights and compatible native Apple Silicon runtime. See the pinned model/server commands in `docs/evidence/GATE0_SPANS_2026-10-12.md`, then run the current protocol with a new output directory:
 
@@ -31,4 +31,4 @@ python track_2b/src/gate0/span_probe.py --source-report .local/gate0/source-new.
 
 Here `python` must be the compatible prepared environment, not an arbitrary system interpreter. The measured Mac has M3 Pro and 18 GiB RAM; the text-only 4-bit weights occupy 4.53 GB. Fresh model outputs remain unreviewed and never replace published statements automatically. MLX cannot run inside a Linux Docker container on the Mac GPU. The on-premise design separates native model ingestion from Docker-contained reviewed publication.
 
-Limits: one AHV development case; no second-case or unseen-ballot proof, production encrypted vault, French/Italian parity, current-law answers or voting recommendations. A cold Docker pass is a replay/publication delivery check, not whole-model portability. No external hosted deployment or submission has been made.
+Limits: one AHV development case; no second-case or unseen-ballot proof, independently audited production security, French/Italian parity, current-law answers or voting recommendations. A cold Docker pass is a replay/publication delivery check, not whole-model portability. No external hosted deployment or submission has been made.

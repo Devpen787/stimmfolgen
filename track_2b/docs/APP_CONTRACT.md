@@ -7,6 +7,9 @@ The full v0.1 schemas are proposed architecture and continue to have their own s
 - `GET /api/health`: backend health, bounded Gate status and recorded-case mode.
 - `GET /api/booklet.pdf`: authenticated original document retrieved at image build or explicitly supplied locally; never altered or committed as corpus data.
 - `POST /api/question`: JSON object with exactly one string `topic`; supported topics `change`, `cost`, `future_cost`, `personal_cost`, `attribution`. Unsupported topics abstain. Additional fields or bodies over 2048 bytes return 400. Personal cost is always `null` (unknown, not zero), with the two missing enacted-financing facts.
-- All HTTP responses are no-store and same-origin CSP. No request logging; notes remain in browser memory. No outbound requests at container runtime. Export is a browser-created plaintext file.
+- All HTTP responses are no-store and same-origin CSP. No request logging; private data stays in browser memory by default, or an opt-in encrypted browser vault. No outbound requests at container runtime. Backup export is encrypted and created in the browser. No choices, notes or search queries are sent to the backend or model.
 
 `test_app_backend.py` tests the HTTP/privacy boundaries with a clearly labelled routing fixture, not fabricated model evidence. A cold Docker smoke test separately loads and verifies the real reviewed case. The inference CLI is a separate ingestion/evaluation path; new candidates must be independently checked and reviewed before publication.
+
+- `GET /api/catalog`: five selected proposals, source dates/check dates and separate official updates/relationships. These manually checked public web excerpts are not new Apertus outputs, original HTML byte hashes or part of the historical inference frame.
+- Browser vault: native WebCrypto PBKDF2-SHA256 (600,000 iterations), random 16-byte salt, AES-GCM-256 with fresh 12-byte nonce per write. Only ciphertext and cryptographic parameters persist; passphrase/key stay in memory. Reload, page hiding, idle timeout and cross-tab changes lock private data. See ADR 0006 and the threat model.

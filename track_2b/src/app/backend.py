@@ -60,13 +60,16 @@ def make_handler(pdf,case):
         def do_GET(self):
             path=urlsplit(self.path).path
             if path=='/api/case':return self.send(200,case)
+            if path=='/api/catalog':return self.send(200,json.loads((TRACK/'src/app/catalog.json').read_text()))
             if path=='/api/health':return self.send(200,{'status':'ok','gate0':case['gate']['gate0_status'],'mode':case['inference_mode']})
             if path=='/api/booklet.pdf':return self.send(200,pdf,'application/pdf')
-            allowed={'/':'index.html','/app.js':'app.js','/style.css':'style.css'}
+            allowed={'/':'index.html','/app.js':'app.js','/vault.js':'vault.js','/style.css':'style.css'}
+            if path.startswith('/assets/') and path.removeprefix('/assets/') in {p.name for p in (TRACK/'web/assets').glob('*.svg')}:
+                return self.send(200,(TRACK/'web'/path.lstrip('/')).read_bytes(),'image/svg+xml')
             if path in allowed:
                 asset=TRACK/'web'/allowed[path]
                 if not asset.exists():return self.send(503,{'error':'Frontend not built; backend is ready'})
-                kind={'/':'text/html; charset=utf-8','/app.js':'text/javascript; charset=utf-8','/style.css':'text/css; charset=utf-8'}[path]
+                kind={'/':'text/html; charset=utf-8','/app.js':'text/javascript; charset=utf-8','/vault.js':'text/javascript; charset=utf-8','/style.css':'text/css; charset=utf-8'}[path]
                 return self.send(200,asset.read_bytes(),kind)
             return self.send(404,{'error':'Not found'})
         def do_POST(self):

@@ -8,13 +8,15 @@
 | Human AHV statement review | ACCEPTED P01-P05 | User authorisations and revised wording in bound decision records |
 | Raw trials human approval | NOT CLAIMED | Engineering controls independently rerun; original pending packet preserved |
 | AHV Gate 0 | PASS_BOUNDED_AHV | Backend release guard and certificate; frontend created only afterwards |
-| Backend and frontend journey | IMPLEMENTED | Reviewed recorded case; no fresh web-request inference; sources, situations, abstention, brief |
+| Backend and frontend journey | IMPLEMENTED | Reviewed recorded case; no fresh web-request inference; My votes, Upcoming, Search; sources, updates, relationships, perspectives |
 | Deterministic tests | 83 PASS locally | Provenance, meaning, identity, approval, HTTP and privacy boundaries |
 | Browser QA | PASS bounded smoke | Desktop, narrow layout, source dialog, actor label, refusal, plaintext export, reload clearing; not human comprehension research |
 | Docker publication | PASS local smoke | Non-root read-only container; offline certificate check; clean-clone evidence in release report |
-| Privacy | EPHEMERAL ONLY | No transmitted notes; plaintext explicit export; encrypted vault not implemented |
+| Privacy | LOCAL ENCRYPTED VAULT TESTED | Visit-only default; opt-in encrypted local persistence/backup; choices and notes never sent; no independent security audit |
 | Second case / unseen import | NOT_RUN | Remains broader release work |
 | Report / demo | PREPARED locally | Submission materials; publication and submission not performed |
 | Public deployment / submission | NOT_DONE | No hosted inference, upload, merge or submission |
 
 Latest [release evidence](evidence/APP_RELEASE_2026-10-14.md), [decision](adr/0005-bounded-gate-clearance-and-reviewed-case.md), [judge run](JUDGE_RUN.md). Historical status reports remain as dated evidence. Gate 0 clears this reviewed AHV frontend; it does not certify a second case, independent BF16 equivalence or all submission criteria.
+
+Responsive tracker v2 replaces the first reader UI. See [tracker evidence](evidence/tracker-v2-2026-10-14/REVIEW.md). The original app-release packet and old walkthrough are historical evidence, not the current interface.

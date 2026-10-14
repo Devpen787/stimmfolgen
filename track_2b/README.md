@@ -102,12 +102,12 @@ https://hackapertus.ch/terms-and-conditions
 ## Contact
 💬 In case you have questions, join the conversation on Discord or send an email to “hello@hackapertus.ch”
 
-## StimmFolgen: working AHV prototype
+## StimmFolgen: private vote tracker
 
 Run `make run` from the repository root (or this directory), then open http://127.0.0.1:8770. See [judge instructions](docs/JUDGE_RUN.md).
 
 **Gate 0 PASS for the bounded AHV case.** P01-P05 have the user's recorded statement approval. A fresh local Apertus v1.5 suite passes seven control trials using eight real completions, with authenticated immutable spans and an admitted historical public frame. Old failures and the original pending packet remain unchanged. [Release evidence](docs/evidence/APP_RELEASE_2026-10-14.md) and [ADR 0005](docs/adr/0005-bounded-gate-clearance-and-reviewed-case.md) disclose exactly what this clears.
 
-The frontend was built after the backend Gate check passed. It serves **reviewed recorded results**, not a fresh model completion on a web click. The working journey covers overview, factual situations, original-source inspection, financing abstention and an ephemeral local brief with explicit plaintext export. P03 is reviewed reference context rather than a final-trial extraction. No production encrypted vault or broader policy accuracy is claimed.
+The frontend was built after the backend Gate check passed. It serves **reviewed recorded results**, not a fresh model completion on a web click. The responsive desktop/mobile journey offers My votes, Upcoming votes and Search. Explore shows dated sources, official updates, related votes and Me/Others/Switzerland perspectives. Tracking does not infer a Yes/No choice. Visit-only tracking is the default; an optional passphrase vault encrypts saved choices and notes on this device, with encrypted backup/recovery. P03 is reviewed reference context rather than a final-trial extraction. There is no account or cross-device sync, no independent security audit and no broader policy accuracy claim. The catalogue contains five selected proposals; reviewed Apertus analysis currently covers AHV only. [Tracker evidence](docs/evidence/tracker-v2-2026-10-14/REVIEW.md) documents the checks.
 
 Apertus inference is fully local and separate from Docker-contained publication: pinned text-only community MLX conversion of `swiss-ai/Apertus-v1.5-8B` on the user's Mac. No paid API was used. Cloud CI authenticates evidence and tests delivery; it does not invoke the Mac's model. [Runtime contract](docs/APP_CONTRACT.md) and [technical report](technical_report.md) describe this boundary.

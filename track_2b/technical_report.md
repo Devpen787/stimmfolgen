@@ -2,11 +2,13 @@
 
 Technical report - Hack Apertus Online, Track 2B - 14 October 2026
 
-## 1. A usable historical referendum reader
+## 1. A private vote tracker with a reviewed historical case
 
 StimmFolgen helps a voter examine what a referendum could change, who might be affected and what its source material does not establish. It gives no voting recommendation. The implemented prototype covers the 13th AHV old-age pension initiative of 3 March 2024 using the original German Federal Chancellery booklet.
 
-The complete journey has four sections: overview, factual situations, evidence and disagreements, and a personal understanding brief. A provision, an attributed government projection and unresolved financing carry different labels. A pension recipient can inspect the proposed benefit; a working-age person sees that a definite personal financing charge is unknown. Each central statement opens the actual supporting source passage, actor, page, document hash and temporal context. Both committee and Council/Parliament argument sections are accessible.
+The responsive desktop/mobile journey has three simple entry points: My votes, Upcoming votes and Search. A reader tracks a proposal without implying a Yes/No choice, then opens Explore my vote for its meaning, dated sources, official updates, related proposals and Me/Others/Switzerland perspectives. Detailed evidence is progressively disclosed. The catalogue contains five selected federal proposals; only AHV has reviewed Apertus analysis.
+
+The October 2026 official AHV implementation update and November financing relationship were manually verified against official publisher pages. They are separate from the original pre-vote analysis, and not new model outputs. Source publication/check dates and explicit no-recorded-update states prevent historical forecasts being mistaken for observed outcomes. These web excerpts carry text hashes, not original HTML-byte provenance.
 
 The web app is explicitly a **reviewed recorded case**. It publishes wording separately accepted by the user after genuine local Apertus inference and independent checks. Clicking a web control does not make a new model completion. The five-year cost statement is labelled reviewed source-reference context; it was not extracted in the final happy-path model trial.
 
@@ -24,7 +26,7 @@ The source hash is 53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd
 
 At backend startup, the release guard authenticates the original packet and release manifest, re-extracts the catalogue, checks pinned recorded model identity, verifies temporal admission, requires five bound ACCEPT decisions and independently replays the controls. Missing approval, changed source/model or failed control blocks startup. New inference candidates cannot automatically replace reviewed published statements.
 
-The smaller implemented runtime contract is documented in docs/APP_CONTRACT.md. The larger blueprint and encrypted-vault schemas remain design targets, not implemented functionality.
+The smaller implemented runtime contract is documented in docs/APP_CONTRACT.md. The larger blueprint remains a design target. ADR 0006 documents the deliberately smaller implemented browser-vault contract and its departures from that blueprint.
 
 <!-- page -->
 
@@ -46,11 +48,13 @@ The earlier full-booklet direct Apertus baseline ran genuinely and failed mechan
 
 These are development diagnostics with different protocols, not a controlled held-out accuracy comparison. A quote check or schema pass cannot prove meaning. The current seven-trial result is pipeline performance on one AHV development case; retrieval, task types, null personal costs and refusal policy are application-supplied. The user approved P01-P05 source statements. No human approval of T01-T07 raw trials is claimed.
 
-Eighty-three deterministic tests pass locally, covering source/span integrity, independent semantic rejection, actor comparison, public timing, pinned identity, review bindings, HTTP routing and privacy rejection. Separate Docker smoke checks load the real case, exercise personal-cost and unsupported-question abstention, reject private extra fields and serve authenticated source bytes. Browser checks cover the four-section journey, source dialog/actor label, narrow layout, keyboard dismissal, explicit export and clearing notes on reload. No user comprehension study or comprehensive accessibility audit has been run.
+Eighty-six deterministic Python tests pass locally, covering source/span integrity, independent semantic rejection, actor comparison, public timing, pinned identity, review bindings, HTTP routing and privacy rejection. Separate Docker smoke checks load the real case, exercise personal-cost and unsupported-question abstention, reject private extra fields and serve authenticated source bytes. Browser checks cover desktop/mobile tracking, local search, source dates, keyboard tabs, Me/Others/Switzerland, honest unavailable analysis, encrypted backup download/recovery and reload locking. Native WebCrypto tests additionally reject wrong passwords/tampering and check fresh nonces, concurrent writes and cancelled lock races. No user comprehension study or comprehensive accessibility audit has been run.
 
-Notes exist only in browser-tab memory. They are not sent to the backend or written to request logs. Export is an explicit plaintext download, not an encrypted vault. The backend accepts only a topic field and rejects notes/salary additions; same-origin CSP and no-store headers apply. No login, analytics, political preference collection, persuasion or voting recommendation is implemented.
+Visit-only tracking is the default. Persistent choices and notes are opt-in: a passphrase derives a nonextractable AES-GCM-256 key with PBKDF2-SHA256 (600,000 iterations, random 16-byte salt); every write uses a fresh 12-byte nonce. Only authenticated ciphertext and cryptographic parameters persist. Keys stay in memory; reload, page hiding, idle timeout and cross-tab changes lock the private view. Backups are encrypted and restored locally. No passphrase recovery or cross-device sync exists.
 
-Unverified: second referendum, unseen-ballot generalisation, language parity, production encryption, current-law coverage and official-BF16 conversion equivalence. Approximate expenditure figures remain attributed forecasts. Unknown personal cost does not mean zero.
+Private choices, notes, local search and perspective selections are never sent to the backend or Apertus. An instrumented synthetic browser journey recorded 33 public GET requests and zero POST requests. The production server does not log requests. Same-origin CSP, no-store responses and rejection of extra private API fields remain. External official-source visits can be observed by their publishers. Encryption does not protect an unlocked or compromised browser/device; this implementation has not received an independent security audit.
+
+Unverified: second referendum, unseen-ballot generalisation, language parity, independently audited production security, current-law coverage and official-BF16 conversion equivalence. Approximate expenditure figures remain attributed forecasts. Unknown personal cost does not mean zero.
 
 <!-- page -->
 
@@ -60,8 +64,8 @@ The selected architecture is on-premise: native local model ingestion/evaluation
 
 Image construction needs internet to retrieve the base/dependency packages and authenticated official booklet. The built reviewed-case application has no outbound runtime requirement. An offline container check with network disabled revalidates the stored Gate evidence without weights or an LLM endpoint. A separate clean-clone Docker launch and actual API journey are documented in docs/evidence/APP_RELEASE_2026-10-14.md. This proves publication/replay delivery under the stated environment, not portable fresh inference or full air-gap provisioning.
 
-Judges can run make run, inspect provision/source, switch pension-recipient and working-person situations, deliberately ask for a definite CHF charge, inspect attributed arguments and export an ephemeral brief. docs/JUDGE_RUN.md also gives the separate native inference commands and required pinned weights. The local walkthrough is assembled from real running-app captures with narration, not a continuous live-generation screen recording. No hosted deployment, external video upload, merge or submission has been performed.
+Judges can run make run, find and track AHV, inspect sources and perspectives, view the separate update/related vote, and exercise the optional local encrypted vault with synthetic notes. docs/JUDGE_RUN.md also gives the separate native inference commands and required pinned weights. The earlier walkthrough is historical prototype evidence and does not depict the new tracker. Current tracker screenshots and browser evidence are in docs/evidence/tracker-v2-2026-10-14. The earlier report is preserved byte-for-byte there for its original manifest. No hosted deployment, external video upload, merge or submission has been performed.
 
 Source rights are separate from the project's Apache-2.0 code licence. The original PDF is downloaded for local processing and not committed as a dataset. Limited attributed passages are used for source analysis; broad document/image redistribution has not been licensed. Government web availability does not itself grant reuse rights. Do not publish a bundled source image/container as an openly licensed corpus. Source licensing remains a submission-scope check.
 
-References: Federal Chancellery original 2024 booklet; the exact archived government copy of 11 January 2024; tokimoa model card and declared swiss-ai upstream; admin.ch conditions of use; repository ADRs 0002-0005, source/trace manifests and human decision records. Direct links are listed in docs/evidence/APP_RELEASE_2026-10-14.md and docs/JUDGE_RUN.md.
+References: Federal Chancellery original 2024 booklet; the exact archived government copy of 11 January 2024; tokimoa model card and declared swiss-ai upstream; admin.ch conditions of use; repository ADRs 0002-0006, source/trace manifests and human decision records. Direct links are listed in docs/evidence/APP_RELEASE_2026-10-14.md and docs/JUDGE_RUN.md.
