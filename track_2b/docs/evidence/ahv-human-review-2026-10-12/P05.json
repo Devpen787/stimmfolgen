@@ -1,0 +1,29 @@
+{
+  "review_id": "P05",
+  "decision": "ACCEPT",
+  "qualification": "REMAINING_STATEMENT_BATCH_APPROVAL",
+  "accepted_wording": "The forecast that the federal government would need to increase taxes or cut expenditure belongs to the Federal Council and Parliament’s argument section.",
+  "reviewer": "Human user in this task",
+  "reviewer_supplied_date": null,
+  "recorded_at_utc": "2026-10-14T09:15:03Z",
+  "authorization_verbatim": "I accept the three remaining AHV statements. Record my approval and execute this plan on PR #4. Finish the backend and Gate 0 checks, then build the frontend only after Gate 0 is fully cleared.",
+  "packet_version": "ahv-semantic-review-v1",
+  "packet_manifest_sha256": "ea9a6b9c9c5a67d8d76a5b8c9d7980f23802433a23a1e7cd126ddc3b2c237fe8",
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "catalog_sha256": "8d98a741550f450a64bb8103ece1efa561b0c75436b8096bf47ac6c74508d618",
+  "semantic_reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+  "trace_commit": "0436dc9a44e5c4be28c67864500d447b59d324d5",
+  "original_candidate": {
+    "predicate": "BUDGET_TAX_OR_CUTS",
+    "kind": "ATTRIBUTED_PREDICTION",
+    "actor": "GOVERNMENT",
+    "value": {
+      "value": true
+    }
+  },
+  "scope": "Approval of this source-grounded statement; not a human sign-off of every test trace or general policy accuracy",
+  "implementation_applied": false,
+  "full_human_semantic_review_complete": false,
+  "gate0_cleared": false,
+  "frontend_authorized": false
+}

@@ -1,0 +1,13 @@
+{
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "byte_size": 759783,
+  "public_availability_verified": true,
+  "available_by_utc": "2024-01-11T12:11:17+00:00",
+  "exact_first_published_at": null,
+  "basis": "PRE_VOTE_ARCHIVED_OFFICIAL_PDF_BYTES",
+  "archive_timestamp_is_signed": false,
+  "capture_payload_sha1_base32": "2LBTYX6NDQ3A2M6J4YY24CSQQBORBQWU",
+  "original_url": "https://www.admin.ch/dam/gov/de/Dokumentation/Abstimmungen/Marz2024/marzo_DE.pdf.download.pdf/marzo_DE.pdf",
+  "archive_url": "https://web.archive.org/web/20240111121117id_/https://www.admin.ch/dam/gov/de/Dokumentation/Abstimmungen/Marz2024/marzo_DE.pdf.download.pdf/marzo_DE.pdf",
+  "referendum_date": "2024-03-03"
+}

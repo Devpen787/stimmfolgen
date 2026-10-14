@@ -6,6 +6,7 @@ from pathlib import Path
 from model_probe import run_inference
 from source_spans import build_catalog, digest, validate_selection, resolve_citations
 from semantic_eval import evaluate_semantics
+from publication_availability import verify_capture, admit_frame
 
 PROMPT_VERSION = 'gate0-span-selection-v5-source-actor-comparison'
 TRIALS = (
@@ -133,13 +134,34 @@ def main():
     parser.add_argument('--local-model-report',type=Path,required=True)
     parser.add_argument('--semantic-reference',type=Path,default=Path('track_2b/tests/references/ahv13_semantics.json'))
     parser.add_argument('--out-dir',type=Path,required=True)
+    parser.add_argument('--availability-record',type=Path)
+    parser.add_argument('--public-as-of')
     args=parser.parse_args()
     report=json.loads(args.source_report.read_text());pdf=args.source_pdf.read_bytes()
     identity=json.loads(args.local_model_report.read_text());reference=json.loads(args.semantic_reference.read_text())
     catalog=build_catalog(report,pdf)
+    availability=None
+    if bool(args.availability_record)!=bool(args.public_as_of):
+        raise ValueError('Both availability record and public frame are required')
+    if args.availability_record:
+        witness=json.loads(args.availability_record.read_text())
+        availability=verify_capture(pdf,pdf,pdf,witness['cdx_capture'],witness['archive_replay_headers'])
+        if not admit_frame(availability,args.public_as_of):
+            raise ValueError('Public pre-vote frame not admitted by authenticated availability')
+    def scoped_prompt(prompt):
+        if availability is None:return prompt
+        return ('PUBLIC CASE FRAME: '+args.public_as_of+'. Only the original pre-vote booklet, no later developments. '
+                'The printed 2023-11-29 date is its content cutoff, not publication.\n'+prompt)
+    def tag_frame(trace):
+        if availability is not None:
+            trace.update({'public_case_as_of':args.public_as_of,'source_content_cutoff':report['editorial_cutoff'],
+                          'public_availability_verified':True,'available_by_utc':availability['available_by_utc']})
+        return trace
     args.out_dir.mkdir(parents=True,exist_ok=True)
     (args.out_dir/'source-spans.json').write_text(json.dumps(catalog,ensure_ascii=False,indent=2)+'\n')
     (args.out_dir/'semantic-reference-used.json').write_text(json.dumps(reference,ensure_ascii=False,indent=2)+'\n')
+    if availability is not None:
+        (args.out_dir/'availability-used.json').write_text(json.dumps(availability,indent=2)+'\n')
     summary=[]
     completed={}
     for name,question,pages,outcomes,required,missing,allowed in TRIALS[1:]:
@@ -154,8 +176,9 @@ def main():
                 ('intent',attribution_intent_prompt(question),
                  lambda a,r,c,o:validate_attribution_intent(a),'gate0-attribution-intent-v1')):
                 trace=run_inference(report,identity['served_alias'],identity['base_url'],'',local_identity=identity,
-                    prompt=stage_prompt,source_pdf_data=pdf,max_tokens=500,
+                    prompt=scoped_prompt(stage_prompt),source_pdf_data=pdf,max_tokens=500,
                     answer_validator=validator,prompt_version=version,output_contract='source-actor-comparison-components-v1')
+                tag_frame(trace)
                 trace.update({'trial_id':name,'evidence_stage':stage.upper(),
                     'catalog_sha256':catalog['catalog_sha256'],'semantic_reference_sha256':digest(reference),
                     'question_included':stage=='intent','semantic_evaluation_performed':False})
@@ -177,10 +200,11 @@ def main():
                 result['validation']['errors'].append('attribution_component_not_qualified')
         else:
             result=run_inference(report,identity['served_alias'],identity['base_url'],'',local_identity=identity,
-                prompt=prompt_for(catalog,question,pages,target),source_pdf_data=pdf,max_tokens=500,
+                prompt=scoped_prompt(prompt_for(catalog,question,pages,target)),source_pdf_data=pdf,max_tokens=500,
                 answer_validator=lambda a,r,c,o:validate_flat(a,catalog,target,name),prompt_version=PROMPT_VERSION,
                 output_contract='immutable-spans-and-typed-propositions-v1')
             canonical=adapt_answer(result.get('parsed_candidate'),catalog,target,name)
+        tag_frame(result)
         result['trial_id']=name;result['task_contract_supplied']=True;result['independent_type_classification_test']=False;result['catalog_sha256']=catalog['catalog_sha256']
         result['semantic_reference_sha256']=digest(reference)
         result['canonical_candidate']=canonical
@@ -226,6 +250,9 @@ def main():
           'trials':summary,'catalog_sha256':catalog['catalog_sha256'],'semantic_reference_sha256':digest(reference),
           'human_semantic_reviewed':False,'public_availability_verified':False,'frontend_authorized_by_this_run':False,
           'scope':'Single AHV development case, bounded typed propositions; no free-text semantic entailment or generalisation proof'}
+    if availability is not None:
+        gate.update({'public_availability_verified':True,'public_case_as_of':args.public_as_of,
+                     'source_content_cutoff':report['editorial_cutoff'],'available_by_utc':availability['available_by_utc']})
     (args.out_dir/'summary.json').write_text(json.dumps(gate,indent=2)+'\n')
     raise SystemExit(0 if passed else 2)
 

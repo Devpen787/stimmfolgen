@@ -77,3 +77,7 @@ The [immutable span diagnostic](evidence/GATE0_SPANS_2026-10-12.md) replaces gen
 ## Publication availability and review preparation (12 October 2026)
 
 The [exact-byte historical archive witness](evidence/GATE0_PUBLICATION_AND_REVIEW_2026-10-12.md) verifies public availability by 11 January 2024, 12:11:17 UTC. Keep editorial cutoff (29 November 2023) separate from the proposed public review frame (2 March 2024, 23:59:59 CET). Historical traces are unchanged. The [human review packet](evidence/ahv-semantic-review-2026-10-12/REVIEW.md) contains five propositions, seven pipeline outcomes, context pages and pending decision fields. No human sign-off has been supplied; temporal-frame adoption and final Gate 0 clearance remain outstanding. Frontend work stays blocked.
+
+## Implemented continuation (14 October 2026)
+
+The preceding sections are historical decisions/status. [ADR 0005](adr/0005-bounded-gate-clearance-and-reviewed-case.md) records five accepted source statements, fresh real local Apertus trials, public temporal admission and the bounded AHV Gate clearance. The frontend was then implemented using the existing design and reviewed publication mode. [Current status](PROJECT_STATUS.md) supersedes the earlier runtime status statements without changing historical evidence. The full blueprint remains a target; second-case generalisation and production vault security are not yet verified.

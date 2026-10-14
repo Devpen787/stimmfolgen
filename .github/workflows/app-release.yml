@@ -1,0 +1,27 @@
+name: Reviewed-case release checks
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  reviewed-case:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pymupdf==1.28.2
+      - name: Test backend, provenance, semantic and privacy controls
+        run: python -m unittest discover -s track_2b/tests -p 'test*.py'
+      - name: Build authenticated reviewed-case image
+        run: make build
+      - name: Recheck actual recorded Gate evidence offline
+        run: docker run --rm --network none --read-only --tmpfs /tmp:rw,noexec,nosuid,size=16m stimmfolgen:local python track_2b/src/app/backend.py --source-pdf /app/booklet.pdf --check
+      - name: Test the real HTTP journey without an LLM endpoint
+        run: |
+          docker run -d --name reviewed-case --read-only --tmpfs /tmp:rw,noexec,nosuid,size=16m -p 127.0.0.1:8770:8770 stimmfolgen:local
+          python track_2b/tools/check_app.py --url http://127.0.0.1:8770
+      - name: Stop test container
+        if: always()
+        run: docker rm -f reviewed-case || true

@@ -102,8 +102,12 @@ https://hackapertus.ch/terms-and-conditions
 ## Contact
 💬 In case you have questions, join the conversation on Discord or send an email to “hello@hackapertus.ch”
 
-## StimmFolgen Gate 0: current implementation
+## StimmFolgen: working AHV prototype
 
-The active local diagnostic is `src/gate0/span_probe.py`: Apertus selects immutable source IDs and minimal typed fields; quotations resolve from the authenticated primary-source ledger. A separate evaluation-only semantic reference rejects unsupported meaning/actor/value combinations. Historical generated-quote probes are retained as failed baselines. See [current reproduction commands and actual results](docs/evidence/GATE0_ATTRIBUTION_2026-10-12.md) and [ADR 0002](docs/adr/0002-immutable-spans-and-independent-reference.md).
+Run `make run` from the repository root (or this directory), then open http://127.0.0.1:8770. See [judge instructions](docs/JUDGE_RUN.md).
 
-Actual local v1.5 inference is verified. The bounded AHV suite passes twice after neutral actor extraction and deterministic speaker comparison. Gate 0 remains **HUMAN_REVIEW_REQUIRED**: human review is pending and runtime temporal-frame adoption is outstanding. Pre-vote availability of the exact booklet is verified by an archived 11 January 2024 copy. See the [prepared semantic-review packet](docs/evidence/ahv-semantic-review-2026-10-12/REVIEW.md). Frontend work is blocked. GitHub cloud CI checks source/spans/safeguards; model inference still requires a provisioned local Mac runtime.
+**Gate 0 PASS for the bounded AHV case.** P01-P05 have the user's recorded statement approval. A fresh local Apertus v1.5 suite passes seven control trials using eight real completions, with authenticated immutable spans and an admitted historical public frame. Old failures and the original pending packet remain unchanged. [Release evidence](docs/evidence/APP_RELEASE_2026-10-14.md) and [ADR 0005](docs/adr/0005-bounded-gate-clearance-and-reviewed-case.md) disclose exactly what this clears.
+
+The frontend was built after the backend Gate check passed. It serves **reviewed recorded results**, not a fresh model completion on a web click. The working journey covers overview, factual situations, original-source inspection, financing abstention and an ephemeral local brief with explicit plaintext export. P03 is reviewed reference context rather than a final-trial extraction. No production encrypted vault or broader policy accuracy is claimed.
+
+Apertus inference is fully local and separate from Docker-contained publication: pinned text-only community MLX conversion of `swiss-ai/Apertus-v1.5-8B` on the user's Mac. No paid API was used. Cloud CI authenticates evidence and tests delivery; it does not invoke the Mac's model. [Runtime contract](docs/APP_CONTRACT.md) and [technical report](technical_report.md) describe this boundary.
