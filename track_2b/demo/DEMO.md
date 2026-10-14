@@ -1,6 +1,6 @@
 # StimmFolgen prototype walkthrough
 
-Prepared locally on 14 October 2026. This is a narrated sequence of actual browser captures from the running reviewed-case app, not a continuous screen recording or fresh inference on a web click. No responses or source panels are fabricated. Voice is local macOS speech synthesis; no paid service or private user data is used. Captures, transcript and production script are reproducible. The MP4 is prepared for review; no external video-host upload or submission has been made.
+Prepared locally on 14 October 2026. This is a narrated sequence of actual browser captures from the running reviewed-case app, not a continuous screen recording or fresh inference on a web click. No responses or source panels are fabricated. Voice is local macOS speech synthesis; no paid service or private user data is used. Captures are cropped to the app viewport to remove browser letterboxing; content is otherwise unchanged. Captures, transcript and production script are reproducible. The MP4 is prepared for review; no external video-host upload or submission has been made.
 
 ## Narration
 

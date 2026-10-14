@@ -18,6 +18,8 @@ jobs:
         run: make build
       - name: Recheck actual recorded Gate evidence offline
         run: docker run --rm --network none --read-only --tmpfs /tmp:rw,noexec,nosuid,size=16m stimmfolgen:local python track_2b/src/app/backend.py --source-pdf /app/booklet.pdf --check
+      - name: Verify fail-closed controls using the real source and temporary mutations
+        run: docker run --rm --network none --read-only --tmpfs /tmp:rw,noexec,nosuid,size=16m stimmfolgen:local python track_2b/tools/check_gate_failures.py --source-pdf /app/booklet.pdf
       - name: Test the real HTTP journey without an LLM endpoint
         run: |
           docker run -d --name reviewed-case --read-only --tmpfs /tmp:rw,noexec,nosuid,size=16m -p 127.0.0.1:8770:8770 stimmfolgen:local

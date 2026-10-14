@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "model_inference_performed": false,
+  "negative_controls": {
+    "source_byte_mismatch": "BLOCKED_AS_REQUIRED",
+    "missing_human_approval": "BLOCKED_AS_REQUIRED",
+    "rejected_human_statement": "BLOCKED_AS_REQUIRED",
+    "premature_public_frame_even_with_valid_manifest": "BLOCKED_AS_REQUIRED",
+    "checkpoint_substitution_even_with_valid_manifest": "BLOCKED_AS_REQUIRED"
+  }
+}

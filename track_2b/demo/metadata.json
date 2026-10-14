@@ -2,6 +2,7 @@
   "kind": "NARRATED_ACTUAL_BROWSER_CAPTURE_WALKTHROUGH",
   "continuous_screen_recording": false,
   "fresh_web_inference": false,
+  "cropped_to_app_viewport": true,
   "duration_seconds": 102.053696,
   "local_voice": "macOS Samantha",
   "chapters": [

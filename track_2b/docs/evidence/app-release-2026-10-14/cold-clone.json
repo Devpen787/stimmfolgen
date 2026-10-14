@@ -1,0 +1,14 @@
+{
+  "clone_path": "[TEMPORARY_CLEAN_CLONE]",
+  "commit": "7c6b77ae584db9b8a04405a00d3c35321383dcd1",
+  "started_at_utc": "2026-10-14T12:43:09.239346+00:00",
+  "clone_and_no_cache_build_seconds": 13.179,
+  "clean_clone": true,
+  "local_model_assets_present": false,
+  "no_cache_build": "PASS",
+  "image": "stimmfolgen:cold",
+  "make_run": "PASS",
+  "http_smoke": "PASS",
+  "offline_certificate": "PASS",
+  "model_server_stopped_before_web_checks": true
+}

@@ -1,0 +1,93 @@
+{
+  "evidence_class": "REVIEWED_APPLICATION_RELEASE_ARTIFACTS_NOT_NEW_MODEL_OUTPUTS",
+  "files": {
+    "StimmFolgen_Report.pdf": {
+      "bytes": 12113,
+      "sha256": "f933de8e87589e3edacfa1011304ed5781820c895bc750ee1cc178f04abf935e"
+    },
+    "demo/DEMO.md": {
+      "bytes": 2713,
+      "sha256": "83427fd1b8fd871767cac91da3d8d488cee14219471a8c21918ccf055d82403c"
+    },
+    "demo/StimmFolgen_Demo.mp4": {
+      "bytes": 2567997,
+      "sha256": "c5d2544acb2e2b8af375031e2c976aa6dbac1c6f7dfc3973e2c4b10a536eeb8c"
+    },
+    "demo/metadata.json": {
+      "bytes": 752,
+      "sha256": "4c1d51c77601e2f109d838b273a461295ef7aba7ee8fa7edc3978e3412b8b0f3"
+    },
+    "docs/evidence/app-release-2026-10-14/approved-concept.jpg": {
+      "bytes": 125929,
+      "sha256": "2c822f0b632ec41d1b0591dabcd24e22011e1d6506894a14da8f9ecdff5d2d8d"
+    },
+    "docs/evidence/app-release-2026-10-14/attribution.jpg": {
+      "bytes": 133934,
+      "sha256": "1cf2acced4c000fda6b360ba19ab522350109569d1615f047d528af70643dc5b"
+    },
+    "docs/evidence/app-release-2026-10-14/brief.jpg": {
+      "bytes": 117571,
+      "sha256": "77a421c8a048b79bdeb663dd0d0f1f1084d84b3fa6e3f41537acff06e1e7a276"
+    },
+    "docs/evidence/app-release-2026-10-14/cold-build.log": {
+      "bytes": 3437,
+      "sha256": "743b67b63351db0189adb9bd3425c8fb7f1cfc2ba3c8c1151ebad6493ff8bacb"
+    },
+    "docs/evidence/app-release-2026-10-14/cold-clone.json": {
+      "bytes": 454,
+      "sha256": "b6f5eed05b4e184d9c2e7108310ca5f66f3acf7c4bf7c683efd071f62ea0d2c1"
+    },
+    "docs/evidence/app-release-2026-10-14/cold-http.json": {
+      "bytes": 148,
+      "sha256": "52691bd65fb4cda647682585a2af815f5dd846b05e7140546dd668a5bdd09b90"
+    },
+    "docs/evidence/app-release-2026-10-14/cold-make-run.log": {
+      "bytes": 1989,
+      "sha256": "3f5aae772040c2b09a5b15e3764c1738f685ff155e947a5d9ec722027f4e5227"
+    },
+    "docs/evidence/app-release-2026-10-14/cold-offline-certificate.json": {
+      "bytes": 1334,
+      "sha256": "65675b29942aab6a37242ff78b2353c95eccc7c2fef8fdd9c12964ad19867ec3"
+    },
+    "docs/evidence/app-release-2026-10-14/gate-negative-controls.json": {
+      "bytes": 406,
+      "sha256": "8514bf9721e5f7e94a93872f77f62aa431b725470c63197e3c04d389f6094d89"
+    },
+    "docs/evidence/app-release-2026-10-14/gate0-certificate.json": {
+      "bytes": 1334,
+      "sha256": "65675b29942aab6a37242ff78b2353c95eccc7c2fef8fdd9c12964ad19867ec3"
+    },
+    "docs/evidence/app-release-2026-10-14/mobile-390.jpg": {
+      "bytes": 56767,
+      "sha256": "cf0bfd8c61e25228da2be41c3af93cae2f332ea38470e10b595230fcebe83e65"
+    },
+    "docs/evidence/app-release-2026-10-14/mobile.jpg": {
+      "bytes": 96729,
+      "sha256": "d6d4b007d4d46acc866bd40ee11cb9982bb41f981515df08692b72a56f352b8f"
+    },
+    "docs/evidence/app-release-2026-10-14/overview.jpg": {
+      "bytes": 137884,
+      "sha256": "db90d7f7a4d958465529e53e4d7ae56693389e4d66f185e6a2d6b143814858f5"
+    },
+    "docs/evidence/app-release-2026-10-14/personal-cost.jpg": {
+      "bytes": 103837,
+      "sha256": "7342969dda7790f99aed401a5d5dc70a5f9d0bada3d9b0e419e29702f9791b69"
+    },
+    "docs/evidence/app-release-2026-10-14/recipient.jpg": {
+      "bytes": 120912,
+      "sha256": "a3ecca0da69134de3e9db1657e8fe5efc9ebb1802d0e5ba287eb4ba05054e8bc"
+    },
+    "docs/evidence/app-release-2026-10-14/source.jpg": {
+      "bytes": 121167,
+      "sha256": "16fb2810dc10ca2402396b699919d8e472c01198c8ba067d6c02d2cf2d83354a"
+    },
+    "docs/evidence/app-release-2026-10-14/unit-tests.txt": {
+      "bytes": 182,
+      "sha256": "7291af98affe360cc3023c07d6deb7aa81fd0459448d9a88bbf073e27d9f41c2"
+    },
+    "technical_report.md": {
+      "bytes": 10455,
+      "sha256": "8e1876c521ac80e2d4cd5639018b5983a128e77d3ba19bc50daba3b1e3d1764b"
+    }
+  }
+}
