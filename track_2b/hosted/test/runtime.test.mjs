@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {mkdtemp,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
-import {join} from 'node:path';
+import {join,dirname} from 'node:path';
 import {Miniflare,Response,convertV4MiniflareOptions} from 'miniflare';
 import {MODEL,LIMITS} from '../qa.mjs';
 const compiled=process.env.WORKER_BUILD;
@@ -21,7 +21,7 @@ test('actual Worker validates privacy, serialises requests and persists its quot
   const content=body.max_tokens===200?checks:candidate;
   return Response.json({model:MODEL,choices:[{finish_reason:'stop',message:{content:mode==='malformed'?'not JSON':JSON.stringify(content)}}]});
  };
- const options={resourcePersistencePath:directory,workers:[{name:"fixture",modules:true,scriptPath:compiled,compatibilityDate:'2026-10-15',bindings:{LIVE_ENABLED:'true',PUBLICAI_TOKEN:'synthetic-not-a-key'},durableObjects:{DEMO_GATE:{className:'DemoGate',useSQLite:true}},serviceBindings:{ASSETS:()=>new Response('static fixture')},outboundService:outbound}]};
+ const options={resourcePersistencePath:directory,workers:[{name:"fixture",modules:true,scriptPath:compiled,modulesRoot:dirname(compiled),compatibilityDate:'2026-10-15',bindings:{LIVE_ENABLED:'true',PUBLICAI_TOKEN:'synthetic-not-a-key'},durableObjects:{DEMO_GATE:{className:'DemoGate',useSQLite:true}},serviceBindings:{ASSETS:()=>new Response('static fixture')},outboundService:outbound}]};
  let mf=new Miniflare(convertV4MiniflareOptions(options));
  const send=async(body,origin='https://demo.test')=>mf.dispatchFetch('https://demo.test/api/live/question',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json','CF-Connecting-IP':String(Math.random())},body:JSON.stringify(body)});
  const status=async()=>{const ns=await mf.getDurableObjectNamespace('DEMO_GATE');return (await ns.get(ns.idFromName('global-free-demo-v1')).fetch('https://internal/status')).json();};

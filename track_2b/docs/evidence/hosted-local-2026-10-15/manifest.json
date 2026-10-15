@@ -1,6 +1,7 @@
 {
   "evidence_date": "2026-10-15",
   "files": {
+    "ci-runtime-failure.log": "4544ae9c5abac61b87365da1d14b0a614ab5c6c4d8ebf3e9facc3eefb3e3ea3d",
     "cloudflare-final-deploy.log": "bbe5420802919e99320cfcebc0f2e0570082ac0713cd090a5d344298749d5609",
     "cloudflare-fixed-deploy.log": "ba12ab5e5f92301040d2a45b2246a1878e34b0edc0a2d616e120cd007593617b",
     "direct-8b-v4/trial-1.json": "40f0ff763e66486ec699152d94f6c50b87694012705ea9d05a2f7c4e504915b0",
@@ -15,6 +16,7 @@
     "direct-8b-v5/trial-5.json": "959ffa32d0faf579a98a87803a59bd7f0993dd2826e8fd8ba2147800a565428c",
     "docker-fail-closed.json": "8514bf9721e5f7e94a93872f77f62aa431b725470c63197e3c04d389f6094d89",
     "docker-offline-gate.json": "65675b29942aab6a37242ff78b2353c95eccc7c2fef8fdd9c12964ad19867ec3",
+    "final-deployed-verification.json": "06d9a6c6c1bd541810172116263829b5a911b575edc266ba3db72c98236c8d1a",
     "hosted-http-boundaries.json": "ab0313cc02545f75f163f7ecabf6ad797324706457e5268c01ba4e10f63e5d19",
     "hosted-phone-abstention.png": "a591d6ee0c07e51609ad837d1c0ef808be89a6a4cf341e6fbe9c112487232603",
     "hosted-phone-happy.png": "9b6b4997853c0aa4486d705564605e76e138be69bf78ca0116bff03baa41e3dd",
@@ -36,10 +38,12 @@
     "python-tests-final.log": "12cdafb0f8e3e9a9f3edb92c05d01bde7265d39cc72c0436c3b198ecef9a04db",
     "vault-tests-final.log": "dc3fb42bc8f31805d2352d9f8fd767763aff7422330bd6a33009303ba7e672c7",
     "worker-redirect-failure.log": "829edb51049f4760657fda04e9b2ef7b19bbc049875d603ff36c52679ca414d0",
+    "worker-tests-tmp.log": "f641d9498b989d41f161a26a910b14213de2284afc299002b37c89d6fbd42804",
     "worker-tests.log": "9c02f4ba21b24197e17bcfc81af8dcbbf05eedccc130dcc336b9b098e41b7d87"
   },
   "redactions": [
-    "absolute repository path -> /REPO"
+    "absolute repository path -> /REPO",
+    "GitHub runner checkout path -> /CI_REPO"
   ],
   "secrets_included": false
 }
