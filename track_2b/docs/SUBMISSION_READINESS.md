@@ -54,3 +54,7 @@ Confirm team/member names, Devpost email, Swiss-student eligibility and project 
 ## Video link fallback checked
 
 The committed MP4 is publicly downloadable without login (HTTP 200, 2,241,906 bytes) at https://raw.githubusercontent.com/Devpen787/stimmfolgen/1fd283d/track_2b/demo/StimmFolgen_Tracker_Demo.mp4 . GitHub serves it as application/octet-stream, so this is a download fallback, not a verified browser watch page. Prefer an owner-approved unlisted YouTube/Vimeo watch URL if available; the observed form only labels this field Demo video URL and does not specify a host. Do not claim a watch-page check was performed.
+
+## Voiceover preference confirmed 15 October
+
+The participant will record their own voice. StimmFolgen_Tracker_Silent.mp4 is 98.042 seconds, H.264 1280x720 with no audio stream. RECORD_YOUR_VOICE.md contains timed guidance; VOICEOVER_SCRIPT.txt contains narration only. The synthetic-voice video is a pacing preview, not the selected final narration. Final voiceover mixing, caption alignment, duration verification and public final-video link remain pending the participant recording. Participant identity/email/solo-team details are kept in ignored local storage, not this repository.

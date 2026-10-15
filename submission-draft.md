@@ -34,3 +34,7 @@ Search AHV -> track the historical proposal -> My votes -> source and dates -> u
 ## What exists versus what does not
 
 Implemented: reviewed historical AHV analysis, five-entry catalogue, responsive tracker, dated sources/updates/relations, factual perspectives, local encrypted vault/backup and independent guards. Recorded actual inference is real. Not claimed: fresh per-click inference, general policy accuracy, second reviewed case, current-law personal calculation, official-BF16 equivalence, account/sync, independent security audit or user comprehension improvement.
+
+## Voiceover preference confirmed 15 October
+
+The participant will record their own voice. StimmFolgen_Tracker_Silent.mp4 is 98.042 seconds, H.264 1280x720 with no audio stream. RECORD_YOUR_VOICE.md contains timed guidance; VOICEOVER_SCRIPT.txt contains narration only. The synthetic-voice video is a pacing preview, not the selected final narration. Final voiceover mixing, caption alignment, duration verification and public final-video link remain pending the participant recording. Participant identity/email/solo-team details are kept in ignored local storage, not this repository.

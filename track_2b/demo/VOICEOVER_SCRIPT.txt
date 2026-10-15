@@ -1,0 +1,15 @@
+StimmFolgen helps Swiss voters follow a vote and understand it, without recommending Yes or No. Search for AHV: the historical pension initiative and its related financing proposal appear.
+
+Track the pension proposal and return to My votes. Tracking follows the topic; it does not record how you voted. Explore opens the reviewed explanation.
+
+Every central AHV statement opens its original booklet passages, page and actor. The historical evidence frame stays separate from later developments. Quotes resolve from immutable source spans, rather than generated quotation text.
+
+Perspectives organise the reviewed evidence for you, others and Switzerland. For a working-age person, a definite personal charge was not established by the original proposal. Missing financing facts produce uncertainty, not an invented number.
+
+Official updates show publication and checked dates. A sourced relationship connects the earlier proposal to a later financing vote. These are manually checked official references, not new model analyses.
+
+This demonstration note is saved in an encrypted local vault. Choices and notes never go to the backend or Apertus. A passphrase unlocks them; encrypted backups are available. There is no account or cross-device sync.
+
+Lock clears the private view while public information remains readable. The demonstration uses synthetic data, never a real voting choice.
+
+Apertus version one point five, eight billion, ran locally on Apple Silicon to select passages, extract candidate values and identify attribution. Independent checks and human review produced the published case. Seven bounded controls passed from eight real completions. Web clicks show recorded results, not fresh generation. Docker runs the reviewed app locally. One reviewed AHV case is proven; broader accuracy is not claimed.

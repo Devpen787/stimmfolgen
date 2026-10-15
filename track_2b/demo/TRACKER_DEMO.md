@@ -36,3 +36,7 @@ Lock clears the private view while public information remains readable. The demo
 
 Apertus version one point five, eight billion, ran locally on Apple Silicon to select passages, extract candidate values and identify attribution. Independent checks and human review produced the published case. Seven bounded controls passed from eight real completions. Web clicks show recorded results, not fresh generation. Docker runs the reviewed app locally. One reviewed AHV case is proven; broader accuracy is not claimed.
 
+
+## Participant voiceover selected
+
+The participant chose to record their own voice on 15 October. Use [silent footage](StimmFolgen_Tracker_Silent.mp4), [recording guide](RECORD_YOUR_VOICE.md) and [clean narration](VOICEOVER_SCRIPT.txt). The synthetic voice version remains a pacing reference. The final participant-narrated video is not yet recorded or mixed.
