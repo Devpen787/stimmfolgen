@@ -1,0 +1,157 @@
+{
+  "case_id": "ch-federal:2025-09-28:home-tax",
+  "title": "Homeownership tax reform",
+  "mode": "DOCUMENT_EXPLANATION",
+  "as_of": "2025-06-20T23:59:59+02:00",
+  "content_cutoff": "2025-06-20",
+  "available_by": "2026-10-15T20:11:55.081538+00:00",
+  "vote_date": "2025-09-28",
+  "source_sha256": "39c020145299913685e4d0b6899fa23bb1f94938652a417e0c1da08d316ade8a",
+  "source_url": "https://www.bk.admin.ch/dam/de/sd-web/6DaWglL-N7NM/2025-09-28_erlaeuterungen_des_bundesrates.pdf",
+  "cards": [
+    {
+      "id": "H01",
+      "title": "What changes for homeowners",
+      "kind": "DIRECT_PROVISION",
+      "statement": "The linked reform would abolish imputed-rental-income taxation for owner-occupied homes and restrict deductions, including maintenance costs.",
+      "review_status": "PENDING_HUMAN_REVIEW",
+      "origin": "APERTUS_PASSAGE_SELECTION_WITH_INDEPENDENT_SOURCE_CHECK",
+      "citations": [
+        {
+          "span_id": "home-tax:H01",
+          "pdf_page": 10,
+          "printed_page": 10,
+          "start_char": 81,
+          "end_char": 483,
+          "text": "Das Bundesgesetz über den Systemwechsel bei der Wohneigentumsbesteuerung4 sieht vor, den Eigenmietwert künftig nicht mehr zu besteuern. Im Gegenzug werden Steuerabzüge eingeschränkt. So soll der Abzug der Kosten für den Unterhalt der Liegenschaft bei Bund, Kantonen und Gemeinden abgeschafft werden. Bei der direkten Bundessteuer fallen zudem die Abzüge für Energiespar- und Umweltschutzmassnahmen weg.",
+          "text_sha256": "40c7d4e18427c7c44d61a13fc2700e9fadd4626146aa9bdaae3514b1073ff074",
+          "actor": "GOVERNMENT",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/6DaWglL-N7NM/2025-09-28_erlaeuterungen_des_bundesrates.pdf#page=10",
+          "source_sha256": "39c020145299913685e4d0b6899fa23bb1f94938652a417e0c1da08d316ade8a"
+        }
+      ]
+    },
+    {
+      "id": "H02",
+      "title": "Cantonal tax on second homes",
+      "kind": "CONDITIONAL_APPLICABILITY",
+      "statement": "Cantons could introduce a special tax on predominantly owner-occupied second homes. This would not happen automatically in every canton.",
+      "review_status": "PENDING_HUMAN_REVIEW",
+      "origin": "APERTUS_PASSAGE_SELECTION_WITH_INDEPENDENT_SOURCE_CHECK",
+      "citations": [
+        {
+          "span_id": "home-tax:H02",
+          "pdf_page": 10,
+          "printed_page": 10,
+          "start_char": 1064,
+          "end_char": 1751,
+          "text": "Die neue Verfassungsbestimmung erlaubt es den Kantonen, eine Sondersteuer auf überwiegend selbstgenutzten Zweitliegenschaften einzuführen. So können insbesondere die stärker betroffenen Tourismuskantone allfällige Mindereinnahmen bei den Zweitliegenschaften kompensieren. Die Verfassungsbestimmung gibt den Kantonen bei der konkreten Ausgestaltung viel Spielraum und trägt damit ihren unterschiedlichen Situationen Rechnung. Zudem können die Kantone die Gemeinden ermächtigen, diese Steuer zu erheben. Die besondere Liegenschaftssteuer könnte separat oder als Zuschlag zu einer bereits bestehenden Liegenschaftssteuer erhoben werden. 4 BBl 2025 23 ( admin.ch > Bundesrecht > Bundesblatt)",
+          "text_sha256": "47cb23c4951cb0511e0436f9206a28b52fad4f9357a8b1c4f4db1545e90545c9",
+          "actor": "GOVERNMENT",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/6DaWglL-N7NM/2025-09-28_erlaeuterungen_des_bundesrates.pdf#page=10",
+          "source_sha256": "39c020145299913685e4d0b6899fa23bb1f94938652a417e0c1da08d316ade8a"
+        }
+      ]
+    },
+    {
+      "id": "H03",
+      "title": "Renters and interest deductions",
+      "kind": "CONDITIONAL_APPLICABILITY",
+      "statement": "Renters could also be affected by restrictions on interest deductions. The booklet says they would generally no longer deduct interest.",
+      "review_status": "PENDING_HUMAN_REVIEW",
+      "origin": "APERTUS_PASSAGE_SELECTION_WITH_INDEPENDENT_SOURCE_CHECK",
+      "citations": [
+        {
+          "span_id": "home-tax:H03",
+          "pdf_page": 12,
+          "printed_page": 12,
+          "start_char": 1000,
+          "end_char": 1893,
+          "text": "Da im geltenden Recht alle Arten von Schuldzinsen abgezogen werden können, zum Beispiel auch solche für Konsumkredite oder private Darlehen, sind von der Reform alle Steuerpflichtigen betroffen, also auch Mieterinnen und Mieter. Künftig können sie in der Regel keine Schuldzinsen mehr abziehen. Die Begrenzung des Schuldzinsenabzugs betrifft die Mieterinnen und Mieter insgesamt jedoch in weit geringerem Umfang als Eigenheimbesitzende, weil mehr als 90 Prozent der gesamten Kreditverpflichtungen der privaten Haushalte auf Hypotheken entfallen.6 Die Reform betrifft auch private Vermieterinnen und Vermieter, weil der Schuldzinsabzug neu von der Zusammensetzung des Gesamtvermögens abhängt und sie somit in der Regel weniger Schuldzinsen abziehen können als heute. Auch können sie bei der direkten Bundessteuer die Abzüge für Energiespar- und Umweltschutzmassnahmen nicht mehr geltend machen.",
+          "text_sha256": "4633ea4024906ab4ec970f8311b6a2db0a24f3602a0b5b0e790b4d8e538e3b8c",
+          "actor": "GOVERNMENT",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/6DaWglL-N7NM/2025-09-28_erlaeuterungen_des_bundesrates.pdf#page=12",
+          "source_sha256": "39c020145299913685e4d0b6899fa23bb1f94938652a417e0c1da08d316ade8a"
+        }
+      ]
+    },
+    {
+      "id": "H04",
+      "title": "Personal tax savings remain conditional",
+      "kind": "UNRESOLVED",
+      "statement": "The booklet does not establish one definite personal saving. Effects depend on residence, imputed rental value, deductions, taxable income, mortgage rates and any second-home tax.",
+      "review_status": "PENDING_HUMAN_REVIEW",
+      "origin": "APERTUS_PASSAGE_SELECTION_WITH_INDEPENDENT_SOURCE_CHECK",
+      "citations": [
+        {
+          "span_id": "home-tax:H04",
+          "pdf_page": 12,
+          "printed_page": 12,
+          "start_char": 265,
+          "end_char": 978,
+          "text": "Unmittelbar betrifft die Reform vor allem Personen, die ein Eigenheim besitzen und selbst nutzen. Die steuerlichen Auswirkungen hängen von zahlreichen Faktoren ab: vom Wohnort, von der Höhe des Eigenmietwerts, von der Höhe der Abzüge, vom sonstigen steuerbaren Einkommen sowie von einer allfälligen Erhebung der besonderen Liegenschaftssteuer auf Zweitliegenschaften. Entscheidenden Einfluss hat auch das Hypothekarzinsniveau. Bei einem tiefen Zinssatz führt die Reform bei einer Mehrheit der Eigenheimbesitzenden zu geringeren Steuern. Sind die Hypothekarzinsen dagegen hoch, führt die Reform bei einer Mehrheit zu höheren Steuern, weil die höheren Schuldzinsen grösstenteils nicht mehr abgezogen werden können.5",
+          "text_sha256": "05b21277b72e3977ffb7f209c52fba0bfb61f9dd5ee65c60b409c4d5e0ec7d6e",
+          "actor": "GOVERNMENT",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/6DaWglL-N7NM/2025-09-28_erlaeuterungen_des_bundesrates.pdf#page=12",
+          "source_sha256": "39c020145299913685e4d0b6899fa23bb1f94938652a417e0c1da08d316ade8a"
+        }
+      ]
+    }
+  ],
+  "gate": {
+    "status": "PENDING_HUMAN_REVIEW",
+    "source_bytes_verified": true,
+    "historical_public_availability_claimed": false
+  },
+  "inference_mode": "SOURCE_CHECKED_CANDIDATE",
+  "live_inference_performed_for_this_request": false,
+  "model": "Apertus v1.5 8B",
+  "limitations": [
+    "Describes the 2025 proposal, not current tax advice",
+    "Exact-byte historical publication date not independently established; source inspected in October 2026",
+    "No definite personal tax calculation",
+    "Human wording review pending"
+  ],
+  "questions": [
+    "What changes for homeowners?",
+    "Does every canton have to introduce the second-home tax?",
+    "Can renters also be affected?"
+  ],
+  "primary_cards": [
+    "H01",
+    "H04"
+  ],
+  "perspectives": {
+    "groups": [
+      {
+        "id": "owner",
+        "label": "Own and live in a home",
+        "fact_ids": [
+          "H01",
+          "H04"
+        ]
+      },
+      {
+        "id": "renter",
+        "label": "Rent a home",
+        "fact_ids": [
+          "H03"
+        ]
+      },
+      {
+        "id": "second-home",
+        "label": "Own a second home",
+        "fact_ids": [
+          "H02"
+        ]
+      }
+    ],
+    "nation": {
+      "title": "Different choices across cantons",
+      "fact_ids": [
+        "H02",
+        "H04"
+      ]
+    }
+  }
+}

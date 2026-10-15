@@ -7,7 +7,7 @@ import ipaddress
 import sys
 from pathlib import Path
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit,parse_qs
 TRACK=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(TRACK/'src/gate0'))
 from release_guard import clear_gate, human_approvals
@@ -50,7 +50,8 @@ def answer_topic(case, topic):
         'inference_mode':case['inference_mode'],'live_inference_performed_for_this_request':False}
 
 
-def make_handler(pdf,case,live=None,admission=None):
+def make_handler(pdf,case,live=None,admission=None,cases=None,source_dir=None):
+    cases=cases or {'ahv13':case}
     class Handler(BaseHTTPRequestHandler):
         def setup(self):
             super().setup();self.connection.settimeout(15)
@@ -63,18 +64,24 @@ def make_handler(pdf,case,live=None,admission=None):
             self.end_headers();self.wfile.write(data)
         def do_GET(self):
             path=urlsplit(self.path).path
-            if path=='/api/case':return self.send(200,case)
+            if path=='/api/cases':return self.send(200,cases)
+            if path=='/api/case':
+                ident=parse_qs(urlsplit(self.path).query).get('case',['ahv13'])[0]
+                return self.send(200,cases[ident]) if ident in cases else self.send(404,{'error':'Vote not found'})
             if path=='/api/catalog':return self.send(200,json.loads((TRACK/'src/app/catalog.json').read_text()))
             if path=='/api/live/status':return self.send(200,{'configured':live is not None,'scope':'AHV historical reviewed evidence only','model':live.identity['backing_checkpoint'] if live else None,'provider':'Infomaniak Switzerland' if live and live.hosted_client else 'Your local Mac' if live else None,'private_notes_sent':False,'local_matching_experimental':bool(live and not live.hosted_client)})
             if path=='/api/health':return self.send(200,{'status':'ok','gate0':case['gate']['gate0_status'],'mode':case['inference_mode']})
-            if path=='/api/booklet.pdf':return self.send(200,pdf,'application/pdf')
-            allowed={'/':'index.html','/app.js':'app.js','/vault.js':'vault.js','/style.css':'style.css'}
+            if path=='/api/booklet.pdf':
+                ident=parse_qs(urlsplit(self.path).query).get('case',['ahv13'])[0]
+                if ident not in cases:return self.send(404,{'error':'Vote not found'})
+                return self.send(200,pdf if ident=='ahv13' else (Path(source_dir)/(ident+'.pdf')).read_bytes(),'application/pdf')
+            allowed={'/':'index.html','/app.js':'app.js','/vault.js':'vault.js','/style.css':'style.css','/local.html':'local.html','/judges.html':'judges.html'}
             if path.startswith('/assets/') and path.removeprefix('/assets/') in {p.name for p in (TRACK/'web/assets').glob('*.svg')}:
                 return self.send(200,(TRACK/'web'/path.lstrip('/')).read_bytes(),'image/svg+xml')
             if path in allowed:
                 asset=TRACK/'web'/allowed[path]
                 if not asset.exists():return self.send(503,{'error':'Frontend not built; backend is ready'})
-                kind={'/':'text/html; charset=utf-8','/app.js':'text/javascript; charset=utf-8','/vault.js':'text/javascript; charset=utf-8','/style.css':'text/css; charset=utf-8'}[path]
+                kind={'/':'text/html; charset=utf-8','/app.js':'text/javascript; charset=utf-8','/vault.js':'text/javascript; charset=utf-8','/style.css':'text/css; charset=utf-8','/local.html':'text/html; charset=utf-8','/judges.html':'text/html; charset=utf-8'}[path]
                 return self.send(200,asset.read_bytes(),kind)
             return self.send(404,{'error':'Not found'})
         def do_POST(self):
@@ -88,6 +95,7 @@ def make_handler(pdf,case,live=None,admission=None):
                     data=json.loads(self.rfile.read(length))
                     if not isinstance(data,dict) or set(data)!={'question'} or not isinstance(data['question'],str) or not 3<=len(data['question'].strip())<=700:raise ValueError()
                 except (ValueError,TypeError):return self.send(400,{'error':'Send one public question (3–700 characters), without private fields.'})
+                if parse_qs(urlsplit(self.path).query).get('case',['ahv13'])[0]!='ahv13':return self.send(503,{'error':'Live answers for this vote require the on-premise launcher or online demo.'})
                 if live is None:return self.send(503,{'outcome':'SERVICE_UNAVAILABLE','error':'Live Apertus is not configured here. The reviewed explanation remains available.','live_inference_performed_for_this_request':False})
                 if admission:
                     address=self.client_address[0]
@@ -109,9 +117,9 @@ def make_handler(pdf,case,live=None,admission=None):
     return Handler
 
 
-def serve(pdf,case,host,port,live=None,admission=None):
+def serve(pdf,case,host,port,live=None,admission=None,cases=None,source_dir=None):
     print(f'StimmFolgen backend: http://{host}:{port} (live={live is not None})',flush=True)
-    ThreadingHTTPServer((host,port),make_handler(pdf,case,live,admission)).serve_forever()
+    ThreadingHTTPServer((host,port),make_handler(pdf,case,live,admission,cases,source_dir)).serve_forever()
 
 
 def main():
@@ -135,6 +143,9 @@ def main():
     elif args.local_model_dir:
         from live import LiveService
         live=LiveService(pdf,case,args.local_model_dir,args.model_url)
-    serve(pdf,case,args.host,args.port,live,admission)
+    from case_registry import additional_cases
+    source_dir=(args.source_pdf.parent/'sources') if args.source_pdf else TRACK.parent/'.local/local/sources'
+    cases={'ahv13':case,**additional_cases(source_dir,download=True)}
+    serve(pdf,case,args.host,args.port,live,admission,cases,source_dir)
 
 if __name__=='__main__':main()

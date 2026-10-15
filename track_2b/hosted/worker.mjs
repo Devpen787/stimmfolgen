@@ -8,6 +8,7 @@ export const headers={'Content-Type':'application/json; charset=utf-8','Cache-Co
 const json=(data,status=200)=>new Response(JSON.stringify(data),{status,headers});
 export const digest=async text=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text)))].map(b=>b.toString(16).padStart(2,'0')).join('');
 const authenticated=digest(bundleText).then(hash=>hash===expectedHash&&bundle.case.gate.gate0_status==='PASS_BOUNDED_AHV');
+const cases=bundle.cases||{ahv13:bundle.case};
 const configured=env=>env.LIVE_ENABLED==='true'&&Boolean(env.PUBLICAI_TOKEN);
 
 export class DemoGate extends DurableObject{
@@ -19,7 +20,9 @@ export class DemoGate extends DurableObject{
   let data;try{data=await request.json();if(!questionPayload(data))throw Error();}catch{return json({error:'Send one public question without private fields.'},400);}
   if(this.busy)return json({outcome:'BUSY',error:'Apertus is answering another visitor. Please try again shortly.',live_inference_performed_for_this_request:false},429);
   this.busy=true;
-  const start=Date.now();let result={outcome:'SERVICE_UNAVAILABLE',claims:[],unknowns:[],live_inference_performed_for_this_request:false,human_reviewed:false,publication_state:'REVIEWED_STATEMENTS_WITH_UNREVIEWED_MODEL_MATCH',as_of:bundle.case.as_of,source_sha256:bundle.case.source_sha256,model:MODEL,contract:bundle.hosted_query.contract,execution_contract_sha256:expectedHash,directness_checks_performed:0,provider:'PUBLIC_AI',hosting:'CLOUDFLARE_GLOBAL_NOT_SWISS_SOVEREIGN',model_identity_basis:'PROVIDER_REPORTED_NOT_WEIGHT_ATTESTED',semantic_check:'IMMUTABLE_REVIEWED_WORDING_EXPLICIT_SCOPE_AND_LEXICAL_SUPPORT_WITH_DIRECTNESS'};
+  const caseId=new URL(request.url).searchParams.get('case')||'ahv13',caseData=cases[caseId];
+  if(!caseData){this.busy=false;return json({error:'Vote not found'},404);}
+  const start=Date.now();let result={outcome:'SERVICE_UNAVAILABLE',claims:[],unknowns:[],live_inference_performed_for_this_request:false,human_reviewed:false,case_id:caseData.case_id,publication_state:'REVIEWED_STATEMENTS_WITH_UNREVIEWED_MODEL_MATCH',as_of:caseData.as_of,source_sha256:caseData.source_sha256,model:MODEL,contract:bundle.hosted_query.contract,execution_contract_sha256:expectedHash,directness_checks_performed:0,provider:'PUBLIC_AI',hosting:'CLOUDFLARE_GLOBAL_NOT_SWISS_SOVEREIGN',model_identity_basis:'PROVIDER_REPORTED_NOT_WEIGHT_ATTESTED',semantic_check:'IMMUTABLE_REVIEWED_WORDING_EXPLICIT_SCOPE_AND_LEXICAL_SUPPORT_WITH_DIRECTNESS'};
   try{
    const now=Date.now(),day=new Date(now).toISOString().slice(0,10),network=await digest(this.salt+request.headers.get('X-Network'));
    for(const [k,v] of this.clients)if(now-v.start>300000)this.clients.delete(k);
@@ -33,8 +36,8 @@ export class DemoGate extends DurableObject{
    await modelAvailable(this.env.PUBLICAI_TOKEN);
    const question=data.question.trim();
    const contract=bundle.hosted_query;
-   const matched=await matchQuestion(bundle.case,contract,question,(prompt,maxTokens,system,schema)=>completion(this.env.PUBLICAI_TOKEN,prompt,maxTokens,system,fetch,()=>{result.live_inference_performed_for_this_request=true;if(system===contract.directness_system)result.directness_checks_performed++;},schema));
-   Object.assign(result,composeAnswer(bundle.case,matched.plan,matched.ids,matched.scope.scope),{contract:contract.contract,model_tasks:matched.tasks,semantic_check:'IMMUTABLE_REVIEWED_WORDING_EXPLICIT_SCOPE_AND_LEXICAL_SUPPORT_WITH_DIRECTNESS'});
+   const matched=await matchQuestion(caseData,contract,question,(prompt,maxTokens,system,schema)=>completion(this.env.PUBLICAI_TOKEN,prompt,maxTokens,system,fetch,()=>{result.live_inference_performed_for_this_request=true;if(system===contract.directness_system)result.directness_checks_performed++;},schema));
+   Object.assign(result,composeAnswer(caseData,matched.plan,matched.ids,matched.scope.scope),{contract:contract.contract,model_tasks:matched.tasks,semantic_check:'IMMUTABLE_REVIEWED_WORDING_EXPLICIT_SCOPE_AND_LEXICAL_SUPPORT_WITH_DIRECTNESS'});
   }catch(error){if(result.live_inference_performed_for_this_request)result.outcome='WITHHELD';result.failure_code=/^(Provider HTTP [0-9]{3}|Invalid model identity or completion|Invalid content|Required model or bounded pricing unavailable|Response too large)$/.test(error.message)?error.message:'PROVIDER_TRANSPORT_OR_FORMAT';result.error='Apertus is unavailable or the free credit is exhausted. No answer was substituted. Reviewed sources remain available.';}
   finally{this.busy=false;}
   result.latency_seconds=Math.round((Date.now()-start)/10)/100;result.answered_at=new Date().toISOString();result.receipt=await digest(JSON.stringify(result));
@@ -50,23 +53,25 @@ export default{
   }
   if(!await authenticated)return json({error:'Authenticated evidence bundle unavailable'},503);
   if(request.method==='GET'){
-   if(path==='/api/case')return json(bundle.case);
+   if(path==='/api/cases')return json(cases);
+   if(path==='/api/case')return cases[url.searchParams.get('case')||'ahv13']?json(cases[url.searchParams.get('case')||'ahv13']):json({error:'Vote not found'},404);
    if(path==='/api/catalog')return json(bundle.catalog);
    if(path==='/api/health')return json({status:'ok',gate0:bundle.case.gate.gate0_status,mode:'REVIEWED_RECORDED_CASE'});
    if(path==='/api/live/status')return json({configured:configured(env),scope:'AHV historical reviewed evidence only',model:MODEL,provider:'Public AI · website on Cloudflare (global hosting)',private_notes_sent:false,limited_free_demo:true,hosting:'NOT_SWISS_SOVEREIGN'});
-   if(path==='/api/booklet.pdf')return Response.redirect(bundle.source_url+url.hash,302);
+   if(path==='/api/booklet.pdf'){const c=cases[url.searchParams.get('case')||'ahv13'];return c?Response.redirect((c.source_url||bundle.source_url)+url.hash,302):json({error:'Vote not found'},404);}
    return json({error:'Not found'},404);
   }
   if(request.method!=='POST'||path!=='/api/live/question')return json({error:'Not found'},404);
   if(request.headers.get('Origin')&&request.headers.get('Origin')!==url.origin)return json({error:'Cross-origin requests are not accepted'},400);
   if(!request.headers.get('Content-Type')?.startsWith('application/json'))return json({error:'Use application/json'},400);
   let text;try{text=await boundedText(request.body,4096);if(new TextEncoder().encode(text).length>4096||!questionPayload(JSON.parse(text)))throw Error();}catch{return json({error:'Send one public question (3–700 characters), without private fields.'},400);}
+  const caseId=url.searchParams.get('case')||'ahv13';if(!cases[caseId])return json({error:'Vote not found'},404);
   const gate=env.DEMO_GATE.get(env.DEMO_GATE.idFromName('global-free-demo-v1'));
-  const response=await gate.fetch(new Request('https://internal/question',{method:'POST',headers:{'Content-Type':'application/json','X-Network':request.headers.get('CF-Connecting-IP')||'local-test'},body:text}));
+  const response=await gate.fetch(new Request('https://internal/question?case='+encodeURIComponent(caseId),{method:'POST',headers:{'Content-Type':'application/json','X-Network':request.headers.get('CF-Connecting-IP')||'local-test'},body:text}));
   const payload=await response.clone().json();
   // Workers and Durable Objects can update at different times. Never publish
   // inference produced under a different evidence/prompt contract.
-  if(!executionMatches(payload,expectedHash))return json({outcome:'SERVICE_UNAVAILABLE',error:'Apertus is updating to the current evidence contract. Please retry shortly. Reviewed sources remain available.',live_inference_performed_for_this_request:payload.live_inference_performed_for_this_request===true,expected_execution_contract_sha256:expectedHash,observed_execution_contract_sha256:payload.execution_contract_sha256||null},503);
+  if(!executionMatches(payload,expectedHash,cases[caseId]))return json({outcome:'SERVICE_UNAVAILABLE',error:'Apertus is updating to the current evidence contract. Please retry shortly. Reviewed sources remain available.',live_inference_performed_for_this_request:payload.live_inference_performed_for_this_request===true,expected_execution_contract_sha256:expectedHash,observed_execution_contract_sha256:payload.execution_contract_sha256||null},503);
   return response;
  }
 };

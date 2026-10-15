@@ -46,5 +46,10 @@ test('inference from an old Durable Object contract is rejected during deploymen
 });
 test('scope refusals explain the boundary without publishing claims about the other proposal',()=>{
  const s={kind:'OUTSIDE_EVIDENCE',fact_ids:[]},other=composeAnswer(bundle.case,s,[],'OTHER_PROPOSAL'),later=composeAnswer(bundle.case,s,[],'LATER_EVENTS');
- assert.deepEqual(other.claims,[]);assert.ok(other.unknowns[0].includes(bundle.case.title));assert.ok(other.unknowns[0].includes('another proposal'));assert.deepEqual(later.claims,[]);assert.ok(later.unknowns[0].includes('Updates'));
+ assert.deepEqual(other.claims,[]);assert.ok(other.unknowns[0].includes(bundle.case.title));assert.ok(other.unknowns[0].includes('another vote'));assert.deepEqual(later.claims,[]);assert.ok(later.unknowns[0].includes('Updates'));
+});
+
+test('execution publication binds the requested case as well as the bundle',()=>{
+ const c={case_id:'fictional-case',source_sha256:'b'.repeat(64)},h='a'.repeat(64),result={live_inference_performed_for_this_request:true,execution_contract_sha256:h,...c};
+ assert.equal(executionMatches(result,h,c),true);assert.equal(executionMatches({...result,case_id:'another-case'},h,c),false);assert.equal(executionMatches({...result,source_sha256:'c'.repeat(64)},h,c),false);
 });

@@ -20,7 +20,7 @@ assert {c['id'] for c in case['cards']}=={'P01','P02','P03','P04','P05'}
 assert case['as_of']=='2024-03-02T23:59:59+01:00'
 assert all(c['citations'] and c['review_status']=='HUMAN_REVIEWED_STATEMENT' for c in case['cards'])
 assert b'My votes' in get('/')
-assert len(json.loads(get('/api/catalog'))['votes'])==5
+catalog=json.loads(get('/api/catalog'));assert len(catalog['votes'])>=6;assert any(v['id']=='home-tax' for v in catalog['votes'])
 assert get('/api/booklet.pdf').startswith(b'%PDF')
 def post(body):
     request=urllib.request.Request(args.url+'/api/question',data=json.dumps(body).encode(),headers={'Content-Type':'application/json'})

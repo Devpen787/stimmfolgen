@@ -2,12 +2,14 @@ import {PrivateVault} from './vault.js';
 const vault = new PrivateVault();
 const drafts = new Map();
 function lockPrivate() { vault.lock(); drafts.clear(); }
-let liveStatus={configured:false}, liveQuestion='', liveResult=null, livePending=false, refreshLive=()=>{};
+let liveStatus={configured:false};
+const liveStates=new Map();
+let analyses={};
 let catalog, analysis, sessions = [], currentVote = null, idleTimer, searchQuery = '';
 const screen = document.getElementById('screen');
 const dialog = document.getElementById('dialog');
 const body = document.getElementById('dialog-body');
-const labels = {DIRECT_PROVISION:'Defined in the proposal',COST_PROJECTION:'Government projection',UNRESOLVED:'Unresolved financing',ATTRIBUTED_PREDICTION:'Council / Parliament argument'};
+const labels = {DIRECT_PROVISION:'Defined in the proposal',COST_PROJECTION:'Government projection',UNRESOLVED:'What remains uncertain',CONDITIONAL_APPLICABILITY:'Depends on the situation',ATTRIBUTED_PREDICTION:'Federal Council and Parliament’s view'};
 const $ = id => document.getElementById(id);
 const entries = () => vault.unlocked ? vault.entries : vault.exists ? [] : sessions;
 const saved = id => entries().find(item => item.id === id);
@@ -23,35 +25,32 @@ function notify(text) { $('notice').textContent=text; $('notice').hidden=false; 
 function openDialog(title,nodes) { $('dialog-title').textContent=title; body.replaceChildren(...nodes); if(!dialog.open)dialog.showModal(); }
 function go(id,tab='meaning') { location.hash=id==='my'||id==='upcoming'||id==='search'?'#'+id:'#vote/'+id+'/'+tab; }
 function sourceLink(reference,text='View source') { const ref=catalog.sources[reference]; const node=link(text,ref.url,'source-link'); node.target='_blank'; node.rel='noopener noreferrer'; node.append(icon('arrow-top-right-on-square')); return node; }
-function checkedNote() { return el('p','Catalogue checked '+date(catalog.checked_date)+'. Five selected federal proposals; this is not the full Swiss vote register.','date-note'); }
+function checkedNote() { return el('p','Updated '+date(catalog.checked_date)+' · '+catalog.votes.length+' selected federal votes. More votes will be added.','date-note'); }
 function modelLink() {
- const node=button('',showApertus,'model-link'); const text=el('span'); text.append(el('span',liveStatus.configured?'How live Apertus helps':'Prepared with Apertus v1.5'),el('br'),el('span','Reviewed historical analysis'));
+ const node=button('',showApertus,'model-link'); const text=el('span'); text.append(el('span',liveStatus.configured?'How live Apertus helps':'Prepared with Apertus v1.5'),el('br'),el('span','Explore with sources'));
  node.append(icon('document-text'),text,icon('chevron-right')); return node;
 }
 function showApertus() {
  openDialog('How Apertus helps',[
-  el('p','Apertus v1.5 ran locally to find original booklet passages, extract candidate values and identify who made an argument.'),
-  el('p','Independent source and meaning checks, followed by human review, produced this published AHV explanation.'),
-  el('p','Ask Apertus sends only your explicit public question. Hosted Apertus checks which proposal you mean, translates your question into a source search, then checks retrieved evidence against your original question. Local matching is experimental. The app displays the accepted wording, speaker and sources unchanged.'),
-  el('p',liveStatus.configured?'Live service: '+liveStatus.model+' · '+liveStatus.provider+'. No model download is needed in your browser.':'Live Apertus is not configured on this installation. The reviewed explanation remains available.'),
-  el('p','The source statements were reviewed; your question-to-source match is AI-selected and not human reviewed. Relevance checking uses the same model and can miss a match or select unrelated context. Apertus cannot rewrite the displayed facts or give a voting recommendation.'),
-  el('p','Your choices and notes are not part of public analysis requests. On-device encryption, not the model, protects saved private data.'),
-  link('Run Apertus locally on your own computer','/local.html'),
-  el('p','Other catalogue entries have official source references, but do not yet have reviewed Apertus analysis.','plain-note')]);
+  el('p','Apertus helps you find official information related to your question, with sources you can open.'),
+  el('p','AI can misunderstand a question or miss useful information. Check the linked source before relying on an answer. StimmFolgen does not tell you how to vote.'),
+  el('p','Only the question you choose to send is shared with the service. Your tracked votes, choices and private notes are never attached.'),
+  el('p',liveStatus.local?'Apertus is running on this computer. Your questions stay here.':'This online demo uses Public AI for Apertus and Cloudflare for the website. It is not hosted exclusively in Switzerland.'),
+  link('Use Apertus on your own computer','/local.html'),link('About this demo and its checks','/judges.html')]);
 }
-function sourceStatement(id) {
- const c=card(id),nodes=[el('p',labels[c.kind]+' · reviewed statement'),el('p',c.statement),el('p','Historical evidence frame: '+date(analysis.as_of),'source-date')];
+function sourceStatement(id,sourceCase=analysis) {
+ const c=sourceCase.cards.find(c=>c.id===id),nodes=[el('p',labels[c.kind]+' · reviewed statement'),el('p',c.statement),el('p','About the proposal voted on '+date(sourceCase.vote_date),'source-date')];
  for(const ref of c.citations) {
-  nodes.push(el('blockquote',ref.text)); const a=link('Original booklet, page '+ref.pdf_page,'/api/booklet.pdf#page='+ref.pdf_page); a.target='_blank';a.rel='noopener';nodes.push(a);
+  nodes.push(el('blockquote',ref.text)); const a=link('Original booklet, page '+ref.pdf_page,'/api/booklet.pdf?case='+Object.keys(analyses).find(k=>analyses[k].case_id===sourceCase.case_id)+'#page='+ref.pdf_page); a.target='_blank';a.rel='noopener';nodes.push(a);
   nodes.push(el('p','Source: '+(ref.actor==='GOVERNMENT'?(c.kind==='ATTRIBUTED_PREDICTION'?'Federal Council / Parliament argument section':'Federal Council explanation'):'Initiative committee'),'source-date'));
-  const detail=el('details');detail.append(el('summary','Reference details'),el('code','Span '+ref.span_id+' · SHA-256 '+ref.text_sha256));nodes.push(detail);
+
  }
- if(id==='P01') { const a=link('Proposed legal text, page 18','/api/booklet.pdf#page=18');a.target='_blank';a.rel='noopener';nodes.push(a); }
- const hash=el('details');hash.append(el('summary','Document and dates'),el('code',analysis.source_sha256),el('p','Content cutoff: '+date(analysis.content_cutoff)+'. Public availability established by '+date(analysis.available_by)+'.'));nodes.push(hash);
+ if(sourceCase.case_id.endsWith(':ahv13')&&id==='P01') { const a=link('Proposed legal text, page 18','/api/booklet.pdf#page=18');a.target='_blank';a.rel='noopener';nodes.push(a); }
+ const hash=el('details');hash.append(el('summary','Document and dates'),el('p','Booklet text finalised '+date(sourceCase.content_cutoff)+'. Source checked '+date(sourceCase.checked_at||catalog.checked_at)+'.'),link('How sources are checked','/judges.html'));nodes.push(hash);
  openDialog(c.title,nodes);
 }
 function updateCard(v) {
- if(!v.updates.length) { const box=el('div',undefined,'update-card');box.append(icon('information-circle'),el('p','No verified updates recorded for this vote in the current catalogue.','plain-note'));return box; }
+ if(!v.updates.length) { const box=el('div',undefined,'update-card');box.append(icon('information-circle'),el('p','No updates have been added for this vote yet.','plain-note'));return box; }
  const u=v.updates[0],ref=catalog.sources[u.source],box=el('article',undefined,'update-card');const ico=icon('information-circle');ico.className='update-icon';box.append(ico);
  const text=el('div');text.append(el('h3','Official update'),el('div',date(u.date),'source-date'),el('p',u.title),el('div',ref.publisher,'source-date'),sourceLink(u.source,'Source: '+new URL(ref.url).hostname));box.append(text);return box;
 }
@@ -62,7 +61,7 @@ function voteCard(v,tracked=false) {
  const box=el('article',undefined,'vote-card'),row=el('div',undefined,'title-row');row.append(el('h2',v.title));const toggle=button(saved(v.id)?'Tracked':'Track',()=>toggleTrack(v),'track-button');toggle.setAttribute('aria-label',saved(v.id)?'Untrack '+v.title:'Track '+v.title);toggle.setAttribute('aria-pressed',String(Boolean(saved(v.id))));toggle.append(icon(saved(v.id)?'bookmark':'plus'));row.append(toggle);box.append(row);
  const meta=el('div',undefined,'meta');meta.append(el('span',date(v.date)),el('span',future(v)?'Upcoming':'Past vote','tag'+(future(v)?' future':'')));box.append(meta,el('p',v.summary,'summary'));
  const open=button(tracked?'Explore my vote':'Explore vote',()=>go(v.id),'primary');open.append(icon('arrow-right'));box.append(open);
- if(v.analysis_case_id)box.append(modelLink());else box.append(el('p','Official source available · Apertus analysis not reviewed yet.','plain-note'));
+ if(v.analysis_case_id)box.append(modelLink());else box.append(el('p','Official source available · explanation coming soon.','plain-note'));
  return box;
 }
 function findVote() { const a=link('','#search','find');a.append(icon('magnifying-glass'),el('span','Find another vote'),icon('chevron-right'));return a; }
@@ -71,7 +70,7 @@ function renderMy() {
  if(vault.exists&&!vault.unlocked) { const box=el('div',undefined,'empty');box.append(el('h2','Your private votes are locked'),el('p','Unlock them on this device. You can still browse public votes without unlocking.'),button('Unlock my votes',showDevice,'primary'));screen.append(box,findVote());return; }
  if(!entries().length) { const box=el('div',undefined,'empty');box.append(el('h2','Keep the votes you want to understand'),el('p','Find a vote and tap Track. Your vote choice is optional and is never inferred.'),button('Find a vote',()=>go('search'),'primary'),button('Explore the AHV example',()=>go('ahv13')));screen.append(box); }
  for(const entry of entries()) {
-  const v=vote(entry.id);if(!v) { screen.append(el('p','A tracked vote is no longer in this catalogue. Your private record is retained.'));continue; }
+  const v=vote(entry.id);if(!v) { screen.append(el('p','A tracked vote is no longer in this list. Your private record is retained.'));continue; }
   const grid=el('div',undefined,'my-grid');grid.append(voteCard(v,true));const updates=el('div',undefined,'updates-column');updates.append(updateCard(v));for(const relation of v.related)updates.append(relatedCard(relation));grid.append(updates);screen.append(grid);
  }
  if(entries().length){screen.append(findVote());if(!vault.exists)screen.append(button('Save my votes on this device',showDevice,'secondary'));}
@@ -82,87 +81,91 @@ function renderCatalogue(which) {
  let input;if(which==='search'){const field=el('div',undefined,'search-box');field.append(icon('magnifying-glass'));input=el('input');input.type='search';input.placeholder='Search by topic or date';input.value=searchQuery;input.setAttribute('aria-label','Search votes');field.append(input);screen.append(field);}
  const results=el('div',undefined,'results');screen.append(results);
  const draw=()=>{results.replaceChildren();const q=(input?.value||'').trim().toLocaleLowerCase();let list=catalog.votes.filter(v=>which!=='upcoming'||future(v));list=list.filter(v=>(v.title+' '+v.official_title+' '+v.date+' '+date(v.date)).toLocaleLowerCase().includes(q));
-  for(const v of list)results.append(voteCard(v));if(!list.length)results.append(el('p','No matching votes in this selected catalogue. Try AHV, pensions or a date.','plain-note'));};
+  for(const v of list)results.append(voteCard(v));if(!list.length)results.append(el('p','No votes found. Try a topic or a date.','plain-note'));};
  input?.addEventListener('input',()=>{searchQuery=input.value;draw();});draw();screen.append(checkedNote());
 }
 function renderLive(container) {
+ const caseId=currentVote.id,sourceCase=analysis;
+ if(!liveStates.has(caseId))liveStates.set(caseId,{question:'',result:null,pending:false});
+ const state=liveStates.get(caseId);
  const box=el('section',undefined,'live-panel');box.setAttribute('aria-labelledby','live-heading');
  const heading=el('h2','Ask Apertus');heading.id='live-heading';box.append(heading,
   el('p','Your question. Relevant evidence you can check.','subtitle'),
-  el('p','Historical AHV booklet only · before 3 March 2024. For later events, see Updates.','plain-note'));
- if(!liveStatus.configured){box.append(el('p','Live Apertus is unavailable on this installation. You can still explore the reviewed explanation and sources.','plain-note'));container.append(box);return;}
- box.append(el('p','Powered by Apertus v1.5 · no model download','source-date'));
+  el('p','About the '+new Date(sourceCase.vote_date).getFullYear()+' proposal. For later developments, see Updates.','plain-note'));
+ if(!liveStatus.configured){box.append(el('p','Live Apertus is unavailable on this installation. You can still explore the explanation and sources.','plain-note'));container.append(box);return;}
+ box.append(el('p',liveStatus.local?'Powered by Apertus · running on this computer':'Powered by Apertus · no download needed','source-date'));
  if(liveStatus.local_matching_experimental)box.append(el('p','Experimental local question matching: the 4-bit model can select unrelated context. Statements stay unchanged; inspect their sources and the reviewed explanation.','unknown'));
- if(liveStatus.limited_free_demo){box.append(el('p','Limited free demo · global hosting, not Swiss-sovereign.','plain-note'));const service=el('details');service.append(el('summary','Free allowance & privacy'),el('p',liveStatus.model+' · '+liveStatus.provider+'. Up to 200 questions shared by all visitors, at most 80 per day. Access expires within seven days unless renewed. The website runs on Cloudflare globally and sends public questions to Public AI. Private choices and notes stay on this device.'),link('Prefer fully local Apertus?','/local.html'));box.append(service);}
- const form=el('form'),label=el('label','What would you like to understand?'),input=el('textarea');input.id='public-question';label.htmlFor=input.id;input.maxLength=700;input.required=true;input.minLength=3;input.value=liveQuestion;input.placeholder='For example: what remained unknown about financing?';input.rows=3;input.disabled=livePending;
- const privacy=el('p','This question goes to the Apertus service. Do not include names, salary or private notes. Your saved votes and notes are never attached.','plain-note');privacy.id='question-privacy';input.setAttribute('aria-describedby',privacy.id);
- const send=el('button',livePending?'Apertus is finding relevant sources…':'Ask Apertus','primary');send.type='submit';send.disabled=livePending;
+ if(liveStatus.limited_free_demo){box.append(el('p','Free online demo','plain-note'));const service=el('details');service.append(el('summary','Free allowance & privacy'),el('p',liveStatus.model+' · '+liveStatus.provider+'. Up to 200 questions shared by all visitors, at most 80 per day. Access expires within seven days unless renewed. The website runs on Cloudflare globally and sends public questions to Public AI. Private choices and notes stay on this device.'),link('Prefer fully local Apertus?','/local.html'));box.append(service);}
+ const form=el('form'),label=el('label','What would you like to understand?'),input=el('textarea');input.id='public-question';label.htmlFor=input.id;input.maxLength=700;input.required=true;input.minLength=3;input.value=state.question;input.placeholder='Ask about the changes or who may be affected';input.rows=3;input.disabled=state.pending;
+ const privacy=el('p',liveStatus.local?'Your question stays on this computer. Saved votes and notes are kept separate.':'Send a public question only. Your tracked votes and private notes are never shared with Apertus.','plain-note');privacy.id='question-privacy';input.setAttribute('aria-describedby',privacy.id);
+ const send=el('button',state.pending?'Apertus is finding relevant sources…':'Ask Apertus','primary');send.type='submit';send.disabled=state.pending;
  const output=el('div',undefined,'live-result');output.setAttribute('role','status');output.setAttribute('aria-live','polite');
- function draw(){output.replaceChildren();if(livePending){output.append(el('p','Finding relevant reviewed statements, then checking the match. This can take about a minute.'));return;}if(!liveResult)return;
-  if(liveResult.error)output.append(el('p',liveResult.error,'unknown'));
-  if(liveResult.live_inference_performed_for_this_request)output.append(el('p',(liveResult.outcome==='WITHHELD'?'Source match withheld · ':liveResult.answer_mode==='REVIEWED_EVIDENCE'?'Matched live by Apertus · ':'Request checked live by Apertus · ')+date(liveResult.answered_at)+' · '+liveResult.latency_seconds+' seconds','source-date'));
-  if(liveResult.answer_mode==='REVIEWED_EVIDENCE')output.append(el('h3','What the reviewed evidence says'));
-  if(liveResult.answer_mode==='SERVICE_LIMIT')output.append(el('h3','Your vote is your decision'));
-  if(liveResult.answer_mode==='EVIDENCE_LIMIT')output.append(el('h3','No matching reviewed answer'));
-  for(const claim of liveResult.claims||[]){const section=el('section',undefined,'analysis-row');section.append(el('div',(claim.evidence_kinds||[]).map(k=>labels[k]||k).join(' · '),'kind'),el('p',claim.text));for(const id of claim.fact_ids)section.append(button('Source and dates · '+card(id).title,()=>sourceStatement(id)));output.append(section);}
-  for(const unknown of liveResult.unknowns||[])output.append(el('p',unknown,'unknown'));
-  if(liveResult.answer_mode==='EVIDENCE_LIMIT')output.append(button('See dated updates',()=>go(currentVote.id,'updates'),'secondary'));
-  if(!liveResult.claims?.length){const alternatives=el('section');alternatives.append(el('h3','Browse the reviewed evidence'),el('p','These are the reviewed source statements, not a new Apertus answer.'));for(const c of analysis.cards)alternatives.append(button(c.title,()=>sourceStatement(c.id),'secondary'));output.append(alternatives);}
-  if(liveResult.live_inference_performed_for_this_request){output.append(el('p','Apertus helps find reviewed source statements; it does not write these facts. The hosted app searches the reviewed evidence and asks Apertus to check direct relevance to your original question. The match is not human reviewed; the same-model check can still miss errors.','plain-note'));const details=el('details');details.append(el('summary','Answer evidence'),el('p','Historical frame: '+date(liveResult.as_of)),el('p','Model tasks: '+(liveResult.model_tasks||[]).join(', ')),el('code','Source SHA-256: '+liveResult.source_sha256),el('code','Answer receipt: '+liveResult.receipt));output.append(details);}
+ function draw(){output.replaceChildren();if(state.pending){output.append(el('p','Apertus is looking through the sources. This may take a minute.'));return;}if(!state.result)return;
+  if(state.result.error)output.append(el('p',state.result.error,'unknown'));
+  if(state.result.live_inference_performed_for_this_request)output.append(el('p',(state.result.outcome==='WITHHELD'?'Could not find a reliable answer · ':state.result.answer_mode==='REVIEWED_EVIDENCE'?'Answered by Apertus · ':'Checked by Apertus · ')+date(state.result.answered_at)+' · '+state.result.latency_seconds+' seconds','source-date'));
+  if(state.result.answer_mode==='REVIEWED_EVIDENCE')output.append(el('h3','What the sources say'));
+  if(state.result.answer_mode==='SERVICE_LIMIT')output.append(el('h3','Your vote is your decision'));
+  if(state.result.answer_mode==='EVIDENCE_LIMIT')output.append(el('h3','We couldn’t find an answer in these sources'));
+  for(const claim of state.result.claims||[]){const section=el('section',undefined,'analysis-row');section.append(el('div',(claim.evidence_kinds||[]).map(k=>labels[k]||k).join(' · '),'kind'),el('p',claim.text));for(const id of claim.fact_ids)section.append(button('Source and dates · '+card(id).title,()=>sourceStatement(id,sourceCase)));output.append(section);}
+  for(const unknown of state.result.unknowns||[])output.append(el('p',unknown,'unknown'));
+  if(state.result.answer_mode==='EVIDENCE_LIMIT')output.append(button('See dated updates',()=>go(currentVote.id,'updates'),'secondary'));
+  if(!state.result.claims?.length){const alternatives=el('section');alternatives.append(el('h3','Explore the source information'),el('p','You can read these explanations while Apertus is unavailable.'));for(const c of sourceCase.cards)alternatives.append(button(c.title,()=>sourceStatement(c.id,sourceCase),'secondary'));output.append(alternatives);}
+  if(state.result.live_inference_performed_for_this_request)output.append(el('p','AI can miss information. Open the source to check the answer.','plain-note'));
 
  }
- input.addEventListener('input',()=>{liveQuestion=input.value;});
- form.addEventListener('submit',async event=>{event.preventDefault();if(livePending)return;liveQuestion=input.value.trim();if(liveQuestion.length<3)return;livePending=true;liveResult=null;input.disabled=true;send.disabled=true;send.textContent='Apertus is finding relevant sources…';draw();
-  try{const response=await fetch('/api/live/question',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:liveQuestion}),signal:AbortSignal.timeout(280000)});liveResult=await response.json();}
-  catch{liveResult={error:'Apertus did not respond. Your question was not saved. Try again; reviewed sources remain available.'};}
-  finally{livePending=false;refreshLive();}
+ input.addEventListener('input',()=>{state.question=input.value;});
+ form.addEventListener('submit',async event=>{event.preventDefault();if(state.pending)return;state.question=input.value.trim();if(state.question.length<3)return;state.pending=true;state.result=null;input.disabled=true;send.disabled=true;send.textContent='Apertus is finding relevant sources…';draw();
+  try{const response=await fetch('/api/live/question?case='+encodeURIComponent(caseId),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:state.question}),signal:AbortSignal.timeout(280000)});state.result=await response.json();}
+  catch{state.result={error:'Apertus did not respond. Your question was not saved. Try again; you can still read the sources.'};}
+  finally{state.pending=false;refresh();}
  });
- const suggestions=el('div',undefined,'question-suggestions');for(const q of ['What changes for pension recipients?','What remains unknown for workers?','Who made the taxes or spending-cuts argument?'])suggestions.append(button(q,()=>{input.value=q;liveQuestion=q;input.focus();},'secondary'));
- form.append(label,input,privacy,send);box.append(form,suggestions,output);refreshLive=()=>{input.disabled=livePending;send.disabled=livePending;send.textContent=livePending?'Apertus is finding relevant sources…':'Ask Apertus';draw();};draw();container.append(box);
+ const suggestions=el('div',undefined,'question-suggestions');for(const q of sourceCase.questions||['What changes for pension recipients?','What remains unknown for workers?','Who made the taxes or spending-cuts argument?'])suggestions.append(button(q,()=>{input.value=q;state.question=q;input.focus();},'secondary'));
+ form.append(label,input,privacy,send);box.append(form,suggestions,output);const refresh=()=>{input.disabled=state.pending;send.disabled=state.pending;send.textContent=state.pending?'Apertus is finding relevant sources…':'Ask Apertus';draw();};draw();container.append(box);
 }
 function renderVote(v,tab) {
- currentVote=v;screen.append(link('Back to My votes','#my','back'));const header=el('div',undefined,'detail-header');header.append(el('h1',v.title),el('div',date(v.date)+' · '+(future(v)?'Upcoming vote':'Past vote'),'meta'));screen.append(header);
+ currentVote=v;analysis=analyses[v.id];screen.append(link('Back to My votes','#my','back'));const header=el('div',undefined,'detail-header');header.append(el('h1',v.title),el('div',date(v.date)+' · '+(future(v)?'Upcoming vote':'Past vote'),'meta'));screen.append(header);
  const actions=el('div',undefined,'flex-actions');actions.append(button(vault.exists&&!vault.unlocked?'Unlock to track':saved(v.id)?'Tracked':'Track this vote',()=>toggleTrack(v),'secondary'));screen.append(actions);
  const nav=el('div',undefined,'section-nav');nav.setAttribute('role','tablist');nav.setAttribute('aria-label','Explore vote');for(const [id,text] of [['meaning','What it means'],['updates','Updates'],['related','Related votes'],['perspectives','Perspectives'],['private','My choice & notes']]){const b=button(text,()=>go(v.id,id));b.id='tab-'+id;b.setAttribute('role','tab');b.setAttribute('aria-controls','vote-panel');b.setAttribute('aria-selected',String(tab===id));b.tabIndex=tab===id?0:-1;b.addEventListener('keydown',event=>{const ids=['meaning','updates','related','perspectives','private'];let next=ids.indexOf(id);if(event.key==='ArrowRight')next=(next+1)%ids.length;else if(event.key==='ArrowLeft')next=(next+ids.length-1)%ids.length;else if(event.key==='Home')next=0;else if(event.key==='End')next=ids.length-1;else return;event.preventDefault();if(ids[next]===tab){b.focus();return;}window.addEventListener('hashchange',()=>document.getElementById('tab-'+ids[next])?.focus(),{once:true});go(v.id,ids[next]);});nav.append(b);}screen.append(nav);
  const content=el('section');content.id='vote-panel';content.setAttribute('role','tabpanel');content.setAttribute('aria-labelledby','tab-'+tab);screen.append(content);
  if(tab==='meaning') {
-  if(v.analysis_case_id) {
-   renderLive(content);
-   content.append(modelLink(),el('p','Historical evidence frame · '+date(analysis.as_of)+'. Later official updates have a separate tab.','plain-note'));
+  if(analysis) {
+   content.append(modelLink(),el('p','From the official vote booklet. Later developments are shown in Updates.','plain-note'));
    for(const c of analysis.cards) {
     const row=el('section',undefined,'analysis-row');
     const nodes=[el('div',labels[c.kind],'kind'),el('p',c.statement),button('Source and dates',()=>sourceStatement(c.id))];
-    if(c.origin==='REVIEWED_REFERENCE_CONTEXT')nodes.push(el('p','Reviewed source context; this figure was not extracted in the final model trial.','plain-note'));
-    if(c.id==='P01'||c.id==='P04'){row.append(el('h2',c.title),...nodes);}
+
+    if((analysis.primary_cards||['P01','P04']).includes(c.id)){row.append(el('h2',c.title),...nodes);}
     else {const more=el('details');more.append(el('summary',c.title),...nodes);row.append(more);}
     content.append(row);
    }
-  } else {content.append(el('h2','Official proposal reference'),el('p',v.summary),el('p','A reviewed Apertus explanation is not available for this vote yet.','plain-note'));for(const ref of v.sources){const source=catalog.sources[ref];content.append(sourceLink(ref),el('p',source.publisher+' · '+(source.published_at?'Published '+date(source.published_at)+'. ':'Publication date not established. ')+'Checked '+date(source.retrieved_at)+'.','source-date'));}}
+   renderLive(content);
+  } else {content.append(el('h2','Official proposal reference'),el('p',v.summary),el('p','An explanation is not available for this vote yet. You can read the official source.','plain-note'));for(const ref of v.sources){const source=catalog.sources[ref];content.append(sourceLink(ref),el('p',source.publisher+' · '+(source.published_at?'Published '+date(source.published_at)+'. ':'Publication date not established. ')+'Checked '+date(source.retrieved_at)+'.','source-date'));}}
  } else if(tab==='updates') {
   content.append(el('h2',future(v)?'Updates before the vote':'Updates since the vote'),updateCard(v));
-  for(const u of v.updates){content.append(el('p','Official publisher information, not a new Apertus analysis. Published '+date(u.date)+'; checked '+date(catalog.sources[u.source].retrieved_at)+'.','plain-note'));}
-  content.append(el('p','No updates recorded means no verified update in this catalogue, not proof that nothing happened.','plain-note'));
+  for(const u of v.updates){content.append(el('p','Official update published '+date(u.date)+'; checked '+date(catalog.sources[u.source].retrieved_at)+'.','plain-note'));}
+  content.append(el('p','This list may be incomplete. The official source may have newer information.','plain-note'));
  } else if(tab==='related') {
-  content.append(el('h2','Related votes'));if(!v.related.length)content.append(el('p','No sourced related vote is recorded in this catalogue.','plain-note'));
+  content.append(el('h2','Related votes'));if(!v.related.length)content.append(el('p','No related vote has been added yet.','plain-note'));
   for(const relation of v.related){content.append(relatedCard(relation),el('p',relation.reason,'plain-note'),sourceLink(relation.source,'Relationship source'),el('p','Relationship source checked '+date(catalog.sources[relation.source].retrieved_at)+'.','source-date'));}
  } else if(tab==='perspectives') renderPerspectives(v,content);
  else renderPrivate(v,content);
 }
 function renderPerspectives(v,container=screen) {
- container.append(el('h2','Look at it from a different perspective'),el('p','Choose a factual situation, for you or someone else. Nothing is sent as a private profile.','plain-note'));
- if(!v.analysis_case_id){container.append(el('p','Reviewed perspectives are not available for this vote yet.','plain-note'));return;}
+ container.append(el('h2','Look at it from a different perspective'),el('p','Choose a situation for you or someone else. This stays on your device.','plain-note'));
+ if(!analysis){container.append(el('p','Perspectives are not available yet. You can still read the official source.'));return;}
+ const config=analysis.perspectives||{groups:[{id:'worker',label:'Working-age person',fact_ids:['P04'],note:'Unknown does not mean zero.'},{id:'recipient',label:'AHV old-age pension recipient',fact_ids:['P01']}],nation:{title:'Projected national expenditure',fact_ids:['P02']}};
  const scope=el('div',undefined,'perspectives'),detail=el('div');container.append(scope,detail);
+ const showFacts=(target,ids)=>{for(const id of ids){const c=card(id);target.append(el('h3',c.title),el('p',c.statement),button('Source and dates',()=>sourceStatement(id)));}};
  function show(which){scope.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.scope===which)));detail.replaceChildren();
-  if(which==='nation'){detail.append(el('h3','Projected national expenditure'),el('p',card('P02').statement),el('p','An attributed historical forecast, not an observed outcome.','plain-note'),button('Source and dates',()=>sourceStatement('P02')));return;}
-  const label=el('label',which==='me'?'Which situation do you want to understand?':'Which situation applies to the other person?');const select=el('select');select.setAttribute('aria-label',which==='me'?'My factual situation':'Other person’s factual situation');
-  select.append(new Option('Working-age person','worker'),new Option('AHV old-age pension recipient','recipient'));const result=el('div',undefined,'analysis-row');detail.append(label,select,result);
-  const draw=()=>{result.replaceChildren();const id=select.value==='recipient'?'P01':'P04';result.append(el('h3',id==='P01'?'The proposed annual supplement':'A definite personal charge was not established'),el('p',card(id).statement),button('Source and dates',()=>sourceStatement(id)));
-   if(id==='P04'){const gap=el('div',undefined,'unknown');gap.append(el('p','The original initiative did not settle the financing method and rate. Unknown does not mean zero.'));result.append(gap);}else result.append(el('p','This statement concerns AHV old-age pensions; it does not establish every individual eligibility condition.','plain-note'));};select.addEventListener('change',draw);draw();
+  if(which==='nation'){detail.append(el('h3',config.nation.title));showFacts(detail,config.nation.fact_ids);return;}
+  const label=el('label',which==='me'?'Which situation do you want to understand?':'Which situation applies to the other person?'),select=el('select');select.setAttribute('aria-label',which==='me'?'My factual situation':'Other person’s factual situation');
+  for(const g of config.groups)select.append(new Option(g.label,g.id));const result=el('div',undefined,'analysis-row');detail.append(label,select,result);
+  const draw=()=>{result.replaceChildren();const group=config.groups.find(g=>g.id===select.value);showFacts(result,group.fact_ids);if(group.note)result.append(el('p',group.note,'plain-note'));};select.addEventListener('change',draw);draw();
  }
- for(const [id,text] of [['me','Me'],['others','Others'],['nation','Switzerland']]){const b=button(text,()=>show(id),'secondary');b.dataset.scope=id;b.setAttribute('aria-pressed','false');scope.append(b);}show('me');renderLive(container);
+ for(const [id,text]of[['me','Me'],['others','Others'],['nation','Switzerland']]){const b=button(text,()=>show(id),'secondary');b.dataset.scope=id;b.setAttribute('aria-pressed','false');scope.append(b);}show('me');renderLive(container);
 }
 async function store(entry) { if(vault.exists&&!vault.unlocked)throw Error('Unlock your private votes first.');if(vault.unlocked)await vault.save(entry);else sessions=sessions.filter(item=>item.id!==entry.id).concat(entry); }
-function newEntry(v) {return {id:v.id,choice:'NOT_RECORDED',notes:'',pinnedVersion:v.analysis_case_id?analysis.source_sha256+'@'+analysis.as_of:catalog.checked_at,savedAt:new Date().toISOString(),viewedUpdate:''};}
+function newEntry(v) {return {id:v.id,choice:'NOT_RECORDED',notes:'',pinnedVersion:analyses[v.id]?analyses[v.id].source_sha256+'@'+analyses[v.id].as_of:catalog.checked_at,savedAt:new Date().toISOString(),viewedUpdate:''};}
 async function toggleTrack(v) {
  if(vault.exists&&!vault.unlocked){showDevice();return;}
  const existing=saved(v.id);
@@ -179,7 +182,7 @@ function renderPrivate(v,container=screen) {
  const save=el('button',vault.unlocked?'Save privately on this device':'Keep for this visit','primary');save.type='submit';form.append(save);
  const keepDraft=()=>drafts.set(v.id,{choice:choice.value,notes:notes.value});notes.addEventListener('input',keepDraft);choice.addEventListener('change',keepDraft);
  form.addEventListener('submit',async event=>{event.preventDefault();save.disabled=true;try{await store({...entry,choice:choice.value,notes:notes.value});drafts.delete(v.id);notify(vault.unlocked?'Choice and notes saved encrypted on this device.':'Choice and notes kept in this visit only; reload clears them.');}catch(e){notify(e.message);}finally{save.disabled=false;}});container.append(form,el('p',vault.unlocked?'Drafts stay while you browse this app. Save before reloading or locking. Saved notes are encrypted on this device.':'Drafts stay while you browse this app. Reload clears visit-only notes. Use On this device to save encrypted notes after reload.','plain-note'));
- const source=el('details');source.append(el('summary','The version attached to this private record'),el('code',entry.pinnedVersion));container.append(source);
+ const source=el('details');source.append(el('summary','About this note'),el('p','Saved '+date(entry.savedAt)+'. Your words stay as you wrote them, even when vote information changes.'));container.append(source);
 }
 function download(text,name) {const url=URL.createObjectURL(new Blob([text],{type:'application/json'}));const a=link('',url);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function showDevice() {
@@ -202,4 +205,4 @@ $('device').addEventListener('click',showDevice);$('close-dialog').addEventListe
 for(const event of ['pointerdown','keydown'])document.addEventListener(event,resetIdle,{passive:true});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&vault.unlocked){lockPrivate();if(dialog.open)dialog.close();if(catalog)render();}});
 window.addEventListener('storage',event=>{if(event.key==='stimmfolgen.private.v1'){lockPrivate();if(catalog)render();notify('Private data changed in another tab. Unlock it again.');}});
-Promise.all([fetch('/api/catalog').then(r=>{if(!r.ok)throw Error();return r.json();}),fetch('/api/case').then(r=>{if(!r.ok)throw Error();return r.json();}),fetch('/api/live/status').then(r=>r.ok?r.json():{configured:false}).catch(()=>({configured:false}))]).then(([c,a,l])=>{catalog=c;analysis=a;liveStatus=l;render();}).catch(()=>screen.replaceChildren(el('h1','The verified catalogue is unavailable'),el('p','Please refresh. No unverified answer is substituted.')));
+Promise.all([fetch('/api/catalog').then(r=>{if(!r.ok)throw Error();return r.json();}),fetch('/api/cases').then(r=>r.ok?r.json():fetch('/api/case').then(r=>r.json()).then(c=>({ahv13:c}))),fetch('/api/live/status').then(r=>r.ok?r.json():{configured:false}).catch(()=>({configured:false}))]).then(([c,a,l])=>{catalog=c;analyses=a;analysis=a.ahv13;liveStatus=l;render();}).catch(()=>screen.replaceChildren(el('h1','The vote list is temporarily unavailable'),el('p','Please refresh to try again.')));

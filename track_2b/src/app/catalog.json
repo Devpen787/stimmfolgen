@@ -1,8 +1,8 @@
 {
   "schema_version": "1",
-  "checked_at": "2026-10-14T14:18:24.685670+00:00",
-  "checked_date": "2026-10-14",
-  "scope": "Five federal proposals only; not all Swiss votes. Labels translated for navigation; new metadata is not Apertus-reviewed policy analysis.",
+  "checked_at": "2026-10-15T20:27:46.336620+00:00",
+  "checked_date": "2026-10-15",
+  "scope": "Six selected federal proposals; not a complete vote register. Official updates are separate from booklet explanations.",
   "sources": {
     "calendar": {
       "url": "https://www.admin.ch/de/volksabstimmung-vom-29-november-2026",
@@ -25,6 +25,28 @@
       "retrieved_at": "2026-10-14T14:18:24.685654+00:00",
       "publisher": "Federal Social Insurance Office",
       "published_at": "2026-10-05"
+    },
+    "home-booklet": {
+      "url": "https://www.bk.admin.ch/dam/de/sd-web/6DaWglL-N7NM/2025-09-28_erlaeuterungen_des_bundesrates.pdf",
+      "snapshot_kind": "AUTHENTICATED_PDF",
+      "source_sha256": "39c020145299913685e4d0b6899fa23bb1f94938652a417e0c1da08d316ade8a",
+      "publisher": "Swiss Federal Chancellery",
+      "published_at": null,
+      "retrieved_at": "2026-10-15T20:26:44.651511+00:00",
+      "excerpt": "Bundesbeschluss über die kantonalen Liegenschaftssteuern auf Zweitliegenschaften",
+      "original_html_sha256": null,
+      "retrieval_method": "Actual PDF bytes downloaded and SHA-256 verified; excerpt is the proposal title.",
+      "excerpt_sha256": "23013e895742c025f266d04e6e1c51cc7714ae4a9ba2097eaafefe8b2f7aaad4"
+    },
+    "home-result": {
+      "url": "https://www.efd.admin.ch/de/abstimmung-reform-wohneigentumsbesteuerung",
+      "snapshot_kind": "MANUAL_PRIMARY_WEB_EXCERPT",
+      "publisher": "Federal Department of Finance",
+      "published_at": "2025-09-28",
+      "retrieved_at": "2026-10-15T20:26:44.651511+00:00",
+      "excerpt": "Bei einer Stimmbeteiligung von 49,5 % haben die Schweizer Stimmberechtigten anlässlich der Volksabstimmung vom 28. September 2025 die Reform der Wohneigentumsbesteuerung mit 57,7 % Ja-Stimmen gegen 42,3 % Nein-Stimmen angenommen.",
+      "original_html_sha256": null,
+      "excerpt_sha256": "5376f049d0934989fa68a5bbd3d73cabefb8e1ff76167bd851ca5009d44bb2ea"
     }
   },
   "votes": [
@@ -114,6 +136,29 @@
         "calendar"
       ],
       "updates": [],
+      "related": []
+    },
+    {
+      "id": "home-tax",
+      "title": "Homeownership tax reform",
+      "official_title": "Bundesbeschluss über die kantonalen Liegenschaftssteuern auf Zweitliegenschaften",
+      "date": "2025-09-28",
+      "summary": "A vote on cantonal taxes on second homes, linked to homeownership tax reform.",
+      "analysis_case_id": null,
+      "sources": [
+        "home-booklet"
+      ],
+      "updates": [
+        {
+          "id": "home-result-20250928",
+          "date": "2025-09-28",
+          "title": "The reform was accepted in the vote",
+          "kind": "OFFICIAL_SOURCE_UPDATE_NOT_MODEL_ANALYSIS",
+          "source": "home-result",
+          "excerpt": "mit 57,7 % Ja-Stimmen gegen 42,3 % Nein-Stimmen angenommen.",
+          "excerpt_is_partial": true
+        }
+      ],
       "related": []
     }
   ]

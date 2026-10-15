@@ -1,0 +1,12 @@
+FROM stimmfolgen:local AS reviewed
+FROM node:24-bookworm-slim@sha256:a5f4366e834695d5f363b920c104953a535d3a9864d1bdf74566a0ebe01daee5
+ENV NODE_ENV=production
+WORKDIR /app
+COPY --from=reviewed /app/booklet.pdf /sources/ahv13.pdf
+COPY --from=reviewed /app/sources/ /sources/
+COPY track_2b/hosted/*.mjs track_2b/hosted/*.json /app/track_2b/hosted/
+COPY track_2b/web /app/track_2b/web
+COPY track_2b/onprem /app/track_2b/onprem
+USER node
+EXPOSE 8770
+CMD ["node","track_2b/onprem/server.mjs"]

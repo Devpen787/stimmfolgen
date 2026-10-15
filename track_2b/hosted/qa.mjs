@@ -21,10 +21,10 @@ export function matchReviewErrors(review,selection){
 export function composeAnswer(caseData,selection,reviewedIds,scope=null){
  const facts=new Map(caseData.cards.map(c=>[c.id,c]));
  const claims=reviewedIds.map(id=>({text:facts.get(id).statement,fact_ids:[id],citations:facts.get(id).citations,evidence_kinds:[facts.get(id).kind]}));
- if(claims.length)return {outcome:'EVIDENCE_MATCH',answer_mode:'REVIEWED_EVIDENCE',claims,unknowns:[],statements_human_reviewed:true};
+ if(claims.length)return {outcome:'EVIDENCE_MATCH',answer_mode:'REVIEWED_EVIDENCE',claims,unknowns:[],statements_human_reviewed:reviewedIds.every(id=>facts.get(id).review_status==='HUMAN_REVIEWED_STATEMENT')};
  const advice=selection.kind==='VOTING_ADVICE';
- const scoped=scope==='OTHER_PROPOSAL'?'This question appears to concern another proposal. Live analysis here covers '+caseData.title+'. Open the other vote to inspect its available sources.':scope==='LATER_EVENTS'?'This live analysis uses the historical evidence frame shown below. For later events, open Updates.':null;
- return {outcome:'INSUFFICIENT_EVIDENCE',answer_mode:advice?'SERVICE_LIMIT':'EVIDENCE_LIMIT',claims:[],unknowns:[scoped||(advice?'StimmFolgen does not recommend how to vote. You can explore the sources and perspectives to form your own view.':'No matching reviewed answer was found in this historical AHV evidence. This does not mean the event or effect did not happen. For later information, open Updates.')],statements_human_reviewed:false};
+ const scoped=scope==='OTHER_PROPOSAL'?'You are reading '+caseData.title+'. This question appears to be about another vote. Open that vote for its sources.':scope==='LATER_EVENTS'?'This answer uses the vote booklet. For later events, open Updates.':null;
+ return {outcome:'INSUFFICIENT_EVIDENCE',answer_mode:advice?'SERVICE_LIMIT':'EVIDENCE_LIMIT',claims:[],unknowns:[scoped||(advice?'StimmFolgen does not recommend how to vote. You can explore the sources and perspectives to form your own view.':'We could not find an answer in the sources for this vote. This does not mean the effect did not happen. Check Updates for later information.')],statements_human_reviewed:false};
 }
 export function questionPayload(value){
  return value&&typeof value==='object'&&!Array.isArray(value)&&Object.keys(value).join(',')==='question'&&typeof value.question==='string'&&value.question.trim().length>=3&&value.question.trim().length<=700;
@@ -68,6 +68,6 @@ export async function completion(token,prompt,maxTokens,system,fetcher=fetch,onR
  return parseCompletion(raw);
 }
 
-export function executionMatches(payload,expectedHash){
- return payload.live_inference_performed_for_this_request!==true||payload.execution_contract_sha256===expectedHash;
+export function executionMatches(payload,expectedHash,expectedCase=null){
+ return payload.live_inference_performed_for_this_request!==true||(payload.execution_contract_sha256===expectedHash&&(!expectedCase||(payload.case_id===expectedCase.case_id&&payload.source_sha256===expectedCase.source_sha256)));
 }

@@ -8,6 +8,7 @@ from pathlib import Path
 TRACK=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(TRACK/'src/app'))
 from backend import load_case
+from case_registry import additional_cases
 from live import generation_prompt, review_prompt, CONTRACT, SELECT_SYSTEM, MATCH_SYSTEM
 
 
@@ -15,7 +16,7 @@ def export(pdf):
     case=load_case(pdf)
     query=json.loads((TRACK/'hosted/query-contract.json').read_text())
     query['planner_template']='QUESTION="__QUESTION__"\nOPEN_PROPOSAL='+json.dumps(case['title'])+'\nEVIDENCE_AS_OF='+json.dumps(case['as_of'])
-    return {'case':case,'catalog':json.loads((TRACK/'src/app/catalog.json').read_text()),
+    return {'case':case,'cases':{'ahv13':case,**additional_cases(download=True)},'catalog':json.loads((TRACK/'src/app/catalog.json').read_text()),
         'contract':CONTRACT,
         'hosted_query':query,
         'generation_template':generation_prompt(case,'__QUESTION__'),

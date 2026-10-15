@@ -4,6 +4,7 @@ WORKDIR /app
 RUN pip install --no-cache-dir pymupdf==1.28.2
 COPY track_2b /app/track_2b
 RUN python track_2b/src/gate0/source_probe.py --out /tmp/source.json --pdf-out /app/booklet.pdf
+RUN mkdir -p /app/sources && python track_2b/tools/verify_additional_cases.py --source-dir /app/sources --download
 RUN useradd --uid 10001 --create-home stimmfolgen && mkdir /state && chown stimmfolgen:stimmfolgen /state
 USER 10001
 EXPOSE 8770
