@@ -1,4 +1,5 @@
 import {PrivateVault} from './vault.js';
+import {answerFitsCase} from './answer.js';
 const vault = new PrivateVault();
 const drafts = new Map();
 function lockPrivate() { vault.lock(); drafts.clear(); }
@@ -25,7 +26,7 @@ function notify(text) { $('notice').textContent=text; $('notice').hidden=false; 
 function openDialog(title,nodes) { $('dialog-title').textContent=title; body.replaceChildren(...nodes); if(!dialog.open)dialog.showModal(); }
 function go(id,tab='meaning') { location.hash=id==='my'||id==='upcoming'||id==='search'?'#'+id:'#vote/'+id+'/'+tab; }
 function sourceLink(reference,text='View source') { const ref=catalog.sources[reference]; const node=link(text,ref.url,'source-link'); node.target='_blank'; node.rel='noopener noreferrer'; node.append(icon('arrow-top-right-on-square')); return node; }
-function checkedNote() { return el('p','Updated '+date(catalog.checked_date)+' · '+catalog.votes.length+' selected federal votes. More votes will be added.','date-note'); }
+function checkedNote() { return el('p','Updated '+date(catalog.checked_date)+' · '+catalog.votes.length+' selected federal votes. This list is not complete.','date-note'); }
 function modelLink() {
  const node=button('',showApertus,'model-link'); const text=el('span'); text.append(el('span',liveStatus.configured?'How live Apertus helps':'Prepared with Apertus v1.5'),el('br'),el('span','Explore with sources'));
  node.append(icon('document-text'),text,icon('chevron-right')); return node;
@@ -39,7 +40,7 @@ function showApertus() {
   link('Use Apertus on your own computer','/local.html'),link('About this demo and its checks','/judges.html')]);
 }
 function sourceStatement(id,sourceCase=analysis) {
- const c=sourceCase.cards.find(c=>c.id===id),nodes=[el('p',labels[c.kind]+' · reviewed statement'),el('p',c.statement),el('p','About the proposal voted on '+date(sourceCase.vote_date),'source-date')];
+ const c=sourceCase.cards.find(c=>c.id===id),nodes=[el('p',labels[c.kind]+' · from the official booklet'),el('p',c.statement),el('p','About the proposal voted on '+date(sourceCase.vote_date),'source-date')];
  for(const ref of c.citations) {
   nodes.push(el('blockquote',ref.text)); const a=link('Original booklet, page '+ref.pdf_page,'/api/booklet.pdf?case='+Object.keys(analyses).find(k=>analyses[k].case_id===sourceCase.case_id)+'#page='+ref.pdf_page); a.target='_blank';a.rel='noopener';nodes.push(a);
   nodes.push(el('p','Source: '+(ref.actor==='GOVERNMENT'?(c.kind==='ATTRIBUTED_PREDICTION'?'Federal Council / Parliament argument section':'Federal Council explanation'):'Initiative committee'),'source-date'));
@@ -50,7 +51,7 @@ function sourceStatement(id,sourceCase=analysis) {
  openDialog(c.title,nodes);
 }
 function updateCard(v) {
- if(!v.updates.length) { const box=el('div',undefined,'update-card');box.append(icon('information-circle'),el('p','No updates have been added for this vote yet.','plain-note'));return box; }
+ if(!v.updates.length) { const box=el('div',undefined,'update-card');box.append(icon('information-circle'),el('p','No updates to show here.','plain-note'));return box; }
  const u=v.updates[0],ref=catalog.sources[u.source],box=el('article',undefined,'update-card');const ico=icon('information-circle');ico.className='update-icon';box.append(ico);
  const text=el('div');text.append(el('h3','Official update'),el('div',date(u.date),'source-date'),el('p',u.title),el('div',ref.publisher,'source-date'),sourceLink(u.source,'Source: '+new URL(ref.url).hostname));box.append(text);return box;
 }
@@ -61,7 +62,7 @@ function voteCard(v,tracked=false) {
  const box=el('article',undefined,'vote-card'),row=el('div',undefined,'title-row');row.append(el('h2',v.title));const toggle=button(saved(v.id)?'Tracked':'Track',()=>toggleTrack(v),'track-button');toggle.setAttribute('aria-label',saved(v.id)?'Untrack '+v.title:'Track '+v.title);toggle.setAttribute('aria-pressed',String(Boolean(saved(v.id))));toggle.append(icon(saved(v.id)?'bookmark':'plus'));row.append(toggle);box.append(row);
  const meta=el('div',undefined,'meta');meta.append(el('span',date(v.date)),el('span',future(v)?'Upcoming':'Past vote','tag'+(future(v)?' future':'')));box.append(meta,el('p',v.summary,'summary'));
  const open=button(tracked?'Explore my vote':'Explore vote',()=>go(v.id),'primary');open.append(icon('arrow-right'));box.append(open);
- if(v.analysis_case_id)box.append(modelLink());else box.append(el('p','Official source available · explanation coming soon.','plain-note'));
+ if(v.analysis_case_id)box.append(modelLink());else box.append(el('p','Official information available.','plain-note'));
  return box;
 }
 function findVote() { const a=link('','#search','find');a.append(icon('magnifying-glass'),el('span','Find another vote'),icon('chevron-right'));return a; }
@@ -95,27 +96,27 @@ function renderLive(container) {
  if(!liveStatus.configured){box.append(el('p','Live Apertus is unavailable on this installation. You can still explore the explanation and sources.','plain-note'));container.append(box);return;}
  box.append(el('p',liveStatus.local?'Powered by Apertus · running on this computer':'Powered by Apertus · no download needed','source-date'));
  if(liveStatus.local_matching_experimental)box.append(el('p','Experimental local question matching: the 4-bit model can select unrelated context. Statements stay unchanged; inspect their sources and the reviewed explanation.','unknown'));
- if(liveStatus.limited_free_demo){box.append(el('p','Free online demo','plain-note'));const service=el('details');service.append(el('summary','Free allowance & privacy'),el('p',liveStatus.model+' · '+liveStatus.provider+'. Up to 200 questions shared by all visitors, at most 80 per day. Access expires within seven days unless renewed. The website runs on Cloudflare globally and sends public questions to Public AI. Private choices and notes stay on this device.'),link('Prefer fully local Apertus?','/local.html'));box.append(service);}
+ if(liveStatus.limited_free_demo){box.append(el('p','Free online demo','plain-note'));const service=el('details');service.append(el('summary','Free allowance & privacy'),el('p','The website runs on Cloudflare and sends public questions to Public AI. It is not hosted exclusively in Switzerland. The free demo has a shared allowance of up to 200 questions, at most 80 per day, and temporary access. Private choices and notes stay on this device.'),link('Prefer fully local Apertus?','/local.html'));box.append(service);}
  const form=el('form'),label=el('label','What would you like to understand?'),input=el('textarea');input.id='public-question';label.htmlFor=input.id;input.maxLength=700;input.required=true;input.minLength=3;input.value=state.question;input.placeholder='Ask about the changes or who may be affected';input.rows=3;input.disabled=state.pending;
  const privacy=el('p',liveStatus.local?'Your question stays on this computer. Saved votes and notes are kept separate.':'Send a public question only. Your tracked votes and private notes are never shared with Apertus.','plain-note');privacy.id='question-privacy';input.setAttribute('aria-describedby',privacy.id);
  const send=el('button',state.pending?'Apertus is finding relevant sources…':'Ask Apertus','primary');send.type='submit';send.disabled=state.pending;
  const output=el('div',undefined,'live-result');output.setAttribute('role','status');output.setAttribute('aria-live','polite');
  function draw(){output.replaceChildren();if(state.pending){output.append(el('p','Apertus is looking through the sources. This may take a minute.'));return;}if(!state.result)return;
   if(state.result.error)output.append(el('p',state.result.error,'unknown'));
-  if(state.result.live_inference_performed_for_this_request)output.append(el('p',(state.result.outcome==='WITHHELD'?'Could not find a reliable answer · ':state.result.answer_mode==='REVIEWED_EVIDENCE'?'Answered by Apertus · ':'Checked by Apertus · ')+date(state.result.answered_at)+' · '+state.result.latency_seconds+' seconds','source-date'));
+  if(state.result.live_inference_performed_for_this_request)output.append(el('p',(state.result.outcome==='WITHHELD'?'Could not find a reliable answer · ':state.result.answer_mode==='REVIEWED_EVIDENCE'?'Answered by Apertus · ':'Checked by Apertus · ')+date(state.result.answered_at),'source-date'));
   if(state.result.answer_mode==='REVIEWED_EVIDENCE')output.append(el('h3','What the sources say'));
   if(state.result.answer_mode==='SERVICE_LIMIT')output.append(el('h3','Your vote is your decision'));
   if(state.result.answer_mode==='EVIDENCE_LIMIT')output.append(el('h3','We couldn’t find an answer in these sources'));
-  for(const claim of state.result.claims||[]){const section=el('section',undefined,'analysis-row');section.append(el('div',(claim.evidence_kinds||[]).map(k=>labels[k]||k).join(' · '),'kind'),el('p',claim.text));for(const id of claim.fact_ids)section.append(button('Source and dates · '+card(id).title,()=>sourceStatement(id,sourceCase)));output.append(section);}
+  for(const claim of state.result.claims||[]){const section=el('section',undefined,'analysis-row');section.append(el('div',(claim.evidence_kinds||[]).map(k=>labels[k]||k).join(' · '),'kind'),el('p',claim.text));for(const id of claim.fact_ids)section.append(button('Source and dates · '+sourceCase.cards.find(c=>c.id===id).title,()=>sourceStatement(id,sourceCase)));output.append(section);}
   for(const unknown of state.result.unknowns||[])output.append(el('p',unknown,'unknown'));
   if(state.result.answer_mode==='EVIDENCE_LIMIT')output.append(button('See dated updates',()=>go(currentVote.id,'updates'),'secondary'));
-  if(!state.result.claims?.length){const alternatives=el('section');alternatives.append(el('h3','Explore the source information'),el('p','You can read these explanations while Apertus is unavailable.'));for(const c of sourceCase.cards)alternatives.append(button(c.title,()=>sourceStatement(c.id,sourceCase),'secondary'));output.append(alternatives);}
+  if(!state.result.claims?.length){const alternatives=el('section');alternatives.append(el('h3','Explore the source information'),el('p','You can also explore these explanations.'));for(const c of sourceCase.cards)alternatives.append(button(c.title,()=>sourceStatement(c.id,sourceCase),'secondary'));output.append(alternatives);}
   if(state.result.live_inference_performed_for_this_request)output.append(el('p','AI can miss information. Open the source to check the answer.','plain-note'));
 
  }
  input.addEventListener('input',()=>{state.question=input.value;});
  form.addEventListener('submit',async event=>{event.preventDefault();if(state.pending)return;state.question=input.value.trim();if(state.question.length<3)return;state.pending=true;state.result=null;input.disabled=true;send.disabled=true;send.textContent='Apertus is finding relevant sources…';draw();
-  try{const response=await fetch('/api/live/question?case='+encodeURIComponent(caseId),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:state.question}),signal:AbortSignal.timeout(280000)});state.result=await response.json();}
+  try{const response=await fetch('/api/live/question?case='+encodeURIComponent(caseId),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:state.question}),signal:AbortSignal.timeout(280000)});state.result=await response.json();if(!answerFitsCase(state.result,sourceCase))state.result={error:'The source information has changed. Refresh this vote before asking again.'};}
   catch{state.result={error:'Apertus did not respond. Your question was not saved. Try again; you can still read the sources.'};}
   finally{state.pending=false;refresh();}
  });
@@ -139,13 +140,13 @@ function renderVote(v,tab) {
     content.append(row);
    }
    renderLive(content);
-  } else {content.append(el('h2','Official proposal reference'),el('p',v.summary),el('p','An explanation is not available for this vote yet. You can read the official source.','plain-note'));for(const ref of v.sources){const source=catalog.sources[ref];content.append(sourceLink(ref),el('p',source.publisher+' · '+(source.published_at?'Published '+date(source.published_at)+'. ':'Publication date not established. ')+'Checked '+date(source.retrieved_at)+'.','source-date'));}}
+  } else {content.append(el('h2','About this vote'),el('p',v.summary),el('p','An explanation is not available for this vote yet. You can read the official source.','plain-note'));for(const ref of v.sources){const source=catalog.sources[ref];content.append(sourceLink(ref),el('p',source.publisher+' · '+(source.published_at?'Published '+date(source.published_at)+'. ':'')+'Checked '+date(source.retrieved_at)+'.','source-date'));}}
  } else if(tab==='updates') {
   content.append(el('h2',future(v)?'Updates before the vote':'Updates since the vote'),updateCard(v));
   for(const u of v.updates){content.append(el('p','Official update published '+date(u.date)+'; checked '+date(catalog.sources[u.source].retrieved_at)+'.','plain-note'));}
   content.append(el('p','This list may be incomplete. The official source may have newer information.','plain-note'));
  } else if(tab==='related') {
-  content.append(el('h2','Related votes'));if(!v.related.length)content.append(el('p','No related vote has been added yet.','plain-note'));
+  content.append(el('h2','Related votes'));if(!v.related.length)content.append(el('p','No related votes to show.','plain-note'));
   for(const relation of v.related){content.append(relatedCard(relation),el('p',relation.reason,'plain-note'),sourceLink(relation.source,'Relationship source'),el('p','Relationship source checked '+date(catalog.sources[relation.source].retrieved_at)+'.','source-date'));}
  } else if(tab==='perspectives') renderPerspectives(v,content);
  else renderPrivate(v,content);
@@ -158,14 +159,14 @@ function renderPerspectives(v,container=screen) {
  const showFacts=(target,ids)=>{for(const id of ids){const c=card(id);target.append(el('h3',c.title),el('p',c.statement),button('Source and dates',()=>sourceStatement(id)));}};
  function show(which){scope.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.scope===which)));detail.replaceChildren();
   if(which==='nation'){detail.append(el('h3',config.nation.title));showFacts(detail,config.nation.fact_ids);return;}
-  const label=el('label',which==='me'?'Which situation do you want to understand?':'Which situation applies to the other person?'),select=el('select');select.setAttribute('aria-label',which==='me'?'My factual situation':'Other person’s factual situation');
+  const label=el('label',which==='me'?'Which situation do you want to understand?':'Which situation applies to the other person?'),select=el('select');select.setAttribute('aria-label',which==='me'?'My situation':'Other person’s situation');
   for(const g of config.groups)select.append(new Option(g.label,g.id));const result=el('div',undefined,'analysis-row');detail.append(label,select,result);
   const draw=()=>{result.replaceChildren();const group=config.groups.find(g=>g.id===select.value);showFacts(result,group.fact_ids);if(group.note)result.append(el('p',group.note,'plain-note'));};select.addEventListener('change',draw);draw();
  }
  for(const [id,text]of[['me','Me'],['others','Others'],['nation','Switzerland']]){const b=button(text,()=>show(id),'secondary');b.dataset.scope=id;b.setAttribute('aria-pressed','false');scope.append(b);}show('me');renderLive(container);
 }
 async function store(entry) { if(vault.exists&&!vault.unlocked)throw Error('Unlock your private votes first.');if(vault.unlocked)await vault.save(entry);else sessions=sessions.filter(item=>item.id!==entry.id).concat(entry); }
-function newEntry(v) {return {id:v.id,choice:'NOT_RECORDED',notes:'',pinnedVersion:analyses[v.id]?analyses[v.id].source_sha256+'@'+analyses[v.id].as_of:catalog.checked_at,savedAt:new Date().toISOString(),viewedUpdate:''};}
+function newEntry(v) {return {id:v.id,choice:'NOT_RECORDED',notes:'',pinnedVersion:analyses[v.id]?analyses[v.id].source_sha256+'@'+analyses[v.id].as_of:v.sources.map(id=>catalog.sources[id].source_sha256||catalog.sources[id].excerpt_sha256).join('+')+'@'+catalog.checked_at,savedAt:new Date().toISOString(),viewedUpdate:''};}
 async function toggleTrack(v) {
  if(vault.exists&&!vault.unlocked){showDevice();return;}
  const existing=saved(v.id);
@@ -181,7 +182,7 @@ function renderPrivate(v,container=screen) {
  const label=el('label','My self-recorded choice (optional)');label.htmlFor=choice.id;form.append(label,choice);const notes=el('textarea');notes.id='private-notes';notes.value=drafts.get(v.id)?.notes??entry.notes;notes.placeholder='My questions and reflections';notes.maxLength=16000;const nlabel=el('label','My private notes');nlabel.htmlFor=notes.id;form.append(nlabel,notes);
  const save=el('button',vault.unlocked?'Save privately on this device':'Keep for this visit','primary');save.type='submit';form.append(save);
  const keepDraft=()=>drafts.set(v.id,{choice:choice.value,notes:notes.value});notes.addEventListener('input',keepDraft);choice.addEventListener('change',keepDraft);
- form.addEventListener('submit',async event=>{event.preventDefault();save.disabled=true;try{await store({...entry,choice:choice.value,notes:notes.value});drafts.delete(v.id);notify(vault.unlocked?'Choice and notes saved encrypted on this device.':'Choice and notes kept in this visit only; reload clears them.');}catch(e){notify(e.message);}finally{save.disabled=false;}});container.append(form,el('p',vault.unlocked?'Drafts stay while you browse this app. Save before reloading or locking. Saved notes are encrypted on this device.':'Drafts stay while you browse this app. Reload clears visit-only notes. Use On this device to save encrypted notes after reload.','plain-note'));
+ form.addEventListener('submit',async event=>{event.preventDefault();save.disabled=true;try{await store({...entry,choice:choice.value,notes:notes.value,savedAt:new Date().toISOString()});drafts.delete(v.id);notify(vault.unlocked?'Choice and notes saved encrypted on this device.':'Choice and notes kept in this visit only; reload clears them.');}catch(e){notify(e.message);}finally{save.disabled=false;}});container.append(form,el('p',vault.unlocked?'Drafts stay while you browse this app. Save before reloading or locking. Saved notes are encrypted on this device.':'Drafts stay while you browse this app. Reload clears visit-only notes. Use On this device to save encrypted notes after reload.','plain-note'));
  const source=el('details');source.append(el('summary','About this note'),el('p','Saved '+date(entry.savedAt)+'. Your words stay as you wrote them, even when vote information changes.'));container.append(source);
 }
 function download(text,name) {const url=URL.createObjectURL(new Blob([text],{type:'application/json'}));const a=link('',url);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}

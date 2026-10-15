@@ -75,13 +75,13 @@ def make_handler(pdf,case,live=None,admission=None,cases=None,source_dir=None):
                 ident=parse_qs(urlsplit(self.path).query).get('case',['ahv13'])[0]
                 if ident not in cases:return self.send(404,{'error':'Vote not found'})
                 return self.send(200,pdf if ident=='ahv13' else (Path(source_dir)/(ident+'.pdf')).read_bytes(),'application/pdf')
-            allowed={'/':'index.html','/app.js':'app.js','/vault.js':'vault.js','/style.css':'style.css','/local.html':'local.html','/judges.html':'judges.html'}
+            allowed={'/':'index.html','/app.js':'app.js','/vault.js':'vault.js','/answer.js':'answer.js','/style.css':'style.css','/local.html':'local.html','/judges.html':'judges.html'}
             if path.startswith('/assets/') and path.removeprefix('/assets/') in {p.name for p in (TRACK/'web/assets').glob('*.svg')}:
                 return self.send(200,(TRACK/'web'/path.lstrip('/')).read_bytes(),'image/svg+xml')
             if path in allowed:
                 asset=TRACK/'web'/allowed[path]
                 if not asset.exists():return self.send(503,{'error':'Frontend not built; backend is ready'})
-                kind={'/':'text/html; charset=utf-8','/app.js':'text/javascript; charset=utf-8','/vault.js':'text/javascript; charset=utf-8','/style.css':'text/css; charset=utf-8','/local.html':'text/html; charset=utf-8','/judges.html':'text/html; charset=utf-8'}[path]
+                kind={'/':'text/html; charset=utf-8','/app.js':'text/javascript; charset=utf-8','/vault.js':'text/javascript; charset=utf-8','/answer.js':'text/javascript; charset=utf-8','/style.css':'text/css; charset=utf-8','/local.html':'text/html; charset=utf-8','/judges.html':'text/html; charset=utf-8'}[path]
                 return self.send(200,asset.read_bytes(),kind)
             return self.send(404,{'error':'Not found'})
         def do_POST(self):

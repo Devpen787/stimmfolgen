@@ -35,7 +35,7 @@ const server=http.createServer(async(req,res)=>{
     const pdf=await readFile('/sources/'+id+'.pdf');if(hash(pdf)!==c.source_sha256)throw Error('Source PDF authentication failed');return send(200,pdf,'application/pdf');
    }
    const path=url.pathname==='/'?'index.html':url.pathname.slice(1);
-   if(!/^(index\.html|app\.js|vault\.js|style\.css|local\.html|judges\.html|assets\/[a-z0-9-]+\.svg)$/.test(path))return send(404,{error:'Not found'});
+   if(!/^(index\.html|app\.js|vault\.js|answer\.js|style\.css|local\.html|judges\.html|assets\/[a-z0-9-]+\.svg)$/.test(path))return send(404,{error:'Not found'});
    const mime=path.endsWith('.js')?'text/javascript':path.endsWith('.css')?'text/css':path.endsWith('.svg')?'image/svg+xml':'text/html';return send(200,await readFile(new URL('web/'+path,root)),mime+'; charset=utf-8');
   }
   if(req.method!=='POST'||url.pathname!=='/api/live/question')return send(404,{error:'Not found'});
@@ -47,7 +47,7 @@ const server=http.createServer(async(req,res)=>{
   if(busy)return send(429,{outcome:'BUSY',error:'Apertus is answering another question. Please try again shortly.',live_inference_performed_for_this_request:false});
   busy=true;const started=Date.now();let performed=false;
   try{
-   const matched=await matchLocalQuestion(c,localContract,data.question,(prompt,max,system,schema)=>localCompletion(base,prompt,max,system,schema,data.question,()=>{performed=true;})
+   const matched=await matchLocalQuestion(c,localContract,data.question,(prompt,max,system,schema)=>localCompletion(base,prompt,max,system,schema,data.question,trace=>{if(trace.response?.choices?.length)performed=true;})
    );
    const result={...composeAnswer(c,matched.plan,matched.ids,matched.scope.scope),contract:localContract.contract,execution_contract_sha256:executionHash,source_bundle_sha256:expected,model:identity.backing_checkpoint,model_identity_basis:'PINNED_LOCAL_WEIGHTS',provider:'LOCAL_APERTUS',model_tasks:matched.tasks,live_inference_performed_for_this_request:performed,human_reviewed:false,case_id:c.case_id,as_of:c.as_of,source_sha256:c.source_sha256,answered_at:new Date().toISOString(),latency_seconds:(Date.now()-started)/1000};result.receipt=hash(JSON.stringify(result));return send(200,result);
   }catch{return send(503,{outcome:'SERVICE_UNAVAILABLE',error:'Apertus could not answer this question. You can still read the sources below.',live_inference_performed_for_this_request:performed});}finally{busy=false;}

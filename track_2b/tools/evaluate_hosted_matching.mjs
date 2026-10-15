@@ -3,8 +3,8 @@
 import{readFile,writeFile,mkdir}from'node:fs/promises';
 import{MODEL,completion,promptFrom,modelAvailable,composeAnswer}from'../hosted/qa.mjs';
 import{matchQuestion}from'../hosted/matching.mjs';
-const[caseFile,out,keyFile]=process.argv.slice(2);if(!caseFile||!out||!keyFile)throw Error('Need CASES_JSON OUT_DIR TOKEN_FILE');
-const b=JSON.parse(await readFile(new URL('../hosted/public-bundle.json',import.meta.url))),q=b.hosted_query,cases=JSON.parse(await readFile(caseFile)),token=(await readFile(keyFile,'utf8')).trim();await mkdir(out,{recursive:false});await modelAvailable(token);let passed=0;
+const[caseFile,out,keyFile,candidateFile]=process.argv.slice(2);if(!caseFile||!out||!keyFile)throw Error('Need CASES_JSON OUT_DIR TOKEN_FILE');
+const b=JSON.parse(await readFile(new URL('../hosted/public-bundle.json',import.meta.url))),q=b.hosted_query,cases=JSON.parse(await readFile(caseFile)),token=(await readFile(keyFile,'utf8')).trim();if(candidateFile)b.cases={...(b.cases||{ahv13:b.case}),'home-tax':JSON.parse(await readFile(candidateFile))};await mkdir(out,{recursive:false});await modelAvailable(token);let passed=0;
 for(const reference of cases){let traces=[],plan,result;const start=Date.now();
  const capture=async(url,options)=>{await new Promise(r=>setTimeout(r,1800));const response=await fetch(url,options),raw=await response.clone().text();let body;try{body=JSON.parse(raw)}catch{body={raw_response_text:raw}}traces.push({request:JSON.parse(options.body),status:response.status,response:body});return response};
  try{const caseData=(b.cases||{ahv13:b.case})[reference.case||'ahv13'];if(!caseData)throw Error('Case is not admitted');const matched=await matchQuestion(caseData,q,reference.question,(prompt,maxTokens,system,schema)=>completion(token,prompt,maxTokens,system,capture,()=>{},schema));plan=matched.plan;const ids=matched.ids;
