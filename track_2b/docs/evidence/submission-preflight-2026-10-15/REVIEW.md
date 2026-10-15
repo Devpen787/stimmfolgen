@@ -24,3 +24,7 @@
 No new Apertus inference is performed for this release preparation; prior real eight-completion run remains authenticated and clearly recorded. No failed trace, approval or original source ledger was modified. This is one AHV development case, not general policy accuracy. No comprehensive accessibility, comprehension or independent security audit.
 
 Final Docker cold-clone replay/negative-control results and remote CI are appended as they complete. Remaining nontechnical gates: accurate participant/team/eligibility fields, approved accessible video URL, reviewed main integration and source/terms clearance.
+
+## Cold clone result
+
+Committed app 1fd283d: a new local Git clone built and launched with root make run, actual HTTP journey passed, offline Gate replay authenticated PASS_BOUNDED_AHV and all five deliberate mutations blocked. No model endpoint or private local files were needed for publication replay. Exact certificate and image: cold-clone.json. This does not prove a bare default-main checkout before PR integration. A reload/unlock browser check restored the synthetic note using the current vault fix.

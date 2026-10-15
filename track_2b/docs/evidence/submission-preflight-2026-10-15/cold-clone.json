@@ -1,0 +1,51 @@
+{
+  "evidence_class": "LOCAL_COLD_CLONE_DOCKER",
+  "application_commit": "1fd283d3fcb27975c01b795324feeb420b6fcd21",
+  "clean_clone": "PASS",
+  "command": "make run IMAGE=stimmfolgen:submission-cold PORT=8778",
+  "actual_http_journey": "PASS",
+  "offline_gate": {
+    "gate0_status": "PASS_BOUNDED_AHV",
+    "scope": "One reviewed historical AHV case; not general policy accuracy or submission-wide readiness",
+    "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+    "catalog_sha256": "8d98a741550f450a64bb8103ece1efa561b0c75436b8096bf47ac6c74508d618",
+    "semantic_reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+    "public_case_as_of": "2024-03-02T23:59:59+01:00",
+    "source_content_cutoff": "2023-11-29",
+    "available_by_utc": "2024-01-11T12:11:17+00:00",
+    "public_availability_verified": true,
+    "human_reviewed_statement_ids": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05"
+    ],
+    "raw_trials_human_approved": false,
+    "machine_control_trials_pass": 7,
+    "actual_release_model_completions": 8,
+    "frontend_authorized_for_bounded_case": true,
+    "current_runtime_live_inference": false,
+    "approval_record_sha256": {
+      "P01": "46ae196e9429034cbd53b00f5dc90a6abbf04d02eafdede61fb5c352027e6bc0",
+      "P02": "e8099715b4ca27d031190137a603c248b274f5daf35ef0c8e4280b36822c653c",
+      "P03": "f0469b39c80afdaf9208ba54f721e8bbe1f661c2d415a1949f848d36ae6249ee",
+      "P04": "fdf4dc731e08c6292c15629949691621791addf40e69210e5f828b3beca05429",
+      "P05": "36b5e47285af0bdc6d42c16bc9ebc87c657c05dbae06387952008f9942061087"
+    }
+  },
+  "negative_controls": {
+    "status": "PASS",
+    "model_inference_performed": false,
+    "negative_controls": {
+      "source_byte_mismatch": "BLOCKED_AS_REQUIRED",
+      "missing_human_approval": "BLOCKED_AS_REQUIRED",
+      "rejected_human_statement": "BLOCKED_AS_REQUIRED",
+      "premature_public_frame_even_with_valid_manifest": "BLOCKED_AS_REQUIRED",
+      "checkpoint_substitution_even_with_valid_manifest": "BLOCKED_AS_REQUIRED"
+    }
+  },
+  "image_id": "sha256:3fe380ae7c267c63f13a5f1cfea3a668bf61606db4aa53e67161a5668f539e13",
+  "default_main_integrated": false,
+  "new_model_inference": false
+}

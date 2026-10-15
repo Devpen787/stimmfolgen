@@ -15,7 +15,7 @@
 - Model: 8B v1.5. Disclose the pinned community MLX conversion in the report.
 - Technical report: track_2b/StimmFolgen_Report.pdf, five pages (verify after any edit)
 - GitHub URL: https://github.com/Devpen787/stimmfolgen — only after main contains the tested application
-- Demo URL: PENDING approved video upload; local MP4 is track_2b/demo/StimmFolgen_Tracker_Demo.mp4
+- Demo URL: PENDING owner approval/watch-link choice. Public download fallback verified: https://raw.githubusercontent.com/Devpen787/stimmfolgen/1fd283d/track_2b/demo/StimmFolgen_Tracker_Demo.mp4 ; local MP4 is track_2b/demo/StimmFolgen_Tracker_Demo.mp4. GitHub serves a download, not a verified watch page.
 - Dataset URL: blank; no optional external dataset submission
 - Terms checkbox: owner must review/accept the actual terms; not pre-checked
 

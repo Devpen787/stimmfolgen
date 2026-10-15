@@ -50,3 +50,7 @@ Winner-grade checklist: named primitive, proof object, verifier, bounded system,
 ## Owner actions only
 
 Confirm team/member names, Devpost email, Swiss-student eligibility and project credit. Choose/approve narration and a video host. Review the ready PR and approve main integration. Read actual organiser terms (including output licences and third-party warranties); this agent has not accepted them. Complete source-material rights clearance described in THIRD_PARTY_NOTICES.md. The report and video can be fully prepared before any final submission permission is requested.
+
+## Video link fallback checked
+
+The committed MP4 is publicly downloadable without login (HTTP 200, 2,241,906 bytes) at https://raw.githubusercontent.com/Devpen787/stimmfolgen/1fd283d/track_2b/demo/StimmFolgen_Tracker_Demo.mp4 . GitHub serves it as application/octet-stream, so this is a download fallback, not a verified browser watch page. Prefer an owner-approved unlisted YouTube/Vimeo watch URL if available; the observed form only labels this field Demo video URL and does not specify a host. Do not claim a watch-page check was performed.
