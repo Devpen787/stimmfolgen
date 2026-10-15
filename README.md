@@ -4,7 +4,9 @@
 
 Hack Apertus 2026 · Track 2B · On-premise prototype. My votes, Upcoming votes and Search lead to a short explanation, original sources, later official updates, related votes and perspectives for Me, Others and Switzerland. No voting recommendation or inferred Yes/No choice.
 
-![Desktop and mobile tracker](track_2b/docs/evidence/tracker-v2-2026-10-14/option3-comparison.png)
+![Actual desktop tracker — synthetic tracked AHV example](track_2b/docs/evidence/tracker-v2-2026-10-14/desktop-final.png)
+
+[Actual mobile view](track_2b/docs/evidence/tracker-v2-2026-10-14/mobile-final.png). Screenshots show synthetic tracking, not the owner’s political choices.
 
 ## Run it
 
