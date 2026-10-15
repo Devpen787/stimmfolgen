@@ -51,3 +51,5 @@ Start the already-installed MLX v1.5 model on `127.0.0.1:8766`, then:
 ```
 
 Open `http://127.0.0.1:8780/`. This is for the owner's testing only. It is not public hosting or a phone-access URL on another device.
+
+Direct browser check on 15 October: `https://euria.infomaniak.com/` presented an anonymous question form. Its model selector listed Fast, Expert and **Apertus 1.5**; selecting Apertus returned to the form with Apertus selected, while Sign up/Log in remained optional controls. No message was submitted or terms accepted. `https://chat.publicai.co/` redirected to its sign-in page with Continue with Public AI. These observations establish the consumer access UI, not an integration API, SLA or tested response.
