@@ -1,0 +1,79 @@
+{
+  "kind": "NARRATED_ACTUAL_BROWSER_CAPTURE_WALKTHROUGH",
+  "continuous_screen_recording": false,
+  "fresh_web_inference": false,
+  "private_data": "SYNTHETIC_ONLY",
+  "duration_seconds": 98.051677,
+  "resolution": "1280x720",
+  "video_codec": "H264",
+  "audio_codec": "AAC",
+  "voice": "local macOS Samantha",
+  "audio_trimmed": false,
+  "sha256": "525786c6b47ae2f87180e13545a4296da1c0bba67bec22ca91835595230dcc84",
+  "chapters": [
+    {
+      "capture": "01-search.png",
+      "label": "Find the vote",
+      "narration": "StimmFolgen helps Swiss voters follow a vote and understand it, without recommending Yes or No. Search for AHV: the historical pension initiative and its related financing proposal appear.",
+      "start_seconds": 0.0,
+      "duration_seconds": 10.375,
+      "capture_sha256": "6ba63dc3f797621377c7552f3105ec9155b12cf751f16a51529685bc05494967"
+    },
+    {
+      "capture": "02-my-votes.png",
+      "label": "Track without declaring a choice",
+      "narration": "Track the pension proposal and return to My votes. Tracking follows the topic; it does not record how you voted. Explore opens the reviewed explanation.",
+      "start_seconds": 10.375,
+      "duration_seconds": 8.458333,
+      "capture_sha256": "94121b37ae793be0120cb8b6d6929df403100bb7dcb33ff50970e3868dc7587d"
+    },
+    {
+      "capture": "04-source.png",
+      "label": "Inspect dated primary evidence",
+      "narration": "Every central AHV statement opens its original booklet passages, page and actor. The historical evidence frame stays separate from later developments. Quotes resolve from immutable source spans, rather than generated quotation text.",
+      "start_seconds": 18.833,
+      "duration_seconds": 12.916667,
+      "capture_sha256": "2115ce7cc20d0c3934b6e6b46ed9d60d839574d5f0044e21fb257e7607e7243a"
+    },
+    {
+      "capture": "05-unknown.png",
+      "label": "See the limits of a personal claim",
+      "narration": "Perspectives organise the reviewed evidence for you, others and Switzerland. For a working-age person, a definite personal charge was not established by the original proposal. Missing financing facts produce uncertainty, not an invented number.",
+      "start_seconds": 31.75,
+      "duration_seconds": 12.75,
+      "capture_sha256": "f292f13e47ad1a8f76fb25551a62ce93b81b8f8caa66f930fdc5c7149f164352"
+    },
+    {
+      "capture": "06-updates.png",
+      "label": "Separate later official updates",
+      "narration": "Official updates show publication and checked dates. A sourced relationship connects the earlier proposal to a later financing vote. These are manually checked official references, not new model analyses.",
+      "start_seconds": 44.5,
+      "duration_seconds": 10.916667,
+      "capture_sha256": "dbd9e372b7c2caaaa0134bccb218b2c8882d3a3b4a7cc728624c2a0095571d44"
+    },
+    {
+      "capture": "08-private-note.png",
+      "label": "Save a synthetic note locally",
+      "narration": "This demonstration note is saved in an encrypted local vault. Choices and notes never go to the backend or Apertus. A passphrase unlocks them; encrypted backups are available. There is no account or cross-device sync.",
+      "start_seconds": 55.417,
+      "duration_seconds": 11.333333,
+      "capture_sha256": "216e85970d5e35ccf575aafbad686c1d07e6a8d995baec38ab183dc7d904c0b5"
+    },
+    {
+      "capture": "09-locked.png",
+      "label": "Lock the private record",
+      "narration": "Lock clears the private view while public information remains readable. The demonstration uses synthetic data, never a real voting choice.",
+      "start_seconds": 66.75,
+      "duration_seconds": 7.291667,
+      "capture_sha256": "639628872d5d9b58c8e7e621f80df0d8ac008fc4c9ac5c4b435ac447509d7495"
+    },
+    {
+      "capture": "10-apertus.png",
+      "label": "Show where Apertus actually helped",
+      "narration": "Apertus version one point five, eight billion, ran locally on Apple Silicon to select passages, extract candidate values and identify attribution. Independent checks and human review produced the published case. Seven bounded controls passed from eight real completions. Web clicks show recorded results, not fresh generation. Docker runs the reviewed app locally. One reviewed AHV case is proven; broader accuracy is not claimed.",
+      "start_seconds": 74.042,
+      "duration_seconds": 24.0,
+      "capture_sha256": "e2f2ea2fac1a0fbd22e646c755da2b39e35373483272453bb8cf2c350cbabfe6"
+    }
+  ]
+}

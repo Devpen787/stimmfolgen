@@ -1,0 +1,119 @@
+1
+00:00:00,000 --> 00:00:03,705
+StimmFolgen helps Swiss voters follow a vote and understand it,
+
+2
+00:00:03,705 --> 00:00:07,411
+without recommending Yes or No. Search for AHV: the historical
+
+3
+00:00:07,411 --> 00:00:10,375
+pension initiative and its related financing proposal appear.
+
+4
+00:00:10,375 --> 00:00:13,758
+Track the pension proposal and return to My votes. Tracking
+
+5
+00:00:13,758 --> 00:00:17,142
+follows the topic; it does not record how you voted.
+
+6
+00:00:17,142 --> 00:00:18,833
+Explore opens the reviewed explanation.
+
+7
+00:00:18,833 --> 00:00:22,870
+Every central AHV statement opens its original booklet passages, page
+
+8
+00:00:22,870 --> 00:00:26,906
+and actor. The historical evidence frame stays separate from later
+
+9
+00:00:26,906 --> 00:00:30,943
+developments. Quotes resolve from immutable source spans, rather than generated
+
+10
+00:00:30,943 --> 00:00:31,750
+quotation text.
+
+11
+00:00:31,750 --> 00:00:35,500
+Perspectives organise the reviewed evidence for you, others and Switzerland.
+
+12
+00:00:35,500 --> 00:00:39,250
+For a working-age person, a definite personal charge was not
+
+13
+00:00:39,250 --> 00:00:43,000
+established by the original proposal. Missing financing facts produce uncertainty,
+
+14
+00:00:43,000 --> 00:00:44,500
+not an invented number.
+
+15
+00:00:44,500 --> 00:00:48,264
+Official updates show publication and checked dates. A sourced relationship
+
+16
+00:00:48,264 --> 00:00:52,029
+connects the earlier proposal to a later financing vote. These
+
+17
+00:00:52,029 --> 00:00:55,417
+are manually checked official references, not new model analyses.
+
+18
+00:00:55,417 --> 00:00:58,655
+This demonstration note is saved in an encrypted local vault.
+
+19
+00:00:58,655 --> 00:01:01,893
+Choices and notes never go to the backend or Apertus.
+
+20
+00:01:01,893 --> 00:01:05,131
+A passphrase unlocks them; encrypted backups are available. There is
+
+21
+00:01:05,131 --> 00:01:06,750
+no account or cross-device sync.
+
+22
+00:01:06,750 --> 00:01:10,396
+Lock clears the private view while public information remains readable.
+
+23
+00:01:10,396 --> 00:01:14,042
+The demonstration uses synthetic data, never a real voting choice.
+
+24
+00:01:14,042 --> 00:01:17,851
+Apertus version one point five, eight billion, ran locally on
+
+25
+00:01:17,851 --> 00:01:21,661
+Apple Silicon to select passages, extract candidate values and identify
+
+26
+00:01:21,661 --> 00:01:25,470
+attribution. Independent checks and human review produced the published case.
+
+27
+00:01:25,470 --> 00:01:29,280
+Seven bounded controls passed from eight real completions. Web clicks
+
+28
+00:01:29,280 --> 00:01:33,089
+show recorded results, not fresh generation. Docker runs the reviewed
+
+29
+00:01:33,089 --> 00:01:36,899
+app locally. One reviewed AHV case is proven; broader accuracy
+
+30
+00:01:36,899 --> 00:01:38,042
+is not claimed.

@@ -1,6 +1,6 @@
 # StimmFolgen
 
-Technical report - Hack Apertus Online, Track 2B - 14 October 2026
+Technical report - Hack Apertus Online, Track 2B - 15 October 2026
 
 ## 1. A private vote tracker with a reviewed historical case
 
@@ -64,8 +64,12 @@ The selected architecture is on-premise: native local model ingestion/evaluation
 
 Image construction needs internet to retrieve the base/dependency packages and authenticated official booklet. The built reviewed-case application has no outbound runtime requirement. An offline container check with network disabled revalidates the stored Gate evidence without weights or an LLM endpoint. A separate clean-clone Docker launch and actual API journey are documented in docs/evidence/APP_RELEASE_2026-10-14.md. This proves publication/replay delivery under the stated environment, not portable fresh inference or full air-gap provisioning.
 
-Judges can run make run, find and track AHV, inspect sources and perspectives, view the separate update/related vote, and exercise the optional local encrypted vault with synthetic notes. docs/JUDGE_RUN.md also gives the separate native inference commands and required pinned weights. The earlier walkthrough is historical prototype evidence and does not depict the new tracker. Current tracker screenshots and browser evidence are in docs/evidence/tracker-v2-2026-10-14. The earlier report is preserved byte-for-byte there for its original manifest. No hosted deployment, external video upload, merge or submission has been performed.
+Judges can run make run, find and track AHV, inspect sources and perspectives, view the separate update/related vote, and exercise the optional local encrypted vault with synthetic notes. docs/JUDGE_RUN.md also gives the separate native inference commands and required pinned weights. The current 98-second tracker walkthrough is composed from actual app captures with local synthetic narration; it is not a continuous recording or a fresh-inference session. Demo choices/notes are synthetic. Captions and the production script are included. Current tracker screenshots and browser evidence are in docs/evidence/tracker-v2-2026-10-14. The earlier report is preserved byte-for-byte there for its original manifest. No hosted deployment, external video upload, merge or submission has been performed.
 
-Source rights are separate from the project's Apache-2.0 code licence. The original PDF is downloaded for local processing and not committed as a dataset. Limited attributed passages are used for source analysis; broad document/image redistribution has not been licensed. Government web availability does not itself grant reuse rights. Do not publish a bundled source image/container as an openly licensed corpus. Source licensing remains a submission-scope check.
+Source rights are separate from the project's Apache-2.0 code licence. The original PDF is downloaded for local processing and not committed as a dataset. Limited attributed passages are used for source analysis; broad document/image redistribution has not been licensed. Government web availability does not itself grant reuse rights. Do not publish a bundled source image/container as an openly licensed corpus. The immutable review packet includes eight full-page PNGs and extracted passages. Their redistribution basis remains unresolved; the owner must clear rights before accepting the organiser warranty. No blanket source relicensing is claimed. THIRD_PARTY_NOTICES.md records the hold and dependency licences, including PyMuPDF AGPL obligations.
 
-References: Federal Chancellery original 2024 booklet; the exact archived government copy of 11 January 2024; tokimoa model card and declared swiss-ai upstream; admin.ch conditions of use; repository ADRs 0002-0006, source/trace manifests and human decision records. Direct links are listed in docs/evidence/APP_RELEASE_2026-10-14.md and docs/JUDGE_RUN.md.
+Original report contributions: Creative Commons Attribution 4.0 (CC-BY-4.0), https://creativecommons.org/licenses/by/4.0/ . Third-party extracts retain their applicable rights.
+
+References: official booklet/archive, pinned model cards, government terms, ADRs 0002–0006 and source/trace manifests. Links: docs/evidence/APP_RELEASE_2026-10-14.md and docs/JUDGE_RUN.md.
+
+Next month: a second reviewed case, unseen import, language parity and comprehension study. Scaling needs measured review and refresh costs. Codex assisted development, tests and documentation; Apertus performed policy inference.

@@ -21,4 +21,8 @@ const unsafe=JSON.parse(vault.backup());unsafe.iterations=1;await assert.rejects
 const lockRace=new PrivateVault(memory());const pending=lockRace.create(password);lockRace.lock();await assert.rejects(pending);assert.equal(lockRace.exists,false);assert.equal(lockRace.unlocked,false);
 await vault.unlock(password);const saving=vault.save({...record,notes:'SYNTHETIC cancelled write'});vault.lock();await assert.rejects(saving);
 await vault.unlock(password);assert.notEqual(vault.entries[0].notes,'SYNTHETIC cancelled write');
+const beforeOversize = vault.backup();
+await assert.rejects(vault.persist({version:1,saved:Array.from({length:60},(_,i)=>({...record,id:'synthetic-'+i,notes:'x'.repeat(16000)}))}));
+assert.equal(vault.backup(),beforeOversize);
+vault.lock();await vault.unlock(password);assert.equal(vault.entries.length,1);
 console.log('PASS: encrypted-only persistence, fresh nonces, wrong-password/tamper rejection, lock/reload boundary, concurrent saves, backup recovery and cancelled lock races.');

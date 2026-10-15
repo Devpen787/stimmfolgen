@@ -66,6 +66,9 @@ export class PrivateVault {
     // Small records are capped above to avoid spreading very large arrays.
     const chunks = []; for (let i=0;i<ciphertext.length;i+=8192) chunks.push(String.fromCharCode(...ciphertext.subarray(i,i+8192)));
     const envelope = {version:1,kdf:'PBKDF2-SHA256-AES256GCM',iterations:ITERATIONS,salt:encode(salt),iv:encode(iv),ciphertext:btoa(chunks.join(''))};
+    // Never persist a vault that the backup/unlock path would reject by size.
+    if (JSON.stringify(envelope).length > 1000000) throw Error('Private vault is full. Download a backup before removing older records.');
+    validateEnvelope(envelope);
     if (generation !== this.generation) throw Error('Private operation cancelled by lock.');
     this.storage.setItem(STORAGE_KEY,JSON.stringify(envelope));
   }

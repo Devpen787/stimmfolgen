@@ -1,29 +1,64 @@
-# StimmFolgen — Swiss voting-impact explorer
+# StimmFolgen
 
-A Track 2B project for [Hack Apertus 2026](https://hackapertus.ch/): **understand what a vote could change, who it could affect, why, and what remains uncertain—without receiving a voting recommendation.**
+**Follow a Swiss vote, understand its dated evidence, and keep your own reflections private.**
 
-**Current status (12 October 2026):** design baseline imported. This repository does **not** yet contain working Apertus inference, evaluated causal claims, a deployed application, or verified encrypted user storage. All demonstration content should be marked as synthetic or sourced and reviewed.
+Hack Apertus 2026 · Track 2B · On-premise prototype. My votes, Upcoming votes and Search lead to a short explanation, original sources, later official updates, related votes and perspectives for Me, Others and Switzerland. No voting recommendation or inferred Yes/No choice.
 
-## Read first
+![Desktop and mobile tracker](track_2b/docs/evidence/tracker-v2-2026-10-14/option3-comparison.png)
 
-- [Track 2B official instructions](track_2b/README.md) — preserved from the official template.
-- [Architectural baseline](track_2b/docs/blueprint-v0.1/01_SYSTEM_AND_SOURCES.md)
-- [Full product schema — circuit board](track_2b/docs/blueprint-v0.1/04_PRODUCT_SCHEMA.md)
-- [User journeys and UX](track_2b/docs/blueprint-v0.1/02_JOURNEYS_AND_UX.md)
-- [Privacy & updates](track_2b/docs/blueprint-v0.1/03_PRIVACY_AND_UPDATES.md)
-- [Codex build handoff](track_2b/docs/blueprint-v0.1/BUILD_HANDOFF.md)
-- [Context, user observation and decisions](track_2b/docs/CONTEXT_AND_DECISIONS.md)
-- [Illustrative clickable UX concept](track_2b/docs/blueprint-v0.1/UX_CONCEPT.html) (non-functional mockup)
-- [Status and blockers](track_2b/docs/PROJECT_STATUS.md)
+## Run it
 
-## Mandatory next step
+With Docker and make installed, from a clean checkout:
 
-Get one **real Apertus 1.5 inference** over a verified official referendum passage and retain the exact prompt, response, model/version, source/page and human checked expectations. The official template's `make run` currently exits with a placeholder error; it must be implemented and cold-run before submission.
+```sh
+make run
+```
 
-## Safety and trust boundary
+Open http://127.0.0.1:8770. Use `make run PORT=8772` if that port is occupied. The build fetches dependencies and the hash-pinned official booklet; a mismatch fails closed. No credentials, model weights or paid API are needed for the reviewed publication journey. The container runs as a non-root user with a read-only filesystem and loopback-only host binding.
 
-The model may generate candidate explanations, not factual authority. Attribution, verifiable exact passages, valid as-of dates, evidence types and human-review flags are structured and auditable. Do not claim a policy has a predictable personal impact from a source that leaves that impact undetermined. Do not recommend voting choices, infer voter preferences, or publish personal deliberations.
+## A 90-second judge journey
 
-## Submission
+1. Search AHV and track **13th AHV pension**. Return to My votes, then Explore my vote.
+2. Read What it means; open Source and dates for original passages, actor, page and historical frame.
+3. Open Perspectives. A working-age person gets an honest unknown personal charge, not a fabricated CHF calculation.
+4. Inspect separately dated official updates and the related financing proposal.
+5. Add a **synthetic** private note. Keep it only for this visit or create an optional encrypted local vault. Reload locks saved data; encrypted backup/recovery stays local.
 
-Keep `track_2b/` intact. Docker `make run`, source-licensed documentation, technical report PDF (up to six pages), maximum 2-minute demo video and public repository are required. The technical report template is still a placeholder, not a submitted result.
+## Where Apertus is used
+
+Actual local Apertus v1.5 8B inference selected immutable source spans, extracted candidate values and identified attribution. Independent controls and five accepted source statements produced the published AHV explanation. Seven bounded trials passed using eight real model completions. Earlier failures are retained.
+
+The web app serves **reviewed recorded results**; clicking Explore does not perform new inference. P03 is reviewed reference context, not an extraction from the final trial. The other four selected proposals have official references but no reviewed Apertus explanation. Catalogue search, update metadata and encryption are application functions.
+
+```text
+Official booklet -> immutable spans -> local Apertus candidates
+                 -> independent checks + human review -> reviewed public case
+Browser -> Docker publication API -> explanation, citations and updates
+Browser-only choices/notes -> optional encrypted vault and encrypted backup
+```
+
+Native inference uses the pinned community text-only MLX 4-bit conversion of swiss-ai/Apertus-v1.5-8B on Apple Silicon. Linux Docker runs publication/evidence replay, not Mac GPU inference. [Judge instructions](track_2b/docs/JUDGE_RUN.md) provide the separate native reproduction commands.
+
+## Verify and review
+
+```sh
+make check
+python -m unittest discover -s track_2b/tests -p 'test*.py'
+node track_2b/tests/test_private_vault.mjs
+```
+
+Python tests require PyMuPDF 1.28.2; vault tests require Node 22+. Docker `make check` uses its pinned environment. The synthetic blueprint validator is separate from real-model evidence.
+
+- [Current technical report](track_2b/StimmFolgen_Report.pdf) · [editable source](track_2b/technical_report.md)
+- [Current 98-second demo](track_2b/demo/StimmFolgen_Tracker_Demo.mp4) · [transcript](track_2b/demo/TRACKER_DEMO.md) · [captions](track_2b/demo/StimmFolgen_Tracker_Demo.srt)
+- [Submission preparation and remaining owner actions](track_2b/docs/SUBMISSION_READINESS.md)
+- [Exact judge run](track_2b/docs/JUDGE_RUN.md) · [API contract](track_2b/docs/APP_CONTRACT.md)
+- [Real Apertus release evidence](track_2b/docs/evidence/APP_RELEASE_2026-10-14.md) · [tracker evidence](track_2b/docs/evidence/tracker-v2-2026-10-14/REVIEW.md)
+- [Privacy limits](track_2b/docs/PRIVATE_TRACKER_THREAT_MODEL.md) · [third-party rights review](THIRD_PARTY_NOTICES.md)
+- [Official Track 2B instructions](track_2b/README.md) · [historical design blueprint](track_2b/docs/blueprint-v0.1/README.md)
+
+## Scope and limits
+
+One reviewed historical AHV development case; five selected proposals, not a complete registry. No second-case or unseen-ballot accuracy proof, current-law personal calculator, comprehension study, exhaustive accessibility audit, account/sync or independent security audit. Encryption protects stored ciphertext, not an unlocked/compromised device. A lost passphrase cannot be recovered. External official-source visits remain visible to their publishers.
+
+The required submission is through the organisers' website, not Devpost. A prepared video/PDF or passing CI does not mean the project has been submitted. The older reader demo and evidence remain historical artifacts.
