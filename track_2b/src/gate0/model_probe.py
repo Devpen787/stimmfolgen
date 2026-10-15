@@ -132,7 +132,7 @@ def validate_answer(answer, report, require_coverage=True, expected_outcome=None
 
 def run_inference(report, model_id, base_url, api_key, *, local_identity=None, allow_legacy_diagnostic=False,
                   prompt=None, require_coverage=True, expected_outcome=None, max_tokens=1800, source_pdf_data=None,
-                  answer_validator=None, prompt_version=None, output_contract="generated-quotes-v1"):
+                  answer_validator=None, prompt_version=None, output_contract="generated-quotes-v1", system_prompt=None):
     if not base_url:
         raise RuntimeError("LLM_BASE_URL is required; configure a real Apertus endpoint")
     if model_id.lower() not in MODEL_IDS and local_identity is None:
@@ -148,7 +148,7 @@ def run_inference(report, model_id, base_url, api_key, *, local_identity=None, a
     if not v1_5 and not allow_legacy_diagnostic:
         raise RuntimeError("Installed checkpoint is not v1.5; use explicit legacy diagnostic mode, never mark Gate 0 passed")
     payload = {"model": model_id, "temperature": 0, "max_tokens": max_tokens,
-               "messages": [{"role": "system", "content": "Extract candidate evidence with faithful, attributed citations. No voting advice."},
+               "messages": [{"role": "system", "content": system_prompt or "Extract candidate evidence with faithful, attributed citations. No voting advice."},
                             {"role": "user", "content": prompt or prompt_for(report)}]}
     request_bytes = json.dumps(payload, ensure_ascii=False).encode()
     headers = {"Content-Type": "application/json", "User-Agent": "StimmFolgen-Gate0/0.2"}

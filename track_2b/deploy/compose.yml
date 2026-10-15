@@ -1,0 +1,60 @@
+# Deploy on a Swiss VPS; inference remains server-to-server in Switzerland.
+services:
+  app:
+    build:
+      context: ../..
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m
+    environment:
+      INFOMANIAK_PRODUCT_ID: ${INFOMANIAK_PRODUCT_ID:?Set the AI Services product ID}
+      INFOMANIAK_TOKEN_FILE: /run/secrets/infomaniak_token
+      USAGE_DATABASE: /state/usage.sqlite
+      DAILY_QUESTION_LIMIT: ${DAILY_QUESTION_LIMIT:-200}
+      TRUST_CADDY_CLIENT_IP: '1'
+    secrets:
+      - infomaniak_token
+    volumes:
+      - usage:/state
+    expose:
+      - '8770'
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    mem_limit: 512m
+    pids_limit: 100
+    logging:
+      driver: local
+      options:
+        max-size: '5m'
+        max-file: '2'
+  web:
+    image: caddy:2.10.2-alpine@sha256:4c6e91c6ed0e2fa03efd5b44747b625fec79bc9cd06ac5235a779726618e530d
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:?Set a DNS hostname pointing to the VPS}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - app
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: local
+      options:
+        max-size: '5m'
+        max-file: '2'
+secrets:
+  infomaniak_token:
+    file: ${INFOMANIAK_TOKEN_PATH:?Path to the restricted server-side API token file}
+volumes:
+  usage:
+  caddy_data:
+  caddy_config:

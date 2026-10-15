@@ -22,3 +22,9 @@ Latest [release evidence](evidence/APP_RELEASE_2026-10-14.md), [decision](adr/00
 Responsive tracker v2 replaces the first reader UI. See [tracker evidence](evidence/tracker-v2-2026-10-14/REVIEW.md). The original app-release packet and old walkthrough are historical evidence, not the current interface.
 
 Submission review 15 October: root README refreshed; public default-main integration, owner identity, public video URL and source-material rights/terms remain. See [readiness](SUBMISSION_READINESS.md). No submission-ready claim until those are resolved.
+
+## Live service continuation — 15 October
+
+Local browser-to-model QA now exists with fresh Apertus v1.5 answers, immutable evidence references, explicit unreviewed status and separate same-model checks. 100 Python boundary tests and Node crypto checks pass. Final live development set has one supported and four withheld answers: this is not full live acceptance. See [all retained trials and browser observations](evidence/live-apertus-2026-10-15/REVIEW.md).
+
+Public hosting remains NOT_DONE. The user excludes their Mac as a host for others and requires zero payments. No paid hosting is activated. Optional Infomaniak integration/deployment files are prepared but unverified against an authenticated endpoint. Free-credit/sponsored hosting needs actual access and an explicit data-residency decision. Existing report/demo need updating after public live proof. [Hosting decision](LIVE_HOSTING.md).

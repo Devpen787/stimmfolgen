@@ -1,0 +1,17 @@
+{$SITE_ADDRESS} {
+	# Automatic public HTTPS; no access log, voter state or question logging.
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		Referrer-Policy "no-referrer"
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+	}
+	request_body {
+		max_size 8KB
+	}
+	reverse_proxy app:8770 {
+		header_up X-StimmFolgen-Client-IP {remote_host}
+		transport http {
+			response_header_timeout 270s
+		}
+	}
+}

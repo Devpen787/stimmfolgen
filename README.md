@@ -64,3 +64,9 @@ Python tests require PyMuPDF 1.28.2; vault tests require Node 22+. Docker `make 
 One reviewed historical AHV development case; five selected proposals, not a complete registry. No second-case or unseen-ballot accuracy proof, current-law personal calculator, comprehension study, exhaustive accessibility audit, account/sync or independent security audit. Encryption protects stored ciphertext, not an unlocked/compromised device. A lost passphrase cannot be recovered. External official-source visits remain visible to their publishers.
 
 The required submission is through the organisers' website, not Devpost. A prepared video/PDF or passing CI does not mean the project has been submitted. The older reader demo and evidence remain historical artifacts.
+
+## Live Apertus continuation (15 October 2026)
+
+A real browser → backend → local Apertus v1.5 answer with source references is now observed. It is **local development proof**, not a public service. Fresh answers are AI-generated, not human reviewed. The live development set still withholds several refusals and is not fully accepted. [Live evidence](track_2b/docs/evidence/live-apertus-2026-10-15/REVIEW.md) records all 20 development trials and limits.
+
+The owner’s Mac remains private. Hosting must cost neither the owner nor visitors; no paid service was activated. [Hosting options and boundaries](track_2b/docs/LIVE_HOSTING.md) distinguish free consumer chat, finite API credits, sponsored infrastructure and optional paid Swiss deployment. The existing report/video describe the reviewed tracker; they do not demonstrate a hosted live service.

@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-"""Local backend serving a reviewed Apertus-assisted case; no invented live inference."""
+"""Reviewed evidence app with optional, explicitly configured live Apertus QA."""
 import argparse
 import json
+import os
+import ipaddress
 import sys
 from pathlib import Path
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -48,8 +50,10 @@ def answer_topic(case, topic):
         'inference_mode':case['inference_mode'],'live_inference_performed_for_this_request':False}
 
 
-def make_handler(pdf,case):
+def make_handler(pdf,case,live=None,admission=None):
     class Handler(BaseHTTPRequestHandler):
+        def setup(self):
+            super().setup();self.connection.settimeout(15)
         def log_message(self,*args):pass  # No questions, voter notes or request bodies in logs.
         def send(self,status,body,kind='application/json; charset=utf-8'):
             data=json.dumps(body,ensure_ascii=False).encode() if isinstance(body,dict) else body
@@ -61,6 +65,7 @@ def make_handler(pdf,case):
             path=urlsplit(self.path).path
             if path=='/api/case':return self.send(200,case)
             if path=='/api/catalog':return self.send(200,json.loads((TRACK/'src/app/catalog.json').read_text()))
+            if path=='/api/live/status':return self.send(200,{'configured':live is not None,'scope':'AHV historical reviewed evidence only','model':live.identity['backing_checkpoint'] if live else None,'provider':'Infomaniak Switzerland' if live and live.hosted_client else 'Your local Mac' if live else None,'private_notes_sent':False})
             if path=='/api/health':return self.send(200,{'status':'ok','gate0':case['gate']['gate0_status'],'mode':case['inference_mode']})
             if path=='/api/booklet.pdf':return self.send(200,pdf,'application/pdf')
             allowed={'/':'index.html','/app.js':'app.js','/vault.js':'vault.js','/style.css':'style.css'}
@@ -73,7 +78,27 @@ def make_handler(pdf,case):
                 return self.send(200,asset.read_bytes(),kind)
             return self.send(404,{'error':'Not found'})
         def do_POST(self):
-            if urlsplit(self.path).path!='/api/question':return self.send(404,{'error':'Not found'})
+            path=urlsplit(self.path).path
+            if path=='/api/live/question':
+                try:
+                    length=int(self.headers.get('Content-Length','0'))
+                    if not 0<length<=4096:raise ValueError()
+                    origin=self.headers.get('Origin')
+                    if origin and urlsplit(origin).netloc!=self.headers.get('Host'):raise ValueError()
+                    data=json.loads(self.rfile.read(length))
+                    if not isinstance(data,dict) or set(data)!={'question'} or not isinstance(data['question'],str) or not 3<=len(data['question'].strip())<=700:raise ValueError()
+                except (ValueError,TypeError):return self.send(400,{'error':'Send one public question (3–700 characters), without private fields.'})
+                if live is None:return self.send(503,{'outcome':'SERVICE_UNAVAILABLE','error':'Live Apertus is not configured here. The reviewed explanation remains available.','live_inference_performed_for_this_request':False})
+                if admission:
+                    address=self.client_address[0]
+                    if os.environ.get('TRUST_CADDY_CLIENT_IP')=='1':
+                        try:address=str(ipaddress.ip_address(self.headers.get('X-StimmFolgen-Client-IP','')))
+                        except ValueError:return self.send(400,{'error':'Invalid proxy client address'})
+                    allowed,message=admission.take(address)
+                    if not allowed:return self.send(429,{'outcome':'LIMIT_REACHED','error':message,'live_inference_performed_for_this_request':False})
+                status,result=live.answer(data['question'].strip())
+                return self.send(status,result)
+            if path!='/api/question':return self.send(404,{'error':'Not found'})
             try:
                 length=int(self.headers.get('Content-Length','0'))
                 if not 0<length<=2048:raise ValueError()
@@ -84,17 +109,32 @@ def make_handler(pdf,case):
     return Handler
 
 
-def serve(pdf,case,host,port):
-    print(f'StimmFolgen reviewed-case backend: http://{host}:{port}',flush=True)
-    ThreadingHTTPServer((host,port),make_handler(pdf,case)).serve_forever()
+def serve(pdf,case,host,port,live=None,admission=None):
+    print(f'StimmFolgen backend: http://{host}:{port} (live={live is not None})',flush=True)
+    ThreadingHTTPServer((host,port),make_handler(pdf,case,live,admission)).serve_forever()
 
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--source-pdf',type=Path);p.add_argument('--check',action='store_true')
     p.add_argument('--host',default='127.0.0.1');p.add_argument('--port',type=int,default=8770)
+    p.add_argument('--local-model-dir',type=Path);p.add_argument('--model-url',default='http://127.0.0.1:8766/v1')
     args=p.parse_args();pdf=args.source_pdf.read_bytes() if args.source_pdf else download()
     case=load_case(pdf)
     if args.check:print(json.dumps(case['gate'],indent=2));return
-    serve(pdf,case,args.host,args.port)
+    live=None
+    admission=None
+    if os.environ.get('INFOMANIAK_PRODUCT_ID'):
+        if args.local_model_dir:raise ValueError('Choose one inference provider')
+        from live import LiveService
+        from hosted import InfomaniakClient
+        from admission import Admission
+        token_file=Path(os.environ.get('INFOMANIAK_TOKEN_FILE','/run/secrets/infomaniak_token'))
+        client=InfomaniakClient(os.environ['INFOMANIAK_PRODUCT_ID'],token_file.read_text().strip())
+        live=LiveService(pdf,case,hosted_client=client)
+        admission=Admission(os.environ.get('USAGE_DATABASE','/state/usage.sqlite'),int(os.environ.get('DAILY_QUESTION_LIMIT','200')))
+    elif args.local_model_dir:
+        from live import LiveService
+        live=LiveService(pdf,case,args.local_model_dir,args.model_url)
+    serve(pdf,case,args.host,args.port,live,admission)
 
 if __name__=='__main__':main()

@@ -6,3 +6,10 @@
 @media(max-width:700px){.header{padding:8px 17px 10px}main{padding-top:12px}h1{font-size:34px;margin-bottom:5px}.subtitle{font-size:17px;margin-bottom:16px}.vote-card h2{font-size:20px;margin-bottom:7px}.meta{font-size:13px;line-height:1.4}.vote-card .summary{margin:12px 0;line-height:1.4}.primary{padding:10px 15px;min-height:44px}.model-link{font-size:11.5px;line-height:1.35;padding-top:10px;margin-top:12px}.update-card{padding:14px}.update-card h3{font-size:18px}.update-card p{font-size:13px;margin:7px 0}.update-card .source-date{font-size:12px}.related{padding:13px 16px}.related h3{font-size:16px;margin:5px 0}.related .meta{font-size:12px}.small-label{font-size:10.5px}.find{padding:14px 16px}}
 
 @media(max-width:700px){.vote-card .title-row .icon-button{min-width:44px;min-height:44px}.vote-card .title-row{align-items:center}.section-nav button{min-height:44px}}
+
+.track-button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:74px;min-height:44px;padding:8px;border:1px solid var(--line);border-radius:10px;background:white;color:var(--blue);font-size:13px;font-weight:600;white-space:nowrap}.track-button img{width:18px;height:18px}.vote-card .title-row h2{min-width:0}.find+.secondary{margin-top:14px}
+.live-panel{background:#f2f6ff;border:1px solid #cad8ee;border-radius:16px;padding:24px;margin:24px 0 32px}
+.live-panel h2{margin-top:0}.live-panel textarea{width:100%;box-sizing:border-box;resize:vertical}
+.question-suggestions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.question-suggestions button{font-size:13px;min-height:44px}
+.live-result:empty{display:none}.live-result{margin-top:24px;border-top:1px solid #cad8ee;padding-top:16px}.live-result code{display:block;overflow-wrap:anywhere;margin:10px 0}.live-result .analysis-row{background:white;padding:16px;border-radius:10px;margin:12px 0}
+@media(max-width:600px){.live-panel{padding:18px}.question-suggestions{display:grid}.question-suggestions button{text-align:left}}
