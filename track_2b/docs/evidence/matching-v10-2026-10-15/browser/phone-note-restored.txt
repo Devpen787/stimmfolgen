@@ -1,0 +1,46 @@
+- link "Skip to content":
+  - /url: "#main"
+- banner:
+  - link "StimmFolgen":
+    - /url: "#my"
+  - button "On this device":
+    - generic: On this device
+- main:
+  - status: Private votes unlocked on this device.
+  - link "Back to My votes":
+    - /url: "#my"
+  - heading "13th AHV pension" [level=1]
+  - generic: 3 March 2024 · Past vote
+  - button "Tracked"
+  - tablist "Explore vote":
+    - tab "What it means"
+    - tab "Updates"
+    - tab "Related votes"
+    - tab "Perspectives"
+    - tab "My choice & notes" [selected]
+  - tabpanel "My choice & notes":
+    - heading "My choice and notes" [level=2]
+    - paragraph: Tracking a vote does not record how you voted. These fields are optional and stay on your device.
+    - generic: My self-recorded choice (optional)
+    - combobox "My self-recorded choice (optional)":
+      - option "Not recorded" [selected]
+      - option "I voted Yes"
+      - option "I voted No"
+      - option "I abstained"
+    - generic: My private notes
+    - textbox "My private notes":
+      - /placeholder: My questions and reflections
+      - text: "Synthetic phone QA: unknown personal charge does not mean zero."
+    - button "Save privately on this device"
+    - paragraph: Drafts stay while you browse this app. Save before reloading or locking. Saved notes are encrypted on this device.
+    - generic "The version attached to this private record"
+- navigation "Main navigation":
+  - link "My votes":
+    - /url: "#my"
+    - generic: My votes
+  - link "Upcoming votes":
+    - /url: "#upcoming"
+    - generic: Upcoming
+  - link "Search":
+    - /url: "#search"
+    - generic: Search

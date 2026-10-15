@@ -2,7 +2,7 @@ import {DurableObject} from 'cloudflare:workers';
 import bundleText from './public-bundle.json' with {type:'text'};
 import expectedHash from './bundle-hash.mjs';
 import {MODEL,LIMITS,composeAnswer,questionPayload,promptFrom,modelAvailable,completion,boundedText,executionMatches} from './qa.mjs';
-import {planErrors,normalizePlan,candidates,directnessErrors,directnessPrompt} from './retrieval.mjs';
+import {matchQuestion} from './matching.mjs';
 const bundle=JSON.parse(bundleText);
 export const headers={'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'"};
 const json=(data,status=200)=>new Response(JSON.stringify(data),{status,headers});
@@ -19,7 +19,7 @@ export class DemoGate extends DurableObject{
   let data;try{data=await request.json();if(!questionPayload(data))throw Error();}catch{return json({error:'Send one public question without private fields.'},400);}
   if(this.busy)return json({outcome:'BUSY',error:'Apertus is answering another visitor. Please try again shortly.',live_inference_performed_for_this_request:false},429);
   this.busy=true;
-  const start=Date.now();let result={outcome:'SERVICE_UNAVAILABLE',claims:[],unknowns:[],live_inference_performed_for_this_request:false,human_reviewed:false,publication_state:'REVIEWED_STATEMENTS_WITH_UNREVIEWED_MODEL_MATCH',as_of:bundle.case.as_of,source_sha256:bundle.case.source_sha256,model:MODEL,contract:bundle.hosted_query.contract,execution_contract_sha256:expectedHash,directness_checks_performed:0,provider:'PUBLIC_AI',hosting:'CLOUDFLARE_GLOBAL_NOT_SWISS_SOVEREIGN',model_identity_basis:'PROVIDER_REPORTED_NOT_WEIGHT_ATTESTED',semantic_check:'IMMUTABLE_REVIEWED_WORDING_AND_BM25F_WITH_SAME_MODEL_DIRECTNESS_CHECK'};
+  const start=Date.now();let result={outcome:'SERVICE_UNAVAILABLE',claims:[],unknowns:[],live_inference_performed_for_this_request:false,human_reviewed:false,publication_state:'REVIEWED_STATEMENTS_WITH_UNREVIEWED_MODEL_MATCH',as_of:bundle.case.as_of,source_sha256:bundle.case.source_sha256,model:MODEL,contract:bundle.hosted_query.contract,execution_contract_sha256:expectedHash,directness_checks_performed:0,provider:'PUBLIC_AI',hosting:'CLOUDFLARE_GLOBAL_NOT_SWISS_SOVEREIGN',model_identity_basis:'PROVIDER_REPORTED_NOT_WEIGHT_ATTESTED',semantic_check:'IMMUTABLE_REVIEWED_WORDING_EXPLICIT_SCOPE_AND_LEXICAL_SUPPORT_WITH_DIRECTNESS'};
   try{
    const now=Date.now(),day=new Date(now).toISOString().slice(0,10),network=await digest(this.salt+request.headers.get('X-Network'));
    for(const [k,v] of this.clients)if(now-v.start>300000)this.clients.delete(k);
@@ -33,17 +33,8 @@ export class DemoGate extends DurableObject{
    await modelAvailable(this.env.PUBLICAI_TOKEN);
    const question=data.question.trim();
    const contract=bundle.hosted_query;
-   const plan=normalizePlan(await completion(this.env.PUBLICAI_TOKEN,promptFrom(contract.planner_template,question),350,contract.planner_system,fetch,()=>{result.live_inference_performed_for_this_request=true;},contract.plan_schema));
-   if(planErrors(plan).length)throw Error('Invalid query plan');
-   const reviewedIds=[],retrieved=candidates(bundle.case,plan);
-   for(const id of retrieved){
-    if(reviewedIds.length>=plan.limit)break;
-    const card=bundle.case.cards.find(c=>c.id===id);
-    const check=await completion(this.env.PUBLICAI_TOKEN,directnessPrompt(bundle.case,question,card,plan.focus),80,contract.directness_system,fetch,()=>{result.directness_checks_performed++;},contract.directness_schema);
-    if(directnessErrors(check).length)throw Error('Invalid directness check');
-    if(check.direct)reviewedIds.push(id);
-   }
-   Object.assign(result,composeAnswer(bundle.case,plan,reviewedIds),{contract:contract.contract,model_tasks:['QUERY_INTERPRETATION',...(result.directness_checks_performed?['ORIGINAL_QUESTION_DIRECTNESS_CHECK']:[])],semantic_check:'IMMUTABLE_REVIEWED_WORDING_AND_BM25F_WITH_SAME_MODEL_DIRECTNESS_CHECK'});
+   const matched=await matchQuestion(bundle.case,contract,question,(prompt,maxTokens,system,schema)=>completion(this.env.PUBLICAI_TOKEN,prompt,maxTokens,system,fetch,()=>{result.live_inference_performed_for_this_request=true;if(system===contract.directness_system)result.directness_checks_performed++;},schema));
+   Object.assign(result,composeAnswer(bundle.case,matched.plan,matched.ids,matched.scope.scope),{contract:contract.contract,model_tasks:matched.tasks,semantic_check:'IMMUTABLE_REVIEWED_WORDING_EXPLICIT_SCOPE_AND_LEXICAL_SUPPORT_WITH_DIRECTNESS'});
   }catch(error){if(result.live_inference_performed_for_this_request)result.outcome='WITHHELD';result.failure_code=/^(Provider HTTP [0-9]{3}|Invalid model identity or completion|Invalid content|Required model or bounded pricing unavailable|Response too large)$/.test(error.message)?error.message:'PROVIDER_TRANSPORT_OR_FORMAT';result.error='Apertus is unavailable or the free credit is exhausted. No answer was substituted. Reviewed sources remain available.';}
   finally{this.busy=false;}
   result.latency_seconds=Math.round((Date.now()-start)/10)/100;result.answered_at=new Date().toISOString();result.receipt=await digest(JSON.stringify(result));
@@ -75,7 +66,7 @@ export default{
   const payload=await response.clone().json();
   // Workers and Durable Objects can update at different times. Never publish
   // inference produced under a different evidence/prompt contract.
-  if(!executionMatches(payload,expectedHash))return json({outcome:'SERVICE_UNAVAILABLE',error:'Apertus is updating to the current evidence contract. Please retry shortly. Reviewed sources remain available.',live_inference_performed_for_this_request:false},503);
+  if(!executionMatches(payload,expectedHash))return json({outcome:'SERVICE_UNAVAILABLE',error:'Apertus is updating to the current evidence contract. Please retry shortly. Reviewed sources remain available.',live_inference_performed_for_this_request:payload.live_inference_performed_for_this_request===true,expected_execution_contract_sha256:expectedHash,observed_execution_contract_sha256:payload.execution_contract_sha256||null},503);
   return response;
  }
 };

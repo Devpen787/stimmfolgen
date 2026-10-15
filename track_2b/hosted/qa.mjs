@@ -18,12 +18,13 @@ export function matchReviewErrors(review,selection){
  if(new Set(review).size!==review.length)return ['duplicate_evidence_reference'];
  return [];
 }
-export function composeAnswer(caseData,selection,reviewedIds){
+export function composeAnswer(caseData,selection,reviewedIds,scope=null){
  const facts=new Map(caseData.cards.map(c=>[c.id,c]));
  const claims=reviewedIds.map(id=>({text:facts.get(id).statement,fact_ids:[id],citations:facts.get(id).citations,evidence_kinds:[facts.get(id).kind]}));
  if(claims.length)return {outcome:'EVIDENCE_MATCH',answer_mode:'REVIEWED_EVIDENCE',claims,unknowns:[],statements_human_reviewed:true};
  const advice=selection.kind==='VOTING_ADVICE';
- return {outcome:'INSUFFICIENT_EVIDENCE',answer_mode:advice?'SERVICE_LIMIT':'EVIDENCE_LIMIT',claims:[],unknowns:[advice?'StimmFolgen does not recommend how to vote. You can explore the sources and perspectives to form your own view.':'No matching reviewed answer was found in this historical AHV evidence. This does not mean the event or effect did not happen. For later information, open Updates.'],statements_human_reviewed:false};
+ const scoped=scope==='OTHER_PROPOSAL'?'This question appears to concern another proposal. Live analysis here covers '+caseData.title+'. Open the other vote to inspect its available sources.':scope==='LATER_EVENTS'?'This live analysis uses the historical evidence frame shown below. For later events, open Updates.':null;
+ return {outcome:'INSUFFICIENT_EVIDENCE',answer_mode:advice?'SERVICE_LIMIT':'EVIDENCE_LIMIT',claims:[],unknowns:[scoped||(advice?'StimmFolgen does not recommend how to vote. You can explore the sources and perspectives to form your own view.':'No matching reviewed answer was found in this historical AHV evidence. This does not mean the event or effect did not happen. For later information, open Updates.')],statements_human_reviewed:false};
 }
 export function questionPayload(value){
  return value&&typeof value==='object'&&!Array.isArray(value)&&Object.keys(value).join(',')==='question'&&typeof value.question==='string'&&value.question.trim().length>=3&&value.question.trim().length<=700;

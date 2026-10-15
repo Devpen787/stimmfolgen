@@ -17,7 +17,8 @@ test('actual Worker validates privacy, serialises requests and persists its quot
   calls++;const body=await request.json();assert.equal(body.model,MODEL);
   if(gate){const wait=gate;gate=null;await wait;}
   const candidate=mode==='invented'?{...good,text:'made up'}:good;
-  const content=body.messages[0].content.includes('Judge whether a candidate')?{direct:mode!=='reject'}:candidate;
+  const schema=body.response_format.json_schema.schema;
+  const content=schema.properties.focus?candidate:schema.properties.actual_later?{actual_later:false}:{direct:mode!=='reject'};
   return Response.json({model:MODEL,choices:[{finish_reason:'stop',message:{content:mode==='malformed'?'not JSON':JSON.stringify(content)}}]});
  };
  const options={resourcePersistencePath:directory,workers:[{name:"fixture",modules:true,scriptPath:compiled,modulesRoot:dirname(compiled),compatibilityDate:'2026-10-15',bindings:{LIVE_ENABLED:'true',PUBLICAI_TOKEN:'synthetic-not-a-key'},durableObjects:{DEMO_GATE:{className:'DemoGate',useSQLite:true}},serviceBindings:{ASSETS:()=>new Response('static fixture')},outboundService:outbound}]};
@@ -34,8 +35,8 @@ test('actual Worker validates privacy, serialises requests and persists its quot
   // Wait until provider call is deliberately blocked, then exercise the same DO.
   for(let n=0;calls===0&&n<100;n++)await new Promise(resolve=>setTimeout(resolve,10));
   const concurrent=await (await send({question:'Concurrent request?'})).json();assert.equal(concurrent.outcome,'BUSY');release();
-  const result=await (await first).json();assert.equal(result.outcome,'EVIDENCE_MATCH');assert.equal(result.human_reviewed,false);assert.match(result.execution_contract_sha256,/^[a-f0-9]{64}$/);assert.ok(result.claims[0].citations[0].span_id);assert.equal(calls,2);
-  mode='invented';assert.equal((await (await send({question:'Invented quote fixture?'})).json()).outcome,'WITHHELD');assert.equal(calls,3);mode='malformed';const malformed=await (await send({question:'Malformed completion fixture?'})).json();assert.equal(malformed.outcome,'WITHHELD');assert.equal(malformed.live_inference_performed_for_this_request,true);mode='reject';const rejected=await (await send({question:'Rejected relevance fixture?'})).json();assert.equal(rejected.outcome,'INSUFFICIENT_EVIDENCE');assert.deepEqual(rejected.claims,[]);assert.equal(rejected.directness_checks_performed,1);mode='valid';
+  const result=await (await first).json();assert.equal(result.outcome,'EVIDENCE_MATCH');assert.equal(result.human_reviewed,false);assert.match(result.execution_contract_sha256,/^[a-f0-9]{64}$/);assert.ok(result.claims[0].citations[0].span_id);assert.equal(calls,3);
+  mode='invented';assert.equal((await (await send({question:'Invented quote fixture?'})).json()).outcome,'WITHHELD');assert.equal(calls,4);mode='malformed';const malformed=await (await send({question:'Malformed completion fixture?'})).json();assert.equal(malformed.outcome,'WITHHELD');assert.equal(malformed.live_inference_performed_for_this_request,true);mode='reject';const rejected=await (await send({question:'Rejected relevance fixture?'})).json();assert.equal(rejected.outcome,'INSUFFICIENT_EVIDENCE');assert.deepEqual(rejected.claims,[]);assert.ok(rejected.directness_checks_performed>=1);mode='valid';
   await mf.dispose();mf=new Miniflare(convertV4MiniflareOptions(options));assert.equal((await status()).remaining,LIMITS.lifetime-4);
   for(let n=4;n<LIMITS.daily;n++)assert.equal((await (await send({question:'Quota fixture '+n})).json()).outcome,'EVIDENCE_MATCH');
   const before=calls;assert.equal((await (await send({question:'Over daily quota?'})).json()).outcome,'LIMIT_REACHED');assert.equal(calls,before);

@@ -1,0 +1,69 @@
+- link "Skip to content":
+  - /url: "#main"
+- banner:
+  - link "StimmFolgen":
+    - /url: "#my"
+  - button "On this device":
+    - generic: On this device
+- main:
+  - link "Back to My votes":
+    - /url: "#my"
+  - heading "13th AHV pension" [level=1]
+  - generic: 3 March 2024 · Past vote
+  - button "Tracked"
+  - tablist "Explore vote":
+    - tab "What it means" [selected]
+    - tab "Updates"
+    - tab "Related votes"
+    - tab "Perspectives"
+    - tab "My choice & notes"
+  - tabpanel "What it means":
+    - region "Ask Apertus":
+      - heading "Ask Apertus" [level=2]
+      - paragraph: Your question. Relevant evidence you can check.
+      - paragraph: Historical AHV booklet only · before 3 March 2024. For later events, see Updates.
+      - paragraph: Powered by Apertus v1.5 · no model download
+      - paragraph: Limited free demo · global hosting, not Swiss-sovereign.
+      - generic "Free allowance & privacy"
+      - generic: What would you like to understand?
+      - textbox "What would you like to understand?":
+        - /placeholder: "For example: what remained unknown about financing?"
+        - text: Does this mean workers would definitely pay nothing?
+      - paragraph: This question goes to the Apertus service. Do not include names, salary or private notes. Your saved votes and notes are never attached.
+      - button "Ask Apertus"
+      - button "What changes for pension recipients?"
+      - button "What remains unknown for workers?"
+      - button "Who made the taxes or spending-cuts argument?"
+      - status:
+        - paragraph: Matched live by Apertus · 15 October 2026 · 4.23 seconds
+        - heading "What the reviewed evidence says" [level=3]
+        - generic: Unresolved financing
+        - paragraph: The original initiative left financing open. The booklet’s financing examples do not establish a definite additional personal CHF charge.
+        - button "Source and dates · Financing remains open"
+        - paragraph: Apertus helps find reviewed source statements; it does not write these facts. The hosted app searches the reviewed evidence and asks Apertus to check direct relevance to your original question. The match is not human reviewed; the same-model check can still miss errors.
+        - generic "Answer evidence"
+    - button "How live Apertus helps Reviewed historical analysis":
+      - text: How live Apertus helps
+      - text: Reviewed historical analysis
+    - paragraph: Historical evidence frame · 2 March 2024. Later official updates have a separate tab.
+    - heading "What changes" [level=2]
+    - generic: Defined in the proposal
+    - paragraph: The initiative would give AHV old-age pension recipients an annual supplement equal to one twelfth of their annual pension—described in the booklet as a 13th pension payment.
+    - button "Source and dates"
+    - generic "Cost at introduction"
+    - generic "Cost after five years"
+    - heading "Financing remains open" [level=2]
+    - generic: Unresolved financing
+    - paragraph: The original initiative left financing open. The booklet’s financing examples do not establish a definite additional personal CHF charge.
+    - button "Source and dates"
+    - generic "Who makes the budget forecast"
+- navigation "Main navigation":
+  - link "My votes":
+    - /url: "#my"
+    - generic: My votes
+  - link "Upcoming votes":
+    - /url: "#upcoming"
+    - generic: Upcoming
+  - link "Search":
+    - /url: "#search"
+    - generic: Search

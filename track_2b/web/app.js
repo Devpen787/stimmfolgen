@@ -32,7 +32,7 @@ function showApertus() {
  openDialog('How Apertus helps',[
   el('p','Apertus v1.5 ran locally to find original booklet passages, extract candidate values and identify who made an argument.'),
   el('p','Independent source and meaning checks, followed by human review, produced this published AHV explanation.'),
-  el('p','Ask Apertus sends only your explicit public question. Hosted Apertus interprets your question for source search, then checks the retrieved statement against your original question. Local matching is experimental. The app displays the accepted wording, speaker and sources unchanged.'),
+  el('p','Ask Apertus sends only your explicit public question. Hosted Apertus checks which proposal you mean, translates your question into a source search, then checks retrieved evidence against your original question. Local matching is experimental. The app displays the accepted wording, speaker and sources unchanged.'),
   el('p',liveStatus.configured?'Live service: '+liveStatus.model+' · '+liveStatus.provider+'. No model download is needed in your browser.':'Live Apertus is not configured on this installation. The reviewed explanation remains available.'),
   el('p','The source statements were reviewed; your question-to-source match is AI-selected and not human reviewed. Relevance checking uses the same model and can miss a match or select unrelated context. Apertus cannot rewrite the displayed facts or give a voting recommendation.'),
   el('p','Your choices and notes are not part of public analysis requests. On-device encryption, not the model, protects saved private data.'),

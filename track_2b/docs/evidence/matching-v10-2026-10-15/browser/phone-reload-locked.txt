@@ -1,0 +1,33 @@
+- link "Skip to content":
+  - /url: "#main"
+- banner:
+  - link "StimmFolgen":
+    - /url: "#my"
+  - button "On this device":
+    - generic: On this device
+- main:
+  - link "Back to My votes":
+    - /url: "#my"
+  - heading "13th AHV pension" [level=1]
+  - generic: 3 March 2024 · Past vote
+  - button "Unlock to track"
+  - tablist "Explore vote":
+    - tab "What it means"
+    - tab "Updates"
+    - tab "Related votes"
+    - tab "Perspectives"
+    - tab "My choice & notes" [selected]
+  - tabpanel "My choice & notes":
+    - heading "My choice and notes" [level=2]
+    - paragraph: Tracking a vote does not record how you voted. These fields are optional and stay on your device.
+    - button "Unlock private votes"
+- navigation "Main navigation":
+  - link "My votes":
+    - /url: "#my"
+    - generic: My votes
+  - link "Upcoming votes":
+    - /url: "#upcoming"
+    - generic: Upcoming
+  - link "Search":
+    - /url: "#search"
+    - generic: Search

@@ -44,3 +44,7 @@ test('inference from an old Durable Object contract is rejected during deploymen
  for(const payload of [{live_inference_performed_for_this_request:true},{live_inference_performed_for_this_request:true,execution_contract_sha256:'b'.repeat(64)}])assert.equal(executionMatches(payload,hash),false);
  assert.equal(executionMatches({outcome:'BUSY',live_inference_performed_for_this_request:false},hash),true);
 });
+test('scope refusals explain the boundary without publishing claims about the other proposal',()=>{
+ const s={kind:'OUTSIDE_EVIDENCE',fact_ids:[]},other=composeAnswer(bundle.case,s,[],'OTHER_PROPOSAL'),later=composeAnswer(bundle.case,s,[],'LATER_EVENTS');
+ assert.deepEqual(other.claims,[]);assert.ok(other.unknowns[0].includes(bundle.case.title));assert.ok(other.unknowns[0].includes('another proposal'));assert.deepEqual(later.claims,[]);assert.ok(later.unknowns[0].includes('Updates'));
+});
