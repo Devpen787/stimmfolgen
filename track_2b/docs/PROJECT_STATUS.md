@@ -1,3 +1,5 @@
+> Current 15 October continuation: local Docker-app/native-Apertus fresh-clone proof completed; known matching suites 20/20 local and 45/45 hosted; 108 Python and 29 Worker tests. Public UI updated on PR #4. Second real vote has official information publicly, with four source-bound analysis statements still pending human wording review. Both candidate journeys were tested privately; this is not a public second-analysis release. See [current evidence](evidence/onprem-2026-10-15/REVIEW.md). Video unchanged; no main merge/submission/terms acceptance. Historical sections below describe their dated checkpoints.
+
 # Project status (15 October 2026)
 
 | Area | Status | Evidence or limit |

@@ -1,0 +1,37 @@
+{
+  "tested_implementation_commits": [
+    "917e77c53a4f9e45ad1db3eadb7acbbe3354ab23",
+    "b9e4b27"
+  ],
+  "final_deployment": "342ce2c3-157f-4055-a832-6d8752167fbb",
+  "second_analysis_publication": "PENDING_HUMAN_REVIEW",
+  "final_copy_only_change": "Two disclosure strings; no model/state logic change",
+  "video_changed_since_fd5d3d4": false,
+  "files": {
+    "Dockerfile": "610a5e509de43c3214d548941cce262e4f3136132ebee1fa696b268234e2865c",
+    "Dockerfile.onprem": "d7f3a3e5a17a7ee5092b984a0b3d33003963df354fe752e64063995a5c2b4973",
+    "Makefile": "adc8bce8d2ee24b0e4d491cc4f96a62aec489fe886cafc5aebb432a659a2c842",
+    "track_2b/onprem/matching.mjs": "79dbdf5e75904a0c426d3f63a3b090f527c119471f974fcf51f8c5c57f56a7e9",
+    "track_2b/onprem/adapter.mjs": "e72e7928f967f5ffa8d93b77d07cc8b8d6e2d60658e9200b710ea20c1eb01f47",
+    "track_2b/onprem/query-contract.json": "57e7831e7abb0427c1cc6e26912210d5ea0e5780a9b0c9b738a246befe0b7aca",
+    "track_2b/onprem/server.mjs": "646748d4c48ece684a003b7a8db0b0dfa31f9097f172517c5f0870af283f9b9d",
+    "track_2b/hosted/worker.mjs": "c15642df85a4df0d1ea696f75c21537675c8f9b2c8c8720401c3787c61ce04a9",
+    "track_2b/hosted/matching.mjs": "a503f052bab9a62d860d6c8380b59c097ad0dada7c7f4d19ae9fed453f096338",
+    "track_2b/hosted/public-bundle.json": "b2bdfd0a94eb355d2ad59e42ba53265ab28ecc74e8adf8802756e10ae7db107c",
+    "track_2b/hosted/bundle-hash.mjs": "d5436e06958b9b0d9605dc02b0d38c97c54392967c3d20753995c5b6bbf4a05b",
+    "track_2b/web/app.js": "f6966b67c0ef962fda4f583e2f1d6cfa742523d33383202072e44da663bcfe71",
+    "track_2b/web/answer.js": "fe1c41d49441f8623e94f954c7b1d5bd4cb92b31a718a7144c9488b0615e4ad1",
+    "track_2b/tools/onprem_run.py": "306bfd9022f64f6148f40850dec2bd8c7e13a0be603b2e9ccabda0685aed48a1",
+    "track_2b/StimmFolgen_Report.pdf": "f102df9e53d14dec2fe905050ccc5c6c6ed20890162f2300772bb9f34ffc0017",
+    "track_2b/docs/evidence/onprem-2026-10-15/public-phone-live.png": "2695242831e9b32e2b531d978abb30479fe65e74db22ea702f4f986a75001306",
+    "track_2b/docs/evidence/onprem-2026-10-15/fresh-and-final-traces.jsonl": "791be4b24279b09643b732b69300f914b49f21e4ce0daed33bff63fc19521303",
+    "track_2b/docs/evidence/onprem-2026-10-15/PUBLIC_RELEASE.md": "5a76a9433cb46767b907b706ea244395805e8adc9aff23bc306ef3c66857e5b9",
+    "track_2b/docs/evidence/onprem-2026-10-15/onprem-two-cases.json": "b9eb43af461f78d362880313d6da0dabeff0f20aa640971c347a86f621a67dc4",
+    "track_2b/docs/evidence/onprem-2026-10-15/REVIEW.md": "a984ad45f6c82e802ada6ce938af76c6bed8e4f718c1f1da7e23d71f0f7c382b",
+    "track_2b/docs/evidence/onprem-2026-10-15/attempts-before-fresh.jsonl": "73f3fb1b314cb48b8a521375ca44ecca5f98ac038fd4b30ec0aed0b4419809d5",
+    "track_2b/docs/evidence/onprem-2026-10-15/public-desktop-live.png": "94ff919bdc11de661fb36f8d2c1b339ea94d359c803b83ffbda4b093b3568c2d",
+    "track_2b/docs/evidence/onprem-2026-10-15/review-phone-second-meaning.png": "8633daeb20ff983f7548a0770fa3e9efa179e5a6cbb94d3735b42d89d3c73c13",
+    "track_2b/docs/evidence/onprem-2026-10-15/hosted-two-cases45.json": "149d3bc9aa3ebda082cc634dc581756f8c036fc42af7559f9c4492bbe961ade8",
+    "track_2b/docs/evidence/property-tax-2026-10-15/case-candidate.json": "63f632712312e5653b1ae6033b63acef29f4dde384bcb528fe4aacbe02d1cd58"
+  }
+}

@@ -1,3 +1,5 @@
+> Current runtime extension (15 October): optional `make run ONPREM=1` connects the Docker app to inspected native MLX via the Docker Desktop host bridge. Public cases resolve from an allowlisted registry; each browser answer is bound to its vote, source SHA and immutable wording. Only AHV is admitted pending the additional-case human review. [ADR 0010](adr/0010-onprem-docker-and-multiple-source-cases.md) and [evidence](evidence/onprem-2026-10-15/REVIEW.md) supersede older single-runtime descriptions below.
+
 # Implemented reviewed-case contract
 
 The full v0.1 schemas are proposed architecture and continue to have their own synthetic design checks. The working runtime implements the smaller reviewed-case contract below. It never publishes raw model prose.

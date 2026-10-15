@@ -95,7 +95,7 @@ function renderLive(container) {
   el('p','About the '+new Date(sourceCase.vote_date).getFullYear()+' proposal. For later developments, see Updates.','plain-note'));
  if(!liveStatus.configured){box.append(el('p','Live Apertus is unavailable on this installation. You can still explore the explanation and sources.','plain-note'));container.append(box);return;}
  box.append(el('p',liveStatus.local?'Powered by Apertus · running on this computer':'Powered by Apertus · no download needed','source-date'));
- if(liveStatus.local_matching_experimental)box.append(el('p','Experimental local question matching: the 4-bit model can select unrelated context. Statements stay unchanged; inspect their sources and the reviewed explanation.','unknown'));
+ if(liveStatus.local_matching_experimental)box.append(el('p','Apertus can misunderstand your question and show unrelated information. Check the linked sources before relying on an answer.','unknown'));
  if(liveStatus.limited_free_demo){box.append(el('p','Free online demo','plain-note'));const service=el('details');service.append(el('summary','Free allowance & privacy'),el('p','The website runs on Cloudflare and sends public questions to Public AI. It is not hosted exclusively in Switzerland. The free demo has a shared allowance of up to 200 questions, at most 80 per day, and temporary access. Private choices and notes stay on this device.'),link('Prefer fully local Apertus?','/local.html'));box.append(service);}
  const form=el('form'),label=el('label','What would you like to understand?'),input=el('textarea');input.id='public-question';label.htmlFor=input.id;input.maxLength=700;input.required=true;input.minLength=3;input.value=state.question;input.placeholder='Ask about the changes or who may be affected';input.rows=3;input.disabled=state.pending;
  const privacy=el('p',liveStatus.local?'Your question stays on this computer. Saved votes and notes are kept separate.':'Send a public question only. Your tracked votes and private notes are never shared with Apertus.','plain-note');privacy.id='question-privacy';input.setAttribute('aria-describedby',privacy.id);
@@ -187,7 +187,7 @@ function renderPrivate(v,container=screen) {
 }
 function download(text,name) {const url=URL.createObjectURL(new Blob([text],{type:'application/json'}));const a=link('',url);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function showDevice() {
- if(vault.unlocked){openDialog('Private votes on this device',[el('p','Your saved choices and notes are encrypted in this browser. They are not sent to the backend or Apertus.'),
+ if(vault.unlocked){openDialog('Private votes on this device',[el('p','Your saved choices and notes are encrypted in this browser. They stay on this device and are never attached to an Apertus question.'),
   button('Lock my votes',()=>{lockPrivate();dialog.close();render();notify('Private votes locked.');},'primary'),button('Download encrypted backup',()=>download(vault.backup(),'stimmfolgen-private-backup.json'),'secondary'),
   el('p','Keep your passphrase safe. Encryption protects stored data, not an unlocked browser or compromised device. No account or cross-device sync.','plain-note')]);return;}
  const nodes=[el('p',vault.exists?'Enter your passphrase to unlock your private votes.':'Browse freely. To keep private votes after reload, create an encrypted vault with a passphrase.')];

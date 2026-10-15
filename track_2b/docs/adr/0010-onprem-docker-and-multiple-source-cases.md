@@ -1,6 +1,6 @@
 # ADR 0010 — Local model with Docker app and isolated vote contexts
 
-Date: 2026-10-15. Implementation in progress on PR #4; final proof is recorded separately.
+Date: 2026-10-15. Implemented on PR #4. Fresh clone/native model/Docker app proof and private two-case browser evidence are recorded in ../evidence/onprem-2026-10-15/REVIEW.md; second-case publication still awaits human review.
 
 The on-premise route uses the pinned Apertus v1.5 8B MLX conversion on an Apple Silicon Mac and a non-root, read-only Node Docker app. The model binds only to literal loopback; Docker Desktop's host bridge reaches it without a public listener or tunnel. A launcher starts and stops only its own services, rechecks model bytes/identity and passes that fresh inspection read-only to the container. No hosted key, paid fallback or public Mac hosting is used. Setup needs network downloads; this is an on-premise design, not an air-gap claim. A clean isolated checkout/runtime is required before describing installation proof as complete. Reuse of already downloaded verified model bytes must be disclosed.
 

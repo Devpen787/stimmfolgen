@@ -10,7 +10,7 @@ Hack Apertus 2026 · Track 2B · On-premise prototype. My votes, Upcoming votes 
 
 ## Try live Apertus - no download
 
-[Open StimmFolgen](https://stimmfolgen-demo.stimmfolgen-hosted.workers.dev/). Search AHV, track it, and ask a public question. Real Public AI Apertus v1.5 8B completions are checked in a separate pass and linked to immutable reviewed source spans. Live answers remain AI-generated and unreviewed. Other catalogue votes have official references but no reviewed AI explanation.
+[Open StimmFolgen](https://stimmfolgen-demo.stimmfolgen-hosted.workers.dev/). Search AHV, track it, and ask a public question. Real Public AI Apertus v1.5 8B interprets the question; retrieval and directness checks select unchanged, reviewed source wording. The question match is AI-produced and not human reviewed. Other catalogue votes have official references but no reviewed AI explanation.
 
 This is a **finite free demo**: 200 shared questions total, at most 80/day, with a seven-day API credential. No payment method, paid plan or automatic top-up was added. Cloudflare hosts the site globally; questions go to Public AI. This demonstration is **not Swiss-sovereign hosting**. The Mac is never exposed to visitors. [Proof, failures and limits](track_2b/docs/evidence/hosted-local-2026-10-15/REVIEW.md).
 
@@ -18,14 +18,14 @@ This is a **finite free demo**: 200 shared questions total, at most 80/day, with
 
 ## Run local Apertus on your own Mac
 
-Tested on Apple Silicon M3 Pro, 18 GiB. Python 3.11+, at least 8 GiB free disk. Setup downloads a pinned approximately 4.6 GB model and runtime; no API key is needed.
+Tested from a fresh public clone on Apple Silicon M3 Pro, 18 GiB. Python 3.11+, Docker Desktop and disk for the 4.53 GB weights, runtime and Docker images. Setup needs internet; inference needs no API key.
 
 ```sh
 make local-download
-make local-run
+make run ONPREM=1 APP_PORT=8784
 ```
 
-Already have the pinned model in `.local/models/apertus-v1.5-8b-mlx-4bit`? Use `make local-setup` instead of `make local-download`. The launcher binds both services to loopback, verifies weights and source, and stops only its own processes. Use `APP_PORT=8783` if 8770 is occupied. [Local instructions and exact evidence](track_2b/docs/JUDGE_RUN.md).
+Already have the pinned model? Use `make onprem-setup MODEL_DIR=/path/to/model`, then pass the same MODEL_DIR to run. Open http://127.0.0.1:8784/. Native MLX uses the Mac GPU; a non-root read-only Docker app reaches it through Docker Desktop. The launcher binds services to loopback, verifies weights and source, and stops only its own processes. [Local instructions and exact evidence](track_2b/docs/JUDGE_RUN.md).
 
 ## Run the reviewed Docker case
 
@@ -82,12 +82,19 @@ Python tests require PyMuPDF 1.28.2; vault tests require Node 22+. Docker `make 
 
 ## Scope and limits
 
-One reviewed historical AHV development case; five selected proposals, not a complete registry. No second-case or unseen-ballot accuracy proof, current-law personal calculator, comprehension study, exhaustive accessibility audit, account/sync or independent security audit. Encryption protects stored ciphertext, not an unlocked/compromised device. A lost passphrase cannot be recovered. External official-source visits remain visible to their publishers.
+One reviewed historical AHV development case and six selected proposals, not a complete registry. A second real booklet case has source-bound candidates and actual model/browser tests, but human wording acceptance is pending; only official information is public. No unseen-ballot accuracy proof, current-law personal calculator, comprehension study, exhaustive accessibility audit, account/sync or independent security audit. Encryption protects stored ciphertext, not an unlocked/compromised device. A lost passphrase cannot be recovered. External official-source visits remain visible to their publishers.
 
 The required submission is through the organisers' website, not Devpost. A prepared video/PDF or passing CI does not mean the project has been submitted. The older reader demo and evidence remain historical artifacts.
 
 ## Live evidence and limits (15 October 2026)
 
-[Current hosted/local delivery proof](track_2b/docs/evidence/hosted-local-2026-10-15/REVIEW.md) records actual public inference with the local model/app stopped, the responsive browser journey, fresh native runtime setup and retained failures. The five-question direct v5 diagnostic has one supported answer, one abstention and three withheld results. Live semantic quality is experimental; this does not expand the human-reviewed Gate to arbitrary questions.
+[Earlier hosted/local delivery proof](track_2b/docs/evidence/hosted-local-2026-10-15/REVIEW.md) records actual public inference with the local model/app stopped, the responsive browser journey, fresh native runtime setup and retained failures. That earlier five-question direct v5 diagnostic had one supported answer, one abstention and three withheld results; those failures remain. Live semantic quality is experimental; this does not expand the human-reviewed Gate to arbitrary questions.
 
 [Earlier local development evidence](track_2b/docs/evidence/live-apertus-2026-10-15/REVIEW.md) preserves all 20 local trials. The Mac remains private. [Hosting boundaries](track_2b/docs/LIVE_HOSTING.md) distinguish this finite global demo from optional local and paid Swiss routes. The current five-page report and 115-second live walkthrough describe the deployed service; no organiser submission or main merge is implied.
+
+
+## Current two-vote and installation proof
+
+[Fresh-clone on-premise and two-case evidence](track_2b/docs/evidence/onprem-2026-10-15/REVIEW.md): 20/20 local known questions (16 invoke real Apertus; four explicit application refusals), 45/45 hosted known questions, 108 Python tests and 29 compiled Worker tests. New runtime and no-cache app builds reused verified downloaded weights on the same Mac; no new remote model download or second machine is claimed. Both candidate journeys were tested in a private labelled mobile/desktop preview, and the public release was checked through an isolated test origin using the production model service. This is agent-operated testing, not an independent user study or held-out benchmark.
+
+[Homeownership reform wording review](track_2b/docs/evidence/property-tax-2026-10-15/REVIEW.md) is the remaining second-analysis publication gate. Technical diagnostics are separate from ordinary reading screens. The current five-page report records these limits; video files are unchanged by this continuation.

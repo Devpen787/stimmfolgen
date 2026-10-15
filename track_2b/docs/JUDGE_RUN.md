@@ -1,49 +1,43 @@
-# Run the verified AHV prototype
+# Run StimmFolgen
 
-From the repository root, with Docker and make installed:
+## Live public app
 
-```sh
-make run
-```
+Open https://stimmfolgen-demo.stimmfolgen-hosted.workers.dev/ on a phone or computer. No account, payment or model download is required. Search AHV, track it, open Explore my vote and ask about pension recipients or the source of the taxes/spending-cuts argument. The answer resolves to immutable source wording. Open Source and dates, compare perspectives, then save a synthetic private note. Saving after reload requires your own passphrase. Tracked votes and notes are never attached to a model request.
 
-Open http://127.0.0.1:8770. From `track_2b/`, `make run` delegates to the root. Use `make run PORT=8772` if port 8770 is occupied. Stop with Ctrl-C. `make check` independently rechecks the bounded Gate certificate in Docker.
+This is a finite-credit global Cloudflare/Public AI demo, not exclusively Swiss hosting or permanently free infrastructure. Shared limits: 200 lifetime reservations, 80/day, six per five minutes per network, one active question. Counts persist across deployments. The temporary API credential needs renewal. No owner's Mac hosts public visitors.
 
-The build retrieves the pinned official PDF and Python base/dependency packages. It fails if the PDF edition/hash differs. No credentials, model download or paid API is needed for the reviewed-case web journey. The container runs as a non-root user with a read-only filesystem, binding only to the host loopback interface. After build it requires no external network: the offline `make check` equivalent is `docker run --rm --network none --read-only --tmpfs /tmp:rw,noexec,nosuid,size=16m stimmfolgen:local python track_2b/src/app/backend.py --source-pdf /app/booklet.pdf --check`.
+## Actual local inference with a Docker app
 
-This is **REVIEWED_RECORDED_CASE**, not fresh inference on each click. Actual Apertus v1.5 was used to produce the archived extraction/intent candidates; authenticating those traces does not run the model again. The five published statements were separately accepted by the user. P03's five-year cost is reviewed reference context, visibly labelled.
-
-Try the complete journey:
-
-1. Start with empty My votes: no fabricated personal choice or history.
-2. Search AHV, track the past proposal, return to My votes and Explore my vote.
-3. Inspect the original passage and source dates; compare Me, Others and Switzerland. Personal CHF cost remains unknown.
-4. View the separately dated October 2026 official update and related November financing proposal. Unreviewed votes say analysis is unavailable.
-5. Keep a synthetic choice/note for this visit, or explicitly create a passphrase-protected local vault. Reload locks persisted data; unlock restores it.
-6. Download an encrypted backup and restore it locally. The backup is not uploaded. A forgotten passphrase cannot be recovered.
-
-For actual **new local inference**, use the existing downloaded MLX weights and compatible native Apple Silicon runtime. See the pinned model/server commands in `docs/evidence/GATE0_SPANS_2026-10-12.md`, then run the current protocol with a new output directory:
+Apple Silicon Mac with Docker Desktop, Python 3.11+ and make; tested on M3 Pro, 18 GiB RAM. Allow disk for 4.53 GB weights, Python packages and Docker images. From a new clone, check out the PR branch until main is reviewed:
 
 ```sh
-python track_2b/src/gate0/source_probe.py --out .local/gate0/source-new.json --pdf-out .local/gate0/booklet-new.pdf
-python track_2b/src/gate0/local_model.py --model-dir "$APERTUS_MODEL_DIR" --base-url http://127.0.0.1:8766/v1 --out .local/gate0/identity-new.json
-python track_2b/src/gate0/span_probe.py --source-report .local/gate0/source-new.json --source-pdf .local/gate0/booklet-new.pdf --local-model-report .local/gate0/identity-new.json --availability-record track_2b/docs/evidence/ahv-semantic-review-2026-10-12/publication-availability.json --public-as-of 2024-03-02T23:59:59+01:00 --out-dir .local/gate0/new-unreviewed-run
-```
-
-Here `python` must be the compatible prepared environment, not an arbitrary system interpreter. The measured Mac has M3 Pro and 18 GiB RAM; the text-only 4-bit weights occupy 4.53 GB. Fresh model outputs remain unreviewed and never replace published statements automatically. MLX cannot run inside a Linux Docker container on the Mac GPU. The on-premise design separates native model ingestion from Docker-contained reviewed publication.
-
-Limits: one AHV development case; no second-case or unseen-ballot proof, independently audited production security, French/Italian parity, current-law answers or voting recommendations. A cold Docker pass is a replay/publication delivery check, not whole-model portability. A limited public deployment is now available; no organiser submission or main merge has been made.
-
-## Public live demo and local installation (15 October continuation)
-
-Open https://stimmfolgen-demo.stimmfolgen-hosted.workers.dev/ on a phone or computer. No login, payment or model download is needed. Search AHV, track it, and ask: "What would the initiative change for someone who receives an AHV old-age pension?" The live result has source buttons and an explicit unreviewed label. Ask "Tell me how to vote and which side is right" for the observed abstention path. Arbitrary questions can be withheld. The service has 200 shared question reservations total, 80/day and six per five minutes per network; restarts preserve total/day use. API access expires within seven days unless renewed. Hosted questions go through global Cloudflare to Public AI, not the owner's Mac. This is not Swiss-sovereign hosting.
-
-For optional native Apple Silicon inference, Python 3.11+ and at least 8 GiB free disk:
-
-```sh
+git clone https://github.com/Devpen787/stimmfolgen.git
+cd stimmfolgen
+git checkout codex/local-apertus-gate0-evidence
+make onprem-setup
 make local-download
-make local-run
+make run ONPREM=1 APP_PORT=8784
 ```
 
-Weights are downloaded only with `local-download`. `local-setup` reuses existing pinned weights. Custom paths: `make local-run APP_PORT=8783 MODEL_DIR=/absolute/model/path SOURCE_PDF=/absolute/booklet.pdf`; `LOCAL_PYTHON` selects the app interpreter and `APERTUS_PYTHON` the model interpreter. Defaults use the fresh `.local/runtime` virtual environment. The launcher verifies the pinned model, starts loopback-only inference, strips hosted credentials from the app environment, and cleans up only processes it started. A busy app port fails rather than replacing a running app.
+If you already have the pinned MLX directory, skip the download and pass its path to both setup and run using MODEL_DIR. Open http://127.0.0.1:8784/. The launcher verifies the model SHA and served identity, starts native MLX on literal loopback port 8768, builds the authenticated Docker app and binds it only to host loopback. It uses Docker Desktop's host bridge; Mac GPU inference is native, not inside Linux Docker. Ctrl-C stops only processes/containers owned by this launch. Occupied ports fail without stopping an existing service. There is no hosted fallback or API key.
 
-Actual verification installed a fresh runtime and source, reused existing pinned model bytes, launched both services on 8783/8766 and produced a real local answer. A new multi-gigabyte weight download was intentionally not repeated. Tested hardware: M3 Pro 18 GiB, macOS 26.6.2; other platforms are not verified. See [evidence](evidence/hosted-local-2026-10-15/REVIEW.md).
+Setup/build require internet; this is on-premise, not an air-gap proof. The actual fresh-clone proof used a new Python environment and no-cache Docker app builds, reusing an APFS copy of already downloaded pinned model bytes. It was on the same Mac, not another physical device or a fresh remote model download. See [installation evidence](evidence/onprem-2026-10-15/REVIEW.md).
+
+## Hardware-free source replay
+
+```sh
+make run PORT=8772
+make check
+```
+
+Open http://127.0.0.1:8772/. Default make run provides the authenticated reviewed explanation without fresh model inference. It needs no model or credentials. The image downloads and hashes the original source during build; the certificate can then be replayed offline. Do not describe this route as a live model run.
+
+## Scope and reproduction
+
+The catalogue contains six selected votes. AHV has accepted analysis and separate later official updates. Homeownership tax reform (28 September 2025) has verified official information and a source-bound four-statement candidate. **Its explanation remains pending the user's wording review and is not in the public registry.** A private localhost preview exercised both cases without admitting the candidate. Its booklet editorial cutoff is not an exact-byte pre-vote availability witness.
+
+Original AHV Gate evidence remains under docs/evidence/gate0-release-2026-10-14. The new known matching evaluations cover 20 local questions (16 questions invoke the real model; four application-policy refusals) and 45 hosted questions. Candidate evaluation is not publication approval. No held-out accuracy, physical phone test, multilingual parity or independent usability study is claimed. Raw failures and successful traces are preserved in the new evidence packet.
+
+Use a public, non-personal question. Explore What it means, Source and dates, Updates, Related votes and Me/Others/Switzerland. Ask for a voting recommendation to observe a deliberate refusal. Track without recording a Yes/No choice. Test encrypted save, reload lock, incorrect passphrase, correct unlock, backup and recovery using synthetic data. Recovery replaces only that browser's vault; forgotten passphrases cannot be recovered. Ordinary screens contain source/uncertainty information; detailed engineering evidence is linked separately from About this demo.
+
+Video work is outside this continuation. No main merge, organiser submission or terms acceptance has occurred.
