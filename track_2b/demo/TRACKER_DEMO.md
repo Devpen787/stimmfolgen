@@ -39,4 +39,4 @@ Apertus version one point five, eight billion, ran locally on Apple Silicon to s
 
 ## Participant voiceover selected
 
-The participant chose to record their own voice on 15 October. Use [silent footage](StimmFolgen_Tracker_Silent.mp4), [recording guide](RECORD_YOUR_VOICE.md) and [clean narration](VOICEOVER_SCRIPT.txt). The synthetic voice version remains a pacing reference. The final participant-narrated video is not yet recorded or mixed.
+The participant initially chose their own voice but is unavailable to record. No participant-narrated video is promised. Use [silent footage](StimmFolgen_Tracker_Silent.mp4), [recording guide](RECORD_YOUR_VOICE.md) and [clean narration](VOICEOVER_SCRIPT.txt). The synthetic voice version remains a pacing reference. The existing 98-second synthetic-narrated version remains available for review. A participant voice recording is optional.
