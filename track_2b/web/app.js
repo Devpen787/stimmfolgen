@@ -32,7 +32,7 @@ function showApertus() {
  openDialog('How Apertus helps',[
   el('p','Apertus v1.5 ran locally to find original booklet passages, extract candidate values and identify who made an argument.'),
   el('p','Independent source and meaning checks, followed by human review, produced this published AHV explanation.'),
-  el('p','Ask Apertus sends only your explicit public question. Apertus selects relevant reviewed AHV statements, then checks their relevance in a separate call. The app displays the accepted wording, speaker and sources unchanged.'),
+  el('p','Ask Apertus sends only your explicit public question. Hosted Apertus interprets your question for source search, then checks the retrieved statement against your original question. Local matching is experimental. The app displays the accepted wording, speaker and sources unchanged.'),
   el('p',liveStatus.configured?'Live service: '+liveStatus.model+' · '+liveStatus.provider+'. No model download is needed in your browser.':'Live Apertus is not configured on this installation. The reviewed explanation remains available.'),
   el('p','The source statements were reviewed; your question-to-source match is AI-selected and not human reviewed. Relevance checking uses the same model and can miss a match or select unrelated context. Apertus cannot rewrite the displayed facts or give a voting recommendation.'),
   el('p','Your choices and notes are not part of public analysis requests. On-device encryption, not the model, protects saved private data.'),
@@ -108,7 +108,7 @@ function renderLive(container) {
   for(const unknown of liveResult.unknowns||[])output.append(el('p',unknown,'unknown'));
   if(liveResult.answer_mode==='EVIDENCE_LIMIT')output.append(button('See dated updates',()=>go(currentVote.id,'updates'),'secondary'));
   if(!liveResult.claims?.length){const alternatives=el('section');alternatives.append(el('h3','Browse the reviewed evidence'),el('p','These are the reviewed source statements, not a new Apertus answer.'));for(const c of analysis.cards)alternatives.append(button(c.title,()=>sourceStatement(c.id),'secondary'));output.append(alternatives);}
-  if(liveResult.live_inference_performed_for_this_request){output.append(el('p','Apertus matches your question to reviewed source statements; it does not write these facts. The match is not human reviewed. A separate relevance check uses the same model and can miss errors.','plain-note'));const details=el('details');details.append(el('summary','Answer evidence'),el('p','Historical frame: '+date(liveResult.as_of)),el('p','Model tasks: '+(liveResult.model_tasks||[]).join(', ')),el('code','Source SHA-256: '+liveResult.source_sha256),el('code','Answer receipt: '+liveResult.receipt));output.append(details);}
+  if(liveResult.live_inference_performed_for_this_request){output.append(el('p','Apertus helps find reviewed source statements; it does not write these facts. The hosted app searches the reviewed evidence and asks Apertus to check direct relevance to your original question. The match is not human reviewed; the same-model check can still miss errors.','plain-note'));const details=el('details');details.append(el('summary','Answer evidence'),el('p','Historical frame: '+date(liveResult.as_of)),el('p','Model tasks: '+(liveResult.model_tasks||[]).join(', ')),el('code','Source SHA-256: '+liveResult.source_sha256),el('code','Answer receipt: '+liveResult.receipt));output.append(details);}
 
  }
  input.addEventListener('input',()=>{liveQuestion=input.value;});

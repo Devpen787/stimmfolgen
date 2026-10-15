@@ -60,9 +60,13 @@ export async function modelAvailable(token,fetcher=fetch){
  if(!model||!model.pricing||typeof model.pricing.input!=='number'||typeof model.pricing.output!=='number'||model.pricing.input<0||model.pricing.output<0||model.pricing.input>0.1||model.pricing.output>0.2)throw Error('Required model or bounded pricing unavailable');
  return model;
 }
-export async function completion(token,prompt,maxTokens,system,fetcher=fetch,onResponse=()=>{}){
- const response=await fetcher('https://api.publicai.co/v1/chat/completions',{method:'POST',headers:{Authorization:'Bearer '+token,'Content-Type':'application/json','User-Agent':'StimmFolgen/0.4'},redirect:'manual',signal:AbortSignal.timeout(120000),body:JSON.stringify({model:MODEL,temperature:0,max_tokens:maxTokens,stream:false,messages:[{role:'system',content:system},{role:'user',content:prompt}]})});
+export async function completion(token,prompt,maxTokens,system,fetcher=fetch,onResponse=()=>{},schema=null){
+ const response=await fetcher('https://api.publicai.co/v1/chat/completions',{method:'POST',headers:{Authorization:'Bearer '+token,'Content-Type':'application/json','User-Agent':'StimmFolgen/0.4'},redirect:'manual',signal:AbortSignal.timeout(120000),body:JSON.stringify({model:MODEL,temperature:0,max_tokens:maxTokens,stream:false,...(schema?{response_format:{type:'json_schema',json_schema:{name:'bounded_match',strict:true,schema}}}:{}),messages:[{role:'system',content:system},{role:'user',content:prompt}]})});
  const raw=await responseJSON(response);
  if(raw.model===MODEL&&raw.choices?.length)onResponse();
  return parseCompletion(raw);
+}
+
+export function executionMatches(payload,expectedHash){
+ return payload.live_inference_performed_for_this_request!==true||payload.execution_contract_sha256===expectedHash;
 }

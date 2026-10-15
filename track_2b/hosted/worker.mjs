@@ -1,7 +1,8 @@
 import {DurableObject} from 'cloudflare:workers';
 import bundleText from './public-bundle.json' with {type:'text'};
 import expectedHash from './bundle-hash.mjs';
-import {MODEL,LIMITS,selectionErrors,matchReviewErrors,composeAnswer,questionPayload,promptFrom,modelAvailable,completion,boundedText} from './qa.mjs';
+import {MODEL,LIMITS,composeAnswer,questionPayload,promptFrom,modelAvailable,completion,boundedText,executionMatches} from './qa.mjs';
+import {planErrors,normalizePlan,candidates,directnessErrors,directnessPrompt} from './retrieval.mjs';
 const bundle=JSON.parse(bundleText);
 export const headers={'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'"};
 const json=(data,status=200)=>new Response(JSON.stringify(data),{status,headers});
@@ -18,7 +19,7 @@ export class DemoGate extends DurableObject{
   let data;try{data=await request.json();if(!questionPayload(data))throw Error();}catch{return json({error:'Send one public question without private fields.'},400);}
   if(this.busy)return json({outcome:'BUSY',error:'Apertus is answering another visitor. Please try again shortly.',live_inference_performed_for_this_request:false},429);
   this.busy=true;
-  const start=Date.now();let result={outcome:'SERVICE_UNAVAILABLE',claims:[],unknowns:[],live_inference_performed_for_this_request:false,human_reviewed:false,publication_state:'REVIEWED_STATEMENTS_WITH_UNREVIEWED_MODEL_MATCH',as_of:bundle.case.as_of,source_sha256:bundle.case.source_sha256,model:MODEL,contract:bundle.contract,provider:'PUBLIC_AI',hosting:'CLOUDFLARE_GLOBAL_NOT_SWISS_SOVEREIGN',model_identity_basis:'PROVIDER_REPORTED_NOT_WEIGHT_ATTESTED',semantic_check:'IMMUTABLE_REVIEWED_WORDING_AND_SEPARATE_SAME_MODEL_RELEVANCE_CHECK'};
+  const start=Date.now();let result={outcome:'SERVICE_UNAVAILABLE',claims:[],unknowns:[],live_inference_performed_for_this_request:false,human_reviewed:false,publication_state:'REVIEWED_STATEMENTS_WITH_UNREVIEWED_MODEL_MATCH',as_of:bundle.case.as_of,source_sha256:bundle.case.source_sha256,model:MODEL,contract:bundle.hosted_query.contract,execution_contract_sha256:expectedHash,directness_checks_performed:0,provider:'PUBLIC_AI',hosting:'CLOUDFLARE_GLOBAL_NOT_SWISS_SOVEREIGN',model_identity_basis:'PROVIDER_REPORTED_NOT_WEIGHT_ATTESTED',semantic_check:'IMMUTABLE_REVIEWED_WORDING_AND_BM25F_WITH_SAME_MODEL_DIRECTNESS_CHECK'};
   try{
    const now=Date.now(),day=new Date(now).toISOString().slice(0,10),network=await digest(this.salt+request.headers.get('X-Network'));
    for(const [k,v] of this.clients)if(now-v.start>300000)this.clients.delete(k);
@@ -31,17 +32,18 @@ export class DemoGate extends DurableObject{
    await this.ctx.storage.put('usage',this.usage);
    await modelAvailable(this.env.PUBLICAI_TOKEN);
    const question=data.question.trim();
-   const selection=await completion(this.env.PUBLICAI_TOKEN,promptFrom(bundle.generation_template,question),250,bundle.generator_system,fetch,()=>{result.live_inference_performed_for_this_request=true;});
-   if(selectionErrors(selection,bundle.case).length){result.outcome='WITHHELD';result.error='Apertus could not return valid source references. The reviewed explanation remains available.';}
-   else{
-    let reviewedIds=[];
-    if(selection.kind==='EVIDENCE'){
-     const relevance=await completion(this.env.PUBLICAI_TOKEN,promptFrom(bundle.review_template,question,selection),250,bundle.review_system);
-     if(matchReviewErrors(relevance,selection).length){result.outcome='WITHHELD';result.error='Apertus could not check the source match. The reviewed explanation remains available.';}
-     else reviewedIds=relevance.fact_ids;
-    }
-    if(result.outcome!=='WITHHELD')Object.assign(result,composeAnswer(bundle.case,selection,reviewedIds),{model_tasks:['EVIDENCE_SELECTION',...(selection.kind==='EVIDENCE'?['RELEVANCE_CHECK']:[])]});
+   const contract=bundle.hosted_query;
+   const plan=normalizePlan(await completion(this.env.PUBLICAI_TOKEN,promptFrom(contract.planner_template,question),350,contract.planner_system,fetch,()=>{result.live_inference_performed_for_this_request=true;},contract.plan_schema));
+   if(planErrors(plan).length)throw Error('Invalid query plan');
+   const reviewedIds=[],retrieved=candidates(bundle.case,plan);
+   for(const id of retrieved){
+    if(reviewedIds.length>=plan.limit)break;
+    const card=bundle.case.cards.find(c=>c.id===id);
+    const check=await completion(this.env.PUBLICAI_TOKEN,directnessPrompt(bundle.case,question,card,plan.focus),80,contract.directness_system,fetch,()=>{result.directness_checks_performed++;},contract.directness_schema);
+    if(directnessErrors(check).length)throw Error('Invalid directness check');
+    if(check.direct)reviewedIds.push(id);
    }
+   Object.assign(result,composeAnswer(bundle.case,plan,reviewedIds),{contract:contract.contract,model_tasks:['QUERY_INTERPRETATION',...(result.directness_checks_performed?['ORIGINAL_QUESTION_DIRECTNESS_CHECK']:[])],semantic_check:'IMMUTABLE_REVIEWED_WORDING_AND_BM25F_WITH_SAME_MODEL_DIRECTNESS_CHECK'});
   }catch(error){if(result.live_inference_performed_for_this_request)result.outcome='WITHHELD';result.failure_code=/^(Provider HTTP [0-9]{3}|Invalid model identity or completion|Invalid content|Required model or bounded pricing unavailable|Response too large)$/.test(error.message)?error.message:'PROVIDER_TRANSPORT_OR_FORMAT';result.error='Apertus is unavailable or the free credit is exhausted. No answer was substituted. Reviewed sources remain available.';}
   finally{this.busy=false;}
   result.latency_seconds=Math.round((Date.now()-start)/10)/100;result.answered_at=new Date().toISOString();result.receipt=await digest(JSON.stringify(result));
@@ -69,6 +71,11 @@ export default{
   if(!request.headers.get('Content-Type')?.startsWith('application/json'))return json({error:'Use application/json'},400);
   let text;try{text=await boundedText(request.body,4096);if(new TextEncoder().encode(text).length>4096||!questionPayload(JSON.parse(text)))throw Error();}catch{return json({error:'Send one public question (3–700 characters), without private fields.'},400);}
   const gate=env.DEMO_GATE.get(env.DEMO_GATE.idFromName('global-free-demo-v1'));
-  return gate.fetch(new Request('https://internal/question',{method:'POST',headers:{'Content-Type':'application/json','X-Network':request.headers.get('CF-Connecting-IP')||'local-test'},body:text}));
+  const response=await gate.fetch(new Request('https://internal/question',{method:'POST',headers:{'Content-Type':'application/json','X-Network':request.headers.get('CF-Connecting-IP')||'local-test'},body:text}));
+  const payload=await response.clone().json();
+  // Workers and Durable Objects can update at different times. Never publish
+  // inference produced under a different evidence/prompt contract.
+  if(!executionMatches(payload,expectedHash))return json({outcome:'SERVICE_UNAVAILABLE',error:'Apertus is updating to the current evidence contract. Please retry shortly. Reviewed sources remain available.',live_inference_performed_for_this_request:false},503);
+  return response;
  }
 };

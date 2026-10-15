@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {selectionErrors,matchReviewErrors,composeAnswer,questionPayload,promptFrom,modelAvailable,completion,MODEL} from '../qa.mjs';
+import {selectionErrors,matchReviewErrors,composeAnswer,questionPayload,promptFrom,modelAvailable,completion,MODEL,executionMatches} from '../qa.mjs';
 const bundle=JSON.parse(readFileSync(new URL('../public-bundle.json',import.meta.url)));
 const selection={kind:'EVIDENCE',fact_ids:['P01']};
 test('extra private fields and invalid questions are rejected',()=>{
@@ -37,4 +37,10 @@ test('provider price increase or wrong model cannot start a completion',async()=
 test('provider model mismatch, truncation and redirects fail closed',async()=>{
  for(const raw of [{model:'other',choices:[{finish_reason:'stop'}]},{model:MODEL,choices:[{finish_reason:'length'}]}])await assert.rejects(completion('synthetic','prompt',10,'system',async()=>Response.json(raw)));
  let seen;await assert.rejects(completion('synthetic','prompt',10,'system',async(url,options)=>{seen=options;return new Response(null,{status:302,headers:{Location:'https://other.test'}});}));assert.equal(seen.redirect,'manual');assert.equal(JSON.parse(seen.body).model,MODEL);
+});
+
+test('inference from an old Durable Object contract is rejected during deployment propagation',()=>{
+ const hash='a'.repeat(64);assert.equal(executionMatches({live_inference_performed_for_this_request:true,execution_contract_sha256:hash},hash),true);
+ for(const payload of [{live_inference_performed_for_this_request:true},{live_inference_performed_for_this_request:true,execution_contract_sha256:'b'.repeat(64)}])assert.equal(executionMatches(payload,hash),false);
+ assert.equal(executionMatches({outcome:'BUSY',live_inference_performed_for_this_request:false},hash),true);
 });

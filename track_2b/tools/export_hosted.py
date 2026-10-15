@@ -13,8 +13,11 @@ from live import generation_prompt, review_prompt, CONTRACT, SELECT_SYSTEM, MATC
 
 def export(pdf):
     case=load_case(pdf)
+    query=json.loads((TRACK/'hosted/query-contract.json').read_text())
+    query['planner_template']='QUESTION="__QUESTION__"\nOPEN_PROPOSAL='+json.dumps(case['title'])+'\nEVIDENCE_AS_OF='+json.dumps(case['as_of'])
     return {'case':case,'catalog':json.loads((TRACK/'src/app/catalog.json').read_text()),
         'contract':CONTRACT,
+        'hosted_query':query,
         'generation_template':generation_prompt(case,'__QUESTION__'),
         'review_template':review_prompt(case,'__QUESTION__',{'__CANDIDATE__':True}),
         'source_url':case['cards'][0]['citations'][0]['page_url'].split('#')[0],
