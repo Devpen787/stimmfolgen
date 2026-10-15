@@ -1,0 +1,4 @@
+{
+  "original_sha256": "0a2676f5cb28d9f640892dd9905e7aa748ba6674de8d13695f1b24b96b96c27a",
+  "text": ".local/runtime/bin/python track_2b/tools/local_run.py --model-python .local/runtime/bin/python --model-dir .local/models/apertus-v1.5-8b-mlx-4bit --source-pdf .local/local/booklet.pdf --port 8784\n{\n  \"os\": \"26.6.2\",\n  \"architecture\": \"arm64\",\n  \"ram_gib\": 18.0,\n  \"tested_machine_ram_gib\": 18\n}\nVerified local Apertus v1.5. Questions stay on this Mac. No API key needed.\nOpen http://127.0.0.1:8784/ — Ctrl+C stops this installation.\nStimmFolgen backend: http://127.0.0.1:8784 (live=True)\n"
+}

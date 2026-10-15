@@ -12,19 +12,19 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src/app'))
 from backend import make_handler
 from admission import Admission
 from hosted import InfomaniakClient, MODEL, NoRedirect
-from live import LiveService, validate_candidate
+from live import LiveService, validate_selection, validate_match_review, compose_answer
 from http.server import ThreadingHTTPServer
 
 CASE={'as_of':'2024-03-02T23:59:59+01:00','source_sha256':'test-only',
       'cards':[{'id':'P01','kind':'DIRECT_PROVISION','statement':'Fixture, not AHV proof.',
                 'citations':[{'span_id':'sp-fixture','actor':'GOVERNMENT','pdf_page':9,'text':'Fixture source'}]}]}
-CANDIDATE={'outcome':'SUPPORTED','claims':[{'text':'Fixture answer.','fact_ids':['P01']}],'unknowns':[]}
-REVIEW={k:True for k in ['entailed','actor_correct','time_correct','uncertainty_preserved','no_advice','answers_question']}
+CANDIDATE={'kind':'EVIDENCE','fact_ids':['P01']}
+REVIEW={'fact_ids':['P01']}
 
 class FakeHosted:
     identity={'backing_checkpoint':MODEL,'v1_5_verified':True}
     def __init__(self, answers):self.answers=iter(answers);self.prompts=[]
-    def call(self,prompt,validator,version,max_tokens):
+    def call(self,prompt,validator,version,max_tokens,**kwargs):
         self.prompts.append(prompt)
         answer=next(self.answers)
         return {'model_inference_performed':True,'parsed_candidate':answer,'validation':validator(answer)}
@@ -34,21 +34,43 @@ class LiveContractTests(unittest.TestCase):
         client=FakeHosted(answers)
         with patch('live.build_report',return_value={}):service=LiveService(b'fixture',CASE,hosted_client=client)
         return service,client
-    def test_untrusted_reference_and_extra_fields_are_rejected(self):
-        for candidate in [dict(CANDIDATE,notes='private'),dict(CANDIDATE,claims=[{'text':'X','fact_ids':['invented']}]),
-                          {'outcome':'INSUFFICIENT_EVIDENCE','claims':[],'unknowns':[]}]:
-            self.assertTrue(validate_candidate(candidate,CASE))
-    def test_separate_check_can_withhold_otherwise_valid_answer(self):
-        service,_=self.service([CANDIDATE,dict(REVIEW,actor_correct=False)])
+    def test_untrusted_reference_and_generated_fields_are_rejected(self):
+        for candidate in [dict(CANDIDATE,notes='private'),dict(CANDIDATE,text='invented factual wording'),
+                          {'kind':'EVIDENCE','fact_ids':['invented']},{'kind':'EVIDENCE','fact_ids':[]},{'kind':[],'fact_ids':[]}]:
+            self.assertTrue(validate_selection(candidate,CASE))
+    def test_relevance_check_cannot_add_an_unselected_fact(self):
+        service,_=self.service([CANDIDATE,{'fact_ids':['invented']}])
         code,result=service.answer('Public fixture question')
         self.assertEqual(code,200);self.assertEqual(result['outcome'],'WITHHELD');self.assertEqual(result['claims'],[])
         self.assertTrue(result['live_inference_performed_for_this_request']);self.assertFalse(result['human_reviewed'])
+    def test_review_can_remove_unrelated_context_without_fabricating_a_claim(self):
+        service,_=self.service([CANDIDATE,{'fact_ids':[]}])
+        _,result=service.answer('Public fixture question')
+        self.assertEqual(result['outcome'],'INSUFFICIENT_EVIDENCE');self.assertFalse(result['claims'])
+    def test_service_refusal_needs_no_generated_fact_or_impossible_entailment_check(self):
+        service,client=self.service([{'kind':'VOTING_ADVICE','fact_ids':[]}])
+        _,result=service.answer('Public fixture question')
+        self.assertEqual(result['answer_mode'],'SERVICE_LIMIT');self.assertEqual(len(client.prompts),1)
+        self.assertFalse(result['claims']);self.assertIn('does not recommend',result['unknowns'][0])
     def test_returned_sources_come_from_authenticated_case_not_generated_text(self):
         service,client=self.service([CANDIDATE,REVIEW])
         code,result=service.answer('Public fixture question')
         self.assertEqual(result['claims'][0]['citations'],CASE['cards'][0]['citations'])
+        self.assertEqual(result['claims'][0]['text'],CASE['cards'][0]['statement'])
+        self.assertEqual(result['answer_mode'],'REVIEWED_EVIDENCE');self.assertTrue(result['statements_human_reviewed'])
         self.assertEqual(len(client.prompts),2);self.assertFalse(result['human_reviewed'])
         self.assertEqual(result['model_identity_basis'],'PROVIDER_REPORTED_NOT_WEIGHT_ATTESTED')
+    def test_relevance_rejects_malformed_or_generated_fields(self):
+        for value in [[],[['P01']],{'fact_ids':['P01'],'text':'invented'}, {'fact_ids':['P01','P01']}, {'fact_ids':['unknown']}, {'fact_ids':None}]:
+            self.assertTrue(validate_match_review(value,CANDIDATE))
+    def test_all_factual_wording_is_pinned_even_for_arbitrary_valid_selection(self):
+        case=json.loads((Path(__file__).resolve().parents[1]/'hosted/public-bundle.json').read_text())['case']
+        for c in case['cards']:
+            selection={'kind':'EVIDENCE','fact_ids':[c['id']]}
+            result=compose_answer(case,selection,[c['id']])
+            self.assertEqual(result['claims'][0]['text'],c['statement'])
+            self.assertEqual(result['claims'][0]['citations'],c['citations'])
+            self.assertEqual(result['claims'][0]['evidence_kinds'],[c['kind']])
     def test_transport_failure_cannot_replay_an_answer(self):
         service,client=self.service([])
         with patch.object(client,'call',side_effect=OSError('synthetic unavailable')):

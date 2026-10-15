@@ -1,0 +1,36 @@
+- link "Skip to content":
+  - /url: "#main"
+- banner:
+  - link "StimmFolgen":
+    - /url: "#my"
+  - button "On this device":
+    - generic: On this device
+- main [active]:
+  - link "Back to My votes":
+    - /url: "#my"
+  - heading "AHV additional financing" [level=1]
+  - generic: 29 November 2026 · Upcoming vote
+  - button "Track this vote"
+  - tablist "Explore vote":
+    - tab "What it means" [selected]
+    - tab "Updates"
+    - tab "Related votes"
+    - tab "Perspectives"
+    - tab "My choice & notes"
+  - tabpanel "What it means":
+    - heading "Official proposal reference" [level=2]
+    - paragraph: A separate vote on financing AHV through a VAT increase.
+    - paragraph: A reviewed Apertus explanation is not available for this vote yet.
+    - link "View source":
+      - /url: https://www.admin.ch/de/volksabstimmung-vom-29-november-2026
+    - paragraph: Swiss Federal Council · Publication date not established. Checked 14 October 2026.
+- navigation "Main navigation":
+  - link "My votes":
+    - /url: "#my"
+    - generic: My votes
+  - link "Upcoming votes":
+    - /url: "#upcoming"
+    - generic: Upcoming
+  - link "Search":
+    - /url: "#search"
+    - generic: Search

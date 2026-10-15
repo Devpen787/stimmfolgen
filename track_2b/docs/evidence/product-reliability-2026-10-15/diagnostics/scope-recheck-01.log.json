@@ -1,0 +1,4 @@
+{
+  "original_sha256": "cdd83b271a794aad42cc9bbbf82d58b63a511538c80cfa1b0ad72d7abe41166a",
+  "text": "actor { fact_ids: [ 'P05' ] }\nquote { fact_ids: [] }\nfireworks { fact_ids: [ 'P02', 'P03' ] }\nchildcare { fact_ids: [ 'P02', 'P03', 'P05' ] }\nlater { fact_ids: [] }\n"
+}

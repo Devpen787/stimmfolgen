@@ -1,0 +1,4 @@
+{
+  "original_sha256": "1315eb7c138b4d73a056376a03e70a2055e789e6631ff451accc19f012704536",
+  "text": "\n ⛅️ wrangler 4.151.0\n────────────────────\n🌀 Building list of assets...\n✨ Read 26 files from the assets directory <REPO>/track_2b/hosted/.local/assets\n🌀 Starting asset upload...\nNo updated asset files to upload. Proceeding with deployment...\nTotal Upload: 30.06 KiB / gzip: 10.02 KiB\nWorker Startup Time: 2 ms\nYour Worker has access to the following bindings:\nBinding                            Resource                  \nenv.DEMO_GATE (DemoGate)           Durable Object            \nenv.ASSETS                         Assets                    \nenv.LIVE_ENABLED (\"(hidden)\")      Environment Variable      \n\nUploaded stimmfolgen-demo (10.07 sec)\nDeployed stimmfolgen-demo triggers (2.33 sec)\n  https://stimmfolgen-demo.stimmfolgen-hosted.workers.dev\nCurrent Version ID: e795f44a-e388-462b-97ff-c2eba903f4c1\n"
+}

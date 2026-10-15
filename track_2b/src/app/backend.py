@@ -65,7 +65,7 @@ def make_handler(pdf,case,live=None,admission=None):
             path=urlsplit(self.path).path
             if path=='/api/case':return self.send(200,case)
             if path=='/api/catalog':return self.send(200,json.loads((TRACK/'src/app/catalog.json').read_text()))
-            if path=='/api/live/status':return self.send(200,{'configured':live is not None,'scope':'AHV historical reviewed evidence only','model':live.identity['backing_checkpoint'] if live else None,'provider':'Infomaniak Switzerland' if live and live.hosted_client else 'Your local Mac' if live else None,'private_notes_sent':False})
+            if path=='/api/live/status':return self.send(200,{'configured':live is not None,'scope':'AHV historical reviewed evidence only','model':live.identity['backing_checkpoint'] if live else None,'provider':'Infomaniak Switzerland' if live and live.hosted_client else 'Your local Mac' if live else None,'private_notes_sent':False,'local_matching_experimental':bool(live and not live.hosted_client)})
             if path=='/api/health':return self.send(200,{'status':'ok','gate0':case['gate']['gate0_status'],'mode':case['inference_mode']})
             if path=='/api/booklet.pdf':return self.send(200,pdf,'application/pdf')
             allowed={'/':'index.html','/app.js':'app.js','/vault.js':'vault.js','/style.css':'style.css'}

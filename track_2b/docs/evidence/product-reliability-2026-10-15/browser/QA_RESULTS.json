@@ -1,0 +1,34 @@
+{
+  "evidence_class": "AGENT_RECORDED_OBSERVATIONS_FROM_CUA_BROWSER_CONTROLS",
+  "desktop": {
+    "viewport": [
+      1280,
+      800
+    ],
+    "document_width": 1280,
+    "console_warnings_errors": [],
+    "fresh_origin": true,
+    "full_journey": "PASS"
+  },
+  "responsive_phone": {
+    "viewport": [
+      389,
+      845
+    ],
+    "document_width": 389,
+    "console_warnings_errors": [],
+    "fresh_origin": true,
+    "full_journey": "PASS",
+    "final_explore_tabs": "All five visible in two rows, height 44px each"
+  },
+  "physical_phone_test": false,
+  "independent_human_study": false,
+  "private_test_data": "Synthetic notes only; choice remained Not recorded; owner origin storage not cleared or read",
+  "owned_local_ports_open_after_cleanup": {
+    "8766": false,
+    "8784": false,
+    "8785": false
+  },
+  "qa_workers": "Absent; Wrangler removed scripts before unrelated KV-cleanup scope error, subsequent narrow worker DELETE returned 404 code 10007",
+  "production_version": "6380dc78-9206-4c29-b979-977b32caf87b"
+}

@@ -8,7 +8,7 @@ from pathlib import Path
 TRACK=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(TRACK/'src/app'))
 from backend import load_case
-from live import generation_prompt, review_prompt, CONTRACT
+from live import generation_prompt, review_prompt, CONTRACT, SELECT_SYSTEM, MATCH_SYSTEM
 
 
 def export(pdf):
@@ -18,7 +18,7 @@ def export(pdf):
         'generation_template':generation_prompt(case,'__QUESTION__'),
         'review_template':review_prompt(case,'__QUESTION__',{'__CANDIDATE__':True}),
         'source_url':case['cards'][0]['citations'][0]['page_url'].split('#')[0],
-        'generator_system':'Answer the specific user question using the supplied evidence. Follow the JSON contract. Do not summarise unrelated facts. No voting advice.'}
+        'generator_system':SELECT_SYSTEM, 'review_system':MATCH_SYSTEM}
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--source-pdf',type=Path,required=True);p.add_argument('--check',action='store_true');args=p.parse_args()

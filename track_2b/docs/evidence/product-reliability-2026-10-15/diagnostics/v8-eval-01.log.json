@@ -1,0 +1,4 @@
+{
+  "original_sha256": "77256956011b4c91f41b51f37cb48b7c343e56fe1f929c1fb3f34f64c0d63355",
+  "text": "{\"trial\":1,\"selection\":{\"kind\":\"EVIDENCE\",\"fact_ids\":[\"P01\"]},\"review\":[\"P01\"]}\n{\"trial\":2,\"selection\":{\"kind\":\"EVIDENCE\",\"fact_ids\":[\"P04\"]},\"review\":[\"P04\"]}\n{\"trial\":3,\"selection\":{\"kind\":\"EVIDENCE\",\"fact_ids\":[\"P05\"]},\"review\":[\"P05\"]}\n{\"trial\":4,\"selection\":{\"kind\":\"VOTING_ADVICE\",\"fact_ids\":[]}}\n{\"trial\":5,\"selection\":{\"kind\":\"OUTSIDE_EVIDENCE\",\"fact_ids\":[]}}\n"
+}

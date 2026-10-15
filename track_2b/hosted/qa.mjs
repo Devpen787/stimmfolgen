@@ -1,24 +1,30 @@
-// Shared response contract with the native app; fixtures never imply real inference.
+// Model output chooses references only; all published wording comes from reviewed case data.
 export const MODEL='swiss-ai/apertus-v1.5-8b';
-export const REVIEW_FIELDS=['entailed','actor_correct','time_correct','uncertainty_preserved','no_advice','answers_question'];
 export const LIMITS=Object.freeze({lifetime:200,daily:80,promptBytes:16000,responseBytes:262144});
-export function candidateErrors(a, caseData){
- const keys=(o,expected)=>o&&typeof o==='object'&&!Array.isArray(o)&&Object.keys(o).sort().join(',')===[...expected].sort().join(',');
- if(!keys(a,['outcome','claims','unknowns']))return ['invalid_answer_shape'];
- const errors=[], facts=new Set(caseData.cards.map(c=>c.id));
- if(!['SUPPORTED','INSUFFICIENT_EVIDENCE'].includes(a.outcome))errors.push('invalid_outcome');
- if(!Array.isArray(a.claims)||a.claims.length>4)return [...errors,'invalid_claims'];
- if(a.outcome==='SUPPORTED'&&!a.claims.length)errors.push('empty_supported_answer');
- if(!Array.isArray(a.unknowns)||a.unknowns.length>4||a.unknowns.some(x=>typeof x!=='string'||!x.length||x.length>400))errors.push('invalid_unknowns');
- if(a.outcome==='INSUFFICIENT_EVIDENCE'&&!a.unknowns?.length)errors.push('abstention_requires_reason');
- for(const c of a.claims){
-  if(!keys(c,['text','fact_ids'])){errors.push('invalid_claim');continue;}
-  if(typeof c.text!=='string'||!c.text.length||c.text.length>700)errors.push('invalid_text');
-  if(!Array.isArray(c.fact_ids)||!c.fact_ids.length||c.fact_ids.length>5||c.fact_ids.some(i=>typeof i!=='string'||!facts.has(i)))errors.push('unknown_evidence_reference');
- }
- return errors;
+export function selectionErrors(s,caseData){
+ if(!s||typeof s!=='object'||Array.isArray(s)||Object.keys(s).sort().join(',')!=='fact_ids,kind')return ['invalid_selection_shape'];
+ const known=new Set(caseData.cards.map(c=>c.id)),ids=s.fact_ids;
+ if(!['EVIDENCE','VOTING_ADVICE','OUTSIDE_EVIDENCE'].includes(s.kind))return ['invalid_selection_kind'];
+ if(!Array.isArray(ids)||ids.length>known.size||ids.some(i=>typeof i!=='string'||!known.has(i)))return ['unknown_evidence_reference'];
+ if(new Set(ids).size!==ids.length)return ['duplicate_evidence_reference'];
+ if(Boolean(ids.length)!==(s.kind==='EVIDENCE'))return ['selection_kind_conflict'];
+ return [];
 }
-export const reviewPass=r=>r&&typeof r==='object'&&!Array.isArray(r)&&Object.keys(r).sort().join(',')===[...REVIEW_FIELDS].sort().join(',')&&Object.values(r).every(v=>v===true);
+export function matchReviewErrors(review,selection){
+ if(!review||typeof review!=='object'||Array.isArray(review)||Object.keys(review).join(',')!=='fact_ids'||!Array.isArray(review.fact_ids))return ['invalid_relevance_review'];
+ review=review.fact_ids;
+ if(review.length>selection.fact_ids.length)return ['invalid_relevance_review'];
+ if(review.some(i=>typeof i!=='string'||!selection.fact_ids.includes(i)))return ['unselected_evidence_reference'];
+ if(new Set(review).size!==review.length)return ['duplicate_evidence_reference'];
+ return [];
+}
+export function composeAnswer(caseData,selection,reviewedIds){
+ const facts=new Map(caseData.cards.map(c=>[c.id,c]));
+ const claims=reviewedIds.map(id=>({text:facts.get(id).statement,fact_ids:[id],citations:facts.get(id).citations,evidence_kinds:[facts.get(id).kind]}));
+ if(claims.length)return {outcome:'EVIDENCE_MATCH',answer_mode:'REVIEWED_EVIDENCE',claims,unknowns:[],statements_human_reviewed:true};
+ const advice=selection.kind==='VOTING_ADVICE';
+ return {outcome:'INSUFFICIENT_EVIDENCE',answer_mode:advice?'SERVICE_LIMIT':'EVIDENCE_LIMIT',claims:[],unknowns:[advice?'StimmFolgen does not recommend how to vote. You can explore the sources and perspectives to form your own view.':'No matching reviewed answer was found in this historical AHV evidence. This does not mean the event or effect did not happen. For later information, open Updates.'],statements_human_reviewed:false};
+}
 export function questionPayload(value){
  return value&&typeof value==='object'&&!Array.isArray(value)&&Object.keys(value).join(',')==='question'&&typeof value.question==='string'&&value.question.trim().length>=3&&value.question.trim().length<=700;
 }
@@ -29,16 +35,12 @@ export function parseCompletion(raw){
  text=text.trim().replace(/^```(?:json)?\s*|\s*```$/gi,'');
  return JSON.parse(text);
 }
-export function promptFrom(template,question,candidate){
+export function promptFrom(template,question,selection){
  let result=template;
- if(candidate!==undefined)result=result.replace('{"__CANDIDATE__": true}',()=>JSON.stringify(candidate));
+ if(selection!==undefined)result=result.replace('{"__CANDIDATE__": true}',()=>JSON.stringify(selection));
  result=result.replace('"__QUESTION__"',()=>JSON.stringify(question));
  if(new TextEncoder().encode(result).length>LIMITS.promptBytes)throw Error('Prompt too large');
  return result;
-}
-export function citationsFor(candidate,caseData){
- const facts=new Map(caseData.cards.map(c=>[c.id,c]));
- return candidate.claims.map(c=>({...c,citations:[...new Map(c.fact_ids.flatMap(i=>facts.get(i).citations).map(s=>[s.span_id,s])).values()],evidence_kinds:[...new Set(c.fact_ids.map(i=>facts.get(i).kind))].sort()}));
 }
 export async function boundedText(body,limit){
  if(!body)throw Error('Empty body');

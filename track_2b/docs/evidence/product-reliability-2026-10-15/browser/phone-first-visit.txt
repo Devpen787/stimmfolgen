@@ -1,0 +1,26 @@
+- link "Skip to content":
+  - /url: "#main"
+- banner:
+  - link "StimmFolgen":
+    - /url: "#my"
+  - button "On this device":
+    - generic: On this device
+- main:
+  - heading "My votes" [level=1]
+  - paragraph: Your votes, with context.
+  - heading "Keep the votes you want to understand" [level=2]
+  - paragraph: Find a vote and tap Track. Your vote choice is optional and is never inferred.
+  - button "Find a vote"
+  - button "Explore the AHV example"
+  - paragraph: Tracking stays in this visit only. Use On this device to save encrypted private votes.
+  - paragraph: Catalogue checked 14 October 2026. Five selected federal proposals; this is not the full Swiss vote register.
+- navigation "Main navigation":
+  - link "My votes":
+    - /url: "#my"
+    - generic: My votes
+  - link "Upcoming votes":
+    - /url: "#upcoming"
+    - generic: Upcoming
+  - link "Search":
+    - /url: "#search"
+    - generic: Search

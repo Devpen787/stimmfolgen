@@ -1,0 +1,48 @@
+- link "Skip to content":
+  - /url: "#main"
+- banner:
+  - link "StimmFolgen":
+    - /url: "#my"
+  - button "On this device":
+    - generic: On this device
+- main [active]:
+  - heading "My votes" [level=1]
+  - paragraph: Your votes, with context.
+  - article:
+    - heading "13th AHV pension" [level=2]
+    - button "Untrack 13th AHV pension" [pressed]: Tracked
+    - generic: 3 March 2024
+    - generic: Past vote
+    - paragraph: An annual supplement to the AHV old-age pension.
+    - button "Explore my vote"
+    - button "How live Apertus helps Reviewed historical analysis":
+      - text: How live Apertus helps
+      - text: Reviewed historical analysis
+  - article:
+    - heading "Official update" [level=3]
+    - generic: 5 October 2026
+    - paragraph: First payment planned for December 2026
+    - generic: Federal Social Insurance Office
+    - 'link "Source: www.bsv.admin.ch"':
+      - /url: https://www.bsv.admin.ch/de/umsetzung-13-ahv-rente
+  - button "Related vote AHV additional financing 29 November 2026 Upcoming":
+    - generic: Related vote
+    - heading "AHV additional financing" [level=3]
+    - generic: 29 November 2026
+    - generic: Upcoming
+  - link "Find another vote":
+    - /url: "#search"
+    - generic: Find another vote
+  - button "Save my votes on this device"
+  - paragraph: Tracking stays in this visit only. Use On this device to save encrypted private votes.
+  - paragraph: Catalogue checked 14 October 2026. Five selected federal proposals; this is not the full Swiss vote register.
+- navigation "Main navigation":
+  - link "My votes":
+    - /url: "#my"
+    - generic: My votes
+  - link "Upcoming votes":
+    - /url: "#upcoming"
+    - generic: Upcoming
+  - link "Search":
+    - /url: "#search"
+    - generic: Search

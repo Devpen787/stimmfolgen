@@ -1,0 +1,37 @@
+- link "Skip to content":
+  - /url: "#main"
+- banner:
+  - link "StimmFolgen":
+    - /url: "#my"
+  - navigation "Main navigation":
+    - link "My votes":
+      - /url: "#my"
+    - link "Upcoming votes":
+      - /url: "#upcoming"
+    - link "Search":
+      - /url: "#search"
+  - button "On this device":
+    - generic: On this device
+- main [active]:
+  - link "Back to My votes":
+    - /url: "#my"
+  - heading "13th AHV pension" [level=1]
+  - generic: 3 March 2024 · Past vote
+  - button "Tracked"
+  - tablist "Explore vote":
+    - tab "What it means"
+    - tab "Updates"
+    - tab "Related votes" [selected]
+    - tab "Perspectives"
+    - tab "My choice & notes"
+  - tabpanel "Related votes":
+    - heading "Related votes" [level=2]
+    - button "Related vote AHV additional financing 29 November 2026 Upcoming":
+      - generic: Related vote
+      - heading "AHV additional financing" [level=3]
+      - generic: 29 November 2026
+      - generic: Upcoming
+    - paragraph: A separate financing proposal connected to implementation of the 13th AHV pension.
+    - link "Relationship source":
+      - /url: https://www.bsv.admin.ch/de/umsetzung-13-ahv-rente
+    - paragraph: Relationship source checked 14 October 2026.

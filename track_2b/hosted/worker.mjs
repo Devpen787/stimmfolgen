@@ -1,7 +1,7 @@
 import {DurableObject} from 'cloudflare:workers';
 import bundleText from './public-bundle.json' with {type:'text'};
 import expectedHash from './bundle-hash.mjs';
-import {MODEL,LIMITS,candidateErrors,reviewPass,questionPayload,promptFrom,citationsFor,modelAvailable,completion,boundedText} from './qa.mjs';
+import {MODEL,LIMITS,selectionErrors,matchReviewErrors,composeAnswer,questionPayload,promptFrom,modelAvailable,completion,boundedText} from './qa.mjs';
 const bundle=JSON.parse(bundleText);
 export const headers={'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'"};
 const json=(data,status=200)=>new Response(JSON.stringify(data),{status,headers});
@@ -18,7 +18,7 @@ export class DemoGate extends DurableObject{
   let data;try{data=await request.json();if(!questionPayload(data))throw Error();}catch{return json({error:'Send one public question without private fields.'},400);}
   if(this.busy)return json({outcome:'BUSY',error:'Apertus is answering another visitor. Please try again shortly.',live_inference_performed_for_this_request:false},429);
   this.busy=true;
-  const start=Date.now();let result={outcome:'SERVICE_UNAVAILABLE',claims:[],unknowns:[],live_inference_performed_for_this_request:false,human_reviewed:false,publication_state:'LIVE_AI_UNREVIEWED',as_of:bundle.case.as_of,source_sha256:bundle.case.source_sha256,model:MODEL,contract:bundle.contract,provider:'PUBLIC_AI',hosting:'CLOUDFLARE_GLOBAL_NOT_SWISS_SOVEREIGN',model_identity_basis:'PROVIDER_REPORTED_NOT_WEIGHT_ATTESTED',semantic_check:'SEPARATE_PASS_SAME_MODEL_NOT_INDEPENDENT_REVIEW'};
+  const start=Date.now();let result={outcome:'SERVICE_UNAVAILABLE',claims:[],unknowns:[],live_inference_performed_for_this_request:false,human_reviewed:false,publication_state:'REVIEWED_STATEMENTS_WITH_UNREVIEWED_MODEL_MATCH',as_of:bundle.case.as_of,source_sha256:bundle.case.source_sha256,model:MODEL,contract:bundle.contract,provider:'PUBLIC_AI',hosting:'CLOUDFLARE_GLOBAL_NOT_SWISS_SOVEREIGN',model_identity_basis:'PROVIDER_REPORTED_NOT_WEIGHT_ATTESTED',semantic_check:'IMMUTABLE_REVIEWED_WORDING_AND_SEPARATE_SAME_MODEL_RELEVANCE_CHECK'};
   try{
    const now=Date.now(),day=new Date(now).toISOString().slice(0,10),network=await digest(this.salt+request.headers.get('X-Network'));
    for(const [k,v] of this.clients)if(now-v.start>300000)this.clients.delete(k);
@@ -31,13 +31,16 @@ export class DemoGate extends DurableObject{
    await this.ctx.storage.put('usage',this.usage);
    await modelAvailable(this.env.PUBLICAI_TOKEN);
    const question=data.question.trim();
-   const candidate=await completion(this.env.PUBLICAI_TOKEN,promptFrom(bundle.generation_template,question),850,bundle.generator_system,fetch,()=>{result.live_inference_performed_for_this_request=true;});
-   result.live_inference_performed_for_this_request=true;
-   if(candidateErrors(candidate,bundle.case).length){result.outcome='WITHHELD';result.error='Apertus could not produce a valid grounded answer. Read the reviewed explanation.';}
+   const selection=await completion(this.env.PUBLICAI_TOKEN,promptFrom(bundle.generation_template,question),250,bundle.generator_system,fetch,()=>{result.live_inference_performed_for_this_request=true;});
+   if(selectionErrors(selection,bundle.case).length){result.outcome='WITHHELD';result.error='Apertus could not return valid source references. The reviewed explanation remains available.';}
    else{
-    const review=await completion(this.env.PUBLICAI_TOKEN,promptFrom(bundle.review_template,question,candidate),200,'Audit evidence support strictly. Return the requested JSON checks.');
-    if(!reviewPass(review)){result.outcome='WITHHELD';result.error='The answer did not pass the separate meaning check. Read the reviewed explanation or try a narrower question.';}
-    else Object.assign(result,{outcome:candidate.outcome,claims:citationsFor(candidate,bundle.case),unknowns:candidate.unknowns,checks:review});
+    let reviewedIds=[];
+    if(selection.kind==='EVIDENCE'){
+     const relevance=await completion(this.env.PUBLICAI_TOKEN,promptFrom(bundle.review_template,question,selection),250,bundle.review_system);
+     if(matchReviewErrors(relevance,selection).length){result.outcome='WITHHELD';result.error='Apertus could not check the source match. The reviewed explanation remains available.';}
+     else reviewedIds=relevance.fact_ids;
+    }
+    if(result.outcome!=='WITHHELD')Object.assign(result,composeAnswer(bundle.case,selection,reviewedIds),{model_tasks:['EVIDENCE_SELECTION',...(selection.kind==='EVIDENCE'?['RELEVANCE_CHECK']:[])]});
    }
   }catch(error){if(result.live_inference_performed_for_this_request)result.outcome='WITHHELD';result.failure_code=/^(Provider HTTP [0-9]{3}|Invalid model identity or completion|Invalid content|Required model or bounded pricing unavailable|Response too large)$/.test(error.message)?error.message:'PROVIDER_TRANSPORT_OR_FORMAT';result.error='Apertus is unavailable or the free credit is exhausted. No answer was substituted. Reviewed sources remain available.';}
   finally{this.busy=false;}
