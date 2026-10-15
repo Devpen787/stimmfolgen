@@ -1,0 +1,59 @@
+✔ extra private fields and invalid questions are rejected (0.595166ms)
+✔ invented refs and generated source fields fail closed (0.618583ms)
+✔ citations are original server evidence (0.182958ms)
+✔ prompt data cannot replace a later placeholder or become instructions (0.173208ms)
+✔ same-model review rejects one failed check and unknown fields (0.10425ms)
+✔ provider price increase or wrong model cannot start a completion (14.88525ms)
+✔ provider model mismatch, truncation and redirects fail closed (0.830375ms)
+Concurrent fixture {
+  outcome: 'SERVICE_UNAVAILABLE',
+  claims: [],
+  unknowns: [],
+  live_inference_performed_for_this_request: false,
+  human_reviewed: false,
+  publication_state: 'LIVE_AI_UNREVIEWED',
+  as_of: '2024-03-02T23:59:59+01:00',
+  source_sha256: '53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e',
+  model: 'swiss-ai/apertus-v1.5-8b',
+  contract: 'live-ahv-reviewed-facts-v5',
+  provider: 'PUBLIC_AI',
+  hosting: 'CLOUDFLARE_GLOBAL_NOT_SWISS_SOVEREIGN',
+  model_identity_basis: 'PROVIDER_REPORTED_NOT_WEIGHT_ATTESTED',
+  semantic_check: 'SEPARATE_PASS_SAME_MODEL_NOT_INDEPENDENT_REVIEW',
+  fixture_failure: `Invalid redirect value, must be one of "follow" or "manual" ("error" won't be implemented since it does not make sense at the edge; use "manual" and check the response status code).`,
+  failure_code: 'PROVIDER_TRANSPORT_OR_FORMAT',
+  error: 'Apertus is unavailable or the free credit is exhausted. No answer was substituted. Reviewed sources remain available.',
+  latency_seconds: 0,
+  answered_at: '2026-10-15T13:18:03.465Z',
+  receipt: '99b2cc15e6e1eb2ef610b62bafb2cd62452b4f58e3cbaf3952cdafe5948e2ac6'
+}
+✖ actual Worker validates privacy, serialises requests and persists its quota across restart (1267.6865ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1673.638167
+
+✖ failing tests:
+
+test at track_2b/hosted/test/runtime.test.mjs:12:1
+✖ actual Worker validates privacy, serialises requests and persists its quota across restart (1267.6865ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'SERVICE_UNAVAILABLE'
+  - 'BUSY'
+  
+      at TestContext.<anonymous> (file:///REPO/track_2b/hosted/test/runtime.test.mjs:36:132)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async Test.run (node:internal/test_runner/test:1069:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:332:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'SERVICE_UNAVAILABLE',
+    expected: 'BUSY',
+    operator: 'strictEqual'
+  }

@@ -1,0 +1,112 @@
+{
+  "kind": "NARRATED_ACTUAL_BROWSER_CAPTURE_WALKTHROUGH",
+  "continuous_screen_recording": false,
+  "fresh_web_inference": true,
+  "origin": "https://stimmfolgen-demo.stimmfolgen-hosted.workers.dev/",
+  "private_data": "SYNTHETIC_ONLY",
+  "duration_seconds": 115.093343,
+  "resolution": "1280x720",
+  "video_codec": "H264",
+  "audio_codec": "AAC",
+  "voice": "local macOS Samantha",
+  "audio_trimmed": false,
+  "sha256": "90d17cec0ce8bd6f3d2de3d6768287b96111a0aa05e19894337041f257005027",
+  "chapters": [
+    {
+      "capture": "01-search.png",
+      "label": "Find a vote",
+      "narration": "StimmFolgen helps a voter follow a Swiss vote and understand its evidence. Search for AHV to find the pension initiative and its separate financing proposal.",
+      "start_seconds": 0.0,
+      "duration_seconds": 9.0,
+      "capture_sha256": "b41d9872bab7714ed58c584c585421e7e30bde0624553852593323898420800b"
+    },
+    {
+      "capture": "02-my-votes.png",
+      "label": "Track the topic",
+      "narration": "My votes keeps the topics I follow. Tracking does not record a Yes or No choice. The official update gives me a reason to return.",
+      "start_seconds": 9.0,
+      "duration_seconds": 7.708333,
+      "capture_sha256": "733923715e5ebdb8fc44fe8c0024174a660554547a3533f3844ab31649b258bb"
+    },
+    {
+      "capture": "03-live-request.png",
+      "label": "Real hosted Apertus",
+      "narration": "Ask Apertus sends only this explicit public question to Apertus version 1.5, eight billion, on Public AI. Visitors need no model download. My Mac is not the server.",
+      "start_seconds": 16.708,
+      "duration_seconds": 10.916667,
+      "capture_sha256": "1b9f551889d5808541e04599fca999f02c7251b175a92e2a8d5431ecf7f9f740"
+    },
+    {
+      "capture": "04-live-answer.png",
+      "label": "Source-backed live explanation",
+      "narration": "Apertus explains the proposed pension supplement using five reviewed historical facts. Source buttons resolve from immutable references. Fresh answers remain AI generated and are not human reviewed.",
+      "start_seconds": 27.625,
+      "duration_seconds": 11.666667,
+      "capture_sha256": "98cb87e2b3b24fad916375687fbe9a55d591acd02cdf7eb59300c9a152f97613"
+    },
+    {
+      "capture": "05-source.png",
+      "label": "Original evidence and dates",
+      "narration": "Here are the original German passages, government attribution, booklet pages and dates. The historical explanation uses evidence available before the March 2024 vote.",
+      "start_seconds": 39.292,
+      "duration_seconds": 11.041667,
+      "capture_sha256": "781346cb419b98e8cf7d1d96089e5ab074bb20658acd527dc1cfbc93ca52fe53"
+    },
+    {
+      "capture": "06-withheld.png",
+      "label": "Honest withholding",
+      "narration": "The separate check uses the same model and can still fail. When a candidate does not pass, the app withholds it. It gives no voting recommendation.",
+      "start_seconds": 50.333,
+      "duration_seconds": 8.541667,
+      "capture_sha256": "f2c41cc8e7d3c3a1fa6d0dee76e05f1f7127d322bdb97b4c7b2a7ebe99fccbe4"
+    },
+    {
+      "capture": "07-updates.png",
+      "label": "What happened later",
+      "narration": "Updates are separate from that historical frame. This dated official implementation update is publisher information, not a generated claim about current law.",
+      "start_seconds": 58.875,
+      "duration_seconds": 8.833333,
+      "capture_sha256": "be01d33cb45aa66f9876c6f5caebb092c5b892e869634c4973817c3ce3d2d7d3"
+    },
+    {
+      "capture": "08-related.png",
+      "label": "Follow the next decision",
+      "narration": "Related votes connects the pension initiative to the distinct financing proposal, with an official relationship source.",
+      "start_seconds": 67.708,
+      "duration_seconds": 6.5,
+      "capture_sha256": "a425cdcf9bae447c0ff5b6a4e9c8c2e5bc166e2de8acf645d6f13ed40dade7c3"
+    },
+    {
+      "capture": "09-perspectives.png",
+      "label": "Understand different situations",
+      "narration": "Perspectives separates a worker, a pension recipient, other people and Switzerland. Financing uncertainty stays visible. Unknown personal cost does not mean zero.",
+      "start_seconds": 74.208,
+      "duration_seconds": 9.875,
+      "capture_sha256": "01bb9c23a19f39e47764df733d9648fcbe8d62a7069a2b3b324c6a0b35fb45a4"
+    },
+    {
+      "capture": "10-private.png",
+      "label": "Private reflection",
+      "narration": "This is a synthetic demonstration note. Choices and notes stay on the device. An optional passphrase encrypts saved records; reload locks them, and unlocking restores them.",
+      "start_seconds": 84.083,
+      "duration_seconds": 10.125,
+      "capture_sha256": "ad3c9c3532dd759dc249983a189ca47ce126187ee0aa8c83b1dff3307aafa40b"
+    },
+    {
+      "capture": "11-hosting.png",
+      "label": "Free with disclosed limits",
+      "narration": "The hosted demo uses finite starter credit, with a hard shared allowance and a seven day credential. Global Cloudflare hosting is clearly distinguished from Swiss sovereign deployment.",
+      "start_seconds": 94.208,
+      "duration_seconds": 10.083333,
+      "capture_sha256": "524d246f43422bd186d69d140df07b3a97632a5bb087fa320e9e30b83e6461ae"
+    },
+    {
+      "capture": "12-local.png",
+      "label": "An optional local route",
+      "narration": "Apple Silicon users can instead install the pinned Apertus model and run inference locally without an API key. One reviewed AHV case works today; broader accuracy remains unproven.",
+      "start_seconds": 104.292,
+      "duration_seconds": 10.791667,
+      "capture_sha256": "01bd70dd61e84f32eb221caa3c2ca62e3e8acde509eccd53cad99b42385ad6c6"
+    }
+  ]
+}

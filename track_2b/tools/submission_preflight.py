@@ -13,8 +13,8 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def inspect():
     report = ROOT / 'track_2b/StimmFolgen_Report.pdf'
-    video = ROOT / 'track_2b/demo/StimmFolgen_Tracker_Demo.mp4'
-    metadata = json.loads((ROOT / 'track_2b/demo/tracker-metadata.json').read_text())
+    video = ROOT / 'track_2b/demo/StimmFolgen_Live_Demo.mp4'
+    metadata = json.loads((ROOT / 'track_2b/demo/StimmFolgen_Live_Demo-metadata.json').read_text())
     media = json.loads(subprocess.check_output(['ffprobe', '-v', 'error', '-show_entries',
         'format=duration,size:stream=codec_name,width,height', '-of', 'json', str(video)], text=True))
     pages = len(pymupdf.open(report))
@@ -38,8 +38,10 @@ def inspect():
             'report_sha256': hashlib.sha256(report.read_bytes()).hexdigest(),
             'new_inference_performed': False,
             'submission_status': 'NOT_SUBMITTED',
+            'video_scope': 'ACTUAL_HOSTED_CAPTURES_EDITED_WITH_SYNTHETIC_NARRATION',
+            'media_content_currentness': 'LIVE_WALKTHROUGH_PREPARED_PENDING_FINAL_REVIEW',
             'remaining_owner_gates': ['reviewed default-main integration',
-                'approved publicly accessible video URL', 'accurate identity/team/eligibility fields',
+                'approved publicly accessible video URL', 'verify privately supplied identity/team/eligibility fields in final form',
                 'source material rights and actual terms acceptance'],
             'secret_scan_scope': 'tracked path scan only; no claim of exhaustive secret detection'}
 

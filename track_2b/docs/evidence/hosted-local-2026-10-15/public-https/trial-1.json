@@ -1,0 +1,27 @@
+{
+  "evidence_class": "ACTUAL_PUBLIC_HTTPS_INFERENCE_NOT_PHYSICAL_PHONE",
+  "url": "https://stimmfolgen-demo.stimmfolgen-hosted.workers.dev",
+  "question": "Who made the taxes or spending-cuts argument?",
+  "http_status": 200,
+  "elapsed_seconds": 7.306,
+  "response": {
+    "outcome": "WITHHELD",
+    "claims": [],
+    "unknowns": [],
+    "live_inference_performed_for_this_request": true,
+    "human_reviewed": false,
+    "publication_state": "LIVE_AI_UNREVIEWED",
+    "as_of": "2024-03-02T23:59:59+01:00",
+    "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+    "model": "swiss-ai/apertus-v1.5-8b",
+    "contract": "live-ahv-reviewed-facts-v5",
+    "provider": "PUBLIC_AI",
+    "hosting": "CLOUDFLARE_GLOBAL_NOT_SWISS_SOVEREIGN",
+    "model_identity_basis": "PROVIDER_REPORTED_NOT_WEIGHT_ATTESTED",
+    "semantic_check": "SEPARATE_PASS_SAME_MODEL_NOT_INDEPENDENT_REVIEW",
+    "error": "The answer did not pass the separate meaning check. Read the reviewed explanation or try a narrower question.",
+    "latency_seconds": 7.03,
+    "answered_at": "2026-10-15T13:19:18.011Z",
+    "receipt": "896cbe297b7210fb778684477697d32127734c38919c98eb93c1dffee6f361e2"
+  }
+}

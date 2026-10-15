@@ -1,0 +1,6 @@
+{"selected":"swiss-ai/apertus-v1.5-70b","pricing":{"input":0.82,"output":2.92}}
+{"trial":1,"latency_seconds":28.958,"outcome":"ERROR","error":"Provider unavailable"}
+{"trial":2,"latency_seconds":26.223,"outcome":"ERROR","error":"Provider unavailable"}
+{"trial":3,"latency_seconds":25.381,"outcome":"ERROR","error":"Provider unavailable"}
+{"trial":4,"latency_seconds":25.751,"outcome":"ERROR","error":"Provider unavailable"}
+{"trial":5,"latency_seconds":26.897,"outcome":"ERROR","error":"Provider unavailable"}

@@ -8,7 +8,26 @@ Hack Apertus 2026 · Track 2B · On-premise prototype. My votes, Upcoming votes 
 
 [Actual mobile view](track_2b/docs/evidence/tracker-v2-2026-10-14/mobile-final.png). Screenshots show synthetic tracking, not the owner’s political choices.
 
-## Run it
+## Try live Apertus - no download
+
+[Open StimmFolgen](https://stimmfolgen-demo.stimmfolgen-hosted.workers.dev/). Search AHV, track it, and ask a public question. Real Public AI Apertus v1.5 8B completions are checked in a separate pass and linked to immutable reviewed source spans. Live answers remain AI-generated and unreviewed. Other catalogue votes have official references but no reviewed AI explanation.
+
+This is a **finite free demo**: 200 shared questions total, at most 80/day, with a seven-day API credential. No payment method, paid plan or automatic top-up was added. Cloudflare hosts the site globally; questions go to Public AI. This demonstration is **not Swiss-sovereign hosting**. The Mac is never exposed to visitors. [Proof, failures and limits](track_2b/docs/evidence/hosted-local-2026-10-15/REVIEW.md).
+
+[Watch the 115-second live walkthrough](https://stimmfolgen-demo.stimmfolgen-hosted.workers.dev/demo) - edited actual public-app captures, synthetic narration and synthetic demonstration notes.
+
+## Run local Apertus on your own Mac
+
+Tested on Apple Silicon M3 Pro, 18 GiB. Python 3.11+, at least 8 GiB free disk. Setup downloads a pinned approximately 4.6 GB model and runtime; no API key is needed.
+
+```sh
+make local-download
+make local-run
+```
+
+Already have the pinned model in `.local/models/apertus-v1.5-8b-mlx-4bit`? Use `make local-setup` instead of `make local-download`. The launcher binds both services to loopback, verifies weights and source, and stops only its own processes. Use `APP_PORT=8783` if 8770 is occupied. [Local instructions and exact evidence](track_2b/docs/JUDGE_RUN.md).
+
+## Run the reviewed Docker case
 
 With Docker and make installed, from a clean checkout:
 
@@ -30,12 +49,14 @@ Open http://127.0.0.1:8770. Use `make run PORT=8772` if that port is occupied. T
 
 Actual local Apertus v1.5 8B inference selected immutable source spans, extracted candidate values and identified attribution. Independent controls and five accepted source statements produced the published AHV explanation. Seven bounded trials passed using eight real model completions. Earlier failures are retained.
 
-The web app serves **reviewed recorded results**; clicking Explore does not perform new inference. P03 is reviewed reference context, not an extraction from the final trial. The other four selected proposals have official references but no reviewed Apertus explanation. Catalogue search, update metadata and encryption are application functions.
+The overview serves **reviewed recorded results**. On configured installations, Ask Apertus performs a real API request using only the explicit public question and reviewed AHV evidence; it never attaches private choices or notes. Default Docker publication works without an LLM endpoint. P03 is reviewed reference context, not an extraction from the final trial. The other four selected proposals have official references but no reviewed Apertus explanation. Catalogue search, update metadata and encryption are application functions.
 
 ```text
 Official booklet -> immutable spans -> local Apertus candidates
                  -> independent checks + human review -> reviewed public case
-Browser -> Docker publication API -> explanation, citations and updates
+Browser -> reviewed publication API -> explanation, citations and updates
+Explicit public question -> local or hosted Apertus -> separate same-model check
+                        -> unreviewed answer with immutable source references
 Browser-only choices/notes -> optional encrypted vault and encrypted backup
 ```
 
@@ -52,7 +73,7 @@ node track_2b/tests/test_private_vault.mjs
 Python tests require PyMuPDF 1.28.2; vault tests require Node 22+. Docker `make check` uses its pinned environment. The synthetic blueprint validator is separate from real-model evidence.
 
 - [Current technical report](track_2b/StimmFolgen_Report.pdf) · [editable source](track_2b/technical_report.md)
-- [Current 98-second demo](track_2b/demo/StimmFolgen_Tracker_Demo.mp4) · [transcript](track_2b/demo/TRACKER_DEMO.md) · [captions](track_2b/demo/StimmFolgen_Tracker_Demo.srt)
+- [Historical 98-second reviewed-case demo](track_2b/demo/StimmFolgen_Tracker_Demo.mp4) · [transcript](track_2b/demo/TRACKER_DEMO.md) · [captions](track_2b/demo/StimmFolgen_Tracker_Demo.srt)
 - [Submission preparation and remaining owner actions](track_2b/docs/SUBMISSION_READINESS.md)
 - [Exact judge run](track_2b/docs/JUDGE_RUN.md) · [API contract](track_2b/docs/APP_CONTRACT.md)
 - [Real Apertus release evidence](track_2b/docs/evidence/APP_RELEASE_2026-10-14.md) · [tracker evidence](track_2b/docs/evidence/tracker-v2-2026-10-14/REVIEW.md)
@@ -65,8 +86,8 @@ One reviewed historical AHV development case; five selected proposals, not a com
 
 The required submission is through the organisers' website, not Devpost. A prepared video/PDF or passing CI does not mean the project has been submitted. The older reader demo and evidence remain historical artifacts.
 
-## Live Apertus continuation (15 October 2026)
+## Live evidence and limits (15 October 2026)
 
-A real browser → backend → local Apertus v1.5 answer with source references is now observed. It is **local development proof**, not a public service. Fresh answers are AI-generated, not human reviewed. The live development set still withholds several refusals and is not fully accepted. [Live evidence](track_2b/docs/evidence/live-apertus-2026-10-15/REVIEW.md) records all 20 development trials and limits.
+[Current hosted/local delivery proof](track_2b/docs/evidence/hosted-local-2026-10-15/REVIEW.md) records actual public inference with the local model/app stopped, the responsive browser journey, fresh native runtime setup and retained failures. The five-question direct v5 diagnostic has one supported answer, one abstention and three withheld results. Live semantic quality is experimental; this does not expand the human-reviewed Gate to arbitrary questions.
 
-The owner’s Mac remains private. Hosting must cost neither the owner nor visitors; no paid service was activated. [Hosting options and boundaries](track_2b/docs/LIVE_HOSTING.md) distinguish free consumer chat, finite API credits, sponsored infrastructure and optional paid Swiss deployment. The existing report/video describe the reviewed tracker; they do not demonstrate a hosted live service.
+[Earlier local development evidence](track_2b/docs/evidence/live-apertus-2026-10-15/REVIEW.md) preserves all 20 local trials. The Mac remains private. [Hosting boundaries](track_2b/docs/LIVE_HOSTING.md) distinguish this finite global demo from optional local and paid Swiss routes. The current five-page report and 115-second live walkthrough describe the deployed service; no organiser submission or main merge is implied.

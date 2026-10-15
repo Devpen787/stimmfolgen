@@ -1,0 +1,118 @@
+{
+  "evidence_class": "ACTUAL_PUBLIC_HTTPS_INFERENCE_NOT_PHYSICAL_PHONE",
+  "url": "https://stimmfolgen-demo.stimmfolgen-hosted.workers.dev",
+  "question": "What would the initiative change for someone who receives an AHV old-age pension?",
+  "http_status": 200,
+  "elapsed_seconds": 4.281,
+  "response": {
+    "outcome": "SUPPORTED",
+    "claims": [
+      {
+        "text": "The initiative would provide AHV old-age pension recipients with an additional annual payment equal to one twelfth of their annual pension, effectively adding a 13th pension payment each year.",
+        "fact_ids": [
+          "P01"
+        ],
+        "citations": [
+          {
+            "actor": "GOVERNMENT",
+            "block_number": 3,
+            "end": 1135,
+            "identity_sha256": "8ac6e0fa1c5a02a4f80f63456def56c302035a592e272578457ba7e303651948",
+            "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=9",
+            "pdf_page": 9,
+            "span_id": "sp-8ac6e0fa1c5a02a4f80f",
+            "start": 1027,
+            "text": "Die Initiative fordert, dass die monatliche Rente nicht nur 12 Mal, sondern 13 Mal pro Jahr ausbezahlt wird.",
+            "text_sha256": "d34cf1a2af61f1828459fb696b1a808b5ccd237470082a64c77d2b0061f96b66"
+          },
+          {
+            "actor": "GOVERNMENT",
+            "block_number": 4,
+            "end": 720,
+            "identity_sha256": "df2d2f588ab3cde53e29b712a21f38c42c2ea8be568d2497ed58da89dea0f70c",
+            "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=4",
+            "pdf_page": 4,
+            "span_id": "sp-df2d2f588ab3cde53e29",
+            "start": 661,
+            "text": "Zu den 12 Monatsrenten käme jedes Jahr eine 13. Rente dazu.",
+            "text_sha256": "bc048891774a398e49844ccdef2bd02928c1dbb850e6c53f8c6627e794874bc8"
+          }
+        ],
+        "evidence_kinds": [
+          "DIRECT_PROVISION"
+        ]
+      },
+      {
+        "text": "The government estimated that implementing this initiative would increase AHV spending by approximately CHF 4.1 billion per year, with costs rising to around CHF 5 billion five years after introduction.",
+        "fact_ids": [
+          "P02",
+          "P03"
+        ],
+        "citations": [
+          {
+            "actor": "GOVERNMENT",
+            "block_number": 2,
+            "end": 672,
+            "identity_sha256": "f2d89f437b4fb79c22167caf74655564fe87a459f72e4f1995d6da1fc719e2f0",
+            "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11",
+            "pdf_page": 11,
+            "span_id": "sp-f2d89f437b4fb79c2216",
+            "start": 566,
+            "text": "Die 13. AHV-Rente würde bei der Einführung voraussichtlich etwa 4,1 Milliarden Franken zusätzlich kosten.2",
+            "text_sha256": "c3c9beecb067abe982749da32b306137228037e87db62aae3573bf2a768f55c3"
+          },
+          {
+            "actor": "GOVERNMENT",
+            "block_number": 4,
+            "end": 1179,
+            "identity_sha256": "9acf2ebeaa24c5dacbab8d3529791492147871467515527cac8b08cb2bf0c802",
+            "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=4",
+            "pdf_page": 4,
+            "span_id": "sp-9acf2ebeaa24c5dacbab",
+            "start": 986,
+            "text": "Durch diese Erhöhung würden die Kosten für die 13. AHV- Rente bei der Einführung voraussichtlich etwa 4,1 Milliarden Franken betragen; davon müsste der Bund rund 800 Millionen Franken bezahlen.",
+            "text_sha256": "b4d63038683014b09f8677ac2f3caff1541db22bd0ae8be20ae7067717f04c09"
+          },
+          {
+            "actor": "GOVERNMENT",
+            "block_number": 2,
+            "end": 965,
+            "identity_sha256": "2275e83fa97bea1e8eee821b3a0e4f4008d67601ccb4368b8d84f19aceb1be19",
+            "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11",
+            "pdf_page": 11,
+            "span_id": "sp-2275e83fa97bea1e8eee",
+            "start": 869,
+            "text": "Fünf Jahre nach Einführung würden die Kosten voraussichtlich rund 5 Milliarden Franken betragen.",
+            "text_sha256": "67afcf5a0024f29bfbc7a58c2a6bd3b21a5da54e3158a58369cd5de2c6360951"
+          }
+        ],
+        "evidence_kinds": [
+          "COST_PROJECTION"
+        ]
+      }
+    ],
+    "unknowns": [],
+    "live_inference_performed_for_this_request": true,
+    "human_reviewed": false,
+    "publication_state": "LIVE_AI_UNREVIEWED",
+    "as_of": "2024-03-02T23:59:59+01:00",
+    "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+    "model": "swiss-ai/apertus-v1.5-8b",
+    "contract": "live-ahv-reviewed-facts-v5",
+    "provider": "PUBLIC_AI",
+    "hosting": "CLOUDFLARE_GLOBAL_NOT_SWISS_SOVEREIGN",
+    "model_identity_basis": "PROVIDER_REPORTED_NOT_WEIGHT_ATTESTED",
+    "semantic_check": "SEPARATE_PASS_SAME_MODEL_NOT_INDEPENDENT_REVIEW",
+    "checks": {
+      "entailed": true,
+      "actor_correct": true,
+      "time_correct": true,
+      "uncertainty_preserved": true,
+      "no_advice": true,
+      "answers_question": true
+    },
+    "latency_seconds": 3.96,
+    "answered_at": "2026-10-15T13:23:23.822Z",
+    "receipt": "722ccdea1aba32f9d22b6c65e3be98637151517848155776703db656de194456"
+  }
+}

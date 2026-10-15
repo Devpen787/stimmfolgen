@@ -8,3 +8,8 @@ node_modules
 
 track_2b/demo
 track_2b/*_Report.pdf
+
+**/node_modules
+**/.wrangler
+**/.local
+**/.dev.vars*

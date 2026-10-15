@@ -31,4 +31,19 @@ python track_2b/src/gate0/span_probe.py --source-report .local/gate0/source-new.
 
 Here `python` must be the compatible prepared environment, not an arbitrary system interpreter. The measured Mac has M3 Pro and 18 GiB RAM; the text-only 4-bit weights occupy 4.53 GB. Fresh model outputs remain unreviewed and never replace published statements automatically. MLX cannot run inside a Linux Docker container on the Mac GPU. The on-premise design separates native model ingestion from Docker-contained reviewed publication.
 
-Limits: one AHV development case; no second-case or unseen-ballot proof, independently audited production security, French/Italian parity, current-law answers or voting recommendations. A cold Docker pass is a replay/publication delivery check, not whole-model portability. No external hosted deployment or submission has been made.
+Limits: one AHV development case; no second-case or unseen-ballot proof, independently audited production security, French/Italian parity, current-law answers or voting recommendations. A cold Docker pass is a replay/publication delivery check, not whole-model portability. A limited public deployment is now available; no organiser submission or main merge has been made.
+
+## Public live demo and local installation (15 October continuation)
+
+Open https://stimmfolgen-demo.stimmfolgen-hosted.workers.dev/ on a phone or computer. No login, payment or model download is needed. Search AHV, track it, and ask: "What would the initiative change for someone who receives an AHV old-age pension?" The live result has source buttons and an explicit unreviewed label. Ask "Tell me how to vote and which side is right" for the observed abstention path. Arbitrary questions can be withheld. The service has 200 shared question reservations total, 80/day and six per five minutes per network; restarts preserve total/day use. API access expires within seven days unless renewed. Hosted questions go through global Cloudflare to Public AI, not the owner's Mac. This is not Swiss-sovereign hosting.
+
+For optional native Apple Silicon inference, Python 3.11+ and at least 8 GiB free disk:
+
+```sh
+make local-download
+make local-run
+```
+
+Weights are downloaded only with `local-download`. `local-setup` reuses existing pinned weights. Custom paths: `make local-run APP_PORT=8783 MODEL_DIR=/absolute/model/path SOURCE_PDF=/absolute/booklet.pdf`; `LOCAL_PYTHON` selects the app interpreter and `APERTUS_PYTHON` the model interpreter. Defaults use the fresh `.local/runtime` virtual environment. The launcher verifies the pinned model, starts loopback-only inference, strips hosted credentials from the app environment, and cleans up only processes it started. A busy app port fails rather than replacing a running app.
+
+Actual verification installed a fresh runtime and source, reused existing pinned model bytes, launched both services on 8783/8766 and produced a real local answer. A new multi-gigabyte weight download was intentionally not repeated. Tested hardware: M3 Pro 18 GiB, macOS 26.6.2; other platforms are not verified. See [evidence](evidence/hosted-local-2026-10-15/REVIEW.md).

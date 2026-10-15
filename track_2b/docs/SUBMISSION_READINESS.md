@@ -58,3 +58,11 @@ The committed MP4 is publicly downloadable without login (HTTP 200, 2,241,906 by
 ## Voiceover preference confirmed 15 October
 
 The participant is unavailable to record. The existing local synthetic narration is a reviewable option; a participant recording is not a required input. StimmFolgen_Tracker_Silent.mp4 is 98.042 seconds, H.264 1280x720 with no audio stream. RECORD_YOUR_VOICE.md contains timed guidance; VOICEOVER_SCRIPT.txt contains narration only. The synthetic-voice video is available for final review. If selected, it already has verified duration and captions; no participant recording or new voiceover mix is necessary. Final video approval/watch-link choice remains pending. Participant identity/email/solo-team details are kept in ignored local storage, not this repository.
+
+## 15 October live-service continuation
+
+Public live Apertus is deployed and independently reachable at https://stimmfolgen-demo.stimmfolgen-hosted.workers.dev/ . Full agent-operated responsive browser journey and optional fresh local-runtime inference are recorded in [current evidence](evidence/hosted-local-2026-10-15/REVIEW.md). This is a bounded finite-credit global demo, not Swiss-sovereign or permanently free hosting. Current technical report is updated; the earlier video still needs live footage. No organiser submission/main merge/terms acceptance. Participant identity/team/eligibility have been supplied privately; no need to ask for them again.
+
+## Current video - 15 October hosted continuation
+
+The new `demo/StimmFolgen_Live_Demo.mp4` is 115.09 seconds, H.264/AAC, 1280x720, composed from actual public-app captures with local synthetic narration. It includes a genuine live response and honest withheld candidate. Captions, script, original captures and hash manifest are committed alongside it. Public watch page: https://stimmfolgen-demo.stimmfolgen-hosted.workers.dev/demo . The old 98-second video remains historical. Final review/terms and main integration remain separate.

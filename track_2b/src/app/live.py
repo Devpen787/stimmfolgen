@@ -12,7 +12,7 @@ from local_model import inspect
 from model_probe import run_inference
 from source_probe import build_report
 
-CONTRACT = 'live-ahv-reviewed-facts-v4'
+CONTRACT = 'live-ahv-reviewed-facts-v5'
 
 
 def validate_candidate(answer, case):
@@ -70,7 +70,7 @@ def review_prompt(case, question, candidate):
 Independently assess each statement, including unknowns, the outcome, and whether it answers the question.
 Reject if ANY unsupported detail, invented quote, incorrect speaker, voting recommendation, personal charge, later knowledge,
 projection presented as fact, omitted financing uncertainty, or false presupposition accepted. A cost estimate is not a definite payment.
-Every factual sentence must be entailed by its listed fact IDs. Facts remain historical, before 3 March 2024.
+Each claim must be entailed by its listed fact IDs. Unknowns are explanations of evidence gaps and need no fact IDs; check them against the whole evidence. An empty claims list is valid for an abstention. Do not fail actor_correct solely because an answer contains no attributed claim; fail it for an incorrect attribution. Do not confuse absence from this evidence with proof something never happened. Facts remain historical, before 3 March 2024.
 Return ONLY JSON with exactly these boolean fields: entailed, actor_correct, time_correct, uncertainty_preserved, no_advice, answers_question. Each value is true ONLY if that specific check passes. Unknowns can correctly explain why the question cannot be answered; that counts as answering the question. No evidence about a later event is not evidence the event did not happen.
 Do not rewrite the candidate. Evidence: ''' + json.dumps(fact_context(case), ensure_ascii=False) + '\nQuestion=' + json.dumps(question, ensure_ascii=False) + '\nCandidate=' + json.dumps(candidate, ensure_ascii=False)
 

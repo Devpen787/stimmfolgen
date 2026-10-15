@@ -36,6 +36,7 @@ function showApertus() {
   el('p',liveStatus.configured?'Live service: '+liveStatus.model+' · '+liveStatus.provider+'. No model download is needed in your browser.':'Live Apertus is not configured on this installation. The reviewed explanation remains available.'),
   el('p','Fresh answers are AI-generated and are not human reviewed. A separate pass by the same model checks meaning; it can still make mistakes. Original source text and dates remain available.'),
   el('p','Your choices and notes are not part of public analysis requests. On-device encryption, not the model, protects saved private data.'),
+  link('Run Apertus locally on your own computer','/local.html'),
   el('p','Other catalogue entries have official source references, but do not yet have reviewed Apertus analysis.','plain-note')]);
 }
 function sourceStatement(id) {
@@ -91,13 +92,14 @@ function renderLive(container) {
   el('p','Historical AHV booklet only · before 3 March 2024. For later events, see Updates.','plain-note'));
  if(!liveStatus.configured){box.append(el('p','Live Apertus is unavailable on this installation. You can still explore the reviewed explanation and sources.','plain-note'));container.append(box);return;}
  box.append(el('p',liveStatus.model+' · '+liveStatus.provider+' · no download required','source-date'));
+ if(liveStatus.limited_free_demo){box.append(el('p','Limited free demo · global hosting, not Swiss-sovereign.','plain-note'));const service=el('details');service.append(el('summary','Free allowance & privacy'),el('p','Up to 200 questions shared by all visitors, at most 80 per day. Access expires within seven days unless renewed. The website runs on Cloudflare globally and sends public questions to Public AI. Private choices and notes stay on this device.'),link('Prefer fully local Apertus?','/local.html'));box.append(service);}
  const form=el('form'),label=el('label','What would you like to understand?'),input=el('textarea');input.id='public-question';label.htmlFor=input.id;input.maxLength=700;input.required=true;input.minLength=3;input.value=liveQuestion;input.placeholder='For example: what remained unknown about financing?';input.rows=3;input.disabled=livePending;
  const privacy=el('p','This question goes to the Apertus service. Do not include names, salary or private notes. Your saved votes and notes are never attached.','plain-note');privacy.id='question-privacy';input.setAttribute('aria-describedby',privacy.id);
  const send=el('button',livePending?'Apertus is reading and checking…':'Ask Apertus','primary');send.type='submit';send.disabled=livePending;
  const output=el('div',undefined,'live-result');output.setAttribute('role','status');output.setAttribute('aria-live','polite');
  function draw(){output.replaceChildren();if(livePending){output.append(el('p','Reading the historical evidence, then checking the answer. This can take about a minute.'));return;}if(!liveResult)return;
   if(liveResult.error)output.append(el('p',liveResult.error,'unknown'));
-  if(liveResult.live_inference_performed_for_this_request)output.append(el('p','Fresh Apertus answer · '+date(liveResult.answered_at)+' · '+liveResult.latency_seconds+' seconds','source-date'));
+  if(liveResult.live_inference_performed_for_this_request)output.append(el('p',(liveResult.outcome==='WITHHELD'?'Apertus response withheld · ':'Fresh Apertus answer · ')+date(liveResult.answered_at)+' · '+liveResult.latency_seconds+' seconds','source-date'));
   if(liveResult.outcome==='INSUFFICIENT_EVIDENCE')output.append(el('h3','The evidence does not establish a complete answer'));
   for(const claim of liveResult.claims||[]){const section=el('section',undefined,'analysis-row');section.append(el('p',claim.text));for(const id of claim.fact_ids)section.append(button('Source and dates · '+card(id).title,()=>sourceStatement(id)));output.append(section);}
   for(const unknown of liveResult.unknowns||[])output.append(el('p',unknown,'unknown'));
