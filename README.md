@@ -14,7 +14,7 @@ Hack Apertus 2026 · Track 2B · On-premise prototype. My votes, Upcoming votes 
 
 This is a **finite free demo**: 200 shared questions total, at most 80/day, with a seven-day API credential. No payment method, paid plan or automatic top-up was added. Cloudflare hosts the site globally; questions go to Public AI. This demonstration is **not Swiss-sovereign hosting**. The Mac is never exposed to visitors. [Proof, failures and limits](track_2b/docs/evidence/hosted-local-2026-10-15/REVIEW.md).
 
-[Watch the 115-second live walkthrough](https://stimmfolgen-demo.stimmfolgen-hosted.workers.dev/demo) - edited actual public-app captures, synthetic narration and synthetic demonstration notes.
+[Watch the 119.5-second participant-audio revision](https://stimmfolgen-demo.stimmfolgen-hosted.workers.dev/demo) - existing actual app captures with recorded participant audio and synthetic demonstration notes. This voice-only update was published after the 16 October noon CEST deadline; organiser acceptance is not established. The page links the unchanged original submitted 115-second synthetic-narration cut.
 
 ## Run local Apertus on your own Mac
 

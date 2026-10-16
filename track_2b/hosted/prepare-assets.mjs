@@ -10,5 +10,7 @@ await mkdir(target,{recursive:true});await cp(new URL('../web/',import.meta.url)
 await writeFile(new URL('demo.mp4',target),video);
 await copyFile(new URL('./demo.html',import.meta.url),new URL('demo.html',target));
 const srt=await readFile(new URL('StimmFolgen_Live_Demo.srt',demo),'utf8');
-await writeFile(new URL('demo.vtt',target),'WEBVTT\n\n'+srt.replace(/(\d{2}:\d{2}:\d{2}),(\d{3})/g,'$1.$2'));
+const vtt='WEBVTT\n\n'+srt.replace(/(\d{2}:\d{2}:\d{2}),(\d{3})/g,'$1.$2');
+if(metadata.original_submitted_video){const original=await readFile(new URL(metadata.original_submitted_video.file,demo));if(createHash('sha256').update(original).digest('hex')!==metadata.original_submitted_video.sha256)throw Error('Original submitted cut hash differs');await writeFile(new URL('demo-submitted.mp4',target),original);await writeFile(new URL('demo-submitted.vtt',target),vtt);}
+if(metadata.captions_verified!==false)await writeFile(new URL('demo.vtt',target),vtt);
 console.log('Prepared public website and hash-verified '+metadata.duration_seconds.toFixed(2)+'s demo. No credentials copied.');
