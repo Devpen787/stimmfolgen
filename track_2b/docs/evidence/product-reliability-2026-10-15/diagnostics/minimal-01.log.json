@@ -1,4 +1,0 @@
-{
-  "original_sha256": "e13e40765818f890a9cb2d310e82b931ff784722ff45c585758be753ab35005e",
-  "text": "{\"q\":\"What are the economic effects of the fireworks initiative?\",\"result\":{\"kind\":\"OUTSIDE_EVIDENCE\",\"fact_ids\":[]}}\n{\"q\":\"What happened after the vote in 2026?\",\"result\":{\"kind\":\"OUTSIDE_EVIDENCE\",\"fact_ids\":[]}}\n{\"q\":\"Did the initiative committee say taxes must rise or spending must be cut?\",\"result\":{\"kind\":\"EVIDENCE\",\"fact_ids\":[\"P05\"]}}\n{\"q\":\"How much more would an employee definitely pay each year in CHF?\",\"result\":{\"kind\":\"EVIDENCE\",\"fact_ids\":[\"P02\"]}}\n{\"q\":\"What changes for pension recipients?\",\"result\":{\"kind\":\"EVIDENCE\",\"fact_ids\":[\"P01\"]}}\n"
-}

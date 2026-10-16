@@ -1,4 +1,0 @@
-{
-  "original_sha256": "3e79800c52e85c76d91d8f24e6fa02825a191b4b81621568f32a3aa09b68a6c2",
-  "text": "benefit 200 EVIDENCE_MATCH ['P01', 'P02', 'P03'] False\npersonal_cost 200 EVIDENCE_MATCH ['P02', 'P03'] False\nfalse_actor 200 EVIDENCE_MATCH ['P01', 'P02', 'P03', 'P04', 'P05'] False\nvote_advice 200 INSUFFICIENT_EVIDENCE [] True\nlater_outcome 200 INSUFFICIENT_EVIDENCE [] True\nintro_cost 200 EVIDENCE_MATCH ['P02'] True\nfive_year_cost 200 EVIDENCE_MATCH ['P03'] True\ncost_comparison 200 EVIDENCE_MATCH ['P02', 'P03'] True\nsource_actor 200 EVIDENCE_MATCH ['P05'] True\nzero_cost_presupposition 200 EVIDENCE_MATCH ['P04'] True\ngerman_benefit 200 EVIDENCE_MATCH ['P01', 'P02', 'P03'] False\ngerman_financing 200 EVIDENCE_MATCH ['P01', 'P02', 'P03', 'P04'] False\nout_of_case 200 EVIDENCE_MATCH ['P02', 'P03'] False\n"
-}

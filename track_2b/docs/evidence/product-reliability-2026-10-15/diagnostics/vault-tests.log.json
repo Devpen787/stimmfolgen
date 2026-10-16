@@ -1,4 +1,0 @@
-{
-  "original_sha256": "dc3fb42bc8f31805d2352d9f8fd767763aff7422330bd6a33009303ba7e672c7",
-  "text": "PASS: encrypted-only persistence, fresh nonces, wrong-password/tamper rejection, lock/reload boundary, concurrent saves, backup recovery and cancelled lock races.\n"
-}

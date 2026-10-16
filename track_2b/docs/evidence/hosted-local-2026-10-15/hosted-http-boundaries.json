@@ -1,1 +1,0 @@
-{"status": "PASS", "live_configured": true, "model": "swiss-ai/apertus-v1.5-8b", "evidence_class": "ACTUAL_HTTP_BOUNDARIES_NOT_INFERENCE", "origin": "https://stimmfolgen-demo.stimmfolgen-hosted.workers.dev"}

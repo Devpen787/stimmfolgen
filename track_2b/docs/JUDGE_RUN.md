@@ -21,7 +21,7 @@ make run ONPREM=1 APP_PORT=8784
 
 If you already have the pinned MLX directory, skip the download and pass its path to both setup and run using MODEL_DIR. Open http://127.0.0.1:8784/. The launcher verifies the model SHA and served identity, starts native MLX on literal loopback port 8768, builds the authenticated Docker app and binds it only to host loopback. It uses Docker Desktop's host bridge; Mac GPU inference is native, not inside Linux Docker. Ctrl-C stops only processes/containers owned by this launch. Occupied ports fail without stopping an existing service. There is no hosted fallback or API key.
 
-Setup/build require internet; this is on-premise, not an air-gap proof. The actual fresh-clone proof used a new Python environment and no-cache Docker app builds, reusing an APFS copy of already downloaded pinned model bytes. It was on the same Mac, not another physical device or a fresh remote model download. See [installation evidence](evidence/onprem-2026-10-15/REVIEW.md).
+Setup/build require internet; this is on-premise, not an air-gap proof. The actual fresh-clone proof used a new Python environment and no-cache Docker app builds, reusing an APFS copy of already downloaded pinned model bytes. It was on the same Mac, not another physical device or a fresh remote model download. See [installation evidence](evidence/local-hosted-verification/README.md).
 
 ## Hardware-free source replay
 
@@ -40,4 +40,4 @@ Original AHV Gate evidence remains under docs/evidence/gate0-release-2026-10-14.
 
 Use a public, non-personal question. Explore What it means, Source and dates, Updates, Related votes and Me/Others/Switzerland. Ask for a voting recommendation to observe a deliberate refusal. Track without recording a Yes/No choice. Test encrypted save, reload lock, incorrect passphrase, correct unlock, backup and recovery using synthetic data. Recovery replaces only that browser's vault; forgotten passphrases cannot be recovered. Ordinary screens contain source/uncertainty information; detailed engineering evidence is linked separately from About this demo.
 
-Video work is outside this continuation. No main merge, organiser submission or terms acceptance has occurred.
+The submitted snapshot is commit `9e1c60845c64bbe2b810a08be67fe39d47e96904`. This branch contains later cleanup and a disclosed post-deadline narration revision; the original submission files remain available. See the [evidence index](evidence/README.md) and [video provenance](../demo/README.md). Main has not been merged. This guide does not attest organiser acceptance of later changes.

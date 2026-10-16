@@ -37,12 +37,9 @@ def inspect():
             'video_sha256': digest, 'data_directory_bytes': data_bytes,
             'report_sha256': hashlib.sha256(report.read_bytes()).hexdigest(),
             'new_inference_performed': False,
-            'submission_status': 'NOT_SUBMITTED',
-            'video_scope': 'ACTUAL_HOSTED_CAPTURES_EDITED_WITH_SYNTHETIC_NARRATION',
-            'media_content_currentness': 'LIVE_WALKTHROUGH_PREPARED_PENDING_FINAL_REVIEW',
-            'remaining_owner_gates': ['reviewed default-main integration',
-                'approved publicly accessible video URL', 'verify privately supplied identity/team/eligibility fields in final form',
-                'source material rights and actual terms acceptance'],
+            'submission_status': 'NOT_VERIFIED_BY_THIS_TOOL',
+            'video_scope': 'See track_2b/demo/README.md and metadata for narration provenance',
+            'remaining_review_limits': ['source material rights', 'organiser acceptance of post-deadline changes'],
             'secret_scan_scope': 'tracked path scan only; no claim of exhaustive secret detection'}
 
 

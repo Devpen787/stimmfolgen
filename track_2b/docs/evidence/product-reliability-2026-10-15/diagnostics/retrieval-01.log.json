@@ -1,4 +1,0 @@
-{
-  "original_sha256": "97922b23b22a76e5cce2c5347a0e832416a6660a4627ede0eb45c58aa6e6f3bf",
-  "text": "{\"question\":\"Did the initiative committee say taxes must rise or spending must be cut?\",\"result\":{\"selected_fact_ids\":[\"P05\"],\"requested_information\":\"Whether the initiative committee stated that taxes must rise or spending must be cut as a result of the initiative.\"}}\n{\"question\":\"Who made the taxes or spending-cuts argument?\",\"result\":{\"selected_fact_ids\":[\"P05\"],\"requested_information\":\"The entity that made the argument about needing to increase taxes or cut spending to finance the initiative.\"}}\n"
-}

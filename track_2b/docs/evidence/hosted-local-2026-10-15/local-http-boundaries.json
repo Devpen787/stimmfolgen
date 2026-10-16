@@ -1,1 +1,0 @@
-{"status": "PASS", "live_configured": true, "model": "swiss-ai/Apertus-v1.5-8B", "evidence_class": "ACTUAL_HTTP_BOUNDARIES_NOT_INFERENCE", "origin": "http://127.0.0.1:8783"}

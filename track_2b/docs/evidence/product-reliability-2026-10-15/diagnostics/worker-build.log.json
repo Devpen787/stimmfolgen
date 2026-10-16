@@ -1,4 +1,0 @@
-{
-  "original_sha256": "635ff85dd66373c908e768a9e79f83091b75917c5c67271e3ef51a409fb8c8e4",
-  "text": "\n ⛅️ wrangler 4.151.0\n────────────────────\n✨ Read 26 files from the assets directory <REPO>/track_2b/hosted/.local/assets\nTotal Upload: 30.01 KiB / gzip: 9.99 KiB\nYour Worker has access to the following bindings:\nBinding                          Resource                  \nenv.DEMO_GATE (DemoGate)         Durable Object            \nenv.ASSETS                       Assets                    \nenv.LIVE_ENABLED (\"false\")       Environment Variable      \n\n--dry-run: exiting now.\n"
-}

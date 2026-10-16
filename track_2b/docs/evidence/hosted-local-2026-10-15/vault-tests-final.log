@@ -1,1 +1,0 @@
-PASS: encrypted-only persistence, fresh nonces, wrong-password/tamper rejection, lock/reload boundary, concurrent saves, backup recovery and cancelled lock races.
