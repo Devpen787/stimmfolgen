@@ -1,0 +1,60 @@
+{
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "byte_size": 759783,
+  "public_availability_verified": true,
+  "available_by_utc": "2024-01-11T12:11:17+00:00",
+  "exact_first_published_at": null,
+  "basis": "PRE_VOTE_ARCHIVED_OFFICIAL_PDF_BYTES",
+  "archive_timestamp_is_signed": false,
+  "capture_payload_sha1_base32": "2LBTYX6NDQ3A2M6J4YY24CSQQBORBQWU",
+  "original_url": "https://www.admin.ch/dam/gov/de/Dokumentation/Abstimmungen/Marz2024/marzo_DE.pdf.download.pdf/marzo_DE.pdf",
+  "archive_url": "https://web.archive.org/web/20240111121117id_/https://www.admin.ch/dam/gov/de/Dokumentation/Abstimmungen/Marz2024/marzo_DE.pdf.download.pdf/marzo_DE.pdf",
+  "referendum_date": "2024-03-03",
+  "observed_at_utc": "2026-10-12T12:43:55.620336+00:00",
+  "cdx_fields": [
+    "urlkey",
+    "timestamp",
+    "original",
+    "mimetype",
+    "statuscode",
+    "digest",
+    "length"
+  ],
+  "cdx_capture": [
+    "ch,admin)/dam/gov/de/dokumentation/abstimmungen/marz2024/marzo_de.pdf.download.pdf/marzo_de.pdf",
+    "20240111121117",
+    "https://www.admin.ch/dam/gov/de/Dokumentation/Abstimmungen/Marz2024/marzo_DE.pdf.download.pdf/marzo_DE.pdf",
+    "application/pdf",
+    "200",
+    "2LBTYX6NDQ3A2M6J4YY24CSQQBORBQWU",
+    "490657"
+  ],
+  "archive_replay_headers": {
+    "content-type": "application/pdf",
+    "content-length": "759783",
+    "x-archive-orig-content-length": "759783",
+    "x-archive-orig-date": "Thu, 11 Jan 2024 12:11:17 GMT",
+    "memento-datetime": "Thu, 11 Jan 2024 12:11:17 GMT",
+    "link": "<https://www.admin.ch/dam/gov/de/Dokumentation/Abstimmungen/Marz2024/marzo_DE.pdf.download.pdf/marzo_DE.pdf>; rel=\"original\", <https://web.archive.org/web/timemap/link/https://www.admin.ch/dam/gov/de/Dokumentation/Abstimmungen/Marz2024/marzo_DE.pdf.download.pdf/marzo_DE.pdf>; rel=\"timemap\"; type=\"application/link-format\", <https://web.archive.org/web/https://www.admin.ch/dam/gov/de/Dokumentation/Abstimmungen/Marz2024/marzo_DE.pdf.download.pdf/marzo_DE.pdf>; rel=\"timegate\"",
+    "x-archive-src": "archiveteam_urls_20240111121617_619e2814/urls_20240111121617_619e2814.1650286618.megawarc.warc.zst"
+  },
+  "publisher_page_url": "https://www.bsv.admin.ch/de/renteninitiative-ahv-2024",
+  "publisher_download_url": "https://www.bsv.admin.ch/dam/de/sd-web/3ulVVyBoZ99F/erlaeuterungen-20240303.pdf",
+  "publisher_attachment_date": "2024-01-11",
+  "publisher_anchor": {
+    "class": "download-item",
+    "aria-label": "Download Erläuterungen des Bundesrates - Volksabstimmung vom 3.3.2024. PDF, 759.78 kB, 11. Januar 2024",
+    "href": "https://www.bsv.admin.ch/dam/de/sd-web/3ulVVyBoZ99F/erlaeuterungen-20240303.pdf",
+    "download": "erlaeuterungen-20240303.pdf"
+  },
+  "publisher_page_observed_sha256": "9e7ed1ff28828040fd3aec012fabe2d8a33f0c8c28d08765494675425c7b1710",
+  "publisher_page_current_publication_date": "2024-03-26",
+  "publisher_page_not_claimed_pre_vote": true,
+  "editorial_cutoff": "2023-11-29",
+  "review_case_as_of": "2024-03-02T23:59:59+01:00",
+  "review_frame_admitted": true,
+  "editorial_cutoff_as_public_frame_admitted": false,
+  "historical_reports_and_spans_modified": false,
+  "human_semantic_reviewed": false,
+  "frontend_authorized": false
+}

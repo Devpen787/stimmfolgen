@@ -1,0 +1,11 @@
+{
+  "model": "default_model",
+  "temperature": 0,
+  "max_tokens": 32,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Rechne 2 + 2. Antworte nur mit der Zahl."
+    }
+  ]
+}

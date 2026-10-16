@@ -1,0 +1,1536 @@
+{
+  "current_reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+  "scope": "Current bounded oracle revalidation; original at-run verdicts are unchanged; no inference in this step",
+  "runs": {
+    "spans-v1": [
+      {
+        "trial_id": "actor_mixup",
+        "mechanical": {
+          "mechanical_pass": true,
+          "errors": [],
+          "checks": [],
+          "publication_state": "CANDIDATE_UNREVIEWED",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": false,
+          "errors": [
+            "required_proposition_missing",
+            "required_value_missing:BUDGET_TAX_OR_CUTS"
+          ],
+          "checks": [],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "WITHHELD"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "cost_projection",
+        "mechanical": {
+          "mechanical_pass": false,
+          "errors": [
+            "claim_0:invalid_typed_proposition",
+            "claim_1:invalid_typed_proposition"
+          ],
+          "checks": [
+            {
+              "valid": false,
+              "errors": [
+                "invalid_typed_proposition"
+              ],
+              "span_ids": [
+                "sp-f2d89f437b4fb79c2216",
+                "sp-041dd1d4ab0a263647a0"
+              ]
+            },
+            {
+              "valid": false,
+              "errors": [
+                "invalid_typed_proposition"
+              ],
+              "span_ids": [
+                "sp-bf43dc012a35bce8bbd2",
+                "sp-e0827b05bc8eb626bf5e"
+              ]
+            }
+          ],
+          "publication_state": "WITHHELD",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": false,
+          "errors": [
+            "claim_0:unsupported_meaning_value_kind_actor_or_span",
+            "claim_1:unsupported_meaning_value_kind_actor_or_span",
+            "required_value_missing:ADDITIONAL_ANNUAL_COST"
+          ],
+          "checks": [
+            {
+              "predicate": "ADDITIONAL_ANNUAL_COST",
+              "reference_match": false
+            },
+            {
+              "predicate": "FINANCING_SPECIFIED",
+              "reference_match": false
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "WITHHELD"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "direct_provision",
+        "mechanical": {
+          "mechanical_pass": false,
+          "errors": [
+            "claim_1:invalid_typed_proposition",
+            "claim_1:invalid_span_references"
+          ],
+          "checks": [
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-24a1ba6f87a2c95d38b0"
+              ]
+            },
+            {
+              "valid": false,
+              "errors": [
+                "invalid_typed_proposition",
+                "invalid_span_references"
+              ],
+              "span_ids": []
+            }
+          ],
+          "publication_state": "WITHHELD",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": false,
+          "errors": [
+            "claim_0:unsupported_meaning_value_kind_actor_or_span",
+            "claim_1:unsupported_meaning_value_kind_actor_or_span",
+            "required_proposition_missing",
+            "required_value_missing:PAYMENT_FREQUENCY"
+          ],
+          "checks": [
+            {
+              "predicate": "ADDITIONAL_ANNUAL_COST",
+              "reference_match": false
+            },
+            {
+              "predicate": "FINANCING_SPECIFIED",
+              "reference_match": false
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "WITHHELD"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "fake_quote",
+        "mechanical": {
+          "mechanical_pass": true,
+          "errors": [],
+          "checks": [],
+          "publication_state": "CANDIDATE_UNREVIEWED",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": true,
+          "errors": [],
+          "checks": [],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "financing_refusal",
+        "mechanical": {
+          "mechanical_pass": true,
+          "errors": [],
+          "checks": [],
+          "publication_state": "CANDIDATE_UNREVIEWED",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": false,
+          "errors": [
+            "required_proposition_missing",
+            "required_value_missing:FINANCING_SPECIFIED"
+          ],
+          "checks": [],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "WITHHELD"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "full_extraction",
+        "mechanical": {
+          "mechanical_pass": false,
+          "errors": [
+            "not_object"
+          ],
+          "checks": [],
+          "publication_state": "WITHHELD"
+        },
+        "semantic": {
+          "semantic_reference_pass": false,
+          "errors": [
+            "not_object"
+          ],
+          "checks": [],
+          "human_semantic_reviewed": false
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "temporal_leakage",
+        "mechanical": {
+          "mechanical_pass": false,
+          "errors": [
+            "claim_1:invalid_typed_proposition",
+            "claim_2:invalid_typed_proposition"
+          ],
+          "checks": [
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-f2d89f437b4fb79c2216",
+                "sp-041dd1d4ab0a263647a0"
+              ]
+            },
+            {
+              "valid": false,
+              "errors": [
+                "invalid_typed_proposition"
+              ],
+              "span_ids": [
+                "sp-bf43dc012a35bce8bbd2",
+                "sp-5c2a8756b3e14673aee3"
+              ]
+            },
+            {
+              "valid": false,
+              "errors": [
+                "invalid_typed_proposition"
+              ],
+              "span_ids": [
+                "sp-7ea5aa2eb724867c2d88",
+                "sp-592289b0703e1084509a"
+              ]
+            }
+          ],
+          "publication_state": "WITHHELD",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": false,
+          "errors": [
+            "claim_0:unsupported_meaning_value_kind_actor_or_span",
+            "claim_1:unsupported_meaning_value_kind_actor_or_span",
+            "claim_2:unsupported_meaning_value_kind_actor_or_span"
+          ],
+          "checks": [
+            {
+              "predicate": "ADDITIONAL_ANNUAL_COST",
+              "reference_match": false
+            },
+            {
+              "predicate": "FINANCING_SPECIFIED",
+              "reference_match": false
+            },
+            {
+              "predicate": "BUDGET_TAX_OR_CUTS",
+              "reference_match": false
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "WITHHELD"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "unsupported_chf",
+        "mechanical": {
+          "mechanical_pass": true,
+          "errors": [],
+          "checks": [],
+          "publication_state": "CANDIDATE_UNREVIEWED",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": false,
+          "errors": [
+            "required_proposition_missing",
+            "required_value_missing:FINANCING_SPECIFIED"
+          ],
+          "checks": [],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "WITHHELD"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      }
+    ],
+    "spans-v2": [
+      {
+        "trial_id": "actor_mixup",
+        "mechanical": {
+          "mechanical_pass": false,
+          "errors": [
+            "not_object"
+          ],
+          "checks": [],
+          "publication_state": "WITHHELD"
+        },
+        "semantic": {
+          "semantic_reference_pass": false,
+          "errors": [
+            "not_object"
+          ],
+          "checks": [],
+          "human_semantic_reviewed": false
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "cost_projection",
+        "mechanical": {
+          "mechanical_pass": false,
+          "errors": [
+            "claim_1:invalid_typed_proposition"
+          ],
+          "checks": [
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-f2d89f437b4fb79c2216"
+              ]
+            },
+            {
+              "valid": false,
+              "errors": [
+                "invalid_typed_proposition"
+              ],
+              "span_ids": [
+                "sp-2275e83fa97bea1e8eee"
+              ]
+            }
+          ],
+          "publication_state": "WITHHELD",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": false,
+          "errors": [
+            "claim_1:unsupported_meaning_value_kind_actor_or_span"
+          ],
+          "checks": [
+            {
+              "predicate": "ADDITIONAL_ANNUAL_COST",
+              "reference_match": true
+            },
+            {
+              "predicate": "FUTURE_ANNUAL_COST",
+              "reference_match": false
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "WITHHELD"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "direct_provision",
+        "mechanical": {
+          "mechanical_pass": false,
+          "errors": [
+            "claim_0:invalid_typed_proposition",
+            "claim_1:invalid_typed_proposition",
+            "claim_1:invalid_kind"
+          ],
+          "checks": [
+            {
+              "valid": false,
+              "errors": [
+                "invalid_typed_proposition"
+              ],
+              "span_ids": [
+                "sp-8ac6e0fa1c5a02a4f80f",
+                "sp-9c8a8400c8e8db18fd8f"
+              ]
+            },
+            {
+              "valid": false,
+              "errors": [
+                "invalid_typed_proposition",
+                "invalid_kind"
+              ],
+              "span_ids": [
+                "sp-24a1ba6f87a2c95d38b0"
+              ]
+            }
+          ],
+          "publication_state": "WITHHELD",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": false,
+          "errors": [
+            "claim_0:unsupported_meaning_value_kind_actor_or_span",
+            "claim_1:unsupported_meaning_value_kind_actor_or_span",
+            "required_value_missing:PAYMENT_FREQUENCY"
+          ],
+          "checks": [
+            {
+              "predicate": "PAYMENT_FREQUENCY",
+              "reference_match": false
+            },
+            {
+              "predicate": "RATE_CHANGE",
+              "reference_match": false
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "WITHHELD"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "fake_quote",
+        "mechanical": {
+          "mechanical_pass": false,
+          "errors": [
+            "invalid_missing_facts",
+            "claim_0:invalid_fields_generated_text_is_forbidden",
+            "claim_1:invalid_fields_generated_text_is_forbidden"
+          ],
+          "checks": [
+            {
+              "valid": false,
+              "errors": [
+                "invalid_fields"
+              ]
+            },
+            {
+              "valid": false,
+              "errors": [
+                "invalid_fields"
+              ]
+            }
+          ],
+          "publication_state": "WITHHELD",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": false,
+          "errors": [
+            "required_refusal_reason_missing",
+            "claim_0:unsupported_meaning_value_kind_actor_or_span",
+            "claim_1:unsupported_meaning_value_kind_actor_or_span"
+          ],
+          "checks": [
+            {
+              "predicate": "SENTENCE_CONTAINS",
+              "reference_match": false
+            },
+            {
+              "predicate": "CONTENT_MATCH",
+              "reference_match": false
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "WITHHELD"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "financing_refusal",
+        "mechanical": {
+          "mechanical_pass": false,
+          "errors": [
+            "claim_0:invalid_fields_generated_text_is_forbidden",
+            "claim_1:invalid_fields_generated_text_is_forbidden",
+            "claim_2:invalid_fields_generated_text_is_forbidden",
+            "claim_3:invalid_typed_proposition",
+            "claim_3:invalid_kind",
+            "claim_3:invalid_actor",
+            "claim_3:invalid_span_references"
+          ],
+          "checks": [
+            {
+              "valid": false,
+              "errors": [
+                "invalid_fields"
+              ]
+            },
+            {
+              "valid": false,
+              "errors": [
+                "invalid_fields"
+              ]
+            },
+            {
+              "valid": false,
+              "errors": [
+                "invalid_fields"
+              ]
+            },
+            {
+              "valid": false,
+              "errors": [
+                "invalid_typed_proposition",
+                "invalid_kind",
+                "invalid_actor",
+                "invalid_span_references"
+              ],
+              "span_ids": []
+            }
+          ],
+          "publication_state": "WITHHELD",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": false,
+          "errors": [
+            "claim_0:unsupported_meaning_value_kind_actor_or_span",
+            "claim_1:unsupported_meaning_value_kind_actor_or_span",
+            "claim_2:unsupported_meaning_value_kind_actor_or_span",
+            "claim_3:unsupported_meaning_value_kind_actor_or_span",
+            "required_value_missing:FINANCING_SPECIFIED"
+          ],
+          "checks": [
+            {
+              "predicate": "FINANCING_SPECIFIED",
+              "reference_match": false
+            },
+            {
+              "predicate": "FINANCING_RATE",
+              "reference_match": false
+            },
+            {
+              "predicate": "SOURCE_SUPPORT",
+              "reference_match": false
+            },
+            {
+              "predicate": "PERSONAL_FINANCING_CHF",
+              "reference_match": false
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "WITHHELD"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "full_extraction",
+        "mechanical": {
+          "mechanical_pass": false,
+          "errors": [
+            "claim_0:invalid_typed_proposition",
+            "claim_1:invalid_typed_proposition",
+            "claim_1:invalid_kind",
+            "claim_3:invalid_typed_proposition",
+            "claim_4:invalid_fields_generated_text_is_forbidden",
+            "claim_5:invalid_fields_generated_text_is_forbidden",
+            "claim_6:invalid_fields_generated_text_is_forbidden",
+            "claim_7:invalid_typed_proposition",
+            "claim_7:invalid_kind",
+            "claim_7:invalid_actor",
+            "claim_7:invalid_span_references"
+          ],
+          "checks": [
+            {
+              "valid": false,
+              "errors": [
+                "invalid_typed_proposition"
+              ],
+              "span_ids": [
+                "sp-8ac6e0fa1c5a02a4f80f",
+                "sp-9c8a8400c8e8db18fd8f"
+              ]
+            },
+            {
+              "valid": false,
+              "errors": [
+                "invalid_typed_proposition",
+                "invalid_kind"
+              ],
+              "span_ids": [
+                "sp-24a1ba6f87a2c95d38b0"
+              ]
+            },
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-f2d89f437b4fb79c2216"
+              ]
+            },
+            {
+              "valid": false,
+              "errors": [
+                "invalid_typed_proposition"
+              ],
+              "span_ids": [
+                "sp-2275e83fa97bea1e8eee"
+              ]
+            },
+            {
+              "valid": false,
+              "errors": [
+                "invalid_fields"
+              ]
+            },
+            {
+              "valid": false,
+              "errors": [
+                "invalid_fields"
+              ]
+            },
+            {
+              "valid": false,
+              "errors": [
+                "invalid_fields"
+              ]
+            },
+            {
+              "valid": false,
+              "errors": [
+                "invalid_typed_proposition",
+                "invalid_kind",
+                "invalid_actor",
+                "invalid_span_references"
+              ],
+              "span_ids": []
+            }
+          ],
+          "publication_state": "WITHHELD",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": false,
+          "errors": [
+            "claim_0:unsupported_meaning_value_kind_actor_or_span",
+            "claim_1:unsupported_meaning_value_kind_actor_or_span",
+            "claim_3:unsupported_meaning_value_kind_actor_or_span",
+            "claim_4:unsupported_meaning_value_kind_actor_or_span",
+            "claim_5:unsupported_meaning_value_kind_actor_or_span",
+            "claim_6:unsupported_meaning_value_kind_actor_or_span",
+            "claim_7:unsupported_meaning_value_kind_actor_or_span",
+            "required_value_missing:PAYMENT_FREQUENCY",
+            "required_value_missing:FINANCING_SPECIFIED"
+          ],
+          "checks": [
+            {
+              "predicate": "PAYMENT_FREQUENCY",
+              "reference_match": false
+            },
+            {
+              "predicate": "RATE_CHANGE",
+              "reference_match": false
+            },
+            {
+              "predicate": "ADDITIONAL_ANNUAL_COST",
+              "reference_match": true
+            },
+            {
+              "predicate": "FUTURE_ANNUAL_COST",
+              "reference_match": false
+            },
+            {
+              "predicate": "FINANCING_SPECIFIED",
+              "reference_match": false
+            },
+            {
+              "predicate": "FINANCING_RATE",
+              "reference_match": false
+            },
+            {
+              "predicate": "SOURCE_SUPPORT",
+              "reference_match": false
+            },
+            {
+              "predicate": "PERSONAL_FINANCING_CHF",
+              "reference_match": false
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "WITHHELD"
+        },
+        "actual_inference": false,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "temporal_leakage",
+        "mechanical": {
+          "mechanical_pass": false,
+          "errors": [
+            "claim_0:invalid_fields_generated_text_is_forbidden"
+          ],
+          "checks": [
+            {
+              "valid": false,
+              "errors": [
+                "invalid_fields"
+              ]
+            }
+          ],
+          "publication_state": "WITHHELD",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": false,
+          "errors": [
+            "wrong_outcome_for_question",
+            "required_refusal_reason_missing",
+            "claim_0:unsupported_meaning_value_kind_actor_or_span"
+          ],
+          "checks": [
+            {
+              "predicate": "FINANCING_SPECIFIED",
+              "reference_match": false
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "WITHHELD"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "unsupported_chf",
+        "mechanical": {
+          "mechanical_pass": false,
+          "errors": [
+            "claim_0:invalid_fields_generated_text_is_forbidden",
+            "claim_1:invalid_fields_generated_text_is_forbidden",
+            "claim_2:invalid_fields_generated_text_is_forbidden",
+            "claim_3:invalid_typed_proposition",
+            "claim_3:invalid_kind",
+            "claim_3:invalid_actor",
+            "claim_3:invalid_span_references"
+          ],
+          "checks": [
+            {
+              "valid": false,
+              "errors": [
+                "invalid_fields"
+              ]
+            },
+            {
+              "valid": false,
+              "errors": [
+                "invalid_fields"
+              ]
+            },
+            {
+              "valid": false,
+              "errors": [
+                "invalid_fields"
+              ]
+            },
+            {
+              "valid": false,
+              "errors": [
+                "invalid_typed_proposition",
+                "invalid_kind",
+                "invalid_actor",
+                "invalid_span_references"
+              ],
+              "span_ids": []
+            }
+          ],
+          "publication_state": "WITHHELD",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": false,
+          "errors": [
+            "claim_0:unsupported_meaning_value_kind_actor_or_span",
+            "claim_1:unsupported_meaning_value_kind_actor_or_span",
+            "claim_2:unsupported_meaning_value_kind_actor_or_span",
+            "claim_3:unsupported_meaning_value_kind_actor_or_span",
+            "required_value_missing:FINANCING_SPECIFIED"
+          ],
+          "checks": [
+            {
+              "predicate": "FINANCING_SPECIFIED",
+              "reference_match": false
+            },
+            {
+              "predicate": "FINANCING_RATE",
+              "reference_match": false
+            },
+            {
+              "predicate": "SOURCE_SUPPORT",
+              "reference_match": false
+            },
+            {
+              "predicate": "PERSONAL_FINANCING_CHF",
+              "reference_match": false
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "WITHHELD"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      }
+    ],
+    "spans-v3": [
+      {
+        "trial_id": "actor_mixup",
+        "mechanical": {
+          "mechanical_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-314d0f0a853ccf56a2c2",
+                "sp-1d265f9dc84033d78052",
+                "sp-ee6a5fff27f77b358bf0",
+                "sp-0165d6c216dc798be30a",
+                "sp-c72e75d1de9dac83b519"
+              ]
+            }
+          ],
+          "publication_state": "CANDIDATE_UNREVIEWED",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": false,
+          "errors": [
+            "claim_0:unsupported_meaning_value_kind_actor_or_span"
+          ],
+          "checks": [
+            {
+              "predicate": "BUDGET_TAX_OR_CUTS",
+              "reference_match": false
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "WITHHELD"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "cost_projection",
+        "mechanical": {
+          "mechanical_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-f2d89f437b4fb79c2216",
+                "sp-2275e83fa97bea1e8eee"
+              ]
+            }
+          ],
+          "publication_state": "CANDIDATE_UNREVIEWED",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "predicate": "ADDITIONAL_ANNUAL_COST",
+              "reference_match": true
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "direct_provision",
+        "mechanical": {
+          "mechanical_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-8ac6e0fa1c5a02a4f80f"
+              ]
+            }
+          ],
+          "publication_state": "CANDIDATE_UNREVIEWED",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "predicate": "PAYMENT_FREQUENCY",
+              "reference_match": true
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "fake_quote",
+        "mechanical": {
+          "mechanical_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-bf43dc012a35bce8bbd2",
+                "sp-557da79f3b5e7c6cd940",
+                "sp-b5abbb814ae726a3ecdc",
+                "sp-592289b0703e1084509a",
+                "sp-38f38dacdcdaf3d13d04"
+              ]
+            }
+          ],
+          "publication_state": "CANDIDATE_UNREVIEWED",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "predicate": "FINANCING_SPECIFIED",
+              "reference_match": true
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "financing_refusal",
+        "mechanical": {
+          "mechanical_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-bf43dc012a35bce8bbd2",
+                "sp-557da79f3b5e7c6cd940",
+                "sp-b5abbb814ae726a3ecdc",
+                "sp-592289b0703e1084509a",
+                "sp-38f38dacdcdaf3d13d04"
+              ]
+            }
+          ],
+          "publication_state": "CANDIDATE_UNREVIEWED",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "predicate": "FINANCING_SPECIFIED",
+              "reference_match": true
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "full_extraction",
+        "mechanical": {
+          "mechanical_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-8ac6e0fa1c5a02a4f80f"
+              ]
+            },
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-f2d89f437b4fb79c2216",
+                "sp-2275e83fa97bea1e8eee"
+              ]
+            },
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-bf43dc012a35bce8bbd2",
+                "sp-557da79f3b5e7c6cd940",
+                "sp-b5abbb814ae726a3ecdc",
+                "sp-592289b0703e1084509a",
+                "sp-38f38dacdcdaf3d13d04"
+              ]
+            }
+          ],
+          "publication_state": "CANDIDATE_UNREVIEWED",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "predicate": "PAYMENT_FREQUENCY",
+              "reference_match": true
+            },
+            {
+              "predicate": "ADDITIONAL_ANNUAL_COST",
+              "reference_match": true
+            },
+            {
+              "predicate": "FINANCING_SPECIFIED",
+              "reference_match": true
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        },
+        "actual_inference": false,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "temporal_leakage",
+        "mechanical": {
+          "mechanical_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-bf43dc012a35bce8bbd2",
+                "sp-557da79f3b5e7c6cd940",
+                "sp-b5abbb814ae726a3ecdc",
+                "sp-592289b0703e1084509a",
+                "sp-38f38dacdcdaf3d13d04"
+              ]
+            }
+          ],
+          "publication_state": "CANDIDATE_UNREVIEWED",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "predicate": "FINANCING_SPECIFIED",
+              "reference_match": true
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "unsupported_chf",
+        "mechanical": {
+          "mechanical_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-bf43dc012a35bce8bbd2",
+                "sp-557da79f3b5e7c6cd940",
+                "sp-b5abbb814ae726a3ecdc",
+                "sp-592289b0703e1084509a"
+              ]
+            }
+          ],
+          "publication_state": "CANDIDATE_UNREVIEWED",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "predicate": "FINANCING_SPECIFIED",
+              "reference_match": true
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      }
+    ],
+    "spans-v3-repeat": [
+      {
+        "trial_id": "actor_mixup",
+        "mechanical": {
+          "mechanical_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-314d0f0a853ccf56a2c2",
+                "sp-1d265f9dc84033d78052",
+                "sp-ee6a5fff27f77b358bf0",
+                "sp-0165d6c216dc798be30a",
+                "sp-c72e75d1de9dac83b519"
+              ]
+            }
+          ],
+          "publication_state": "CANDIDATE_UNREVIEWED",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": false,
+          "errors": [
+            "claim_0:unsupported_meaning_value_kind_actor_or_span"
+          ],
+          "checks": [
+            {
+              "predicate": "BUDGET_TAX_OR_CUTS",
+              "reference_match": false
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "WITHHELD"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "cost_projection",
+        "mechanical": {
+          "mechanical_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-f2d89f437b4fb79c2216",
+                "sp-2275e83fa97bea1e8eee"
+              ]
+            }
+          ],
+          "publication_state": "CANDIDATE_UNREVIEWED",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "predicate": "ADDITIONAL_ANNUAL_COST",
+              "reference_match": true
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "direct_provision",
+        "mechanical": {
+          "mechanical_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-8ac6e0fa1c5a02a4f80f"
+              ]
+            }
+          ],
+          "publication_state": "CANDIDATE_UNREVIEWED",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "predicate": "PAYMENT_FREQUENCY",
+              "reference_match": true
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "fake_quote",
+        "mechanical": {
+          "mechanical_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-bf43dc012a35bce8bbd2",
+                "sp-557da79f3b5e7c6cd940",
+                "sp-b5abbb814ae726a3ecdc",
+                "sp-592289b0703e1084509a",
+                "sp-38f38dacdcdaf3d13d04"
+              ]
+            }
+          ],
+          "publication_state": "CANDIDATE_UNREVIEWED",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "predicate": "FINANCING_SPECIFIED",
+              "reference_match": true
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "financing_refusal",
+        "mechanical": {
+          "mechanical_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-bf43dc012a35bce8bbd2",
+                "sp-557da79f3b5e7c6cd940",
+                "sp-b5abbb814ae726a3ecdc",
+                "sp-592289b0703e1084509a",
+                "sp-38f38dacdcdaf3d13d04"
+              ]
+            }
+          ],
+          "publication_state": "CANDIDATE_UNREVIEWED",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "predicate": "FINANCING_SPECIFIED",
+              "reference_match": true
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "full_extraction",
+        "mechanical": {
+          "mechanical_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-8ac6e0fa1c5a02a4f80f"
+              ]
+            },
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-f2d89f437b4fb79c2216",
+                "sp-2275e83fa97bea1e8eee"
+              ]
+            },
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-bf43dc012a35bce8bbd2",
+                "sp-557da79f3b5e7c6cd940",
+                "sp-b5abbb814ae726a3ecdc",
+                "sp-592289b0703e1084509a",
+                "sp-38f38dacdcdaf3d13d04"
+              ]
+            }
+          ],
+          "publication_state": "CANDIDATE_UNREVIEWED",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "predicate": "PAYMENT_FREQUENCY",
+              "reference_match": true
+            },
+            {
+              "predicate": "ADDITIONAL_ANNUAL_COST",
+              "reference_match": true
+            },
+            {
+              "predicate": "FINANCING_SPECIFIED",
+              "reference_match": true
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        },
+        "actual_inference": false,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "temporal_leakage",
+        "mechanical": {
+          "mechanical_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-bf43dc012a35bce8bbd2",
+                "sp-557da79f3b5e7c6cd940",
+                "sp-b5abbb814ae726a3ecdc",
+                "sp-592289b0703e1084509a",
+                "sp-38f38dacdcdaf3d13d04"
+              ]
+            }
+          ],
+          "publication_state": "CANDIDATE_UNREVIEWED",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "predicate": "FINANCING_SPECIFIED",
+              "reference_match": true
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      },
+      {
+        "trial_id": "unsupported_chf",
+        "mechanical": {
+          "mechanical_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "valid": true,
+              "errors": [],
+              "span_ids": [
+                "sp-bf43dc012a35bce8bbd2",
+                "sp-557da79f3b5e7c6cd940",
+                "sp-b5abbb814ae726a3ecdc",
+                "sp-592289b0703e1084509a"
+              ]
+            }
+          ],
+          "publication_state": "CANDIDATE_UNREVIEWED",
+          "semantic_support_verified": false
+        },
+        "semantic": {
+          "semantic_reference_pass": true,
+          "errors": [],
+          "checks": [
+            {
+              "predicate": "FINANCING_SPECIFIED",
+              "reference_match": true
+            }
+          ],
+          "reference_version": "ahv13-semantic-reference-v1",
+          "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "human_semantic_reviewed": false,
+          "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+          "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+          "publication_state": "CANDIDATE_UNREVIEWED"
+        },
+        "actual_inference": true,
+        "original_trace_preserved": true
+      }
+    ]
+  }
+}

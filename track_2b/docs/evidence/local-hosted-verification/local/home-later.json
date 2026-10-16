@@ -1,0 +1,29 @@
+{
+  "reference": {
+    "id": "home-later",
+    "case": "home-tax",
+    "question": "What actually happened in 2026?",
+    "kind": "OUTSIDE_EVIDENCE",
+    "ids": []
+  },
+  "result": {
+    "plan": {
+      "kind": "OUTSIDE_EVIDENCE",
+      "intent": "NONE",
+      "focus": "",
+      "limit": 0
+    },
+    "ids": [],
+    "pass": true,
+    "answer": {
+      "outcome": "INSUFFICIENT_EVIDENCE",
+      "answer_mode": "EVIDENCE_LIMIT",
+      "claims": [],
+      "unknowns": [
+        "This answer uses the vote booklet. For later events, open Updates."
+      ],
+      "statements_human_reviewed": false
+    }
+  },
+  "traces": []
+}

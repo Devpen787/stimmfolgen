@@ -1,0 +1,193 @@
+{
+  "scope": "Public primary-source snippets and actual local Apertus responses; all four attempted span protocols/runs retained; no private notes or model weights",
+  "files": {
+    "final-revalidation.json": {
+      "bytes": 53774,
+      "sha256": "84027361aa73f242293649de20259367c737ab83315d9de0feb1e26101b88e8f"
+    },
+    "run-spans-v1/actor_mixup.json": {
+      "bytes": 16818,
+      "sha256": "7b19ef1ff82bc403b8e271167c7023eaa69146ff52b8a1f9779c5fec0620098a"
+    },
+    "run-spans-v1/cost_projection.json": {
+      "bytes": 14502,
+      "sha256": "2d6e2d51bad63b1bcf3896866649d6da8eb5f42001d1e0b944f82539e9b73c7d"
+    },
+    "run-spans-v1/direct_provision.json": {
+      "bytes": 13720,
+      "sha256": "57eff6404353962e7feccb31286caeffc108657e2326bef20d4a9f3074b5708b"
+    },
+    "run-spans-v1/fake_quote.json": {
+      "bytes": 12102,
+      "sha256": "25f4a9d9e662fc76b53e781fb3a9876bb1d22810c937bce773dd19273cfa408e"
+    },
+    "run-spans-v1/financing_refusal.json": {
+      "bytes": 12160,
+      "sha256": "795ba8c5031f3919f5c4c86c47254e7a505c5bce9d96df6f78d856a92ceb361d"
+    },
+    "run-spans-v1/full_extraction.json": {
+      "bytes": 26832,
+      "sha256": "9168a24055a6c7b992af0cc65c0d5a9493f3de76bea6c0aa6aaa5df6b2cc1bba"
+    },
+    "run-spans-v1/semantic-reference-used.json": {
+      "bytes": 3663,
+      "sha256": "38ba3f52ab55ff866fc6d27321f5b4fb5cba910a2da0e0e4e46837b62955c564"
+    },
+    "run-spans-v1/source-spans.json": {
+      "bytes": 90905,
+      "sha256": "90ed5d5bbc654741e84269a013ed4cfedb78d1df7a58e18c292c2b82cae20caa"
+    },
+    "run-spans-v1/summary.json": {
+      "bytes": 3175,
+      "sha256": "7b6b098ebb399b55ee70b85c8f9f4e5c7a343d7620d627ec5c5e5008db2cad50"
+    },
+    "run-spans-v1/temporal_leakage.json": {
+      "bytes": 16016,
+      "sha256": "47de42053c5f8e50a526cc37f6bebfd1f8283bcd4f84aad72d40d694e25207d8"
+    },
+    "run-spans-v1/unsupported_chf.json": {
+      "bytes": 12164,
+      "sha256": "756fe8b031c7342f1f660dd65a5834704ac33873e71fec664ceca5b45ab06f35"
+    },
+    "run-spans-v2/actor_mixup.json": {
+      "bytes": 17100,
+      "sha256": "8a38875296fcf3413ad4094297265090edf79ee394cb6fb7b390dba6db6b1e0d"
+    },
+    "run-spans-v2/cost_projection.json": {
+      "bytes": 14431,
+      "sha256": "17d88556463cf54601d6816a62a7014f04eaf5c23cd3867dda90263464c5e1a8"
+    },
+    "run-spans-v2/direct_provision.json": {
+      "bytes": 14381,
+      "sha256": "846f85b4d0724b2e2de66344d2f67488a01f158442dba9c04f6d1cac57e0b96c"
+    },
+    "run-spans-v2/fake_quote.json": {
+      "bytes": 14163,
+      "sha256": "c0f81c2acc7533dd1b75863d7c3986e7933294c9546b535717402661e2e6ee7e"
+    },
+    "run-spans-v2/financing_refusal.json": {
+      "bytes": 16388,
+      "sha256": "10d1f81f5676a2d5fb52634b27c4182b433ec547480e29d344bc32889bf2242a"
+    },
+    "run-spans-v2/full_extraction.json": {
+      "bytes": 6544,
+      "sha256": "6d84423257df4414192ceb0212677b52fe31bec71ed7d14a37da8f8772167660"
+    },
+    "run-spans-v2/semantic-reference-used.json": {
+      "bytes": 4879,
+      "sha256": "f685432f71088edafe58233ca6f15149e13de213e1fb219d02395e7f610d44f2"
+    },
+    "run-spans-v2/source-spans.json": {
+      "bytes": 90905,
+      "sha256": "90ed5d5bbc654741e84269a013ed4cfedb78d1df7a58e18c292c2b82cae20caa"
+    },
+    "run-spans-v2/summary.json": {
+      "bytes": 5695,
+      "sha256": "ad535ac96a71e4b24cdd995d3fe15f6d389dfa713d0be49141cd5df83101791d"
+    },
+    "run-spans-v2/temporal_leakage.json": {
+      "bytes": 13471,
+      "sha256": "9b2262328202e38c0b129da5cac626b3adcf85230ed9fe745102b4fac1cb4ae6"
+    },
+    "run-spans-v2/unsupported_chf.json": {
+      "bytes": 16290,
+      "sha256": "8ccb1943d4840830c37251ce6d8e34640206e48d897d969bdd1a55e8d0070c6a"
+    },
+    "run-spans-v3/actor_mixup.json": {
+      "bytes": 19668,
+      "sha256": "24e32128c913e73aa2634bec7fddb45b0e85a22233eead60380d4f38e31d3c86"
+    },
+    "run-spans-v3/cost_projection.json": {
+      "bytes": 11258,
+      "sha256": "3e54b85ffdbfde228941f94a51940ac46a0ea942cff5d840f6b24bf627e84928"
+    },
+    "run-spans-v3/direct_provision.json": {
+      "bytes": 9702,
+      "sha256": "22a21f33a5392cf8237f4b0b4a781396d0d92b06e63a6f5918fdfaff89d31732"
+    },
+    "run-spans-v3/fake_quote.json": {
+      "bytes": 16025,
+      "sha256": "9c29f975c2e3c014ac7df40ef6d4d1e85b3f4e0839549bcf2501b9f2c10adf0d"
+    },
+    "run-spans-v3/financing_refusal.json": {
+      "bytes": 16100,
+      "sha256": "75e6c332032cd10aec81bd18db9eb664b7dccf84575be3ba20543377917a36ff"
+    },
+    "run-spans-v3/full_extraction.json": {
+      "bytes": 3317,
+      "sha256": "22843efca8a0d32df9ebf1e23dfbfda6fecc29a85e241de0370348937c67b8ce"
+    },
+    "run-spans-v3/semantic-reference-used.json": {
+      "bytes": 4879,
+      "sha256": "f685432f71088edafe58233ca6f15149e13de213e1fb219d02395e7f610d44f2"
+    },
+    "run-spans-v3/source-spans.json": {
+      "bytes": 90905,
+      "sha256": "90ed5d5bbc654741e84269a013ed4cfedb78d1df7a58e18c292c2b82cae20caa"
+    },
+    "run-spans-v3/summary.json": {
+      "bytes": 2363,
+      "sha256": "7535754cf1bf48571f5989bf515cc72e4e3b2d5a9a9608ac3688c86de21a91d0"
+    },
+    "run-spans-v3/temporal_leakage.json": {
+      "bytes": 16064,
+      "sha256": "1fe7852534af63c8fdf8b10016bc8efa6b928c951a83fbb7e8aec2ba5d14ffa1"
+    },
+    "run-spans-v3/unsupported_chf.json": {
+      "bytes": 14822,
+      "sha256": "a2f70b28c3b966830f5c1f62b6a2d1375a23eaadb6ea725960cd47bb2e67e2a7"
+    },
+    "run-spans-v3-repeat/actor_mixup.json": {
+      "bytes": 19668,
+      "sha256": "bf3960ec94d81674fbb83ddccca2d6864fdf9b282ba503b9a4c32ec74d64a9af"
+    },
+    "run-spans-v3-repeat/cost_projection.json": {
+      "bytes": 11258,
+      "sha256": "1d9ba9c513ee6c452e465f19d281a8ac073979c14ec4ec090f183585140e63e5"
+    },
+    "run-spans-v3-repeat/direct_provision.json": {
+      "bytes": 9705,
+      "sha256": "51a1eb3bb9f919c4835ec3c1f1edfb0027dbb64cae5804826f7c3f3032a6840b"
+    },
+    "run-spans-v3-repeat/fake_quote.json": {
+      "bytes": 16026,
+      "sha256": "e731d3bbba018bae8d6dd506024c8f2c77332b2ed67f90018e5fdfdcb7a7be35"
+    },
+    "run-spans-v3-repeat/financing_refusal.json": {
+      "bytes": 16100,
+      "sha256": "89d4e3d39f77162f2e0d6728f79ccf4e20f1307954d1fc4f890c4cd45fa87c5d"
+    },
+    "run-spans-v3-repeat/full_extraction.json": {
+      "bytes": 3317,
+      "sha256": "fc949f7eb64df61daf8116aa3e7e4f1831169965b073119d622a2d09a6e6f431"
+    },
+    "run-spans-v3-repeat/semantic-reference-used.json": {
+      "bytes": 4879,
+      "sha256": "f685432f71088edafe58233ca6f15149e13de213e1fb219d02395e7f610d44f2"
+    },
+    "run-spans-v3-repeat/source-spans.json": {
+      "bytes": 90905,
+      "sha256": "90ed5d5bbc654741e84269a013ed4cfedb78d1df7a58e18c292c2b82cae20caa"
+    },
+    "run-spans-v3-repeat/summary.json": {
+      "bytes": 2365,
+      "sha256": "a86d9e2e4d56a8c01d5b993f4ffcdbcf87ddcee50c948e5cc7ee925fbdd6aecf"
+    },
+    "run-spans-v3-repeat/temporal_leakage.json": {
+      "bytes": 16064,
+      "sha256": "7dd9674a067c8a69b0c95ec1f0b19a8e8d64750eff2575ee294684053ea45a32"
+    },
+    "run-spans-v3-repeat/unsupported_chf.json": {
+      "bytes": 14822,
+      "sha256": "524cf3cf35c10fdb54b060bedb9d62d7d5c3ae1da1f4a15cfa5dd4783d3f3d9f"
+    },
+    "source.json": {
+      "bytes": 34029,
+      "sha256": "c0c3cf86e10ad3ace6b2c163d79aa2eb718f42060e99f95f72b445c46760eec4"
+    },
+    "verification.json": {
+      "bytes": 461,
+      "sha256": "9690496a50bc12455a4210055501421980ee8a03a74777bc549727e783d51e38"
+    }
+  }
+}

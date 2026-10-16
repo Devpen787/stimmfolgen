@@ -1,0 +1,56 @@
+{
+  "evidence_class": "LOCAL_MODEL_INSPECTION",
+  "observed_at_utc": "2026-10-12T09:13:19.511391+00:00",
+  "model_id": "tokimoa/apertus-v1.5-8b-mlx-4bit",
+  "backing_checkpoint": "swiss-ai/Apertus-v1.5-8B",
+  "source_revision": "f08ed532a657bef7d322bd0cbca43dac13a9d0a3",
+  "declared_upstream_revision": "a411d838600baf0e3635a3daf66fb7c55fc97bb6",
+  "served_alias": "default_model",
+  "base_url": "http://127.0.0.1:8766/v1",
+  "model_dir": "<LOCAL_MODEL_DIR>",
+  "format": "MLX safetensors",
+  "quantization": {
+    "group_size": 64,
+    "bits": 4,
+    "mode": "affine"
+  },
+  "artifacts": {
+    "README.md": {
+      "sha256": "e372a8b2775b02fecf5fe488fd494c561900910aa4ea2893f6ab52596c95b6bd",
+      "bytes": 3529
+    },
+    "config.json": {
+      "sha256": "fb3073b923ff444de21b48c8984745665280cc29354c368200aecd596bbf51c0",
+      "bytes": 1082
+    },
+    "model.safetensors": {
+      "sha256": "d0478edeb06bf18e5f4f7b50db77d89b839730b2d16cb1020015e6099e42074b",
+      "bytes": 4530491646
+    },
+    "model.safetensors.index.json": {
+      "sha256": "acbd6ca819d5f39ef920397429bfa3d04c77b288d0cddb4f97bf1a000bdd036d",
+      "bytes": 58759
+    },
+    "tokenizer.json": {
+      "sha256": "1f2f6198ea5789e5a90ec7c5ec5cf0d5242cf5b8de007105537c91d777581582",
+      "bytes": 44028400
+    },
+    "tokenizer_config.json": {
+      "sha256": "4e4125a5f2eb5bba3d8c55c8265c46ac566b50512d0a490b9d2a70cf6a142c7c",
+      "bytes": 2108
+    },
+    "chat_template.jinja": {
+      "sha256": "d23af2850029e9df88bb017e06e0c14a0462604588f1dbe4f519cdfac3e260e0",
+      "bytes": 16614
+    },
+    "generation_config.json": {
+      "sha256": "9131f56adebe0d591ba8ddc2d18d18edaf762a1ebce6750b24319c86b1d7d6d5",
+      "bytes": 157
+    }
+  },
+  "tensor_count": 839,
+  "v1_5_verified": true,
+  "alias_binding": "mlx_lm.server --model path; /v1/models advertises resolved path; MLX default_model mapping",
+  "provenance_limit": "Pinned locally downloaded conversion with publisher-declared base model; no independent conversion-equivalence test or signed runtime attestation",
+  "redaction": "Absolute local model path redacted; original HTTP request/response content unchanged."
+}

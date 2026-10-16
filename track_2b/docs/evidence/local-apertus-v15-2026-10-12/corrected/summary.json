@@ -1,0 +1,100 @@
+{
+  "gate_status": "FAIL_MECHANICAL",
+  "mechanical_suite_pass": false,
+  "backing_checkpoint": "swiss-ai/Apertus-v1.5-8B",
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "trials": [
+    {
+      "trial_id": "full_extraction",
+      "inference_performed": true,
+      "mechanical_pass": false,
+      "errors": [
+        "unsupported_personal_financing",
+        "required_kind_coverage_missing"
+      ],
+      "latency_seconds": 47.89785075000145,
+      "gate_status": "FAIL_MECHANICAL"
+    },
+    {
+      "trial_id": "direct_provision",
+      "inference_performed": true,
+      "mechanical_pass": false,
+      "errors": [
+        "claim_0:quote_in_page",
+        "wrong_outcome"
+      ],
+      "latency_seconds": 13.051137417000064,
+      "gate_status": "FAIL_MECHANICAL"
+    },
+    {
+      "trial_id": "cost_projection",
+      "inference_performed": true,
+      "mechanical_pass": false,
+      "errors": [
+        "wrong_outcome"
+      ],
+      "latency_seconds": 11.5791522920008,
+      "gate_status": "FAIL_MECHANICAL"
+    },
+    {
+      "trial_id": "financing_refusal",
+      "inference_performed": true,
+      "mechanical_pass": true,
+      "errors": [],
+      "latency_seconds": 10.734165875001054,
+      "gate_status": "REVIEW_REQUIRED"
+    },
+    {
+      "trial_id": "fake_quote",
+      "inference_performed": true,
+      "mechanical_pass": false,
+      "errors": [
+        "claim_0:quote_in_page"
+      ],
+      "latency_seconds": 9.123154541000986,
+      "gate_status": "FAIL_MECHANICAL"
+    },
+    {
+      "trial_id": "actor_mixup",
+      "inference_performed": true,
+      "mechanical_pass": true,
+      "errors": [],
+      "latency_seconds": 18.952389542000674,
+      "gate_status": "REVIEW_REQUIRED"
+    },
+    {
+      "trial_id": "unsupported_chf",
+      "inference_performed": true,
+      "mechanical_pass": false,
+      "errors": [
+        "unsupported_personal_financing"
+      ],
+      "latency_seconds": 14.775259291000111,
+      "gate_status": "FAIL_MECHANICAL"
+    },
+    {
+      "trial_id": "temporal_leakage",
+      "inference_performed": true,
+      "mechanical_pass": true,
+      "errors": [],
+      "latency_seconds": 11.063139375000901,
+      "gate_status": "REVIEW_REQUIRED"
+    },
+    {
+      "trial_id": "baseline_full_booklet",
+      "inference_performed": true,
+      "mechanical_pass": false,
+      "errors": [
+        "claim_0:quote_in_page",
+        "claim_0:role_matches_page",
+        "unsupported_personal_financing",
+        "required_kind_coverage_missing"
+      ],
+      "latency_seconds": 54.95015400000011,
+      "gate_status": "FAIL_MECHANICAL"
+    }
+  ],
+  "human_semantic_reviewed": false,
+  "frontend_authorized_by_this_run": false,
+  "scope": "Single booklet development diagnostic; not held-out accuracy or model qualification"
+}

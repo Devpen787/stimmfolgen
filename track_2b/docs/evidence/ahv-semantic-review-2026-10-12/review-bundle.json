@@ -1,0 +1,470 @@
+{
+  "packet_version": "ahv-semantic-review-v1",
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "catalog_sha256": "8d98a741550f450a64bb8103ece1efa561b0c75436b8096bf47ac6c74508d618",
+  "semantic_reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+  "trace_commit": "0436dc9a44e5c4be28c67864500d447b59d324d5",
+  "public_case_as_of": "2024-03-02T23:59:59+01:00",
+  "booklet_content_cutoff": "2023-11-29",
+  "publication_availability": {
+    "file": "publication-availability.json",
+    "available_by_utc": "2024-01-11T12:11:17+00:00"
+  },
+  "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+  "human_semantic_reviewed": false,
+  "frontend_authorized": false,
+  "propositions": [
+    {
+      "review_id": "P01",
+      "label": "Payment frequency / legal meaning",
+      "candidate": {
+        "predicate": "PAYMENT_FREQUENCY",
+        "kind": "DIRECT_PROVISION",
+        "actor": "GOVERNMENT",
+        "value": {
+          "before": 12,
+          "after": 13
+        }
+      },
+      "source_support": [
+        {
+          "span_id": "sp-8ac6e0fa1c5a02a4f80f",
+          "identity_sha256": "8ac6e0fa1c5a02a4f80f63456def56c302035a592e272578457ba7e303651948",
+          "pdf_page": 9,
+          "block_number": 3,
+          "start": 1027,
+          "end": 1135,
+          "text": "Die Initiative fordert, dass die monatliche Rente nicht nur 12 Mal, sondern 13 Mal pro Jahr ausbezahlt wird.",
+          "text_sha256": "d34cf1a2af61f1828459fb696b1a808b5ccd237470082a64c77d2b0061f96b66",
+          "actor": "GOVERNMENT",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=9"
+        },
+        {
+          "span_id": "sp-df2d2f588ab3cde53e29",
+          "identity_sha256": "df2d2f588ab3cde53e29b712a21f38c42c2ea8be568d2497ed58da89dea0f70c",
+          "pdf_page": 4,
+          "block_number": 4,
+          "start": 661,
+          "end": 720,
+          "text": "Zu den 12 Monatsrenten käme jedes Jahr eine 13. Rente dazu.",
+          "text_sha256": "bc048891774a398e49844ccdef2bd02928c1dbb850e6c53f8c6627e794874bc8",
+          "actor": "GOVERNMENT",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=4"
+        }
+      ],
+      "origin": "MODEL_AND_POLICY_CANDIDATE; see trial records",
+      "decision": "PENDING",
+      "reviewer_notes": null
+    },
+    {
+      "review_id": "P02",
+      "label": "Additional annual cost at introduction",
+      "candidate": {
+        "predicate": "ADDITIONAL_ANNUAL_COST",
+        "kind": "COST_PROJECTION",
+        "actor": "GOVERNMENT",
+        "value": {
+          "amount_chf": 4100000000,
+          "horizon": "INTRODUCTION"
+        }
+      },
+      "source_support": [
+        {
+          "span_id": "sp-f2d89f437b4fb79c2216",
+          "identity_sha256": "f2d89f437b4fb79c22167caf74655564fe87a459f72e4f1995d6da1fc719e2f0",
+          "pdf_page": 11,
+          "block_number": 2,
+          "start": 566,
+          "end": 672,
+          "text": "Die 13. AHV-Rente würde bei der Einführung voraussichtlich etwa 4,1 Milliarden Franken zusätzlich kosten.2",
+          "text_sha256": "c3c9beecb067abe982749da32b306137228037e87db62aae3573bf2a768f55c3",
+          "actor": "GOVERNMENT",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11"
+        },
+        {
+          "span_id": "sp-9acf2ebeaa24c5dacbab",
+          "identity_sha256": "9acf2ebeaa24c5dacbab8d3529791492147871467515527cac8b08cb2bf0c802",
+          "pdf_page": 4,
+          "block_number": 4,
+          "start": 986,
+          "end": 1179,
+          "text": "Durch diese Erhöhung würden die Kosten für die 13. AHV- Rente bei der Einführung voraussichtlich etwa 4,1 Milliarden Franken betragen; davon müsste der Bund rund 800 Millionen Franken bezahlen.",
+          "text_sha256": "b4d63038683014b09f8677ac2f3caff1541db22bd0ae8be20ae7067717f04c09",
+          "actor": "GOVERNMENT",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=4"
+        }
+      ],
+      "origin": "MODEL_AND_POLICY_CANDIDATE; see trial records",
+      "decision": "PENDING",
+      "reviewer_notes": null
+    },
+    {
+      "review_id": "P03",
+      "label": "Five-year annual cost projection (reference only)",
+      "candidate": {
+        "predicate": "ADDITIONAL_ANNUAL_COST",
+        "kind": "COST_PROJECTION",
+        "actor": "GOVERNMENT",
+        "value": {
+          "amount_chf": 5000000000,
+          "horizon": "FIVE_YEARS"
+        }
+      },
+      "source_support": [
+        {
+          "span_id": "sp-2275e83fa97bea1e8eee",
+          "identity_sha256": "2275e83fa97bea1e8eee821b3a0e4f4008d67601ccb4368b8d84f19aceb1be19",
+          "pdf_page": 11,
+          "block_number": 2,
+          "start": 869,
+          "end": 965,
+          "text": "Fünf Jahre nach Einführung würden die Kosten voraussichtlich rund 5 Milliarden Franken betragen.",
+          "text_sha256": "67afcf5a0024f29bfbc7a58c2a6bd3b21a5da54e3158a58369cd5de2c6360951",
+          "actor": "GOVERNMENT",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11"
+        }
+      ],
+      "origin": "EVALUATION_REFERENCE_ONLY_NOT_RETURNED_BY_FINAL_MODEL",
+      "decision": "PENDING",
+      "reviewer_notes": null
+    },
+    {
+      "review_id": "P04",
+      "label": "Financing left unspecified / definite personal CHF refusal",
+      "candidate": {
+        "predicate": "FINANCING_SPECIFIED",
+        "kind": "UNRESOLVED",
+        "actor": "GOVERNMENT",
+        "value": {
+          "value": false
+        }
+      },
+      "source_support": [
+        {
+          "span_id": "sp-bf43dc012a35bce8bbd2",
+          "identity_sha256": "bf43dc012a35bce8bbd2949ff64501700c1c7d94c66b7998e2e433e7a0099bff",
+          "pdf_page": 11,
+          "block_number": 3,
+          "start": 985,
+          "end": 1103,
+          "text": "Die Initiative macht keine Angaben dazu, wie die zusätzlichen Ausgaben für die 13. AHV-Rente finanziert werden sollen.",
+          "text_sha256": "849c5c2ebc67384d026b06f2dadf15006dc13050a8de5bde740a455142015da4",
+          "actor": "GOVERNMENT",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11"
+        },
+        {
+          "span_id": "sp-3c5b9fb6a0283b70075b",
+          "identity_sha256": "3c5b9fb6a0283b70075b833cbecb4244236cc5903add0e4bcf6f06d540489314",
+          "pdf_page": 4,
+          "block_number": 4,
+          "start": 1230,
+          "end": 1284,
+          "text": "Die Initiative lässt die Frage der Finanzierung offen.",
+          "text_sha256": "b2e55fbbff378f77e3217bba32ec1d2117f02dc71edec7831b1d271135e03689",
+          "actor": "GOVERNMENT",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=4"
+        }
+      ],
+      "origin": "MODEL_AND_POLICY_CANDIDATE; see trial records",
+      "decision": "PENDING",
+      "reviewer_notes": null
+    },
+    {
+      "review_id": "P05",
+      "label": "Budget forecast attribution",
+      "candidate": {
+        "predicate": "BUDGET_TAX_OR_CUTS",
+        "kind": "ATTRIBUTED_PREDICTION",
+        "actor": "GOVERNMENT",
+        "value": {
+          "value": true
+        }
+      },
+      "source_support": [
+        {
+          "span_id": "sp-92f4ef4f294b8ca65441",
+          "identity_sha256": "92f4ef4f294b8ca65441e254a53d4ec9b80615525577de64be5ed9ca67aeb526",
+          "pdf_page": 16,
+          "block_number": 4,
+          "start": 1705,
+          "end": 1764,
+          "text": "Der Bund müsste seine Steuern erhöhen oder Ausgaben kürzen.",
+          "text_sha256": "44fbdebe189dc35d553fe5f87f1c5578f421830d687fd09700d66101851e897a",
+          "actor": "GOVERNMENT",
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=16"
+        }
+      ],
+      "origin": "MODEL_AND_POLICY_CANDIDATE; see trial records",
+      "decision": "PENDING",
+      "reviewer_notes": null
+    }
+  ],
+  "trials": [
+    {
+      "review_id": "T01",
+      "trial_id": "direct_provision",
+      "candidate": {
+        "outcome": "SUPPORTED",
+        "claims": [
+          {
+            "predicate": "PAYMENT_FREQUENCY",
+            "kind": "DIRECT_PROVISION",
+            "actor": "GOVERNMENT",
+            "value": {
+              "before": 12,
+              "after": 13
+            },
+            "span_ids": [
+              "sp-8ac6e0fa1c5a02a4f80f"
+            ]
+          }
+        ],
+        "missing_facts": [],
+        "personal_financing_chf": null
+      },
+      "evidence_class": "ACTUAL_MODEL_ATTEMPT_UNREVIEWED",
+      "trace": "gate0-attribution-2026-10-12/run-attribution-v5-repeat/direct_provision.json",
+      "trace_file_sha256": "927c908d3897309c3b0deea0c2a9a7fbd7f1e73adc56462bddab4cdae2e19d1b",
+      "actual_response_sha256": "ec2f06d9aa2f0751a56635cbf9efb1e7ebaf95ed41b63c3e5e458990edcd6cbe",
+      "component_response_sha256": null,
+      "mechanical_pass": true,
+      "bounded_reference_pass": true,
+      "decision": "PENDING",
+      "reviewer_notes": null
+    },
+    {
+      "review_id": "T02",
+      "trial_id": "cost_projection",
+      "candidate": {
+        "outcome": "SUPPORTED",
+        "claims": [
+          {
+            "predicate": "ADDITIONAL_ANNUAL_COST",
+            "kind": "COST_PROJECTION",
+            "actor": "GOVERNMENT",
+            "value": {
+              "amount_chf": 4100000000,
+              "horizon": "INTRODUCTION"
+            },
+            "span_ids": [
+              "sp-f2d89f437b4fb79c2216",
+              "sp-2275e83fa97bea1e8eee"
+            ]
+          }
+        ],
+        "missing_facts": [],
+        "personal_financing_chf": null
+      },
+      "evidence_class": "ACTUAL_MODEL_ATTEMPT_UNREVIEWED",
+      "trace": "gate0-attribution-2026-10-12/run-attribution-v5-repeat/cost_projection.json",
+      "trace_file_sha256": "01956208cea8f86b79d5801df37be05d4139704fca7c1c807c55a85b6701a235",
+      "actual_response_sha256": "d1aac3e2df22ebf341cecf9ce7c15815ebf0163c12d0b876fcef2a6f29d1a73b",
+      "component_response_sha256": null,
+      "mechanical_pass": true,
+      "bounded_reference_pass": true,
+      "decision": "PENDING",
+      "reviewer_notes": null
+    },
+    {
+      "review_id": "T03",
+      "trial_id": "financing_refusal",
+      "candidate": {
+        "outcome": "INSUFFICIENT_EVIDENCE",
+        "claims": [
+          {
+            "predicate": "FINANCING_SPECIFIED",
+            "kind": "UNRESOLVED",
+            "actor": "GOVERNMENT",
+            "value": {
+              "value": false
+            },
+            "span_ids": [
+              "sp-bf43dc012a35bce8bbd2",
+              "sp-557da79f3b5e7c6cd940",
+              "sp-b5abbb814ae726a3ecdc",
+              "sp-592289b0703e1084509a",
+              "sp-38f38dacdcdaf3d13d04"
+            ]
+          }
+        ],
+        "missing_facts": [
+          "FINANCING_METHOD",
+          "FINANCING_RATE"
+        ],
+        "personal_financing_chf": null
+      },
+      "evidence_class": "ACTUAL_MODEL_ATTEMPT_UNREVIEWED",
+      "trace": "gate0-attribution-2026-10-12/run-attribution-v5-repeat/financing_refusal.json",
+      "trace_file_sha256": "b97bdd54f4886470b22b66c6570b81c22cef7d9a1fcf67927a5dd8f18d8e9cc2",
+      "actual_response_sha256": "5806686fc3ab3c0c138a74b3bc009d9eaf8dcfc92c1fe89257abd59bfa396926",
+      "component_response_sha256": null,
+      "mechanical_pass": true,
+      "bounded_reference_pass": true,
+      "decision": "PENDING",
+      "reviewer_notes": null
+    },
+    {
+      "review_id": "T04",
+      "trial_id": "fake_quote",
+      "candidate": {
+        "outcome": "INSUFFICIENT_EVIDENCE",
+        "claims": [
+          {
+            "predicate": "FINANCING_SPECIFIED",
+            "kind": "UNRESOLVED",
+            "actor": "GOVERNMENT",
+            "value": {
+              "value": false
+            },
+            "span_ids": [
+              "sp-bf43dc012a35bce8bbd2",
+              "sp-557da79f3b5e7c6cd940",
+              "sp-b5abbb814ae726a3ecdc",
+              "sp-592289b0703e1084509a",
+              "sp-38f38dacdcdaf3d13d04"
+            ]
+          }
+        ],
+        "missing_facts": [
+          "SOURCE_SUPPORT"
+        ],
+        "personal_financing_chf": null
+      },
+      "evidence_class": "ACTUAL_MODEL_ATTEMPT_UNREVIEWED",
+      "trace": "gate0-attribution-2026-10-12/run-attribution-v5-repeat/fake_quote.json",
+      "trace_file_sha256": "427f9cbd8f8e495bd82f47a7bf5a06d096e6f6775e15bda6e749d44567a07ca1",
+      "actual_response_sha256": "c2e00bc04a629e8d16c4bdd4589187067e84b7a15b2c96ee242b8aab55bc48f0",
+      "component_response_sha256": null,
+      "mechanical_pass": true,
+      "bounded_reference_pass": true,
+      "decision": "PENDING",
+      "reviewer_notes": null
+    },
+    {
+      "review_id": "T05",
+      "trial_id": "actor_mixup",
+      "candidate": {
+        "outcome": "SOURCE_CONFLICT",
+        "claims": [
+          {
+            "predicate": "BUDGET_TAX_OR_CUTS",
+            "kind": "ATTRIBUTED_PREDICTION",
+            "actor": "GOVERNMENT",
+            "value": {
+              "value": true
+            },
+            "span_ids": [
+              "sp-8fa7ba3419d9690f45e2",
+              "sp-eac0d0ebb7b34dc40b9b",
+              "sp-92f4ef4f294b8ca65441"
+            ]
+          }
+        ],
+        "missing_facts": [
+          "SOURCE_SUPPORT"
+        ],
+        "personal_financing_chf": null
+      },
+      "evidence_class": "POLICY_COMPARISON_OF_TWO_ACTUAL_MODEL_COMPLETIONS",
+      "trace": "gate0-attribution-2026-10-12/run-attribution-v5-repeat/actor_mixup.json",
+      "trace_file_sha256": "f470900c83589a3416cdfa77f20097c6891d4a35b558a0cf07b25bb1b83aba6a",
+      "actual_response_sha256": null,
+      "component_response_sha256": {
+        "grounding": "94db8c7efaf479e76124577c225d2871cc62942b0160312eca2582396e3765f1",
+        "intent": "cbe03131c5dd465f633da6d7410f8be8c9d21c7f574e9884fddc3bbe4ae2ec98"
+      },
+      "mechanical_pass": true,
+      "bounded_reference_pass": true,
+      "decision": "PENDING",
+      "reviewer_notes": null
+    },
+    {
+      "review_id": "T06",
+      "trial_id": "unsupported_chf",
+      "candidate": {
+        "outcome": "INSUFFICIENT_EVIDENCE",
+        "claims": [
+          {
+            "predicate": "FINANCING_SPECIFIED",
+            "kind": "UNRESOLVED",
+            "actor": "GOVERNMENT",
+            "value": {
+              "value": false
+            },
+            "span_ids": [
+              "sp-bf43dc012a35bce8bbd2",
+              "sp-557da79f3b5e7c6cd940",
+              "sp-b5abbb814ae726a3ecdc",
+              "sp-592289b0703e1084509a"
+            ]
+          }
+        ],
+        "missing_facts": [
+          "FINANCING_METHOD",
+          "FINANCING_RATE"
+        ],
+        "personal_financing_chf": null
+      },
+      "evidence_class": "ACTUAL_MODEL_ATTEMPT_UNREVIEWED",
+      "trace": "gate0-attribution-2026-10-12/run-attribution-v5-repeat/unsupported_chf.json",
+      "trace_file_sha256": "aecec186c9cf819cfac776fe01b5489cbec53c024cca5789508e55b3677209de",
+      "actual_response_sha256": "d0bb71e734e71db891bfadf7e32cb33689194cab0e41180c638c282cd936f095",
+      "component_response_sha256": null,
+      "mechanical_pass": true,
+      "bounded_reference_pass": true,
+      "decision": "PENDING",
+      "reviewer_notes": null
+    },
+    {
+      "review_id": "T07",
+      "trial_id": "temporal_leakage",
+      "candidate": {
+        "outcome": "INSUFFICIENT_EVIDENCE",
+        "claims": [
+          {
+            "predicate": "FINANCING_SPECIFIED",
+            "kind": "UNRESOLVED",
+            "actor": "GOVERNMENT",
+            "value": {
+              "value": false
+            },
+            "span_ids": [
+              "sp-bf43dc012a35bce8bbd2",
+              "sp-557da79f3b5e7c6cd940",
+              "sp-b5abbb814ae726a3ecdc",
+              "sp-592289b0703e1084509a",
+              "sp-38f38dacdcdaf3d13d04"
+            ]
+          }
+        ],
+        "missing_facts": [
+          "PRE_VOTE_EVIDENCE"
+        ],
+        "personal_financing_chf": null
+      },
+      "evidence_class": "ACTUAL_MODEL_ATTEMPT_UNREVIEWED",
+      "trace": "gate0-attribution-2026-10-12/run-attribution-v5-repeat/temporal_leakage.json",
+      "trace_file_sha256": "8d88bafbb6649747ed6047eecc6b998593de5567397eb885ef4bc464c8365688",
+      "actual_response_sha256": "b70f84692edc995167839ef2204f1937b74a5d06213f37d200b3b94f82144d10",
+      "component_response_sha256": null,
+      "mechanical_pass": true,
+      "bounded_reference_pass": true,
+      "decision": "PENDING",
+      "reviewer_notes": null
+    }
+  ],
+  "additional_context_pages": [
+    {
+      "pdf_page": 15,
+      "role": "INITIATIVE_COMMITTEE_CONTINUATION",
+      "file": "pages/page-15.png",
+      "provided_to_recorded_model_trials": false
+    },
+    {
+      "pdf_page": 17,
+      "role": "FEDERAL_COUNCIL_PARLIAMENT_CONTINUATION",
+      "file": "pages/page-17.png",
+      "provided_to_recorded_model_trials": false
+    }
+  ]
+}

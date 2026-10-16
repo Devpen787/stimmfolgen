@@ -1,0 +1,7 @@
+{
+  "source_bytes_and_spans": "PASS",
+  "candidate_reproduces_except_retrieval_timestamp": true,
+  "cards": 4,
+  "human_acceptance_granted": false,
+  "wording_sha256": "4b7d50bb138f421e13473250236b30d3b5189d087f1af8b4e063e5c593948a6d"
+}

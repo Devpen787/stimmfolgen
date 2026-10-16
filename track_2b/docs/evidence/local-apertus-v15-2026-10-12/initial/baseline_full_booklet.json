@@ -1,0 +1,274 @@
+{
+  "evidence_class": "ACTUAL_MODEL_ATTEMPT_UNREVIEWED",
+  "observed_at_utc": "2026-10-12T09:16:30.144609+00:00",
+  "model": "default_model",
+  "base_url": "http://127.0.0.1:8766/v1",
+  "local_identity": {
+    "evidence_class": "LOCAL_MODEL_INSPECTION",
+    "observed_at_utc": "2026-10-12T09:16:30.144197+00:00",
+    "model_id": "tokimoa/apertus-v1.5-8b-mlx-4bit",
+    "backing_checkpoint": "swiss-ai/Apertus-v1.5-8B",
+    "source_revision": "f08ed532a657bef7d322bd0cbca43dac13a9d0a3",
+    "declared_upstream_revision": "a411d838600baf0e3635a3daf66fb7c55fc97bb6",
+    "served_alias": "default_model",
+    "base_url": "http://127.0.0.1:8766/v1",
+    "model_dir": "<LOCAL_MODEL_DIR>",
+    "format": "MLX safetensors",
+    "quantization": {
+      "group_size": 64,
+      "bits": 4,
+      "mode": "affine"
+    },
+    "artifacts": {
+      "README.md": {
+        "sha256": "e372a8b2775b02fecf5fe488fd494c561900910aa4ea2893f6ab52596c95b6bd",
+        "bytes": 3529
+      },
+      "config.json": {
+        "sha256": "fb3073b923ff444de21b48c8984745665280cc29354c368200aecd596bbf51c0",
+        "bytes": 1082
+      },
+      "model.safetensors": {
+        "sha256": "d0478edeb06bf18e5f4f7b50db77d89b839730b2d16cb1020015e6099e42074b",
+        "bytes": 4530491646
+      },
+      "model.safetensors.index.json": {
+        "sha256": "acbd6ca819d5f39ef920397429bfa3d04c77b288d0cddb4f97bf1a000bdd036d",
+        "bytes": 58759
+      },
+      "tokenizer.json": {
+        "sha256": "1f2f6198ea5789e5a90ec7c5ec5cf0d5242cf5b8de007105537c91d777581582",
+        "bytes": 44028400
+      },
+      "tokenizer_config.json": {
+        "sha256": "4e4125a5f2eb5bba3d8c55c8265c46ac566b50512d0a490b9d2a70cf6a142c7c",
+        "bytes": 2108
+      },
+      "chat_template.jinja": {
+        "sha256": "d23af2850029e9df88bb017e06e0c14a0462604588f1dbe4f519cdfac3e260e0",
+        "bytes": 16614
+      },
+      "generation_config.json": {
+        "sha256": "9131f56adebe0d591ba8ddc2d18d18edaf762a1ebce6750b24319c86b1d7d6d5",
+        "bytes": 157
+      }
+    },
+    "tensor_count": 839,
+    "v1_5_verified": true,
+    "alias_binding": "mlx_lm.server --model path; /v1/models advertises resolved path; MLX default_model mapping",
+    "provenance_limit": "Pinned locally downloaded conversion with publisher-declared base model; no independent conversion-equivalence test or signed runtime attestation",
+    "redaction": "Absolute model path redacted; raw HTTP content unchanged."
+  },
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "source_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf",
+  "as_of": "2023-11-29",
+  "source_pdf_reverified": true,
+  "prompt_version": "gate0-v2-bounded-json",
+  "raw_request": {
+    "model": "default_model",
+    "temperature": 0,
+    "max_tokens": 1400,
+    "messages": [
+      {
+        "role": "system",
+        "content": "Extract candidate evidence with faithful, attributed citations. No voting advice."
+      },
+      {
+        "role": "user",
+        "content": "Read ONLY the following archived Swiss referendum booklet, as known BEFORE the 3 March 2024 vote. The knowledge cutoff/as_of is 2023-11-29. No later knowledge, voting advice, or invented personal financing. Return ONLY one JSON object, without markdown. Schema:\n{\"outcome\":\"SUPPORTED or INSUFFICIENT_EVIDENCE\",\"claims\":[{\"kind\":\"DIRECT_PROVISION or ATTRIBUTED_PREDICTION or COST_PROJECTION or UNRESOLVED\",\"statement\":\"plain German or English\",\"pdf_page\":11,\"quote\":\"EXACT contiguous text copied from a supplied page\",\"attribution\":\"EXACT ROLE tag of that page\",\"as_of\":\"2023-11-29\"}],\"unknowns\":[\"missing facts, if any\"],\"personal_financing_chf\":null}\nNo invented page numbers. Do not change quote wording, punctuation, capitalisation or word spacing. ROLE tags are identifiers; do not translate them. Government/committee forecasts are predictions, never DIRECT_PROVISION. A sourced UNRESOLVED claim may explain an abstention. Unknowns must be strings. If a requested statement is absent or contradicted, use INSUFFICIENT_EVIDENCE and explain the gap; do not output the requested false claim. The booklet does not establish an enacted financing formula, so personal_financing_chf must stay null.\nTASK: Extract exactly three claims: one DIRECT_PROVISION, one COST_PROJECTION or ATTRIBUTED_PREDICTION, and one UNRESOLVED financing issue. Include at least one unknown about an exact employed person's future financing burden because the document leaves financing open.\n\nPDF PAGE 1 — ROLE DOCUMENT_CONTEXT_ONLY:\nVolksabstimmungVolksabstimmung 3.3. MärzMärz 20242024 ErsteErste VorlageVorlage VolksinitiativeVolksinitiative «Für«Für einein besseresbesseres LebenLeben imim AlterAlter (Initiative(Initiative fürfür eineeine 13.13. AHV-Rente)»AHV-Rente)» ZweiteZweite VorlageVorlage VolksinitiativeVolksinitiative «Für«Für eineeine sicheresichere undund nachhaltigenachhaltige AltersvorsorgeAltersvorsorge (Renteninitiative)»(Renteninitiative)»\n\nPDF PAGE 2 — ROLE DOCUMENT_CONTEXT_ONLY:\nErläuterungen des Bundesrates Herausgegeben von der Bundeskanzlei Redaktionsschluss: 29. November 2023\n\nPDF PAGE 3 — ROLE DOCUMENT_CONTEXT_ONLY:\nInhaltsverzeichnis 3 Erste Vorlage Volksinitiative «Für ein besseres Leben im Alter (Initiative für eine 13. AHV-Rente)» In Kürze 4 Im Detail 8 Argumente 14 Abstimmungstext 18 Zweite Vorlage Volksinitiative «Für eine sichere und nachhaltige Altersvorsorge (Renteninitiative)» In Kürze 6 Im Detail 20 Argumente 26 Abstimmungstext 30 Die Videos zu den Die App zu den Abstimmungen: Abstimmungen: admin.ch/videos-de VoteInfo\n\nPDF PAGE 4 — ROLE FEDERAL_COUNCIL_SUMMARY:\n4 Erste Vorlage: 13. AHV-Rente In Kürze Volksinitiative «Für ein besseres Leben im Alter (Initiative für eine 13. AHV-Rente)» Ausgangslage Die Alters- und Hinterlassenenversicherung (AHV) ist das Fundament der schweizerischen Altersvorsorge. Mehr als 2,5 Millionen Pensionierte erhalten gegenwärtig eine AHV- Rente. Die AHV-Rente soll den Existenzbedarf im Alter ange messen decken. Die meisten Pensionierten haben weitere Einkommen, insbesondere eine Pensionskassenrente. Wer seinen Lebensunterhalt damit nicht bestreiten kann, hat Anspruch auf Ergänzungsleistungen (EL). Die Initiative Die Initiative will die Altersrenten der AHV um eine Monatsrente erhöhen. Zu den 12 Monatsrenten käme jedes Jahr eine 13. Rente dazu. Die Initiative bestimmt auch, dass die Ergänzungsleistungen wegen der 13. Rente nicht gekürzt werden dürfen. Die maximale jährliche Altersrente würde für Einzelpersonen um 2450 Franken auf 31 850 Franken und für Ehepaare um 3675 Franken auf 47 775 Franken steigen. Durch diese Erhöhung würden die Kosten für die 13. AHV- Rente bei der Einführung voraussichtlich etwa 4,1 Milliarden Franken betragen; davon müsste der Bund rund 800 Millionen Franken bezahlen. Danach würden die Kosten schnell weiter zunehmen. Die Initiative lässt die Frage der Finanzierung offen. Dank verschiedenen Reformen sind die Leistungen der AHV heute gut finanziert; nach 2030 ist jedoch mit Defiziten zu rechnen – auch ohne 13. AHV-Rente. Würde die 13. Rente eingeführt, bräuchte die AHV noch zusätzliche Einnahmen oder sie müsste Leistungen kürzen. Vorlage im Detail 8 Argumente 14 Abstimmungstext 18\n\nPDF PAGE 5 — ROLE DOCUMENT_CONTEXT_ONLY:\n5 Abstimmungsfrage Wollen Sie die Volksinitiative «Für ein besseres Leben im Alter (Initiative für eine 13. AHV-Rente)» annehmen? Empfehlung von Bundesrat und Nein Parlament Bundesrat und Parlament sehen keinen finanziellen Spielraum für eine 13. AHV-Rente. Die Stabilisierung der AHV und die Sicherung der Renten haben Priorität. Die meisten Pensionierten sind nicht auf eine 13. AHV-Rente angewiesen. Für Personen mit geringen Mitteln gibt es gezielt Ergänzungs- leistungen. admin.ch/13-AHV-renten Empfehlung des Initiativkomitees Ja Für das Initiativkomitee braucht es die 13. AHV-Rente, weil die Rente immer weniger weit reiche. Mieten, Kranken kassenprämien und Lebensmittel: Alles werde teurer. Immer mehr Rentnerinnen und Rentner hätten Mühe, über die Runden zu kommen. Die finanziellen Mittel für die 13. AHV-Rente seien laut dem Komitee vorhanden. AHVx13.ch Abstimmung 126 Nein im Nationalrat 69 Ja 2 Enthaltungen Abstimmung 31 Nein im Ständerat 10 Ja 1 Enthaltung\n\nPDF PAGE 6 — ROLE DOCUMENT_CONTEXT_ONLY:\n6 Zweite Vorlage: Renteninitiative In Kürze Volksinitiative «Für eine sichere und nachhaltige Altersvorsorge (Renteninitiative)» Ausgangslage Die Renten der AHV sind für die nächsten Jahre sicher finanziert. Zwei Reformen in den letzten fünf Jahren haben wesentlich dazu beigetragen. So wurden die Lohnbeiträge und die Mehrwertsteuer angehoben, und das Rentenalter der Frauen wird auf 65 Jahre erhöht. Mit dieser Mischung aus höheren Einnahmen und tieferen Ausgaben sind die Finanzen der AHV bis zirka 2030 stabilisiert. Mittelfristig steht die AHV aber vor grossen finanziellen Herausforderungen. Erstens nimmt die Zahl der Pensionierten schneller zu als die Zahl der Erwerbs tätigen, die in die AHV einzahlen. Zweitens müssen mit der steigenden Lebenserwartung die Renten länger ausbezahlt werden. Die Initiative Die Renteninitiative will die Finanzierung der AHV mit der Erhöhung des Rentenalters nachhaltig sichern. Sie fordert, zuerst das Rentenalter für Frauen und Männer bis 2033 schritt weise auf 66 Jahre zu erhöhen. Danach soll das Rentenalter an die durchschnittliche Lebenserwartung gekoppelt werden: Das Rentenalter würde automatisch erhöht, wenn die Lebens erwartung steigt – allerdings nicht eins zu eins, sondern nur um 80 Prozent der gestiegenen Lebenserwartung und in Schritten von höchstens zwei Monaten pro Jahr. Wird die Initiative angenommen, würde die AHV entlastet: Die Erhöhung des Rentenalters auf 66 Jahre würde die Ausgaben der AHV voraussichtlich um rund 2 Milliarden Franken reduzieren. Mit den automatischen Anpassungen des Rentenalters an die steigende Lebenserwartung würde die AHV zusätzlich entlastet. Vorlage im Detail 20 Argumente 26 Abstimmungstext 30\n\nPDF PAGE 7 — ROLE DOCUMENT_CONTEXT_ONLY:\n7 Abstimmungsfrage Wollen Sie die Volksinitiative «Für eine sichere und nachhaltige Altersvorsorge (Renteninitiative)» annehmen? Empfehlung von Bundesrat und Nein Parlament Mit der Initiative würde das Rentenalter künftig allein durch eine mathematische Formel bestimmt. Ein solcher Auto matismus ist für Bundesrat und Parlament zu starr. Bei der Festlegung des Rentenalters müssen stets verschiedene Aspekte berücksichtigt werden, wie die Entwicklung der Wirtschaft und des Arbeitsmarktes. admin.ch/renteninitiative Empfehlung des Initiativkomitees Ja Für das Initiativkomitee ist klar: Die AHV ist in finanzieller Schieflage – tun wir nichts, sind die Renten in Gefahr. Die Renteninitiative entschärfe diese Gefahr, ohne dass Rentenkür zungen, zusätzliche Steuern oder weitere Verschuldung nötig würden. Sie sei die beste Lösung, moderat, sozial und fair für alle Generationen. renten-sichern.ch Abstimmung 143 Nein im Nationalrat 40 Ja 11 Enthaltungen Abstimmung 32 Nein im Ständerat 11 Ja 1 Enthaltung\n\nPDF PAGE 8 — ROLE DOCUMENT_CONTEXT_ONLY:\n8 Erste Vorlage: 13. AHV-Rente Im Detail Volksinitiative «Für ein besseres Leben im Alter (Initiative für eine 13. AHV-Rente)» Argumente Initiativkomitee 14 Argumente Bundesrat und Parlament 16 Abstimmungstext 18\n\nPDF PAGE 9 — ROLE FEDERAL_COUNCIL_DETAIL:\n9 Der Auftrag Die Alters- und Hinterlassenenversicherung (AHV) ist das der AHV wichtigste Sozialwerk der Schweiz: Alle Menschen in der Schweiz haben im Alter Anspruch auf eine Rente der AHV. Die Verfassung legt fest, dass die AHV-Renten den Existenzbedarf angemessen decken müssen. Die Mehrheit der Pensionierten bestreitet ihren Lebensunterhalt mit zusätzlichen Einkünften, insbesondere mit Renten aus der Pensionskasse. Wer den Existenzbedarf damit nicht decken kann, hat Anspruch auf Ergänzungsleistungen (EL). Die Altersrenten Die minimale ganze AHV-Altersrente beträgt zurzeit der AHV 1225 Franken, die maximale Rente 2450 Franken pro Monat.1 Ehepaare und Paare in eingetragener Partnerschaft erhalten zusammen höchstens das Anderthalbfache einer maximalen Einzelrente, also 3675 Franken. Übersteigen die beiden Renten diesen Betrag, werden sie gekürzt. Der Bundesrat passt alle AHV-Renten regelmässig an die Preis- und Lohnentwicklung an. Die letzte Anpassung erfolgte auf Anfang 2023. Initiative will eine Die Initiative fordert, dass die monatliche Rente nicht nur 13. AHV-Rente 12 Mal, sondern 13 Mal pro Jahr ausbezahlt wird. Dies in An lehnung an den 13. Monatslohn, den viele Arbeitnehmerinnen und Arbeitnehmer erhalten. Dies entspricht einer Erhöhung der jährlichen AHV-Rente um 8,3 Prozent. Die minimale jährliche Altersrente würde von 14 700 auf 15 925 Franken, die maximale Altersrente von 29 400 auf 31 850 Franken steigen. Paare hätten statt 44 100 Franken maximal 47 775 Franken zugut. 1 Die Höhe der AHV-Rente ist abhängig vom durchschnittlichen Einkommen während der Beitragspflicht sowie von Erziehungs- und Betreuungsgutschriften. Personen, die Beitragslücken haben, also nicht jedes Jahr in die AHV einbezahlt haben, erhalten nicht eine ganze AHV-Rente, sondern eine Teilrente.\n\nPDF PAGE 10 — ROLE DOCUMENT_CONTEXT_ONLY:\n10 Erste Vorlage: 13. AHV-Rente Ergänzungs- Pensionierte, die den Existenzbedarf nicht decken können, leistungen bleiben haben Anspruch auf Ergänzungsleistungen. Das sind insbe trotz 13. Rente sondere Personen in Pflegeheimen, welche die hohen Heim erhalten kosten nicht selber tragen können. Häufig sind es auch Pensio nierte, die nur eine AHV-Rente, aber kein oder wenig Vermögen haben. Steigen ihre Einnahmen, kann das dazu führen, dass die Ergänzungsleistungen entsprechend gesenkt oder gar gestrichen werden. Die Initiative bestimmt, dass diese Regel bei der 13. AHV-Rente nicht angewendet wird. Somit bekämen alle Pensionierten mehr Geld, auch diejenigen mit Ergänzungsleistungen.\n\nPDF PAGE 11 — ROLE FEDERAL_COUNCIL_DETAIL_FINANCING:\n11 Andere Renten Die AHV bezahlt nicht nur Altersrenten, sondern auch bleiben gleich Hinterlassenenrenten an Witwen, Witwer und Waisen. Zusätz lich sorgt die Invalidenversicherung (IV) für die Existenzsiche rung von Personen mit gesundheitlichen Einschränkungen. Alle diese Leistungen der 1. Säule sind aufeinander abgestimmt. Mit der Initiative würden nur die Altersrenten der AHV erhöht, die anderen Renten hingegen weiterhin 12 Mal pro Jahr bezahlt. Finanzielle Die jährlichen Ausgaben der AHV betragen heute rund Auswirkungen 50 Milliarden Franken. Die 13. AHV-Rente würde bei der Ein der Initiative führung voraussichtlich etwa 4,1 Milliarden Franken zusätzlich kosten.2 Davon müsste der Bund rund 800 Millionen Franken übernehmen. Die zusätzlichen Kosten für die 13. AHV-Rente würden Jahr für Jahr ansteigen, weil die Zahl der Rentnerinnen und Rentner stark wächst. Fünf Jahre nach Einführung würden die Kosten voraussichtlich rund 5 Milliarden Franken betragen. Finanzierung offen Die Initiative macht keine Angaben dazu, wie die zusätz lichen Ausgaben für die 13. AHV-Rente finanziert werden sollen. Das müsste vom Parlament bestimmt werden. Heute wird die AHV hauptsächlich mit Lohnbeiträgen, mit dem Beitrag des Bundes und mit Einnahmen aus der Mehrwertsteuer gespeist. Würden die zu erwartenden zusätzlichen Ausgaben der AHV für die 13. Rente bei deren Einführung über die Lohnbeiträge finanziert, müssten diese von 8,7 auf 9,4 Prozent erhöht wer den. Diese Erhöhung ginge je zur Hälfte zulasten der Arbeit nehmenden und der Arbeitgebenden. Bei einer Finanzierung über die Mehrwertsteuer müsste diese von 8,1 auf 9,1 Prozent angehoben werden. In Frage kämen auch andere Finanzie rungsmassnahmen oder eine Kombination davon. 2 Finanzperspektiven der AHV des Bundesamts für Sozialversicherungen BSV ( bsv.admin.ch > Sozialversicherungen > AHV > Reformen & Revisionen > Volksinitiative «Für ein besseres Leben im Alter»)\n\nPDF PAGE 12 — ROLE DOCUMENT_CONTEXT_ONLY:\n12 Erste Vorlage: 13. AHV-Rente Massnahmen In den letzten Jahren wurden verschiedene Massnahmen zur Stabilisierung zur Sicherung der AHV verabschiedet. So wurden im Jahr 2020 der AHV die Lohnabzüge und der Bundesbeitrag für die AHV erhöht und auf Anfang 2024 die Mehrwertsteuersätze für die AHV angehoben, und bis 2028 wird das AHV-Alter der Frauen auf 65 heraufgesetzt. Diese Reformen hat das Volk 2019 und 2022 angenommen. Sie stabilisieren die Finanzen der AHV bis 2030. Danach ist mit Defiziten zu rechnen. Darum hat das Parlament den Bundesrat beauftragt, bis 2026 eine Reform für die Zeit nach 2030 auszuarbeiten. Diese Reform müsste die höheren Ausgaben wegen der 13. AHV-Rente mitberücksichtigen und rechtzeitig verabschiedet werden, damit die Finanzen der AHV im Gleichgewicht bleiben.\n\nPDF PAGE 13 — ROLE DOCUMENT_CONTEXT_ONLY:\n13\n\nPDF PAGE 14 — ROLE INITIATIVE_COMMITTEE_ARGUMENTS:\n14 Erste Vorlage: 13. AHV-Rente Argumente Initiativkomitee Mieten, Krankenkassenprämien, Lebensmittel: Alles ist teurer. Die Rente reicht immer weniger weit. Wer ein Leben lang gearbeitet und in die Altersvorsorge einbezahlt hat, verdient eine anständige Rente. Deshalb braucht es nun eine 13. AHV-Rente. Sie verbessert die Situation der heutigen und zukünftigen Rentnerinnen und Rentner rasch und effizient. Deshalb: Ja zur 13. AHV-Rente. Darum geht es Das Stimmvolk hat die AHV eingeführt, damit alle in der Schweiz nach einem langen Erwerbsleben anständig leben können. Doch heute haben immer mehr Rentnerinnen und Rentner Mühe, über die Runden zu kommen. Bei Annahme der Initiative wird eine 13. AHV-Rente ausbezahlt, analog zum 13. Monatslohn. Auch Bezügerinnen und Bezüger von Ergänzungsleistungen bekommen die zusätzliche Rente. Das gleicht schnell und effizient die gestiegenen Preise aus. Die Rente reicht Mieten, Krankenkassenprämien, Strom und Lebensmittel nicht mehr sind teurer. Die höheren Lebenshaltungskosten fressen eine Monatsrente weg. Und die Pensionskassenrenten sinken seit Jahren. Darum braucht es rasch eine Erhöhung der Altersrenten für aktuelle und zukünftige Rentnerinnen und Rentner. Beste Lösung für Die AHV kommt allen in der Schweiz zugute. Für die anständige Renten meisten Arbeitnehmenden lohnt sie sich: Die Arbeitgeber tragen die Hälfte der Beiträge. Auch Topverdienende zahlen einen Teil der Rente, weil ihre Millionen-Boni AHV-pflichtig sind. Ausserdem hat die AHV stabile und tiefe Kosten. Alle Erträge fliessen direkt in die Renten, ohne dass Banken, Vermittler oder Aktionäre mitverdienen. AHV ist für Frauen Die höheren Preise treffen Menschen mit tieferer Rente besonders wichtig besonders hart. Darunter sind überdurchschnittlich viele Frauen. Eine 13. AHV-Rente bringt ihnen am meisten: Nur aus der AHV haben alle eine Rente. Nur die AHV anerkennt die unbezahlte Betreuungsarbeit, die hauptsächlich von Frauen geleistet wird: Ein Kind grosszuziehen, erhöht die AHV-Rente.\n\nPDF PAGE 15 — ROLE DOCUMENT_CONTEXT_ONLY:\n15 Finanzielle Mittel Die AHV verzeichnet Überschüsse. Heute hat sie mit fast sind vorhanden 50 Milliarden Franken so hohe Reserven wie noch nie. Die 13. AHV-Rente kostet bei der Einführung rund 4,1 Milliarden. Im gleichen Jahr schreibt die AHV gemäss Bundesrat einen Überschuss von 3,5 Milliarden. Die Kosten der 13. AHV- Rente sind also zu einem grossen Teil schon gedeckt. Für die langfristigen Finanzierungsbedürfnisse reicht zum Beispiel ein zusätzlicher Lohnbeitrag von 0,4% der Arbeitnehmenden. Zusammen mit den Beiträgen der Arbeitgeber bringt das jährlich zusätzliche 3,7 Milliarden ein. Empfehlung des Darum empfiehlt das Initiativkomitee: Initiativkomitees Ja AHVx13.ch Der Text auf dieser Doppelseite stammt vom Initiativkomitee. Es ist für den Inhalt und die Wortwahl verantwortlich.\n\nPDF PAGE 16 — ROLE FEDERAL_COUNCIL_PARLIAMENT_ARGUMENTS:\n16 Erste Vorlage: 13. AHV-Rente Argumente Bundesrat und Parlament Die Initiative für eine 13. AHV-Rente hätte zusätzliche Kosten in Milliardenhöhe zur Folge und würde die Finanzierungspro bleme der AHV erheblich verschärfen. Auch ohne 13. AHV-Rente ist die finanzielle Stabilität der AHV mittelfristig gefährdet: Geburtenstarke Jahrgänge erreichen das AHV-Alter und die Lebenserwartung steigt. Eine 13. AHV-Rente ist auch gar nicht nötig: Die grosse Mehrheit der Pensionierten ist darauf nicht angewiesen. Bundesrat und Parlament lehnen die Vorlage insbesondere aus folgenden Gründen ab: Mehrkosten Die Initiative würde die AHV finanziell zu stark belasten. belasten AHV Die Ausgaben der AHV würden auf einen Schlag um mehr als zu stark 4 Milliarden steigen und danach schnell weiter zunehmen. Die Rechnung der AHV würde rasch aus dem Gleichgewicht gera ten. Die Zusatzkosten wären für die AHV ohne substanzielle neue Einnahmen oder kostensenkende Massnahmen wie die Erhöhung des Rentenalters nicht zu verkraften. Initiative Die Finanzierung der 13. Rente ginge auf Kosten der verteuert Arbeit arbeitenden Bevölkerung und der Unternehmen oder der oder Konsum Konsumentinnen und Konsumenten. Um die hohen Kosten für eine 13. AHV-Altersrente zu decken, müssten beispielsweise die Lohnabzüge oder die Mehrwertsteuer weiter erhöht werden. Damit würde die Arbeit verteuert oder die Preise würden steigen. Höhere Steuern Eine 13. AHV-Altersrente hätte auch negative Auswirkun oder weniger gen auf den Bundeshaushalt, weil der Bund rund einen Fünftel Ausgaben der jährlichen Ausgaben der AHV bezahlen muss. Er hätte auf einen Schlag Mehrkosten von mehr als 800 Millionen Franken, die Jahr für Jahr zunehmen würden. Der Bund müsste seine Steuern erhöhen oder Ausgaben kürzen. Hohe Kosten, Der soziale Nutzen der 13. AHV-Rente wäre gering. Eine geringer sozialer grosse Mehrheit der Pensionierten erhält neben der AHV-Rente Nutzen Leistungen der Pensionskasse; viele haben zudem noch andere Einkommen oder Vermögen. Mit der Initiative würden viele Pensionierte eine 13. AHV-Rente erhalten, obwohl sie darauf nicht angewiesen sind. Rentnerinnen und Rentner, die ihren Existenzbedarf nicht decken können, haben Anspruch auf Ergänzungsleistungen.\n\nPDF PAGE 17 — ROLE DOCUMENT_CONTEXT_ONLY:\n17 Sicherung der In den letzten fünf Jahren waren zwei schwierige Refor Renten hat men nötig, um die AHV-Finanzen für die nächsten zehn Jahre Priorität zu stabilisieren. Sie haben insbesondere der Bevölkerung im erwerbsfähigen Alter zusätzliche Lasten auferlegt. Und die nächste Reform ist bereits aufgegleist, damit die AHV auch mittelfristig nicht aus dem Gleichgewicht gerät. Der Bundesrat wird dem Parlament bis 2026 Vorschläge unterbreiten, wie die Finanzen der AHV für die Zeit nach 2030 stabilisiert werden können. Anstatt der AHV weitere Ausgaben aufzubürden, müssen wir dafür sorgen, dass die Renten der AHV gesichert werden. Empfehlung von Aus all diesen Gründen empfehlen Bundesrat und Parla Bundesrat und ment, die Volksinitiative «Für ein besseres Leben im Alter Parlament (Initiative für eine 13. AHV-Rente)» abzulehnen. Nein admin.ch/13-AHV-renten\n\nPDF PAGE 18 — ROLE DOCUMENT_CONTEXT_ONLY:\n18 Erste Vorlage: 13. AHV-Rente Abstimmungstext Bundesbeschluss über die Volksinitiative «Für ein besseres Leben im Alter (Initiative für eine 13. AHV-Rente)» vom 17. März 2023 Die Bundesversammlung der Schweizerischen Eidgenossenschaft, gestützt auf Artikel 139 Absatz 5 der Bundesverfassung1, nach Prüfung der am 28. Mai 20212 eingereichten Volksinitiative «Für ein besseres Leben im Alter (Initiative für eine 13. AHV-Rente)», nach Einsicht in die Botschaft des Bundesrates vom 25. Mai 20223, beschliesst: Art. 1 1 Die Volksinitiative vom 28. Mai 2021 «Für ein besseres Leben im Alter (Initiative für eine 13. AHV-Rente)» ist gültig und wird Volk und Ständen zur Abstimmung unterbreitet. 2 Sie lautet: Die Bundesverfassung wird wie folgt geändert: Art. 197 Ziff. 124 12. Übergangsbestimmung zu Art. 112 (Alters-, Hinterlassenen- und Invalidenversicherung) 1 Bezügerinnen und Bezüger einer Altersrente haben Anspruch auf einen jährlichen Zuschlag in der Höhe eines Zwölftels ihrer jährlichen Rente. 2 Der Anspruch auf den jährlichen Zuschlag entsteht spätestens mit Beginn des zwei- ten Kalenderjahres, das der Annahme dieser Bestimmung durch Volk und Stände folgt. 3 Das Gesetz stellt sicher, dass der jährliche Zuschlag weder zu einer Reduktion der Ergänzungsleistungen noch zum Verlust des Anspruchs auf diese Leistungen führt. Art. 2 Die Bundesversammlung empfiehlt Volk und Ständen, die Initiative abzulehnen. 1 SR 101 2 BBl 2021 1505 3 BBl 2022 1485 4 Die endgültige Ziffer dieser Übergangsbestimmung wird nach der Volksabstimmung von der Bundeskanzlei festgelegt.\n\nPDF PAGE 19 — ROLE DOCUMENT_CONTEXT_ONLY:\n19\n\nPDF PAGE 20 — ROLE DOCUMENT_CONTEXT_ONLY:\n20 Zweite Vorlage: Renteninitiative Im Detail Volksinitiative «Für eine sichere und nachhaltige Altersvorsorge (Renteninitiative)» Argumente Initiativkomitee 26 Argumente Bundesrat und Parlament 28 Abstimmungstext 30\n\nPDF PAGE 21 — ROLE DOCUMENT_CONTEXT_ONLY:\n21 Finanzen der AHV Die AHV ist das Fundament der Altersvorsorge. Die Men bis 2030 schen in der Schweiz müssen sich auf ihre Renten verlassen stabilisiert können. Um die Renten zu sichern, haben Bundesrat und Parlament in den letzten fünf Jahren zwei Reformen beschlos sen. Diese erhöhen die Einnahmen und senken die Ausgaben der AHV. So wurden die Lohnbeiträge und die Mehrwertsteuer angehoben, und ab 2025 wird das Rentenalter der Frauen schrittweise auf 65 Jahre erhöht. Das Volk hat diesen Reformen zugestimmt. Damit sind die Finanzen der AHV bis etwa 2030 stabilisiert.1 Herausforderungen Für die Zeit nach 2030 sind weitere Massnahmen notwen der AHV dig, um die Renten zu sichern. Vor allem aus zwei Gründen: Erstens wächst die Zahl der Rentnerinnen und Rentner schnel ler als die Zahl der Erwerbstätigen, welche die Renten finanzie ren. Zweitens steigt die Lebenserwartung, und deswegen müssen die Renten länger ausbezahlt werden. Das Parlament hat den Bundesrat deshalb bereits damit beauftragt, eine weitere Vorlage zur Stabilisierung der AHV für die Zeit nach 2030 zu erarbeiten. Initiative Die Initiative will die Finanzierung der AHV mit der Erhö hung des Rentenalters nachhaltig sichern und einen Automa tismus zur Berechnung des Rentenalters in der Verfassung verankern. Sie sieht zwei Etappen vor: Rentenalter 66 Zuerst soll das Rentenalter für Männer und Frauen auf bis 2033 66 Jahre erhöht werden. Dies würde schrittweise von 2028 bis 2033 geschehen. 1 Berechnungen des Bundeamtes für Sozialversicherungen BSV ( bsv.admin.ch > Sozialversicherungen > AHV > Reformen & Revisionen > Volksinitiative «Für eine sichere und nachhaltige Altersvorsorge»)\n\nPDF PAGE 22 — ROLE DOCUMENT_CONTEXT_ONLY:\n22 Zweite Vorlage: Renteninitiative Rentenalter an Nach 2033 soll das Rentenalter automatisch weiter stei Lebenserwartung gen, wenn die durchschnittliche Lebenserwartung zunimmt. gebunden Die Erhöhung des Rentenalters soll dem Anstieg der Lebens erwartung allerdings nicht eins zu eins folgen, sondern nur zu 80 Prozent. Rein rechnerisch würde das beispielsweise bedeu ten, dass bei einem Anstieg der Lebenserwartung um einen Monat das Rentenalter um 0,8 Monate erhöht würde. Wie dieser Automatismus genau ausgestaltet wäre, müssten Bun desrat und Parlament bei der Umsetzung der neuen Verfas sungsbestimmung festlegen. Maximal zwei Die Erhöhung des Rentenalters dürfte ab 2033 nicht mehr Monate pro Jahr als zwei Monate pro Jahr betragen, auch wenn der Anstieg der Lebenserwartung eine stärkere Erhöhung erfordern würde. Jede Erhöhung müsste den betroffenen Personen fünf Jahre vor Erreichen des Rentenalters mitgeteilt werden. Rentenalter 67 Massgeblich für die Bestimmung des Rentenalters wäre im Jahr 2043 die durchschnittliche Lebenserwartung der Schweizer Wohnbe völkerung im Alter von 65 Jahren. Derzeit können 65-Jährige im Durchschnitt mit noch rund 22 Lebensjahren rechnen. Laut den Bevölkerungsszenarien des Bundesamtes für Statistik ist davon auszugehen, dass die Lebenserwartung weiter steigen wird – und zwar um etwas mehr als einen Monat pro Jahr. Trifft das zu, so würde das Rentenalter gemäss dem Automatis mus der Initiative bis ins Jahr 2043 auf 67 Jahre ansteigen.2 2 «Lebenserwartung, 2000–2022», Bundesamt für Statistik BFS ( bfs.admin.ch > Statistiken finden > Bevölkerung > Geburten und Todesfälle > Lebenserwartung > Tabellen); Berechnungen des Bundeamtes für Sozialversicherungen BSV ( bsv.admin.ch > Sozialversicherungen > AHV > Reformen & Revisionen > Volksinitia tive «Für eine sichere und nachhaltige Altersvorsorge»)\n\nPDF PAGE 23 — ROLE DOCUMENT_CONTEXT_ONLY:\n23\n\nPDF PAGE 24 — ROLE DOCUMENT_CONTEXT_ONLY:\n24 Zweite Vorlage: Renteninitiative Finanzielle Die Erhöhung des Rentenalters würde in der AHV zu Auswirkungen höheren Einnahmen und tieferen Ausgaben führen: Weil die der Initiative Menschen länger arbeiten, bezahlen sie länger AHV-Beiträge und beziehen erst später eine Rente. Ab dem Jahr 2033, wenn das Rentenalter 66 erreicht wäre, würde die Rechnung der AHV voraussichtlich um jährlich rund 2 Milliarden Franken entlastet. Danach würde die AHV mit jeder automatischen Erhöhung des Rentenalters zusätzlich erheblich entlastet. Die Rentenalter erhöhung allein generiert aus heutiger Sicht aber nicht genug finanzielle Mittel zur langfristigen Sicherung der AHV-Finan zen. Das zeigen Projektionen des Bundesamtes für Sozialver sicherungen zur möglichen langfristigen Entwicklung der AHV-Finanzen.3 Auswirkungen Die Initiative hat auch Auswirkungen auf die Invaliden auf die IV versicherung. IV-Rentnerinnen und -Rentner erhalten eine AHV-Rente, sobald sie das Rentenalter erreichen. Könnten sie die AHV-Altersrente erst später beziehen, erhielten sie ihre Rente entsprechend länger von der IV. Im Jahr 2033, wenn das Rentenalter 66 erreicht wäre, würde das in der IV zu zusätzli chen Kosten von jährlich rund 200 Millionen Franken führen. Danach würden diese zusätzlichen Kosten mit jeder Erhöhung des Rentenalters weiter ansteigen. 3 Bericht des BSV vom 25.04.2023 zuhanden der SGK-N zu den Auswirkungen der Renteninitiative auf die Finanzen der AHV bis 2050 ( parlament.ch > Geschäfts-Nr. 22.054 > öffentliche Kommissionsunterlagen)\n\nPDF PAGE 25 — ROLE DOCUMENT_CONTEXT_ONLY:\n25\n\nPDF PAGE 26 — ROLE DOCUMENT_CONTEXT_ONLY:\n26 Zweite Vorlage: Renteninitiative Argumente Initiativkomitee Am 1. Januar 1948 wurden die ersten AHV-Renten ausbezahlt. Rentnerinnen und Rentner können seither auf ein sicheres Einkommen im Alter zählen. Heute – 76 Jahre später – ist die AHV in finanzieller Schieflage. Immer weniger Erwerbstätige finan zieren die AHV von immer mehr Rentnern. Tun wir nichts, sind die AHV-Renten in Gefahr. Die Renteninitiative entschärft diese Gefahr – ohne Rentenkürzungen, ohne zusätzliche Steuern und ohne weitere Verschuldung. AHV-Renten sichern Seit 76 Jahren zahlt die AHV Monat für Monat zuverlässig AHV-Renten an Rentnerinnen und Rentner aus. Doch nun steht sie vor drei grossen Herausforderungen: Wir leben immer länger, die Geburtenrate sinkt und in den nächsten zehn Jahren werden über eine Million Erwerbstätige der sogenannten Babyboomer-Generation pensioniert. Die Folge: Immer weniger Erwerbstätige finanzieren die AHV-Renten von immer mehr Rentnern. Tun wir nichts, sind die AHV-Renten gefährdet. Die Renteninitiative wirkt dieser Entwicklung entgegen und stellt die AHV-Finanzen wieder auf eine nachhaltige Basis. Davon profitieren aktuelle und künftige Rentnerinnen und Rentner – also unsere Kinder und Enkel. Eine faire und Weil wir immer älter werden, müssen wir zwingend langfristige Lösung etwas tun. Ohne Gegensteuer drohen Mehrwertsteuererhö hungen, mehr Lohnabgaben oder eine höhere Verschuldung. Die beste Lösung, um die Renten nachhaltig zu sichern, bietet die Renteninitiative. Eine moderate Verknüpfung des Renten alters mit der steigenden Lebenserwartung ist fair für alle Generationen. Was aber ist mit Personen, die in körperlich beschwer lichen Berufen arbeiten? Wir unterstützen Branchenlösungen, wie es sie heute im Bau gibt, wo Bauarbeiter bereits früher in Pension gehen können.\n\nPDF PAGE 27 — ROLE DOCUMENT_CONTEXT_ONLY:\n27 Im weltweiten Die Initiative ist moderat – besonders im internationalen Vergleich moderat Vergleich. Dänemark, die Niederlande, Belgien, Deutschland und viele weitere Staaten haben beschlossen, das Rentenalter innerhalb der nächsten 10 Jahre auf 67 oder mehr zu erhöhen. Mit der Renteninitiative steigt das Schweizer Rentenalter hingegen nur auf 66 Jahre bis ins Jahr 2033. Das Anliegen der Renteninitiative ist somit moderat und sozial. Weniger Ein zusätzlicher Effekt der Renteninitiative: Sie reduziert Zuwanderung die Zuwanderung in die Schweiz. Laut einer Studie im Auftrag des Bundes kann die Renteninitiative zu einem Rückgang der Zuwanderung in den Arbeitsmarkt um bis zu 23 Prozent bis ins Jahr 2050 führen. Der Grund: Arbeitgeber können verstärkt auf inländische Fachkräfte zurückgreifen. Empfehlung des Darum empfiehlt das Initiativkomitee: Initiativkomitees Ja renten-sichern.ch Der Text auf dieser Doppelseite stammt vom Initiativkomitee. Es ist für den Inhalt und die Wortwahl verantwortlich.\n\nPDF PAGE 28 — ROLE DOCUMENT_CONTEXT_ONLY:\n28 Zweite Vorlage: Renteninitiative Argumente Bundesrat und Parlament Ein Automatismus, der das Rentenalter an die Lebenserwartung bindet, ist zu starr. Für Bundesrat und Parlament müssen bei der Festlegung des Rentenalters stets verschiedene Aspekte berücksichtigt werden, zum Beispiel auch die Entwicklung der Wirtschaft, des Arbeitsmarktes und des Gesundheitszustands der Bevölkerung. Das Rentenalter automatisch anhand einer mathematischen Formel zu erhöhen, ohne diese Aspekte zu beachten, ist zu einseitig. Bundesrat und Parlament lehnen die Renteninitiative insbesondere aus folgenden Gründen ab: Automatismus Mit der Initiative würde das Rentenalter künftig allein ist zu starr durch eine mathematische Formel bestimmt. Der in der Verfas sung verankerte Automatismus würde greifen, egal wie die Situation der älteren Arbeitnehmerinnen und Arbeitnehmer aussieht. Das Rentenalter müsste erhöht werden, auch wenn die Wirtschaft in einer Rezession steckt. Der Automatismus liesse es nicht zu, andere Faktoren zu berücksichtigen oder das Rentenalter langsamer oder gar nicht anzupassen. Rentenalter 65 Das Rentenalter der Frauen wird bis 2028 auf 65 Jahre ist noch nicht erhöht. Dies hat das Volk mit der letzten AHV-Reform im umgesetzt September 2022 beschlossen. Der Bundesrat hält es nicht für angebracht, das Rentenalter bereits wieder anzuheben, noch bevor die Erhöhung des Frauenrentenalters vollzogen ist. Initiative ist Bundesrat und Parlament teilen das Anliegen der Initian einseitig tinnen und Initianten, eine nachhaltige Lösung für die finanziel len Herausforderungen der AHV zu finden. Was die Initiative vorschlägt, ist jedoch einseitig. Eine Erhöhung des Rentenalters über 65 Jahre hinaus soll nicht isoliert erfolgen, sondern muss zusammen mit anderen Massnahmen im Rahmen der nächsten AHV-Reform diskutiert werden.\n\nPDF PAGE 29 — ROLE DOCUMENT_CONTEXT_ONLY:\n29 Nächste Reform ist Mit zwei Reformen in den letzten fünf Jahren sind die bereits aufgegleist Finanzen der AHV bis zirka 2030 stabilisiert. Auch die nächste Reform ist schon aufgegleist, um die Renten darüber hinaus zu sichern: Der Bundesrat wird dem Parlament bis Ende 2026 eine ausgewogene Vorlage zur Stabilisierung der AHV für die Jahre nach 2030 unterbreiten. Automatismus ist Die Altersvorsorge muss den gesellschaftlichen Entwick unschweizerisch lungen laufend angepasst werden. Über zentrale Fragen wie die Höhe des Rentenalters muss in einer direkten Demokratie ein dauernder politischer Dialog geführt werden. Mit einem Automatismus soll jedoch die Frage des angemessenen Renten alters der politischen Diskussion praktisch entzogen werden. Dies entspricht nicht der politischen Tradition der Schweiz. Empfehlung von Aus all diesen Gründen empfehlen Bundesrat und Parla Bundesrat und ment, die Volksinitiative «Für eine sichere und nachhaltige Parlament Altersvorsorge (Renteninitiative)» abzulehnen. Nein admin.ch/renteninitiative\n\nPDF PAGE 30 — ROLE DOCUMENT_CONTEXT_ONLY:\n30 Zweite Vorlage: Renteninitiative Abstimmungstext Bundesbeschluss über die Volksinitiative «Für eine sichere und nachhaltige Altersvorsorge (Renteninitiative)» vom 16. Juni 2023 Die Bundesversammlung der Schweizerischen Eidgenossenschaft, gestützt auf Artikel 139 Absatz 5 der Bundesverfassung1, nach Prüfung der am 16. Juli 20212 eingereichten Volksinitiative «Für eine sichere und nachhaltige Altersvorsorge (Renteninitiative)», nach Einsicht in die Botschaft des Bundesrates vom 22. Juni 20223, beschliesst: Art. 1 1 Die Volksinitiative vom 16. Juli 2021 «Für eine sichere und nachhaltige Altersvor- sorge (Renteninitiative)» ist gültig und wird Volk und Ständen zur Abstimmung un- terbreitet. 2 Sie lautet: Die Bundesverfassung wird wie folgt geändert: Art. 112 Abs. 2 Bst. ater 2 Er [der Bund] beachtet dabei [beim Erlass der Vorschriften über die Alters-, Hinter- lassenen- und Invalidenvorsorge] folgende Grundsätze: ater. Das Rentenalter ist an die durchschnittliche Lebenserwartung der schweizeri- schen Wohnbevölkerung im Alter von 65 Jahren gebunden; diese Lebenser- wartung am 1. Januar des vierten Jahres nach Inkrafttreten dieser Bestimmung wird als Referenzwert festgesetzt; das Rentenalter entspricht der Differenz zwischen der Lebenserwartung und dem Referenzwert, multipliziert mit dem Faktor 0,8 zuzüglich 66; die Anpassung des Rentenalters erfolgt jährlich in Schritten von höchstens zwei Monaten; das Rentenalter wird den betroffenen Personen fünf Jahre vor Erreichen des Rentenalters bekannt gegeben. 1 SR 101 2 BBl 2021 1957 3 BBl 2022 1711\n\nPDF PAGE 31 — ROLE DOCUMENT_CONTEXT_ONLY:\n31 Art. 197 Ziff. 124 12. Übergangsbestimmung zu Art. 112 Abs. 2 Bst. ater (Rentenalter) 1 Ab dem 1. Januar des vierten Jahres nach Annahme von Artikel 112 Absatz 2 Buch- stabe ater wird das Rentenalter für Männer in Schritten von jeweils zwei Monaten pro Jahr erhöht, bis es 66 Jahre beträgt. 2 Ab dem 1. Januar des vierten Jahres nach Annahme von Artikel 112 Absatz 2 Buch- stabe ater wird das Rentenalter für Frauen in Schritten von jeweils vier Monaten pro Jahr erhöht, bis es dem Rentenalter für Männer entspricht. Anschliessend wird das Rentenalter für Frauen in Schritten von jeweils zwei Monaten pro Jahr erhöht, bis es 66 Jahre beträgt. 3 Ab dem 1. Januar des vierten Jahres nach Annahme von Artikel 112 Absatz 2 Buch- stabe ater wird das Rentenalter an die durchschnittliche Lebenserwartung der schwei- zerischen Wohnbevölkerung im Alter von 65 Jahren gebunden. 4 Sind die Ausführungsbestimmungen zu Artikel 112 Absatz 2 Buchstabe ater drei Jahre nach dessen Annahme noch nicht in Kraft getreten, erlässt der Bundesrat auf den 1. Januar des vierten auf die Annahme folgenden Jahres die erforderlichen Aus- führungsbestimmungen durch Verordnung. Die Verordnung gilt bis zum Inkrafttreten der gesetzlichen Bestimmungen. Der Bundesrat kann in der Verordnung von der Ge- setzgebung zur Alters- und Hinterlassenenversicherung abweichen. Art. 2 Die Bundesversammlung empfiehlt Volk und Ständen, die Initiative abzulehnen. 4 Die endgültige Ziffer dieser Übergangsbestimmung wird nach der Volksabstimmung von der Bundeskanzlei festgelegt.\n\nPDF PAGE 32 — ROLE DOCUMENT_CONTEXT_ONLY:\nBundesratBundesrat undund ParlamentParlament empfehlen,empfehlen, amam 3.3. MärzMärz 20242024 wiewie folgtfolgt zuzu stimmen:stimmen: VolksinitiativeVolksinitiative «Für«Für einein besseresbesseres LebenLeben imim AlterAlterNeinNein (Initiative(Initiative fürfür eineeine 13.13. AHV-Rente)»AHV-Rente)» VolksinitiativeVolksinitiative «Für«Für eineeine sicheresichere undund nachhaltigenachhaltigeNeinNein AltersvorsorgeAltersvorsorge (Renteninitiative)»(Renteninitiative)» VoteInfoVoteInfo DieDie AppApp zuzu denden AbstimmungenAbstimmungen MitMit ErklärvideosErklärvideos undund ResultatenResultaten"
+      }
+    ]
+  },
+  "request_sha256": "fecc37efd9bb01720e39884380edf8ca113a0f393522b195c9f8d41e5d49835d",
+  "generation": {
+    "temperature": 0,
+    "max_tokens": 1400
+  },
+  "model_inference_performed": true,
+  "human_semantic_reviewed": false,
+  "promoted_to_verified_effect": false,
+  "v1_5_verified": true,
+  "gate_status": "FAIL_MECHANICAL",
+  "raw_response_text": "{\"id\": \"chatcmpl-2221ada9-e5f5-4b23-870e-7e34790d6d85\", \"system_fingerprint\": \"0.31.3-0.32.0-macOS-26.6.2-arm64-arm-64bit-Mach-O-applegpu_g15s\", \"object\": \"chat.completion\", \"model\": \"default_model\", \"created\": 1791796590, \"choices\": [{\"index\": 0, \"finish_reason\": \"stop\", \"message\": {\"role\": \"assistant\", \"content\": \"{\\\"outcome\\\":\\\"SUPPORTED\\\",\\\"claims\\\":[{\\\"kind\\\":\\\"DIRECT_PROVISION\\\",\\\"statement\\\":\\\"The Federal Council's document states that the 13th AHV pension would cost approximately 4.1 billion francs at introduction, of which the Confederation would have to pay around 800 million francs\\\",\\\"pdf_page\\\":4,\\\"quote\\\":\\\"Die Einf\\u00fchrung der 13. AHV-Rente w\\u00fcrde voraussichtlich etwa 4,1 Milliarden Franken zus\\u00e4tzliche Kosten f\\u00fcr die AHV verursachen; davon m\\u00fcsste der Bund rund 800 Millionen Franken \\u00fcbernehmen.\\\",\\\"attribution\\\":\\\"Federal Council, 'Erl\\u00e4uterungen des Bundesrates', p. 4\\\"},{\\\"kind\\\":\\\"COST_PROJECTION\\\",\\\"statement\\\":\\\"The Federal Council projects that the additional costs for the 13th AHV pension would increase year by year, reaching approximately 5 billion francs five years after introduction\\\",\\\"pdf_page\\\":11,\\\"quote\\\":\\\"Die zus\\u00e4tzlichen Kosten f\\u00fcr die 13. AHV-Rente w\\u00fcrden Jahr f\\u00fcr Jahr ansteigen, f\\u00fcnf Jahre nach Einf\\u00fchrung w\\u00fcrden die Kosten voraussichtlich rund 5 Milliarden Franken betragen.\\\",\\\"attribution\\\":\\\"Federal Council, 'Erl\\u00e4uterungen des Bundesrates', p. 11\\\"},{\\\"kind\\\":\\\"UNRESOLVED\\\",\\\"statement\\\":\\\"The document leaves the question of how the additional costs for the 13th AHV pension will be financed open, as the initiative does not specify any new revenue source or adjustment to existing financing mechanisms\\\",\\\"pdf_page\\\":11,\\\"quote\\\":\\\"Die Initiative l\\u00e4sst die Frage der Finanzierung offen.\\\",\\\"attribution\\\":\\\"Federal Council, 'Erl\\u00e4uterungen des Bundesrates', p. 11\\\"}],\\\"unknowns\\\":[\\\"exact future financing burden for the 13th AHV pension for low-income recipients\\\"],\\\"personal_financing_chf\\\":null}\"}}], \"usage\": {\"prompt_tokens\": 9775, \"completion_tokens\": 382, \"total_tokens\": 10157, \"prompt_tokens_details\": {\"cached_tokens\": 342}}}",
+  "response_sha256": "e75b104f4d07fbc61cf843871b50ac18bc86d1918eecbf3fecd4fd1e18e3c588",
+  "latency_seconds": 61.41636741699949,
+  "raw_api_response": {
+    "id": "chatcmpl-2221ada9-e5f5-4b23-870e-7e34790d6d85",
+    "system_fingerprint": "0.31.3-0.32.0-macOS-26.6.2-arm64-arm-64bit-Mach-O-applegpu_g15s",
+    "object": "chat.completion",
+    "model": "default_model",
+    "created": 1791796590,
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"outcome\":\"SUPPORTED\",\"claims\":[{\"kind\":\"DIRECT_PROVISION\",\"statement\":\"The Federal Council's document states that the 13th AHV pension would cost approximately 4.1 billion francs at introduction, of which the Confederation would have to pay around 800 million francs\",\"pdf_page\":4,\"quote\":\"Die Einführung der 13. AHV-Rente würde voraussichtlich etwa 4,1 Milliarden Franken zusätzliche Kosten für die AHV verursachen; davon müsste der Bund rund 800 Millionen Franken übernehmen.\",\"attribution\":\"Federal Council, 'Erläuterungen des Bundesrates', p. 4\"},{\"kind\":\"COST_PROJECTION\",\"statement\":\"The Federal Council projects that the additional costs for the 13th AHV pension would increase year by year, reaching approximately 5 billion francs five years after introduction\",\"pdf_page\":11,\"quote\":\"Die zusätzlichen Kosten für die 13. AHV-Rente würden Jahr für Jahr ansteigen, fünf Jahre nach Einführung würden die Kosten voraussichtlich rund 5 Milliarden Franken betragen.\",\"attribution\":\"Federal Council, 'Erläuterungen des Bundesrates', p. 11\"},{\"kind\":\"UNRESOLVED\",\"statement\":\"The document leaves the question of how the additional costs for the 13th AHV pension will be financed open, as the initiative does not specify any new revenue source or adjustment to existing financing mechanisms\",\"pdf_page\":11,\"quote\":\"Die Initiative lässt die Frage der Finanzierung offen.\",\"attribution\":\"Federal Council, 'Erläuterungen des Bundesrates', p. 11\"}],\"unknowns\":[\"exact future financing burden for the 13th AHV pension for low-income recipients\"],\"personal_financing_chf\":null}"
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 9775,
+      "completion_tokens": 382,
+      "total_tokens": 10157,
+      "prompt_tokens_details": {
+        "cached_tokens": 342
+      }
+    }
+  },
+  "parsed_candidate": {
+    "outcome": "SUPPORTED",
+    "claims": [
+      {
+        "kind": "DIRECT_PROVISION",
+        "statement": "The Federal Council's document states that the 13th AHV pension would cost approximately 4.1 billion francs at introduction, of which the Confederation would have to pay around 800 million francs",
+        "pdf_page": 4,
+        "quote": "Die Einführung der 13. AHV-Rente würde voraussichtlich etwa 4,1 Milliarden Franken zusätzliche Kosten für die AHV verursachen; davon müsste der Bund rund 800 Millionen Franken übernehmen.",
+        "attribution": "Federal Council, 'Erläuterungen des Bundesrates', p. 4"
+      },
+      {
+        "kind": "COST_PROJECTION",
+        "statement": "The Federal Council projects that the additional costs for the 13th AHV pension would increase year by year, reaching approximately 5 billion francs five years after introduction",
+        "pdf_page": 11,
+        "quote": "Die zusätzlichen Kosten für die 13. AHV-Rente würden Jahr für Jahr ansteigen, fünf Jahre nach Einführung würden die Kosten voraussichtlich rund 5 Milliarden Franken betragen.",
+        "attribution": "Federal Council, 'Erläuterungen des Bundesrates', p. 11"
+      },
+      {
+        "kind": "UNRESOLVED",
+        "statement": "The document leaves the question of how the additional costs for the 13th AHV pension will be financed open, as the initiative does not specify any new revenue source or adjustment to existing financing mechanisms",
+        "pdf_page": 11,
+        "quote": "Die Initiative lässt die Frage der Finanzierung offen.",
+        "attribution": "Federal Council, 'Erläuterungen des Bundesrates', p. 11"
+      }
+    ],
+    "unknowns": [
+      "exact future financing burden for the 13th AHV pension for low-income recipients"
+    ],
+    "personal_financing_chf": null
+  },
+  "validation": {
+    "mechanical_pass": false,
+    "errors": [
+      "claim_0:quote_in_page",
+      "claim_0:role_matches_page",
+      "claim_0:as_of_matches",
+      "claim_1:quote_in_page",
+      "claim_1:role_matches_page",
+      "claim_1:as_of_matches",
+      "claim_2:quote_in_page",
+      "claim_2:role_matches_page",
+      "claim_2:as_of_matches"
+    ],
+    "checks": [
+      {
+        "kind": "DIRECT_PROVISION",
+        "pdf_page": 4,
+        "page_exists": true,
+        "quote_in_page": false,
+        "role_matches_page": false,
+        "known_kind": true,
+        "statement_present": true,
+        "as_of_matches": false,
+        "role_kind_compatible": true,
+        "quote_start": null,
+        "quote_end": null,
+        "quote_sha256": null,
+        "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+        "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=4",
+        "publication_state": "CANDIDATE_UNREVIEWED"
+      },
+      {
+        "kind": "COST_PROJECTION",
+        "pdf_page": 11,
+        "page_exists": true,
+        "quote_in_page": false,
+        "role_matches_page": false,
+        "known_kind": true,
+        "statement_present": true,
+        "as_of_matches": false,
+        "role_kind_compatible": true,
+        "quote_start": null,
+        "quote_end": null,
+        "quote_sha256": null,
+        "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+        "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11",
+        "publication_state": "CANDIDATE_UNREVIEWED"
+      },
+      {
+        "kind": "UNRESOLVED",
+        "pdf_page": 11,
+        "page_exists": true,
+        "quote_in_page": false,
+        "role_matches_page": false,
+        "known_kind": true,
+        "statement_present": true,
+        "as_of_matches": false,
+        "role_kind_compatible": true,
+        "quote_start": null,
+        "quote_end": null,
+        "quote_sha256": null,
+        "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+        "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11",
+        "publication_state": "CANDIDATE_UNREVIEWED"
+      }
+    ],
+    "publication_state": "WITHHELD",
+    "semantic_support_verified": false
+  },
+  "mechanical_grounding_checks": [
+    {
+      "kind": "DIRECT_PROVISION",
+      "pdf_page": 4,
+      "page_exists": true,
+      "quote_in_page": false,
+      "role_matches_page": false,
+      "known_kind": true,
+      "statement_present": true,
+      "as_of_matches": false,
+      "role_kind_compatible": true,
+      "quote_start": null,
+      "quote_end": null,
+      "quote_sha256": null,
+      "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+      "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=4",
+      "publication_state": "CANDIDATE_UNREVIEWED"
+    },
+    {
+      "kind": "COST_PROJECTION",
+      "pdf_page": 11,
+      "page_exists": true,
+      "quote_in_page": false,
+      "role_matches_page": false,
+      "known_kind": true,
+      "statement_present": true,
+      "as_of_matches": false,
+      "role_kind_compatible": true,
+      "quote_start": null,
+      "quote_end": null,
+      "quote_sha256": null,
+      "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+      "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11",
+      "publication_state": "CANDIDATE_UNREVIEWED"
+    },
+    {
+      "kind": "UNRESOLVED",
+      "pdf_page": 11,
+      "page_exists": true,
+      "quote_in_page": false,
+      "role_matches_page": false,
+      "known_kind": true,
+      "statement_present": true,
+      "as_of_matches": false,
+      "role_kind_compatible": true,
+      "quote_start": null,
+      "quote_end": null,
+      "quote_sha256": null,
+      "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+      "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11",
+      "publication_state": "CANDIDATE_UNREVIEWED"
+    }
+  ],
+  "trial_id": "baseline_full_booklet",
+  "expected_outcome": null
+}

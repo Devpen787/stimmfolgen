@@ -1,0 +1,42 @@
+name: Gate 0 — Source proof (no LLM credentials)
+on:
+  pull_request:
+    paths:
+      - 'track_2b/src/gate0/**'
+      - 'track_2b/tests/test_gate0*.py'
+      - 'track_2b/tests/references/**'
+      - 'track_2b/docs/evidence/gate0-spans-2026-10-12/**'
+      - 'track_2b/docs/evidence/gate0-attribution-2026-10-12/**'
+      - 'track_2b/docs/evidence/ahv-semantic-review-2026-10-12/**'
+      - '.github/workflows/gate0-source.yml'
+  workflow_dispatch:
+
+jobs:
+  source-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install PDF extractor
+        run: python -m pip install 'pymupdf==1.28.2'
+      - name: Test safeguards without an API key
+        run: python -m unittest discover -s track_2b/tests -p 'test_gate0*.py' -v
+      - name: Fetch official voting booklet and hash actual bytes
+        run: python track_2b/src/gate0/source_probe.py --out /tmp/gate0-source.json --pdf-out /tmp/gate0-source.pdf --spans-out /tmp/gate0-spans.json
+      - name: Authenticate committed real trace evidence (no inference)
+        run: python track_2b/src/gate0/verify_span_evidence.py --evidence-dir track_2b/docs/evidence/gate0-spans-2026-10-12 --source-pdf /tmp/gate0-source.pdf
+      - name: Authenticate attribution-component evidence (no inference)
+        run: python track_2b/src/gate0/verify_span_evidence.py --evidence-dir track_2b/docs/evidence/gate0-attribution-2026-10-12 --source-pdf /tmp/gate0-source.pdf
+      - name: Verify publication witness and pending review packet
+        run: python track_2b/src/gate0/verify_semantic_review_packet.py --packet-dir track_2b/docs/evidence/ahv-semantic-review-2026-10-12 --source-pdf /tmp/gate0-source.pdf
+      - name: Publish source evidence artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate0-real-official-source
+          path: |
+            /tmp/gate0-source.json
+            /tmp/gate0-spans.json
+          retention-days: 7

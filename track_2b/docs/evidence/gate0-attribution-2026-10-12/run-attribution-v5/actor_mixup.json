@@ -1,0 +1,166 @@
+{
+  "evidence_class": "POLICY_COMPARISON_OF_TWO_ACTUAL_MODEL_COMPLETIONS",
+  "model_inference_performed": true,
+  "prompt_version": "gate0-span-selection-v5-source-actor-comparison",
+  "policy_candidate": {
+    "outcome": "SOURCE_CONFLICT",
+    "actor": "GOVERNMENT",
+    "span_ids": [
+      "sp-8fa7ba3419d9690f45e2",
+      "sp-eac0d0ebb7b34dc40b9b",
+      "sp-92f4ef4f294b8ca65441"
+    ]
+  },
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "component_response_sha256": {
+    "grounding": "5328ce6413b5d6b0d206cf351f2c72007f4a4d57d7c5f7f46eee6f22be7710eb",
+    "intent": "41973f6d4051778871fdbe48aefb62a5eeef9a832bd5975a31a8d94476285402"
+  },
+  "latency_seconds": 15.976578416000848,
+  "validation": {
+    "mechanical_pass": true,
+    "errors": [],
+    "checks": [
+      {
+        "valid": true,
+        "errors": [],
+        "span_ids": [
+          "sp-8fa7ba3419d9690f45e2",
+          "sp-eac0d0ebb7b34dc40b9b",
+          "sp-92f4ef4f294b8ca65441"
+        ]
+      }
+    ],
+    "publication_state": "CANDIDATE_UNREVIEWED",
+    "semantic_support_verified": false
+  },
+  "outcome_origin": "Deterministic comparison of model-extracted source actor and model-parsed requested actor; not an LLM-generated refusal",
+  "human_semantic_reviewed": false,
+  "promoted_to_verified_effect": false,
+  "trial_id": "actor_mixup",
+  "task_contract_supplied": true,
+  "independent_type_classification_test": false,
+  "catalog_sha256": "8d98a741550f450a64bb8103ece1efa561b0c75436b8096bf47ac6c74508d618",
+  "semantic_reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+  "canonical_candidate": {
+    "outcome": "SOURCE_CONFLICT",
+    "claims": [
+      {
+        "predicate": "BUDGET_TAX_OR_CUTS",
+        "kind": "ATTRIBUTED_PREDICTION",
+        "actor": "GOVERNMENT",
+        "value": {
+          "value": true
+        },
+        "span_ids": [
+          "sp-8fa7ba3419d9690f45e2",
+          "sp-eac0d0ebb7b34dc40b9b",
+          "sp-92f4ef4f294b8ca65441"
+        ]
+      }
+    ],
+    "missing_facts": [
+      "SOURCE_SUPPORT"
+    ],
+    "personal_financing_chf": null
+  },
+  "adaptation": "Field mapping only; raw values and IDs preserved. Kind comes from the typed task; positive actor comes from source metadata; refusal reasons and null finance are application policy, not generated model explanations.",
+  "semantic_evaluation": {
+    "semantic_reference_pass": true,
+    "errors": [],
+    "checks": [
+      {
+        "predicate": "BUDGET_TAX_OR_CUTS",
+        "reference_match": true
+      }
+    ],
+    "reference_version": "ahv13-semantic-reference-v1",
+    "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+    "human_semantic_reviewed": false,
+    "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+    "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+    "publication_state": "CANDIDATE_UNREVIEWED"
+  },
+  "resolved_citations": [
+    {
+      "predicate": "BUDGET_TAX_OR_CUTS",
+      "citations": [
+        {
+          "document_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "extraction_version": "blocks-v3",
+          "segmentation_version": "source-sentences-v1",
+          "pdf_page": 16,
+          "block_number": 3,
+          "start": 1189,
+          "end": 1332,
+          "text_sha256": "aa193327fb1247a1a874c7ac1aa903d95989842c32109b4c4686d5600bd2eba9",
+          "role": "FEDERAL_COUNCIL_PARLIAMENT_ARGUMENTS",
+          "knowledge_cutoff_at": "2023-11-29",
+          "span_id": "sp-8fa7ba3419d9690f45e2",
+          "identity_sha256": "8fa7ba3419d9690f45e21d797b492bab620a574a3c3ac9387a0fe2f2bb0e05ea",
+          "text": "Um die hohen Kosten für eine 13. AHV-Altersrente zu decken, müssten beispielsweise die Lohnabzüge oder die Mehrwertsteuer weiter erhöht werden.",
+          "bbox": [
+            121.8898,
+            305.9949,
+            390.7425,
+            376.6599
+          ],
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=16",
+          "available_at": null,
+          "actor": "GOVERNMENT"
+        },
+        {
+          "document_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "extraction_version": "blocks-v3",
+          "segmentation_version": "source-sentences-v1",
+          "pdf_page": 16,
+          "block_number": 4,
+          "start": 1435,
+          "end": 1596,
+          "text_sha256": "ff6f4d616ca227e04b50cb4fb84f7ad3a1565492c2c755df1c34edc8e8e2f0e0",
+          "role": "FEDERAL_COUNCIL_PARLIAMENT_ARGUMENTS",
+          "knowledge_cutoff_at": "2023-11-29",
+          "span_id": "sp-eac0d0ebb7b34dc40b9b",
+          "identity_sha256": "eac0d0ebb7b34dc40b9b2e906e373638e1cbb82c1a8768a9a53c72afe4105b50",
+          "text": "Eine 13. AHV-Altersrente hätte auch negative Auswirkungen auf den Bundeshaushalt, weil der Bund rund einen Fünftel der jährlichen Ausgaben der AHV bezahlen muss.",
+          "bbox": [
+            121.8898,
+            389.9949,
+            393.1993,
+            460.6599
+          ],
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=16",
+          "available_at": null,
+          "actor": "GOVERNMENT"
+        },
+        {
+          "document_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "extraction_version": "blocks-v3",
+          "segmentation_version": "source-sentences-v1",
+          "pdf_page": 16,
+          "block_number": 4,
+          "start": 1705,
+          "end": 1764,
+          "text_sha256": "44fbdebe189dc35d553fe5f87f1c5578f421830d687fd09700d66101851e897a",
+          "role": "FEDERAL_COUNCIL_PARLIAMENT_ARGUMENTS",
+          "knowledge_cutoff_at": "2023-11-29",
+          "span_id": "sp-92f4ef4f294b8ca65441",
+          "identity_sha256": "92f4ef4f294b8ca65441e254a53d4ec9b80615525577de64be5ed9ca67aeb526",
+          "text": "Der Bund müsste seine Steuern erhöhen oder Ausgaben kürzen.",
+          "bbox": [
+            121.8898,
+            389.9949,
+            393.1993,
+            460.6599
+          ],
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=16",
+          "available_at": null,
+          "actor": "GOVERNMENT"
+        }
+      ]
+    }
+  ],
+  "bounded_machine_test_pass": true,
+  "gate_status": "REVIEW_REQUIRED",
+  "publication_state": "CANDIDATE_UNREVIEWED"
+}

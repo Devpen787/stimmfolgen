@@ -1,0 +1,11 @@
+{
+  "synthetic_unit_tests_pass": 60,
+  "design_contract_validator": "PASS",
+  "source_catalog_original_pdf_authentication": "PASS",
+  "gate_status": "FAIL",
+  "human_semantic_reviewed": false,
+  "frontend_started": false,
+  "cloud_model_inference_performed": false,
+  "local_runtime": "MLX 0.32.0 / mlx-lm 0.31.3 / transformers 5.15.0",
+  "model_dir_redaction": "Only the absolute model directory was redacted; raw requests and HTTP responses are unchanged."
+}

@@ -1,0 +1,165 @@
+{
+  "schema_version": "1",
+  "checked_at": "2026-10-15T20:27:46.336620+00:00",
+  "checked_date": "2026-10-15",
+  "scope": "Six selected federal proposals; not a complete vote register. Official updates are separate from booklet explanations.",
+  "sources": {
+    "calendar": {
+      "url": "https://www.admin.ch/de/volksabstimmung-vom-29-november-2026",
+      "snapshot_kind": "MANUAL_PRIMARY_WEB_EXCERPT",
+      "retrieval_method": "Primary-page text returned by web lookup; direct Python HTTP returned 403",
+      "excerpt": "Am 29. November 2026, stimmen die Schweizer Stimmberechtigten über vier Vorlagen ab. AHV-Zusatzfinanzierung; Feuerwerksinitiative; Ehepaarbesteuerung; Kriegsmaterialgesetz.",
+      "excerpt_sha256": "b6bd7d4771cbca9ff7fa94c94472359ad274524a47c5acf0022756b2a1e0ee02",
+      "original_html_sha256": null,
+      "retrieved_at": "2026-10-14T14:18:24.685013+00:00",
+      "publisher": "Swiss Federal Council",
+      "published_at": null
+    },
+    "implementation": {
+      "url": "https://www.bsv.admin.ch/de/umsetzung-13-ahv-rente",
+      "snapshot_kind": "MANUAL_PRIMARY_WEB_EXCERPT",
+      "retrieval_method": "Primary-page text returned by web lookup; direct Python HTTP returned 403",
+      "excerpt": "Veröffentlicht am 5. Oktober 2026. Die 13. AHV-Rente wird erstmals im Dezember 2026",
+      "excerpt_sha256": "b3f65b05c2c831a23c93287432059c0bb3b1f151d889ee2a74bb878894260746",
+      "original_html_sha256": null,
+      "retrieved_at": "2026-10-14T14:18:24.685654+00:00",
+      "publisher": "Federal Social Insurance Office",
+      "published_at": "2026-10-05"
+    },
+    "home-booklet": {
+      "url": "https://www.bk.admin.ch/dam/de/sd-web/6DaWglL-N7NM/2025-09-28_erlaeuterungen_des_bundesrates.pdf",
+      "snapshot_kind": "AUTHENTICATED_PDF",
+      "source_sha256": "39c020145299913685e4d0b6899fa23bb1f94938652a417e0c1da08d316ade8a",
+      "publisher": "Swiss Federal Chancellery",
+      "published_at": null,
+      "retrieved_at": "2026-10-15T20:26:44.651511+00:00",
+      "excerpt": "Bundesbeschluss über die kantonalen Liegenschaftssteuern auf Zweitliegenschaften",
+      "original_html_sha256": null,
+      "retrieval_method": "Actual PDF bytes downloaded and SHA-256 verified; excerpt is the proposal title.",
+      "excerpt_sha256": "23013e895742c025f266d04e6e1c51cc7714ae4a9ba2097eaafefe8b2f7aaad4"
+    },
+    "home-result": {
+      "url": "https://www.efd.admin.ch/de/abstimmung-reform-wohneigentumsbesteuerung",
+      "snapshot_kind": "MANUAL_PRIMARY_WEB_EXCERPT",
+      "publisher": "Federal Department of Finance",
+      "published_at": "2025-09-28",
+      "retrieved_at": "2026-10-15T20:26:44.651511+00:00",
+      "excerpt": "Bei einer Stimmbeteiligung von 49,5 % haben die Schweizer Stimmberechtigten anlässlich der Volksabstimmung vom 28. September 2025 die Reform der Wohneigentumsbesteuerung mit 57,7 % Ja-Stimmen gegen 42,3 % Nein-Stimmen angenommen.",
+      "original_html_sha256": null,
+      "excerpt_sha256": "5376f049d0934989fa68a5bbd3d73cabefb8e1ff76167bd851ca5009d44bb2ea"
+    }
+  },
+  "votes": [
+    {
+      "id": "ahv13",
+      "title": "13th AHV pension",
+      "official_title": "Initiative für eine 13. AHV-Rente",
+      "date": "2024-03-03",
+      "summary": "An annual supplement to the AHV old-age pension.",
+      "analysis_case_id": "ch-federal:2024-03-03:ahv13",
+      "analysis_as_of": "2024-03-02T23:59:59+01:00",
+      "sources": [
+        "implementation"
+      ],
+      "updates": [
+        {
+          "id": "ahv-implementation-20261005",
+          "date": "2026-10-05",
+          "title": "First payment planned for December 2026",
+          "kind": "OFFICIAL_SOURCE_UPDATE_NOT_MODEL_ANALYSIS",
+          "source": "implementation",
+          "excerpt": "Die 13. AHV-Rente wird erstmals im Dezember 2026",
+          "excerpt_is_partial": true
+        }
+      ],
+      "related": [
+        {
+          "id": "ahv-financing",
+          "reason": "A separate financing proposal connected to implementation of the 13th AHV pension.",
+          "source": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "ahv-financing",
+      "title": "AHV additional financing",
+      "official_title": "AHV-Zusatzfinanzierung",
+      "date": "2026-11-29",
+      "summary": "A separate vote on financing AHV through a VAT increase.",
+      "analysis_case_id": null,
+      "sources": [
+        "calendar"
+      ],
+      "updates": [],
+      "related": [
+        {
+          "id": "ahv13",
+          "reason": "The earlier pension initiative connected to this financing proposal.",
+          "source": "implementation"
+        }
+      ]
+    },
+    {
+      "id": "fireworks",
+      "title": "Fireworks initiative",
+      "official_title": "Feuerwerksinitiative",
+      "date": "2026-11-29",
+      "summary": "An initiative to restrict fireworks.",
+      "analysis_case_id": null,
+      "sources": [
+        "calendar"
+      ],
+      "updates": [],
+      "related": []
+    },
+    {
+      "id": "married-tax",
+      "title": "Taxation of married couples",
+      "official_title": "Ehepaarbesteuerung",
+      "date": "2026-11-29",
+      "summary": "An initiative concerning federal taxes for married couples.",
+      "analysis_case_id": null,
+      "sources": [
+        "calendar"
+      ],
+      "updates": [],
+      "related": []
+    },
+    {
+      "id": "war-material",
+      "title": "War Material Act",
+      "official_title": "Kriegsmaterialgesetz",
+      "date": "2026-11-29",
+      "summary": "A proposed change to the War Material Act.",
+      "analysis_case_id": null,
+      "sources": [
+        "calendar"
+      ],
+      "updates": [],
+      "related": []
+    },
+    {
+      "id": "home-tax",
+      "title": "Homeownership tax reform",
+      "official_title": "Bundesbeschluss über die kantonalen Liegenschaftssteuern auf Zweitliegenschaften",
+      "date": "2025-09-28",
+      "summary": "A vote on cantonal taxes on second homes, linked to homeownership tax reform.",
+      "analysis_case_id": null,
+      "sources": [
+        "home-booklet"
+      ],
+      "updates": [
+        {
+          "id": "home-result-20250928",
+          "date": "2025-09-28",
+          "title": "The reform was accepted in the vote",
+          "kind": "OFFICIAL_SOURCE_UPDATE_NOT_MODEL_ANALYSIS",
+          "source": "home-result",
+          "excerpt": "mit 57,7 % Ja-Stimmen gegen 42,3 % Nein-Stimmen angenommen.",
+          "excerpt_is_partial": true
+        }
+      ],
+      "related": []
+    }
+  ]
+}

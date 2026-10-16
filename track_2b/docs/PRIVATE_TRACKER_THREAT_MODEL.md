@@ -1,0 +1,11 @@
+# Private tracker implementation and limits
+
+The public backend receives the same public catalogue and reviewed case requests for all readers. It has no user account, private vote endpoint or note logging. Choices, notes, search terms and perspective selection remain in browser state; persistent private records are opt-in ciphertext. Source links are explicitly opened external publishers, which can observe that public page visit. This is not an anonymity claim.
+
+The vault key and decrypted records live only while unlocked. On reload, page hiding, explicit Lock, a cross-tab storage change, or five minutes without activity, the key and private view are cleared. Unsaved edits are discarded on lock; the UI explains this at the note form. Encrypted records use AES-GCM authentication, random nonces, a fixed authenticated format identifier and a fixed native PBKDF2-SHA256 work factor. Imports reject unexpected fields/work factors, invalid sizes, damaged authentication or wrong passwords. Writes serialize and check the lock generation before committing.
+
+Threats addressed: casual inspection of persisted browser data or exported backup; ciphertext modification; accidental plaintext persistence; accidental private fields in public API requests; silent post-vote contamination of old analysis; stale state after lock. Tests use synthetic records on separate browser test origins, never actual user political choices.
+
+Threats not addressed: malicious/compromised app code, unlocked browser, browser extensions, malware, forensic secure deletion, short/guessable passphrases, rollback of valid old ciphertext, active same-origin race against a hostile tab, browser/OS backups, full audited cryptographic correctness. There is no recovery service or sync. A later production release needs independent security review and stronger usability/recovery work.
+
+Sources: [Web Crypto deriveKey](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/deriveKey), [OWASP Password Storage](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html). Their existence is not certification of this app. The earlier plaintext brief/export belongs to the historical prototype; the tracker now exports only encrypted private backups.

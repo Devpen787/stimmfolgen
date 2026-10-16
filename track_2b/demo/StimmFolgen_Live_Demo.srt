@@ -1,0 +1,139 @@
+1
+00:00:00,000 --> 00:00:03,600
+StimmFolgen helps a voter follow a Swiss vote and understand
+
+2
+00:00:03,600 --> 00:00:07,200
+its evidence. Search for AHV to find the pension initiative
+
+3
+00:00:07,200 --> 00:00:09,000
+and its separate financing proposal.
+
+4
+00:00:09,000 --> 00:00:12,083
+My votes keeps the topics I follow. Tracking does not
+
+5
+00:00:12,083 --> 00:00:15,167
+record a Yes or No choice. The official update gives
+
+6
+00:00:15,167 --> 00:00:16,708
+me a reason to return.
+
+7
+00:00:16,708 --> 00:00:20,607
+Ask Apertus sends only this explicit public question to Apertus
+
+8
+00:00:20,607 --> 00:00:24,506
+version 1.5, eight billion, on Public AI. Visitors need no
+
+9
+00:00:24,506 --> 00:00:27,625
+model download. My Mac is not the server.
+
+10
+00:00:27,625 --> 00:00:31,946
+Apertus explains the proposed pension supplement using five reviewed historical
+
+11
+00:00:31,946 --> 00:00:36,267
+facts. Source buttons resolve from immutable references. Fresh answers remain
+
+12
+00:00:36,267 --> 00:00:39,292
+AI generated and are not human reviewed.
+
+13
+00:00:39,292 --> 00:00:44,092
+Here are the original German passages, government attribution, booklet pages
+
+14
+00:00:44,092 --> 00:00:48,893
+and dates. The historical explanation uses evidence available before the
+
+15
+00:00:48,893 --> 00:00:50,333
+March 2024 vote.
+
+16
+00:00:50,333 --> 00:00:53,619
+The separate check uses the same model and can still
+
+17
+00:00:53,619 --> 00:00:56,904
+fail. When a candidate does not pass, the app withholds
+
+18
+00:00:56,904 --> 00:00:58,875
+it. It gives no voting recommendation.
+
+19
+00:00:58,875 --> 00:01:02,890
+Updates are separate from that historical frame. This dated official
+
+20
+00:01:02,890 --> 00:01:06,905
+implementation update is publisher information, not a generated claim about
+
+21
+00:01:06,905 --> 00:01:07,708
+current law.
+
+22
+00:01:07,708 --> 00:01:11,771
+Related votes connects the pension initiative to the distinct financing
+
+23
+00:01:11,771 --> 00:01:14,208
+proposal, with an official relationship source.
+
+24
+00:01:14,208 --> 00:01:18,697
+Perspectives separates a worker, a pension recipient, other people and
+
+25
+00:01:18,697 --> 00:01:23,186
+Switzerland. Financing uncertainty stays visible. Unknown personal cost does not
+
+26
+00:01:23,186 --> 00:01:24,083
+mean zero.
+
+27
+00:01:24,083 --> 00:01:27,978
+This is a synthetic demonstration note. Choices and notes stay
+
+28
+00:01:27,978 --> 00:01:31,872
+on the device. An optional passphrase encrypts saved records; reload
+
+29
+00:01:31,872 --> 00:01:34,208
+locks them, and unlocking restores them.
+
+30
+00:01:34,208 --> 00:01:37,943
+The hosted demo uses finite starter credit, with a hard
+
+31
+00:01:37,943 --> 00:01:41,677
+shared allowance and a seven day credential. Global Cloudflare hosting
+
+32
+00:01:41,677 --> 00:01:44,292
+is clearly distinguished from Swiss sovereign deployment.
+
+33
+00:01:44,292 --> 00:01:48,146
+Apple Silicon users can instead install the pinned Apertus model
+
+34
+00:01:48,146 --> 00:01:52,000
+and run inference locally without an API key. One reviewed
+
+35
+00:01:52,000 --> 00:01:55,083
+AHV case works today; broader accuracy remains unproven.

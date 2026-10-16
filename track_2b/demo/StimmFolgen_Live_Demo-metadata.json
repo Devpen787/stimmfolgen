@@ -1,0 +1,30 @@
+{
+  "kind": "PARTICIPANT_RECORDED_AUDIO_OVER_EXISTING_BROWSER_CAPTURES",
+  "continuous_screen_recording": false,
+  "fresh_web_inference": true,
+  "origin": "https://stimmfolgen-demo.stimmfolgen-hosted.workers.dev/",
+  "private_data": "SYNTHETIC_ONLY",
+  "duration_seconds": 119.5,
+  "resolution": "1280x720",
+  "video_codec": "H264",
+  "audio_codec": "AAC",
+  "voice": "participant-supplied recording",
+  "audio_source_sha256": "f417612f0a20e2c71dd91e87afd57cd451f23941d6da6fb086509e37b7d4c6a9",
+  "audio_trimmed": false,
+  "audio_pitch_preserved": true,
+  "audio_speed_factor": 1.044889,
+  "video_time_factor": 1.038285,
+  "volume_normalization": "loudnorm I=-16 TP=-1.5 LRA=11",
+  "captions_verified": false,
+  "captions_status": "Prior SRT is for original synthetic cut only; not attached to revised audio",
+  "sha256": "811346e933e863a2c6011de9117ae734c9b6f7ab7a0885a4969f8dc5eb8c07e7",
+  "original_submitted_video": {
+    "file": "StimmFolgen_Live_Demo_Submitted.mp4",
+    "sha256": "90d17cec0ce8bd6f3d2de3d6768287b96111a0aa05e19894337041f257005027",
+    "duration_seconds": 115.093343
+  },
+  "revision_created_utc": "2026-10-16T10:01:43.694427+00:00",
+  "after_submission_deadline": true,
+  "organiser_acceptance_of_revision": "NOT_ESTABLISHED",
+  "original_footage_manifest_commit": "9e1c60845c64bbe2b810a08be67fe39d47e96904"
+}

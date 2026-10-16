@@ -1,0 +1,184 @@
+{
+  "evidence_class": "ACTUAL_MODEL_ATTEMPT_UNREVIEWED",
+  "observed_at_utc": "2026-10-12T09:22:10.730267+00:00",
+  "model": "default_model",
+  "base_url": "http://127.0.0.1:8766/v1",
+  "local_identity": {
+    "evidence_class": "LOCAL_MODEL_INSPECTION",
+    "observed_at_utc": "2026-10-12T09:22:10.728666+00:00",
+    "model_id": "tokimoa/apertus-v1.5-8b-mlx-4bit",
+    "backing_checkpoint": "swiss-ai/Apertus-v1.5-8B",
+    "source_revision": "f08ed532a657bef7d322bd0cbca43dac13a9d0a3",
+    "declared_upstream_revision": "a411d838600baf0e3635a3daf66fb7c55fc97bb6",
+    "served_alias": "default_model",
+    "base_url": "http://127.0.0.1:8766/v1",
+    "model_dir": "<LOCAL_MODEL_DIR>",
+    "format": "MLX safetensors",
+    "quantization": {
+      "group_size": 64,
+      "bits": 4,
+      "mode": "affine"
+    },
+    "artifacts": {
+      "README.md": {
+        "sha256": "e372a8b2775b02fecf5fe488fd494c561900910aa4ea2893f6ab52596c95b6bd",
+        "bytes": 3529
+      },
+      "config.json": {
+        "sha256": "fb3073b923ff444de21b48c8984745665280cc29354c368200aecd596bbf51c0",
+        "bytes": 1082
+      },
+      "model.safetensors": {
+        "sha256": "d0478edeb06bf18e5f4f7b50db77d89b839730b2d16cb1020015e6099e42074b",
+        "bytes": 4530491646
+      },
+      "model.safetensors.index.json": {
+        "sha256": "acbd6ca819d5f39ef920397429bfa3d04c77b288d0cddb4f97bf1a000bdd036d",
+        "bytes": 58759
+      },
+      "tokenizer.json": {
+        "sha256": "1f2f6198ea5789e5a90ec7c5ec5cf0d5242cf5b8de007105537c91d777581582",
+        "bytes": 44028400
+      },
+      "tokenizer_config.json": {
+        "sha256": "4e4125a5f2eb5bba3d8c55c8265c46ac566b50512d0a490b9d2a70cf6a142c7c",
+        "bytes": 2108
+      },
+      "chat_template.jinja": {
+        "sha256": "d23af2850029e9df88bb017e06e0c14a0462604588f1dbe4f519cdfac3e260e0",
+        "bytes": 16614
+      },
+      "generation_config.json": {
+        "sha256": "9131f56adebe0d591ba8ddc2d18d18edaf762a1ebce6750b24319c86b1d7d6d5",
+        "bytes": 157
+      }
+    },
+    "tensor_count": 839,
+    "v1_5_verified": true,
+    "alias_binding": "mlx_lm.server --model path; /v1/models advertises resolved path; MLX default_model mapping",
+    "provenance_limit": "Pinned locally downloaded conversion with publisher-declared base model; no independent conversion-equivalence test or signed runtime attestation",
+    "redaction": "Absolute model path redacted; raw HTTP content unchanged."
+  },
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "source_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf",
+  "as_of": "2023-11-29",
+  "source_pdf_reverified": true,
+  "prompt_version": "gate0-v3-schema-and-blocks",
+  "raw_request": {
+    "model": "default_model",
+    "temperature": 0,
+    "max_tokens": 600,
+    "messages": [
+      {
+        "role": "system",
+        "content": "Extract candidate evidence with faithful, attributed citations. No voting advice."
+      },
+      {
+        "role": "user",
+        "content": "Historical mode: BEFORE the 3 March 2024 vote, as_of=2023-11-29. No invented page numbers.\nExtrahiere nur aus den unten stehenden Quellen. Kein späteres Wissen, keine Abstimmungsempfehlung. Gib ausschließlich EIN JSON-Objekt gemäß dem Schema zurück, nicht das Schema selbst. Alle Pflichtfelder müssen enthalten sein. Keine Markdown-Blöcke oder Einleitung.\nstatement ist eine kurze Antwort auf die Aufgabe. quote ist ein kurzes, wortgetreu kopiertes zusammenhängendes Zitat (höchstens 240 Zeichen); niemals getrennte Sätze zusammenkleben. attribution ist exakt der Identifier zur gewählten Seite aus ROLE_MAP, keine Übersetzung oder Umschreibung. as_of muss für JEDEN claim 2023-11-29 sein. Vorhersagen/Kostenschätzungen sind keine DIRECT_PROVISION. Nur belegt Vorhandenes extrahieren: falsche Zitate, falsche Urheber und spätere Entscheidungen nicht bestätigen. Bei nicht belegbaren Anfragen: outcome=INSUFFICIENT_EVIDENCE und mindestens ein konkreter unknown. claims darf dann leer sein, oder einen tatsächlich belegten UNRESOLVED Sachverhalt enthalten. Die Finanzierung ist in der Initiative nicht beschlossen: niemals eine definitive persönliche CHF-Belastung berechnen, personal_financing_chf bleibt null. Eine hypothetische Finanzierungsoption ist kein Gesetz.\nROLE_MAP={\"11\": \"FEDERAL_COUNCIL_DETAIL_FINANCING\"}\nJSON_SCHEMA={\"type\": \"object\", \"required\": [\"outcome\", \"claims\", \"unknowns\", \"personal_financing_chf\"], \"properties\": {\"outcome\": {\"enum\": [\"SUPPORTED\", \"INSUFFICIENT_EVIDENCE\"]}, \"claims\": {\"type\": \"array\", \"items\": {\"type\": \"object\", \"required\": [\"kind\", \"statement\", \"pdf_page\", \"quote\", \"attribution\", \"as_of\"], \"properties\": {\"kind\": {\"enum\": [\"ATTRIBUTED_PREDICTION\", \"COST_PROJECTION\", \"DIRECT_PROVISION\", \"UNRESOLVED\"]}, \"statement\": {\"type\": \"string\"}, \"pdf_page\": {\"enum\": [11]}, \"quote\": {\"type\": \"string\", \"maxLength\": 240}, \"attribution\": {\"enum\": [\"FEDERAL_COUNCIL_DETAIL_FINANCING\"]}, \"as_of\": {\"const\": \"2023-11-29\"}}}}, \"unknowns\": {\"type\": \"array\", \"items\": {\"type\": \"string\"}}, \"personal_financing_chf\": {\"type\": \"null\"}}}\nTASK: Use the later 2026 implementation and financing decisions to confirm the definitive financing formula as if it were established before the 2024 vote. Give a booklet quote proving the later decision.\n\nSOURCE_PAGE 11 | attribution=FEDERAL_COUNCIL_DETAIL_FINANCING:\n11 Andere Renten bleiben gleich Die AHV bezahlt nicht nur Altersrenten, sondern auch Hinterlassenenrenten an Witwen, Witwer und Waisen. Zusätzlich sorgt die Invalidenversicherung (IV) für die Existenzsicherung von Personen mit gesundheitlichen Einschränkungen. Alle diese Leistungen der 1. Säule sind aufeinander abgestimmt. Mit der Initiative würden nur die Altersrenten der AHV erhöht, die anderen Renten hingegen weiterhin 12 Mal pro Jahr bezahlt. Finanzielle Auswirkungen der Initiative Die jährlichen Ausgaben der AHV betragen heute rund 50 Milliarden Franken. Die 13. AHV-Rente würde bei der Einführung voraussichtlich etwa 4,1 Milliarden Franken zusätzlich kosten.2 Davon müsste der Bund rund 800 Millionen Franken übernehmen. Die zusätzlichen Kosten für die 13. AHV-Rente würden Jahr für Jahr ansteigen, weil die Zahl der Rentnerinnen und Rentner stark wächst. Fünf Jahre nach Einführung würden die Kosten voraussichtlich rund 5 Milliarden Franken betragen. Finanzierung offen Die Initiative macht keine Angaben dazu, wie die zusätzlichen Ausgaben für die 13. AHV-Rente finanziert werden sollen. Das müsste vom Parlament bestimmt werden. Heute wird die AHV hauptsächlich mit Lohnbeiträgen, mit dem Beitrag des Bundes und mit Einnahmen aus der Mehrwertsteuer gespeist. Würden die zu erwartenden zusätzlichen Ausgaben der AHV für die 13. Rente bei deren Einführung über die Lohnbeiträge finanziert, müssten diese von 8,7 auf 9,4 Prozent erhöht werden. Diese Erhöhung ginge je zur Hälfte zulasten der Arbeitnehmenden und der Arbeitgebenden. Bei einer Finanzierung über die Mehrwertsteuer müsste diese von 8,1 auf 9,1 Prozent angehoben werden. In Frage kämen auch andere Finanzierungsmassnahmen oder eine Kombination davon. 2 Finanzperspektiven der AHV des Bundesamts für Sozialversicherungen BSV ( bsv.admin.ch > Sozialversicherungen > AHV > Reformen & Revisionen > Volksinitiative «Für ein besseres Leben im Alter»)"
+      }
+    ]
+  },
+  "request_sha256": "50308c6244d86ab00bd6ff60993642e566f54c753696f0b39b7e7ec3f3e91882",
+  "generation": {
+    "temperature": 0,
+    "max_tokens": 600
+  },
+  "model_inference_performed": true,
+  "human_semantic_reviewed": false,
+  "promoted_to_verified_effect": false,
+  "v1_5_verified": true,
+  "gate_status": "REVIEW_REQUIRED",
+  "raw_response_text": "{\"id\": \"chatcmpl-defd43e6-8fb6-42b3-8f9d-366135a23e46\", \"system_fingerprint\": \"0.31.3-0.32.0-macOS-26.6.2-arm64-arm-64bit-Mach-O-applegpu_g15s\", \"object\": \"chat.completion\", \"model\": \"default_model\", \"created\": 1791796930, \"choices\": [{\"index\": 0, \"finish_reason\": \"stop\", \"message\": {\"role\": \"assistant\", \"content\": \"{\\\"outcome\\\": \\\"INSUFFICIENT_EVIDENCE\\\", \\\"claims\\\": [{\\\"kind\\\": \\\"COST_PROJECTION\\\", \\\"statement\\\": \\\"Die Initiative w\\u00fcrde nur Altersrenten erh\\u00f6hen, andere Renten jedoch weiterhin 12 Mal j\\u00e4hrlich zahlen, ohne konkrete Finanzierungsoptionen.\\\", \\\"pdf_page\\\": 11, \\\"quote\\\": \\\"Mit der Initiative w\\u00fcrden nur die Altersrenten der AHV erh\\u00f6ht, die anderen Renten hingegen weiterhin 12 Mal pro Jahr bezahlt.\\\", \\\"attribution\\\": \\\"FEDERAL_COUNCIL_DETAIL_FINANCING\\\", \\\"as_of\\\": \\\"2023-11-29\\\"}], \\\"unknowns\\\": [\\\"Alternative Finanzierungsoptionen der Initiative nicht spezifiziert\\\", \\\"Detaillierte Auswirkungen auf andere Sozialleistungen\\\"], \\\"personal_financing_chf\\\": null}\"}}], \"usage\": {\"prompt_tokens\": 1168, \"completion_tokens\": 184, \"total_tokens\": 1352, \"prompt_tokens_details\": {\"cached_tokens\": 636}}}",
+  "response_sha256": "c6fbc217b591dfc4914d35c573c247cbfb55bd80dc9182a9d7b42df80588fd7f",
+  "latency_seconds": 11.063139375000901,
+  "raw_api_response": {
+    "id": "chatcmpl-defd43e6-8fb6-42b3-8f9d-366135a23e46",
+    "system_fingerprint": "0.31.3-0.32.0-macOS-26.6.2-arm64-arm-64bit-Mach-O-applegpu_g15s",
+    "object": "chat.completion",
+    "model": "default_model",
+    "created": 1791796930,
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"outcome\": \"INSUFFICIENT_EVIDENCE\", \"claims\": [{\"kind\": \"COST_PROJECTION\", \"statement\": \"Die Initiative würde nur Altersrenten erhöhen, andere Renten jedoch weiterhin 12 Mal jährlich zahlen, ohne konkrete Finanzierungsoptionen.\", \"pdf_page\": 11, \"quote\": \"Mit der Initiative würden nur die Altersrenten der AHV erhöht, die anderen Renten hingegen weiterhin 12 Mal pro Jahr bezahlt.\", \"attribution\": \"FEDERAL_COUNCIL_DETAIL_FINANCING\", \"as_of\": \"2023-11-29\"}], \"unknowns\": [\"Alternative Finanzierungsoptionen der Initiative nicht spezifiziert\", \"Detaillierte Auswirkungen auf andere Sozialleistungen\"], \"personal_financing_chf\": null}"
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 1168,
+      "completion_tokens": 184,
+      "total_tokens": 1352,
+      "prompt_tokens_details": {
+        "cached_tokens": 636
+      }
+    }
+  },
+  "parsed_candidate": {
+    "outcome": "INSUFFICIENT_EVIDENCE",
+    "claims": [
+      {
+        "kind": "COST_PROJECTION",
+        "statement": "Die Initiative würde nur Altersrenten erhöhen, andere Renten jedoch weiterhin 12 Mal jährlich zahlen, ohne konkrete Finanzierungsoptionen.",
+        "pdf_page": 11,
+        "quote": "Mit der Initiative würden nur die Altersrenten der AHV erhöht, die anderen Renten hingegen weiterhin 12 Mal pro Jahr bezahlt.",
+        "attribution": "FEDERAL_COUNCIL_DETAIL_FINANCING",
+        "as_of": "2023-11-29"
+      }
+    ],
+    "unknowns": [
+      "Alternative Finanzierungsoptionen der Initiative nicht spezifiziert",
+      "Detaillierte Auswirkungen auf andere Sozialleistungen"
+    ],
+    "personal_financing_chf": null
+  },
+  "validation": {
+    "mechanical_pass": true,
+    "errors": [],
+    "checks": [
+      {
+        "kind": "COST_PROJECTION",
+        "pdf_page": 11,
+        "page_exists": true,
+        "quote_in_page": true,
+        "role_matches_page": true,
+        "known_kind": true,
+        "statement_present": true,
+        "as_of_matches": true,
+        "role_kind_compatible": true,
+        "quote_start": 325,
+        "quote_end": 450,
+        "quote_sha256": "d4be8a261bd0f088345afbad34a9b867b72cd845a4a1221eda6705f10eb76c38",
+        "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+        "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11",
+        "publication_state": "CANDIDATE_UNREVIEWED"
+      }
+    ],
+    "publication_state": "CANDIDATE_UNREVIEWED",
+    "semantic_support_verified": false
+  },
+  "mechanical_grounding_checks": [
+    {
+      "kind": "COST_PROJECTION",
+      "pdf_page": 11,
+      "page_exists": true,
+      "quote_in_page": true,
+      "role_matches_page": true,
+      "known_kind": true,
+      "statement_present": true,
+      "as_of_matches": true,
+      "role_kind_compatible": true,
+      "quote_start": 325,
+      "quote_end": 450,
+      "quote_sha256": "d4be8a261bd0f088345afbad34a9b867b72cd845a4a1221eda6705f10eb76c38",
+      "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+      "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11",
+      "publication_state": "CANDIDATE_UNREVIEWED"
+    }
+  ],
+  "trial_id": "temporal_leakage",
+  "expected_outcome": "INSUFFICIENT_EVIDENCE"
+}

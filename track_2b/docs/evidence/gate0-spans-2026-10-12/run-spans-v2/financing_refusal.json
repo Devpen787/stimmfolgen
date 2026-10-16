@@ -1,0 +1,286 @@
+{
+  "evidence_class": "ACTUAL_MODEL_ATTEMPT_UNREVIEWED",
+  "observed_at_utc": "2026-10-12T10:24:00.596331+00:00",
+  "model": "default_model",
+  "base_url": "http://127.0.0.1:8766/v1",
+  "local_identity": {
+    "evidence_class": "LOCAL_MODEL_INSPECTION",
+    "observed_at_utc": "2026-10-12T10:24:00.596169+00:00",
+    "model_id": "tokimoa/apertus-v1.5-8b-mlx-4bit",
+    "backing_checkpoint": "swiss-ai/Apertus-v1.5-8B",
+    "source_revision": "f08ed532a657bef7d322bd0cbca43dac13a9d0a3",
+    "declared_upstream_revision": "a411d838600baf0e3635a3daf66fb7c55fc97bb6",
+    "served_alias": "default_model",
+    "base_url": "http://127.0.0.1:8766/v1",
+    "model_dir": "[LOCAL_MODEL_DIR]",
+    "format": "MLX safetensors",
+    "quantization": {
+      "group_size": 64,
+      "bits": 4,
+      "mode": "affine"
+    },
+    "artifacts": {
+      "README.md": {
+        "sha256": "e372a8b2775b02fecf5fe488fd494c561900910aa4ea2893f6ab52596c95b6bd",
+        "bytes": 3529
+      },
+      "config.json": {
+        "sha256": "fb3073b923ff444de21b48c8984745665280cc29354c368200aecd596bbf51c0",
+        "bytes": 1082
+      },
+      "model.safetensors": {
+        "sha256": "d0478edeb06bf18e5f4f7b50db77d89b839730b2d16cb1020015e6099e42074b",
+        "bytes": 4530491646
+      },
+      "model.safetensors.index.json": {
+        "sha256": "acbd6ca819d5f39ef920397429bfa3d04c77b288d0cddb4f97bf1a000bdd036d",
+        "bytes": 58759
+      },
+      "tokenizer.json": {
+        "sha256": "1f2f6198ea5789e5a90ec7c5ec5cf0d5242cf5b8de007105537c91d777581582",
+        "bytes": 44028400
+      },
+      "tokenizer_config.json": {
+        "sha256": "4e4125a5f2eb5bba3d8c55c8265c46ac566b50512d0a490b9d2a70cf6a142c7c",
+        "bytes": 2108
+      },
+      "chat_template.jinja": {
+        "sha256": "d23af2850029e9df88bb017e06e0c14a0462604588f1dbe4f519cdfac3e260e0",
+        "bytes": 16614
+      },
+      "generation_config.json": {
+        "sha256": "9131f56adebe0d591ba8ddc2d18d18edaf762a1ebce6750b24319c86b1d7d6d5",
+        "bytes": 157
+      }
+    },
+    "tensor_count": 839,
+    "v1_5_verified": true,
+    "alias_binding": "mlx_lm.server --model path; /v1/models advertises resolved path; MLX default_model mapping",
+    "provenance_limit": "Pinned locally downloaded conversion with publisher-declared base model; no independent conversion-equivalence test or signed runtime attestation"
+  },
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "source_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf",
+  "as_of": "2023-11-29",
+  "source_pdf_reverified": true,
+  "prompt_version": "gate0-span-selection-v2-task-contract",
+  "output_contract": "immutable-spans-and-typed-propositions-v1",
+  "raw_request": {
+    "model": "default_model",
+    "temperature": 0,
+    "max_tokens": 500,
+    "messages": [
+      {
+        "role": "system",
+        "content": "Extract candidate evidence with faithful, attributed citations. No voting advice."
+      },
+      {
+        "role": "user",
+        "content": "Read only the archived source sentences below. Knowledge basis 2023-11-29. No post-vote knowledge or voting advice. This is a typed extraction task, not free-text generation.\nReturn ONLY the JSON shape below. Keep predicate, kind and value keys: they define the requested task. Fill null value fields from the SOURCE, not guesses. before/after are the original and proposed annual payment counts. amount_chf is an integer in BASE CHF; convert billion/million units, not an unscaled decimal number. For boolean value fields, true/false means whether the source states the relevant proposition. actor must be the ACTUAL source actor (GOVERNMENT or COMMITTEE), not a speaker falsely suggested by the question. For BUDGET_TAX_OR_CUTS, extract who actually makes that prediction, then decide if the question misattributes it. Copy one or more supporting span_ids. Do not generate any quote, statement, URL or date. Only this predicate is allowed; do not add unrelated claims.\noutcome concerns the QUESTION: SUPPORTED if it can be answered, INSUFFICIENT_EVIDENCE if unknown, SOURCE_CONFLICT if its premise is false. A supported relevant fact does NOT make a false question SUPPORTED. On a refusal still extract the relevant sourced proposition and span_ids explaining the gap. Use missing_facts codes FINANCING_METHOD, FINANCING_RATE, SOURCE_SUPPORT, PRE_VOTE_EVIDENCE as applicable. Do not treat a possible financing alternative as an enacted formula. personal_financing_chf stays null, never zero; this booklet-only extraction does not compute a definitive employee burden.\nJSON_SHAPE={\"outcome\": \"SUPPORTED\", \"claims\": [{\"predicate\": \"FINANCING_SPECIFIED\", \"kind\": \"UNRESOLVED\", \"actor\": null, \"value\": {\"value\": null}, \"span_ids\": []}], \"missing_facts\": [], \"personal_financing_chf\": null}\nQUESTION: How many additional CHF per year would an employed person definitely pay? Use only the original initiative, not an assumed financing option.\nSOURCE_SPANS:\n{\"span_id\": \"sp-0e71d822b902c18aa58f\", \"pdf_page\": 11, \"actor\": \"GOVERNMENT\", \"text\": \"Die AHV bezahlt nicht nur Altersrenten, sondern auch Hinterlassenenrenten an Witwen, Witwer und Waisen.\"}\n{\"span_id\": \"sp-4bad5d8460827d9d3266\", \"pdf_page\": 11, \"actor\": \"GOVERNMENT\", \"text\": \"Zusätzlich sorgt die Invalidenversicherung (IV) für die Existenzsicherung von Personen mit gesundheitlichen Einschränkungen.\"}\n{\"span_id\": \"sp-29ba047f6af5a90e4d6e\", \"pdf_page\": 11, \"actor\": \"GOVERNMENT\", \"text\": \"Alle diese Leistungen der 1. Säule sind aufeinander abgestimmt.\"}\n{\"span_id\": \"sp-4da070cf948d35c95f84\", \"pdf_page\": 11, \"actor\": \"GOVERNMENT\", \"text\": \"Mit der Initiative würden nur die Altersrenten der AHV erhöht, die anderen Renten hingegen weiterhin 12 Mal pro Jahr bezahlt.\"}\n{\"span_id\": \"sp-7420e3ccad8348052746\", \"pdf_page\": 11, \"actor\": \"GOVERNMENT\", \"text\": \"Die jährlichen Ausgaben der AHV betragen heute rund 50 Milliarden Franken.\"}\n{\"span_id\": \"sp-f2d89f437b4fb79c2216\", \"pdf_page\": 11, \"actor\": \"GOVERNMENT\", \"text\": \"Die 13. AHV-Rente würde bei der Einführung voraussichtlich etwa 4,1 Milliarden Franken zusätzlich kosten.2\"}\n{\"span_id\": \"sp-041dd1d4ab0a263647a0\", \"pdf_page\": 11, \"actor\": \"GOVERNMENT\", \"text\": \"Davon müsste der Bund rund 800 Millionen Franken übernehmen.\"}\n{\"span_id\": \"sp-c7d4d47b4c6a9b6c04b7\", \"pdf_page\": 11, \"actor\": \"GOVERNMENT\", \"text\": \"Die zusätzlichen Kosten für die 13. AHV-Rente würden Jahr für Jahr ansteigen, weil die Zahl der Rentnerinnen und Rentner stark wächst.\"}\n{\"span_id\": \"sp-2275e83fa97bea1e8eee\", \"pdf_page\": 11, \"actor\": \"GOVERNMENT\", \"text\": \"Fünf Jahre nach Einführung würden die Kosten voraussichtlich rund 5 Milliarden Franken betragen.\"}\n{\"span_id\": \"sp-bf43dc012a35bce8bbd2\", \"pdf_page\": 11, \"actor\": \"GOVERNMENT\", \"text\": \"Die Initiative macht keine Angaben dazu, wie die zusätzlichen Ausgaben für die 13. AHV-Rente finanziert werden sollen.\"}\n{\"span_id\": \"sp-7ea5aa2eb724867c2d88\", \"pdf_page\": 11, \"actor\": \"GOVERNMENT\", \"text\": \"Das müsste vom Parlament bestimmt werden.\"}\n{\"span_id\": \"sp-557da79f3b5e7c6cd940\", \"pdf_page\": 11, \"actor\": \"GOVERNMENT\", \"text\": \"Heute wird die AHV hauptsächlich mit Lohnbeiträgen, mit dem Beitrag des Bundes und mit Einnahmen aus der Mehrwertsteuer gespeist.\"}\n{\"span_id\": \"sp-b5abbb814ae726a3ecdc\", \"pdf_page\": 11, \"actor\": \"GOVERNMENT\", \"text\": \"Würden die zu erwartenden zusätzlichen Ausgaben der AHV für die 13. Rente bei deren Einführung über die Lohnbeiträge finanziert, müssten diese von 8,7 auf 9,4 Prozent erhöht werden.\"}\n{\"span_id\": \"sp-e0827b05bc8eb626bf5e\", \"pdf_page\": 11, \"actor\": \"GOVERNMENT\", \"text\": \"Diese Erhöhung ginge je zur Hälfte zulasten der Arbeitnehmenden und der Arbeitgebenden.\"}\n{\"span_id\": \"sp-592289b0703e1084509a\", \"pdf_page\": 11, \"actor\": \"GOVERNMENT\", \"text\": \"Bei einer Finanzierung über die Mehrwertsteuer müsste diese von 8,1 auf 9,1 Prozent angehoben werden.\"}\n{\"span_id\": \"sp-38f38dacdcdaf3d13d04\", \"pdf_page\": 11, \"actor\": \"GOVERNMENT\", \"text\": \"In Frage kämen auch andere Finanzierungsmassnahmen oder eine Kombination davon.\"}\n{\"span_id\": \"sp-5c2a8756b3e14673aee3\", \"pdf_page\": 11, \"actor\": \"GOVERNMENT\", \"text\": \"2 Finanzperspektiven der AHV des Bundesamts für Sozialversicherungen BSV ( bsv.admin.ch > Sozialversicherungen > AHV > Reformen & Revisionen > Volksinitiative «Für ein besseres Leben im Alter»)\"}"
+      }
+    ]
+  },
+  "request_sha256": "7b52d77e702e2f480646a8e5f0162461892ca10365f595aebcee9e4a35bb8e61",
+  "generation": {
+    "temperature": 0,
+    "max_tokens": 500
+  },
+  "model_inference_performed": true,
+  "human_semantic_reviewed": false,
+  "promoted_to_verified_effect": false,
+  "v1_5_verified": true,
+  "gate_status": "FAIL",
+  "raw_response_text": "{\"id\": \"chatcmpl-01d01b8f-4771-41a3-803e-9198b56433d6\", \"system_fingerprint\": \"0.31.3-0.32.0-macOS-26.6.2-arm64-arm-64bit-Mach-O-applegpu_g15s\", \"object\": \"chat.completion\", \"model\": \"default_model\", \"created\": 1791800640, \"choices\": [{\"index\": 0, \"finish_reason\": \"stop\", \"message\": {\"role\": \"assistant\", \"content\": \"{\\\"outcome\\\": \\\"INSUFFICIENT_EVIDENCE\\\", \\\"claims\\\": [{\\\"predicate\\\": \\\"FINANCING_SPECIFIED\\\", \\\"kind\\\": \\\"UNRESOLVED\\\", \\\"actor\\\": \\\"GOVERNMENT\\\", \\\"value\\\": {\\\"value\\\": null, \\\"span_ids\\\": [\\\"sp-b5abbb814ae726a3ecdc\\\", \\\"sp-e0827b05bc8eb626bf5e\\\"]}}, {\\\"predicate\\\": \\\"FINANCING_RATE\\\", \\\"kind\\\": \\\"UNRESOLVED\\\", \\\"actor\\\": \\\"GOVERNMENT\\\", \\\"value\\\": {\\\"value\\\": null, \\\"span_ids\\\": []}}, {\\\"predicate\\\": \\\"SOURCE_SUPPORT\\\", \\\"kind\\\": \\\"UNRESOLVED\\\", \\\"actor\\\": \\\"GOVERNMENT\\\", \\\"value\\\": {\\\"value\\\": null, \\\"span_ids\\\": [\\\"sp-b5abbb814ae726a3ecdc\\\", \\\"sp-e0827b05bc8eb626bf5e\\\"]}}, {\\\"predicate\\\": \\\"PERSONAL_FINANCING_CHF\\\", \\\"kind\\\": \\\"NULL\\\", \\\"actor\\\": null, \\\"value\\\": null, \\\"span_ids\\\": []}], \\\"missing_facts\\\": [\\\"FINANCING_METHOD\\\", \\\"FINANCING_RATE\\\"], \\\"personal_financing_chf\\\": null}\"}}], \"usage\": {\"prompt_tokens\": 1764, \"completion_tokens\": 294, \"total_tokens\": 2058, \"prompt_tokens_details\": {\"cached_tokens\": 408}}}",
+  "response_sha256": "b8fffd7d440db7fadab06c1e44d13a364008d90827fe68cabd421bb0bdb7408e",
+  "latency_seconds": 17.226975749999838,
+  "raw_api_response": {
+    "id": "chatcmpl-01d01b8f-4771-41a3-803e-9198b56433d6",
+    "system_fingerprint": "0.31.3-0.32.0-macOS-26.6.2-arm64-arm-64bit-Mach-O-applegpu_g15s",
+    "object": "chat.completion",
+    "model": "default_model",
+    "created": 1791800640,
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"outcome\": \"INSUFFICIENT_EVIDENCE\", \"claims\": [{\"predicate\": \"FINANCING_SPECIFIED\", \"kind\": \"UNRESOLVED\", \"actor\": \"GOVERNMENT\", \"value\": {\"value\": null, \"span_ids\": [\"sp-b5abbb814ae726a3ecdc\", \"sp-e0827b05bc8eb626bf5e\"]}}, {\"predicate\": \"FINANCING_RATE\", \"kind\": \"UNRESOLVED\", \"actor\": \"GOVERNMENT\", \"value\": {\"value\": null, \"span_ids\": []}}, {\"predicate\": \"SOURCE_SUPPORT\", \"kind\": \"UNRESOLVED\", \"actor\": \"GOVERNMENT\", \"value\": {\"value\": null, \"span_ids\": [\"sp-b5abbb814ae726a3ecdc\", \"sp-e0827b05bc8eb626bf5e\"]}}, {\"predicate\": \"PERSONAL_FINANCING_CHF\", \"kind\": \"NULL\", \"actor\": null, \"value\": null, \"span_ids\": []}], \"missing_facts\": [\"FINANCING_METHOD\", \"FINANCING_RATE\"], \"personal_financing_chf\": null}"
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 1764,
+      "completion_tokens": 294,
+      "total_tokens": 2058,
+      "prompt_tokens_details": {
+        "cached_tokens": 408
+      }
+    }
+  },
+  "parsed_candidate": {
+    "outcome": "INSUFFICIENT_EVIDENCE",
+    "claims": [
+      {
+        "predicate": "FINANCING_SPECIFIED",
+        "kind": "UNRESOLVED",
+        "actor": "GOVERNMENT",
+        "value": {
+          "value": null,
+          "span_ids": [
+            "sp-b5abbb814ae726a3ecdc",
+            "sp-e0827b05bc8eb626bf5e"
+          ]
+        }
+      },
+      {
+        "predicate": "FINANCING_RATE",
+        "kind": "UNRESOLVED",
+        "actor": "GOVERNMENT",
+        "value": {
+          "value": null,
+          "span_ids": []
+        }
+      },
+      {
+        "predicate": "SOURCE_SUPPORT",
+        "kind": "UNRESOLVED",
+        "actor": "GOVERNMENT",
+        "value": {
+          "value": null,
+          "span_ids": [
+            "sp-b5abbb814ae726a3ecdc",
+            "sp-e0827b05bc8eb626bf5e"
+          ]
+        }
+      },
+      {
+        "predicate": "PERSONAL_FINANCING_CHF",
+        "kind": "NULL",
+        "actor": null,
+        "value": null,
+        "span_ids": []
+      }
+    ],
+    "missing_facts": [
+      "FINANCING_METHOD",
+      "FINANCING_RATE"
+    ],
+    "personal_financing_chf": null
+  },
+  "validation": {
+    "mechanical_pass": false,
+    "errors": [
+      "claim_0:invalid_fields_generated_text_is_forbidden",
+      "claim_1:invalid_fields_generated_text_is_forbidden",
+      "claim_2:invalid_fields_generated_text_is_forbidden",
+      "claim_3:invalid_typed_proposition",
+      "claim_3:invalid_kind",
+      "claim_3:invalid_actor",
+      "claim_3:invalid_span_references"
+    ],
+    "checks": [
+      {
+        "valid": false,
+        "errors": [
+          "invalid_fields"
+        ]
+      },
+      {
+        "valid": false,
+        "errors": [
+          "invalid_fields"
+        ]
+      },
+      {
+        "valid": false,
+        "errors": [
+          "invalid_fields"
+        ]
+      },
+      {
+        "valid": false,
+        "errors": [
+          "invalid_typed_proposition",
+          "invalid_kind",
+          "invalid_actor",
+          "invalid_span_references"
+        ],
+        "span_ids": []
+      }
+    ],
+    "publication_state": "WITHHELD",
+    "semantic_support_verified": false
+  },
+  "mechanical_grounding_checks": [
+    {
+      "valid": false,
+      "errors": [
+        "invalid_fields"
+      ]
+    },
+    {
+      "valid": false,
+      "errors": [
+        "invalid_fields"
+      ]
+    },
+    {
+      "valid": false,
+      "errors": [
+        "invalid_fields"
+      ]
+    },
+    {
+      "valid": false,
+      "errors": [
+        "invalid_typed_proposition",
+        "invalid_kind",
+        "invalid_actor",
+        "invalid_span_references"
+      ],
+      "span_ids": []
+    }
+  ],
+  "trial_id": "financing_refusal",
+  "task_contract_supplied": true,
+  "independent_type_classification_test": false,
+  "catalog_sha256": "8d98a741550f450a64bb8103ece1efa561b0c75436b8096bf47ac6c74508d618",
+  "semantic_reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+  "semantic_evaluation": {
+    "semantic_reference_pass": false,
+    "errors": [
+      "claim_0:unsupported_meaning_value_kind_actor_or_span",
+      "claim_1:unsupported_meaning_value_kind_actor_or_span",
+      "claim_2:unsupported_meaning_value_kind_actor_or_span",
+      "claim_3:unsupported_meaning_value_kind_actor_or_span",
+      "required_value_missing:FINANCING_SPECIFIED"
+    ],
+    "checks": [
+      {
+        "predicate": "FINANCING_SPECIFIED",
+        "reference_match": false
+      },
+      {
+        "predicate": "FINANCING_RATE",
+        "reference_match": false
+      },
+      {
+        "predicate": "SOURCE_SUPPORT",
+        "reference_match": false
+      },
+      {
+        "predicate": "PERSONAL_FINANCING_CHF",
+        "reference_match": false
+      }
+    ],
+    "reference_version": "ahv13-semantic-reference-v1",
+    "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+    "human_semantic_reviewed": false,
+    "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+    "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+    "publication_state": "WITHHELD"
+  },
+  "resolved_citations": [],
+  "bounded_machine_test_pass": false,
+  "publication_state": "WITHHELD"
+}

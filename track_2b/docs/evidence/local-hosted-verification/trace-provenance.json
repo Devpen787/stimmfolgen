@@ -1,0 +1,650 @@
+{
+  "source_commit": "9e1c60845c64bbe2b810a08be67fe39d47e96904",
+  "redaction": "These records were already published with absolute home paths redacted; selected record contents are unchanged. Full source archives remain in the original submitted commit and a verified private backup.",
+  "records": [
+    {
+      "file": "hosted/advice_new.json",
+      "sha256": "a890d886bd825f0c38e1554c97b983cae1874211f20f3df573201659dfab2668",
+      "archived_record": "hosted-two-cases-01/advice_new.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "a890d886bd825f0c38e1554c97b983cae1874211f20f3df573201659dfab2668"
+    },
+    {
+      "file": "hosted/advice_paraphrase.json",
+      "sha256": "1085c131c60dfd8959526edc8ec7526117eae82d6d5f7f9c6b327bc3f6329adf",
+      "archived_record": "hosted-two-cases-01/advice_paraphrase.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "1085c131c60dfd8959526edc8ec7526117eae82d6d5f7f9c6b327bc3f6329adf"
+    },
+    {
+      "file": "hosted/age_unknown.json",
+      "sha256": "fe793acae601926baaeadd8b7f70af99ff2360345702fa3eb9d9a3aa073e38ab",
+      "archived_record": "hosted-two-cases-01/age_unknown.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "fe793acae601926baaeadd8b7f70af99ff2360345702fa3eb9d9a3aa073e38ab"
+    },
+    {
+      "file": "hosted/benefit.json",
+      "sha256": "8adc6691e810a2a75779d66355cd26d1c506fa5db1af5f0893d34f56bb3c5552",
+      "archived_record": "hosted-two-cases-01/benefit.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "8adc6691e810a2a75779d66355cd26d1c506fa5db1af5f0893d34f56bb3c5552"
+    },
+    {
+      "file": "hosted/climate_unknown.json",
+      "sha256": "b5ad74e8ed3b2ed8d109cd0bc8b3ae2b719eb9e97f1c2b283814955bcbded010",
+      "archived_record": "hosted-two-cases-01/climate_unknown.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "b5ad74e8ed3b2ed8d109cd0bc8b3ae2b719eb9e97f1c2b283814955bcbded010"
+    },
+    {
+      "file": "hosted/committee_new.json",
+      "sha256": "69ea76b90b6cf03eaa30b03dd434365e12d1a5fe02f912f61bd3484114f41dbf",
+      "archived_record": "hosted-two-cases-01/committee_new.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "69ea76b90b6cf03eaa30b03dd434365e12d1a5fe02f912f61bd3484114f41dbf"
+    },
+    {
+      "file": "hosted/compare_new.json",
+      "sha256": "e386b1b04d0fa5e76cc1526c0e68d763c93c5c410acc5106e437e4b3883812a7",
+      "archived_record": "hosted-two-cases-01/compare_new.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "e386b1b04d0fa5e76cc1526c0e68d763c93c5c410acc5106e437e4b3883812a7"
+    },
+    {
+      "file": "hosted/cost_actor_new.json",
+      "sha256": "c9cb5e6c2522c3926bd9439f892f8ffb5bcd725b96bf2af169f4ef8e75dad5ab",
+      "archived_record": "hosted-two-cases-01/cost_actor_new.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "c9cb5e6c2522c3926bd9439f892f8ffb5bcd725b96bf2af169f4ef8e75dad5ab"
+    },
+    {
+      "file": "hosted/cost_comparison.json",
+      "sha256": "d4633c3afa4d081447d230c2672a4ac4ae6257feab43bce315f52794c9347afe",
+      "archived_record": "hosted-two-cases-01/cost_comparison.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "d4633c3afa4d081447d230c2672a4ac4ae6257feab43bce315f52794c9347afe"
+    },
+    {
+      "file": "hosted/cost_false_actor_new.json",
+      "sha256": "49de63fef115ae3cd93a95706ba7c45212055b43c3e42c79d8e32cc2875eb1c0",
+      "archived_record": "hosted-two-cases-01/cost_false_actor_new.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "49de63fef115ae3cd93a95706ba7c45212055b43c3e42c79d8e32cc2875eb1c0"
+    },
+    {
+      "file": "hosted/deduction_german.json",
+      "sha256": "335e0ef9feca1b5d09aa75897d9bcb5bb605535487faad37d38a72983c95ed18",
+      "archived_record": "hosted-two-cases-01/deduction_german.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "335e0ef9feca1b5d09aa75897d9bcb5bb605535487faad37d38a72983c95ed18"
+    },
+    {
+      "file": "hosted/different_proposal.json",
+      "sha256": "d8ff5d00b29c48a3cc734fb3f2b3b62a0cad8189372588357330656a81423c2f",
+      "archived_record": "hosted-two-cases-01/different_proposal.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "d8ff5d00b29c48a3cc734fb3f2b3b62a0cad8189372588357330656a81423c2f"
+    },
+    {
+      "file": "hosted/fabricated_quote_request.json",
+      "sha256": "c294146016351e9eaab4d41c0cc259721126dd57e2166c06b891d48a87e6789c",
+      "archived_record": "hosted-two-cases-01/fabricated_quote_request.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "c294146016351e9eaab4d41c0cc259721126dd57e2166c06b891d48a87e6789c"
+    },
+    {
+      "file": "hosted/false_actor.json",
+      "sha256": "72beebb677970d9730b85b0516fa6682a491ebb9b34f8782b021529b8edc729d",
+      "archived_record": "hosted-two-cases-01/false_actor.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "72beebb677970d9730b85b0516fa6682a491ebb9b34f8782b021529b8edc729d"
+    },
+    {
+      "file": "hosted/five_year_cost.json",
+      "sha256": "de64ae0a6d29627120874684e149c8441d250b7e77603cc7d7a965f2c9718eb7",
+      "archived_record": "hosted-two-cases-01/five_year_cost.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "de64ae0a6d29627120874684e149c8441d250b7e77603cc7d7a965f2c9718eb7"
+    },
+    {
+      "file": "hosted/forecast_actor_new.json",
+      "sha256": "cb1761382208cb8db97310f1e1e3fd31e8711840b58e8cefdeca0ccd3fae673c",
+      "archived_record": "hosted-two-cases-01/forecast_actor_new.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "cb1761382208cb8db97310f1e1e3fd31e8711840b58e8cefdeca0ccd3fae673c"
+    },
+    {
+      "file": "hosted/german_benefit.json",
+      "sha256": "9d004f8d8de9bb3e02857c9256649c63a201b0732904e1529e7e2711d014e44c",
+      "archived_record": "hosted-two-cases-01/german_benefit.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "9d004f8d8de9bb3e02857c9256649c63a201b0732904e1529e7e2711d014e44c"
+    },
+    {
+      "file": "hosted/german_financing.json",
+      "sha256": "1401686e83e6643870a5c5ca0ea1190d5711dd66e63f5165f20c0eb116c27ff0",
+      "archived_record": "hosted-two-cases-01/german_financing.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "1401686e83e6643870a5c5ca0ea1190d5711dd66e63f5165f20c0eb116c27ff0"
+    },
+    {
+      "file": "hosted/government_voice.json",
+      "sha256": "099f5257103d677b10c01d541b1833e91bfe954f0d8821439bc375c7899d3a9a",
+      "archived_record": "hosted-two-cases-01/government_voice.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "099f5257103d677b10c01d541b1833e91bfe954f0d8821439bc375c7899d3a9a"
+    },
+    {
+      "file": "hosted/home-advice.json",
+      "sha256": "cc2434b9020b4397d1e7b78b95c94e9c92e1a8dbfbe453be9c0393b6f8fbfc05",
+      "archived_record": "hosted-two-cases-01/home-advice.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "cc2434b9020b4397d1e7b78b95c94e9c92e1a8dbfbe453be9c0393b6f8fbfc05"
+    },
+    {
+      "file": "hosted/home-change.json",
+      "sha256": "613875903fee4feb962f5efb5e1e66ee4acc3766f99d30187d011ac000a7ea37",
+      "archived_record": "hosted-two-cases-01/home-change.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "613875903fee4feb962f5efb5e1e66ee4acc3766f99d30187d011ac000a7ea37"
+    },
+    {
+      "file": "hosted/home-later.json",
+      "sha256": "84d8f5cfa49a494da16ad387fdde868a2abe3864a45368d6097ad843162a4818",
+      "archived_record": "hosted-two-cases-01/home-later.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "84d8f5cfa49a494da16ad387fdde868a2abe3864a45368d6097ad843162a4818"
+    },
+    {
+      "file": "hosted/home-personal.json",
+      "sha256": "ce1b1760cf52c51973da2fb4a84528ce73eb0a9e0949f1af67f030cb9062a354",
+      "archived_record": "hosted-two-cases-01/home-personal.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "ce1b1760cf52c51973da2fb4a84528ce73eb0a9e0949f1af67f030cb9062a354"
+    },
+    {
+      "file": "hosted/home-renter.json",
+      "sha256": "c3e2623a11407fdf80a9ad1312e2b64469cdf7064ecc0b37daccabc00e40a337",
+      "archived_record": "hosted-two-cases-01/home-renter.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "c3e2623a11407fdf80a9ad1312e2b64469cdf7064ecc0b37daccabc00e40a337"
+    },
+    {
+      "file": "hosted/home-second-tax.json",
+      "sha256": "7445f297269436dd142ecf243e1370f414dc890b6e21e332d6e04931a89c496f",
+      "archived_record": "hosted-two-cases-01/home-second-tax.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "7445f297269436dd142ecf243e1370f414dc890b6e21e332d6e04931a89c496f"
+    },
+    {
+      "file": "hosted/home-unknown.json",
+      "sha256": "cce496358eff9914713ca8eb47842c62e5b62e779f9cf4af8f52568e17b6419c",
+      "archived_record": "hosted-two-cases-01/home-unknown.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "cce496358eff9914713ca8eb47842c62e5b62e779f9cf4af8f52568e17b6419c"
+    },
+    {
+      "file": "hosted/horizon_new.json",
+      "sha256": "a8597bf147fd098e5c6a94c0cafc0aef7eab12337b54b1f7d424d43ab536f552",
+      "archived_record": "hosted-two-cases-01/horizon_new.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "a8597bf147fd098e5c6a94c0cafc0aef7eab12337b54b1f7d424d43ab536f552"
+    },
+    {
+      "file": "hosted/individual_deduction.json",
+      "sha256": "e2d3af20fd2ae205c3c3de7b53ec45702bc13ae54d16801eb537aca676fbb045",
+      "archived_record": "hosted-two-cases-01/individual_deduction.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "e2d3af20fd2ae205c3c3de7b53ec45702bc13ae54d16801eb537aca676fbb045"
+    },
+    {
+      "file": "hosted/intro_cost.json",
+      "sha256": "da190980c24bde9a120409f07978a0b4efbe1731ca65eb986fdf3415845082ad",
+      "archived_record": "hosted-two-cases-01/intro_cost.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "da190980c24bde9a120409f07978a0b4efbe1731ca65eb986fdf3415845082ad"
+    },
+    {
+      "file": "hosted/later_new.json",
+      "sha256": "5dad3c893e15adcf68f6a2e8db2b0cffd5828f9ece3cabc73ccc21f189f1c068",
+      "archived_record": "hosted-two-cases-01/later_new.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "5dad3c893e15adcf68f6a2e8db2b0cffd5828f9ece3cabc73ccc21f189f1c068"
+    },
+    {
+      "file": "hosted/later_outcome.json",
+      "sha256": "f565d9c2738e9aaf63ffa8d73b8973e8990addf91a7acda73dbe7d0165a66659",
+      "archived_record": "hosted-two-cases-01/later_outcome.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "f565d9c2738e9aaf63ffa8d73b8973e8990addf91a7acda73dbe7d0165a66659"
+    },
+    {
+      "file": "hosted/other_new.json",
+      "sha256": "d5390f4c945b2b0c5c888edf6483a662580005b5a62be3ffb01ad9618168b72d",
+      "archived_record": "hosted-two-cases-01/other_new.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "d5390f4c945b2b0c5c888edf6483a662580005b5a62be3ffb01ad9618168b72d"
+    },
+    {
+      "file": "hosted/out_of_case.json",
+      "sha256": "ec1ad3a271ed90fa9eaf44b6ea847a3d0280f5c22390b0a0b0ca235ae76a964c",
+      "archived_record": "hosted-two-cases-01/out_of_case.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "ec1ad3a271ed90fa9eaf44b6ea847a3d0280f5c22390b0a0b0ca235ae76a964c"
+    },
+    {
+      "file": "hosted/personal_cost.json",
+      "sha256": "f9d53c083aee8313b42e032a8115ae6cca0f542570b8d32202880d1d70eb8ded",
+      "archived_record": "hosted-two-cases-01/personal_cost.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "f9d53c083aee8313b42e032a8115ae6cca0f542570b8d32202880d1d70eb8ded"
+    },
+    {
+      "file": "hosted/personal_french.json",
+      "sha256": "af917a646f4564926fa15775bbd025eed9fbae9070deaa2f78245c57d98076ae",
+      "archived_record": "hosted-two-cases-01/personal_french.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "af917a646f4564926fa15775bbd025eed9fbae9070deaa2f78245c57d98076ae"
+    },
+    {
+      "file": "hosted/recipient_new.json",
+      "sha256": "4d9c1eec2a3a19877a8b196974ebc758cd32982460789269bff576e480a5fc76",
+      "archived_record": "hosted-two-cases-01/recipient_new.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "4d9c1eec2a3a19877a8b196974ebc758cd32982460789269bff576e480a5fc76"
+    },
+    {
+      "file": "hosted/retirement_paraphrase.json",
+      "sha256": "c86659cabbd897caadedfbef5c9ed9a8ba12bfcc03470cafd1068fdd1f576b56",
+      "archived_record": "hosted-two-cases-01/retirement_paraphrase.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "c86659cabbd897caadedfbef5c9ed9a8ba12bfcc03470cafd1068fdd1f576b56"
+    },
+    {
+      "file": "hosted/source_actor.json",
+      "sha256": "f11d6f92b38df70492b9b821ee4cca94d91b68af3c6ba6da1cbdd70f64e842a5",
+      "archived_record": "hosted-two-cases-01/source_actor.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "f11d6f92b38df70492b9b821ee4cca94d91b68af3c6ba6da1cbdd70f64e842a5"
+    },
+    {
+      "file": "hosted/start_new.json",
+      "sha256": "16af231d7f734a1276d0da06a298af6cebdbb90706e3fd3b04aa350d6e5d5deb",
+      "archived_record": "hosted-two-cases-01/start_new.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "16af231d7f734a1276d0da06a298af6cebdbb90706e3fd3b04aa350d6e5d5deb"
+    },
+    {
+      "file": "hosted/summary.json",
+      "sha256": "228648b2b4f9d362efdf696d29d67142e156e50a45d29149062f00f120e014ff",
+      "archived_record": "hosted-two-cases-01/summary.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "228648b2b4f9d362efdf696d29d67142e156e50a45d29149062f00f120e014ff"
+    },
+    {
+      "file": "hosted/voice_french.json",
+      "sha256": "598c66584aa4a5419870c649cae64601381036d64aac0a8d13a34c4524803b1d",
+      "archived_record": "hosted-two-cases-01/voice_french.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "598c66584aa4a5419870c649cae64601381036d64aac0a8d13a34c4524803b1d"
+    },
+    {
+      "file": "hosted/voice_german.json",
+      "sha256": "82b4042038765f4184edace0619e2d02799df6f2492e69489b04eff18c19e708",
+      "archived_record": "hosted-two-cases-01/voice_german.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "82b4042038765f4184edace0619e2d02799df6f2492e69489b04eff18c19e708"
+    },
+    {
+      "file": "hosted/voice_new.json",
+      "sha256": "7c07028658c46d4dbb517b33ed9d5e67abc3691e025070d8619e98be30effcfe",
+      "archived_record": "hosted-two-cases-01/voice_new.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "7c07028658c46d4dbb517b33ed9d5e67abc3691e025070d8619e98be30effcfe"
+    },
+    {
+      "file": "hosted/vote_advice.json",
+      "sha256": "d485aed21ec726d66b37bbb10a76f25232c334c42e9fdbe5f2882343a98adb2a",
+      "archived_record": "hosted-two-cases-01/vote_advice.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "d485aed21ec726d66b37bbb10a76f25232c334c42e9fdbe5f2882343a98adb2a"
+    },
+    {
+      "file": "hosted/zero_cost_presupposition.json",
+      "sha256": "d3e9983d29eabb6ac6be79369ead0b5a766d5bb96dc85c53ddab256ffcc29c81",
+      "archived_record": "hosted-two-cases-01/zero_cost_presupposition.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "d3e9983d29eabb6ac6be79369ead0b5a766d5bb96dc85c53ddab256ffcc29c81"
+    },
+    {
+      "file": "hosted/zero_new.json",
+      "sha256": "1f7d01afd2a6b5552c852c0fdb359afaf7ac440512d4ff086de68e36ffa822ca",
+      "archived_record": "hosted-two-cases-01/zero_new.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "1f7d01afd2a6b5552c852c0fdb359afaf7ac440512d4ff086de68e36ffa822ca"
+    },
+    {
+      "file": "failures/local-initial/benefit.json",
+      "sha256": "2f4f54ff04e9ce77a320a3ec66c39c327eb513898de1e9ed35e645b6933dd267",
+      "archived_record": "onprem-core13/benefit.json",
+      "archive_file": "attempts-before-fresh.jsonl",
+      "original_bytes_sha256": "2f4f54ff04e9ce77a320a3ec66c39c327eb513898de1e9ed35e645b6933dd267"
+    },
+    {
+      "file": "failures/local-initial/cost_comparison.json",
+      "sha256": "3b8299ba483c30901a0ba808f708ade91cd6c910b9e080725f9ce2c18c95665e",
+      "archived_record": "onprem-core13/cost_comparison.json",
+      "archive_file": "attempts-before-fresh.jsonl",
+      "original_bytes_sha256": "3b8299ba483c30901a0ba808f708ade91cd6c910b9e080725f9ce2c18c95665e"
+    },
+    {
+      "file": "failures/local-initial/false_actor.json",
+      "sha256": "1e7083ae20a9dafd2d255c8d29b6d90a25b2818d10591a1e056d9a94ca4abd3e",
+      "archived_record": "onprem-core13/false_actor.json",
+      "archive_file": "attempts-before-fresh.jsonl",
+      "original_bytes_sha256": "1e7083ae20a9dafd2d255c8d29b6d90a25b2818d10591a1e056d9a94ca4abd3e"
+    },
+    {
+      "file": "failures/local-initial/five_year_cost.json",
+      "sha256": "a51d744c30cb25e7c16936864b25b4d278130c20d89fc25b522f5e54ddb4f232",
+      "archived_record": "onprem-core13/five_year_cost.json",
+      "archive_file": "attempts-before-fresh.jsonl",
+      "original_bytes_sha256": "a51d744c30cb25e7c16936864b25b4d278130c20d89fc25b522f5e54ddb4f232"
+    },
+    {
+      "file": "failures/local-initial/german_benefit.json",
+      "sha256": "bd02797e3f2a8fe5e3e23b79fa3fef68d71ddb5642841e77e34a7e5758a7cb88",
+      "archived_record": "onprem-core13/german_benefit.json",
+      "archive_file": "attempts-before-fresh.jsonl",
+      "original_bytes_sha256": "bd02797e3f2a8fe5e3e23b79fa3fef68d71ddb5642841e77e34a7e5758a7cb88"
+    },
+    {
+      "file": "failures/local-initial/german_financing.json",
+      "sha256": "7f40280a9dd62de9b6eb50db087b408cc45e7d3b83f6ecb095fadafd26cb4089",
+      "archived_record": "onprem-core13/german_financing.json",
+      "archive_file": "attempts-before-fresh.jsonl",
+      "original_bytes_sha256": "7f40280a9dd62de9b6eb50db087b408cc45e7d3b83f6ecb095fadafd26cb4089"
+    },
+    {
+      "file": "failures/local-initial/intro_cost.json",
+      "sha256": "c412aa54ad99b04ba3b49a91f1dd8e110120f50316cd4f0955f896e60ef1cf3e",
+      "archived_record": "onprem-core13/intro_cost.json",
+      "archive_file": "attempts-before-fresh.jsonl",
+      "original_bytes_sha256": "c412aa54ad99b04ba3b49a91f1dd8e110120f50316cd4f0955f896e60ef1cf3e"
+    },
+    {
+      "file": "failures/local-initial/later_outcome.json",
+      "sha256": "ba5ab2634cdac48a991ecc982b94ca35b7dd5ecf1bd22e51d67ae33208598678",
+      "archived_record": "onprem-core13/later_outcome.json",
+      "archive_file": "attempts-before-fresh.jsonl",
+      "original_bytes_sha256": "ba5ab2634cdac48a991ecc982b94ca35b7dd5ecf1bd22e51d67ae33208598678"
+    },
+    {
+      "file": "failures/local-initial/out_of_case.json",
+      "sha256": "9d08fe7df033da313d21e24bbcb331a4801fa0db08471eb7c15bedd38de62c63",
+      "archived_record": "onprem-core13/out_of_case.json",
+      "archive_file": "attempts-before-fresh.jsonl",
+      "original_bytes_sha256": "9d08fe7df033da313d21e24bbcb331a4801fa0db08471eb7c15bedd38de62c63"
+    },
+    {
+      "file": "failures/local-initial/personal_cost.json",
+      "sha256": "094d3c8dcd14e13c8a6b350e9fe5d529dfdf3ca86285b972fcdd7d7fbb375cca",
+      "archived_record": "onprem-core13/personal_cost.json",
+      "archive_file": "attempts-before-fresh.jsonl",
+      "original_bytes_sha256": "094d3c8dcd14e13c8a6b350e9fe5d529dfdf3ca86285b972fcdd7d7fbb375cca"
+    },
+    {
+      "file": "failures/local-initial/source_actor.json",
+      "sha256": "533eb318dcdf8dd7698e59aaf70a43a0393b08b274175562d956c852c6d03dcc",
+      "archived_record": "onprem-core13/source_actor.json",
+      "archive_file": "attempts-before-fresh.jsonl",
+      "original_bytes_sha256": "533eb318dcdf8dd7698e59aaf70a43a0393b08b274175562d956c852c6d03dcc"
+    },
+    {
+      "file": "failures/local-initial/vote_advice.json",
+      "sha256": "93888563ad0de7707cd738b78d34bacc7874cf68dda0b617054be501f31bde7f",
+      "archived_record": "onprem-core13/vote_advice.json",
+      "archive_file": "attempts-before-fresh.jsonl",
+      "original_bytes_sha256": "93888563ad0de7707cd738b78d34bacc7874cf68dda0b617054be501f31bde7f"
+    },
+    {
+      "file": "failures/local-initial/zero_cost_presupposition.json",
+      "sha256": "c145dbc1ff5d0302eec38b78096599a1e64a53d39e367da156cfc67e45e02b0b",
+      "archived_record": "onprem-core13/zero_cost_presupposition.json",
+      "archive_file": "attempts-before-fresh.jsonl",
+      "original_bytes_sha256": "c145dbc1ff5d0302eec38b78096599a1e64a53d39e367da156cfc67e45e02b0b"
+    },
+    {
+      "file": "failures/onprem-engine-01/ahv-benefit.json",
+      "sha256": "101c43c741f712ecc72c94270a07d6534d7759e15e248a35afc8fd51f6fcb900",
+      "archived_record": "onprem-engine-01/ahv-benefit.json",
+      "archive_file": "attempts-before-fresh.jsonl",
+      "original_bytes_sha256": "101c43c741f712ecc72c94270a07d6534d7759e15e248a35afc8fd51f6fcb900"
+    },
+    {
+      "file": "failures/onprem-engine-02/ahv-benefit.json",
+      "sha256": "58e27e51fb6df3fcfdc14a293625937a4886d06cf20b764cb124d2fb9315dec8",
+      "archived_record": "onprem-engine-02/ahv-benefit.json",
+      "archive_file": "attempts-before-fresh.jsonl",
+      "original_bytes_sha256": "58e27e51fb6df3fcfdc14a293625937a4886d06cf20b764cb124d2fb9315dec8"
+    },
+    {
+      "file": "failures/onprem-engine-03/ahv-benefit.json",
+      "sha256": "cd1be53ccb82cea112bb6e78d6b739ac7d761764c3c52ca8c0e92c9678292e05",
+      "archived_record": "onprem-engine-03/ahv-benefit.json",
+      "archive_file": "attempts-before-fresh.jsonl",
+      "original_bytes_sha256": "cd1be53ccb82cea112bb6e78d6b739ac7d761764c3c52ca8c0e92c9678292e05"
+    },
+    {
+      "file": "failures/onprem-engine-04/ahv-benefit.json",
+      "sha256": "53112db0b2c130e773c7aa619be0a1d71b0da41f212621ac6f971b768e038d92",
+      "archived_record": "onprem-engine-04/ahv-benefit.json",
+      "archive_file": "attempts-before-fresh.jsonl",
+      "original_bytes_sha256": "53112db0b2c130e773c7aa619be0a1d71b0da41f212621ac6f971b768e038d92"
+    },
+    {
+      "file": "local/benefit.json",
+      "sha256": "608d2ab03000b06d3e02384408e71759ff7f3b5a5b3ba17759fc33502e17bfe8",
+      "archived_record": "onprem-two-cases-final/benefit.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "608d2ab03000b06d3e02384408e71759ff7f3b5a5b3ba17759fc33502e17bfe8"
+    },
+    {
+      "file": "local/cost_comparison.json",
+      "sha256": "dd099d560f991cce4fae97ac340a8974e944326861c80070514aa86c47862c74",
+      "archived_record": "onprem-two-cases-final/cost_comparison.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "dd099d560f991cce4fae97ac340a8974e944326861c80070514aa86c47862c74"
+    },
+    {
+      "file": "local/false_actor.json",
+      "sha256": "75968d333f77c71c4f31716af723053f4326b968e81f039410c72c69da5ccb44",
+      "archived_record": "onprem-two-cases-final/false_actor.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "75968d333f77c71c4f31716af723053f4326b968e81f039410c72c69da5ccb44"
+    },
+    {
+      "file": "local/five_year_cost.json",
+      "sha256": "43e068d652efdf6eea28a25de3fef17628f7f2cbb054068ef2c9f2c3a8408708",
+      "archived_record": "onprem-two-cases-final/five_year_cost.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "43e068d652efdf6eea28a25de3fef17628f7f2cbb054068ef2c9f2c3a8408708"
+    },
+    {
+      "file": "local/german_benefit.json",
+      "sha256": "16aeb27aab4cac6a9e68e9e375eb6f80ba64dbb8edec1c9d7a896f9d6f28fe36",
+      "archived_record": "onprem-two-cases-final/german_benefit.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "16aeb27aab4cac6a9e68e9e375eb6f80ba64dbb8edec1c9d7a896f9d6f28fe36"
+    },
+    {
+      "file": "local/german_financing.json",
+      "sha256": "e685a57d3c0a0af6ab44a300916667748173627ecbbb6fc2df8a90341af179d3",
+      "archived_record": "onprem-two-cases-final/german_financing.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "e685a57d3c0a0af6ab44a300916667748173627ecbbb6fc2df8a90341af179d3"
+    },
+    {
+      "file": "local/home-advice.json",
+      "sha256": "696cf7737a05654e930e57825623d6f79ab23a8ef8b388ef175287f9a765ae06",
+      "archived_record": "onprem-two-cases-final/home-advice.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "696cf7737a05654e930e57825623d6f79ab23a8ef8b388ef175287f9a765ae06"
+    },
+    {
+      "file": "local/home-change.json",
+      "sha256": "f923add4de5467dda66fe9080cbd97acdf34ffd16356fa77339aaeb7572e394f",
+      "archived_record": "onprem-two-cases-final/home-change.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "f923add4de5467dda66fe9080cbd97acdf34ffd16356fa77339aaeb7572e394f"
+    },
+    {
+      "file": "local/home-later.json",
+      "sha256": "56c0c9000212258d9833660b8d6ca6db654942ff0eb38dcef4d64f934e2f9c13",
+      "archived_record": "onprem-two-cases-final/home-later.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "56c0c9000212258d9833660b8d6ca6db654942ff0eb38dcef4d64f934e2f9c13"
+    },
+    {
+      "file": "local/home-personal.json",
+      "sha256": "14bf6686ded417f3a8b1a85e6aae282a98340ab719e63de14cd625c17a62f61a",
+      "archived_record": "onprem-two-cases-final/home-personal.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "14bf6686ded417f3a8b1a85e6aae282a98340ab719e63de14cd625c17a62f61a"
+    },
+    {
+      "file": "local/home-renter.json",
+      "sha256": "8e4c47f2fb9e97afb9b88f044f3a1af6a96e64d5c07a3c939c357bdcee3ff57a",
+      "archived_record": "onprem-two-cases-final/home-renter.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "8e4c47f2fb9e97afb9b88f044f3a1af6a96e64d5c07a3c939c357bdcee3ff57a"
+    },
+    {
+      "file": "local/home-second-tax.json",
+      "sha256": "fc5b25933523f98e51903200336bfbd29c2790a69128d973afb2c522d87649ef",
+      "archived_record": "onprem-two-cases-final/home-second-tax.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "fc5b25933523f98e51903200336bfbd29c2790a69128d973afb2c522d87649ef"
+    },
+    {
+      "file": "local/home-unknown.json",
+      "sha256": "dbcceef73fb27e1de3e399df295a68aaebd798f5740a2200f42e3ca957e3a30e",
+      "archived_record": "onprem-two-cases-final/home-unknown.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "dbcceef73fb27e1de3e399df295a68aaebd798f5740a2200f42e3ca957e3a30e"
+    },
+    {
+      "file": "local/intro_cost.json",
+      "sha256": "54546f015bd51822e8294713f47ce2dc2b9a0da11eaaccca1d17d25370d12abe",
+      "archived_record": "onprem-two-cases-final/intro_cost.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "54546f015bd51822e8294713f47ce2dc2b9a0da11eaaccca1d17d25370d12abe"
+    },
+    {
+      "file": "local/later_outcome.json",
+      "sha256": "fec6ae92640c2757f6718d65312e6addd17e714ccc97ee26c968009163f70fe4",
+      "archived_record": "onprem-two-cases-final/later_outcome.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "fec6ae92640c2757f6718d65312e6addd17e714ccc97ee26c968009163f70fe4"
+    },
+    {
+      "file": "local/out_of_case.json",
+      "sha256": "82b6da958ddfae858899608e5faf57d656c2a015d3e2fec4629abd7094d892b1",
+      "archived_record": "onprem-two-cases-final/out_of_case.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "82b6da958ddfae858899608e5faf57d656c2a015d3e2fec4629abd7094d892b1"
+    },
+    {
+      "file": "local/personal_cost.json",
+      "sha256": "90e0895725e6ac7b04e8814597043a481f0ac29ce90525079d49e24e19a4c2a2",
+      "archived_record": "onprem-two-cases-final/personal_cost.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "90e0895725e6ac7b04e8814597043a481f0ac29ce90525079d49e24e19a4c2a2"
+    },
+    {
+      "file": "local/source_actor.json",
+      "sha256": "b37cc6ce183f02d6cb0abef607336f4656a6f8fe61eec9c9cbd51ef948da56ee",
+      "archived_record": "onprem-two-cases-final/source_actor.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "b37cc6ce183f02d6cb0abef607336f4656a6f8fe61eec9c9cbd51ef948da56ee"
+    },
+    {
+      "file": "local/vote_advice.json",
+      "sha256": "1bfcb64a5a9060f810916634951b0d5835752ee479fbe0d70a3f99c716e3c767",
+      "archived_record": "onprem-two-cases-final/vote_advice.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "1bfcb64a5a9060f810916634951b0d5835752ee479fbe0d70a3f99c716e3c767"
+    },
+    {
+      "file": "local/zero_cost_presupposition.json",
+      "sha256": "ed8884804bca073919f4f85e63e84d4cbb822e65e06faf48b35f734747ad060b",
+      "archived_record": "onprem-two-cases-final/zero_cost_presupposition.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "ed8884804bca073919f4f85e63e84d4cbb822e65e06faf48b35f734747ad060b"
+    },
+    {
+      "file": "failures/property-local-extraction.json",
+      "sha256": "b6f8ab39858f85a8b8cb993a0c2a87ef9bacb6e055f5c089344c9d8c685908e0",
+      "archived_record": "property-local-extraction.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "b6f8ab39858f85a8b8cb993a0c2a87ef9bacb6e055f5c089344c9d8c685908e0"
+    },
+    {
+      "file": "failures/property-extraction-failure.json",
+      "sha256": "a026ab27cb6a417ea72e0f25b7da1429651bc4761db8374ffc745774ef0afb8a",
+      "archived_record": "property-extraction-failure.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "a026ab27cb6a417ea72e0f25b7da1429651bc4761db8374ffc745774ef0afb8a"
+    },
+    {
+      "file": "failures/source-fetch.json",
+      "sha256": "4545598f291211117dab1a10e6310980cb76c2b95374fe1c88cc9a6c4b0974b6",
+      "archived_record": "source-fetch.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "4545598f291211117dab1a10e6310980cb76c2b95374fe1c88cc9a6c4b0974b6"
+    },
+    {
+      "file": "installation/fresh-environment.json",
+      "sha256": "1875eb4f35da1410843bf79b7205cf23a8680b5df9fdae0cacede4f27e95fc54",
+      "archived_record": "fresh-environment.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "871355155dad6be3d694fce554903dadb1d28756c211ca5b70f86c72a2c804cb"
+    },
+    {
+      "file": "installation/fresh-updated-http.json",
+      "sha256": "dead3aee5ec8adcf687cfba8d1b84aaf59f5d0158a60e7b620cb7e44d7c3ec11",
+      "archived_record": "fresh-updated-http.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "dead3aee5ec8adcf687cfba8d1b84aaf59f5d0158a60e7b620cb7e44d7c3ec11"
+    },
+    {
+      "file": "installation/production-final-http.json",
+      "sha256": "d09210006d0dc698b1c2a1714d6343b38de7541d93743fd21845ca54dbf5a07a",
+      "archived_record": "production-final-http.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "d09210006d0dc698b1c2a1714d6343b38de7541d93743fd21845ca54dbf5a07a"
+    },
+    {
+      "file": "installation/production-final-live.json",
+      "sha256": "a699e8c52bf94471d0dd768ee10cbb9dccc08cfbb32afbdf64cc79f58766309c",
+      "archived_record": "production-final-live.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "a699e8c52bf94471d0dd768ee10cbb9dccc08cfbb32afbdf64cc79f58766309c"
+    },
+    {
+      "file": "installation/second-source-final.json",
+      "sha256": "e38d5585578076f6e18c594df75414398daed4cdb6be779cc2facc5cca738055",
+      "archived_record": "second-source-final.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "e38d5585578076f6e18c594df75414398daed4cdb6be779cc2facc5cca738055"
+    },
+    {
+      "file": "installation/owned-final-cleanup.json",
+      "sha256": "f5c008959089eade01ee79115f570461f9b7aed6e5caa97af1c840f2dc1c33b6",
+      "archived_record": "owned-final-cleanup.json",
+      "archive_file": "fresh-and-final-traces.jsonl",
+      "original_bytes_sha256": "f5c008959089eade01ee79115f570461f9b7aed6e5caa97af1c840f2dc1c33b6"
+    }
+  ]
+}

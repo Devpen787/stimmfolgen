@@ -1,0 +1,254 @@
+{
+  "evidence_class": "ACTUAL_MODEL_ATTEMPT_UNREVIEWED",
+  "observed_at_utc": "2026-10-12T12:22:29.159122+00:00",
+  "model": "default_model",
+  "base_url": "http://127.0.0.1:8766/v1",
+  "local_identity": {
+    "evidence_class": "LOCAL_MODEL_INSPECTION",
+    "observed_at_utc": "2026-10-12T12:22:29.158974+00:00",
+    "model_id": "tokimoa/apertus-v1.5-8b-mlx-4bit",
+    "backing_checkpoint": "swiss-ai/Apertus-v1.5-8B",
+    "source_revision": "f08ed532a657bef7d322bd0cbca43dac13a9d0a3",
+    "declared_upstream_revision": "a411d838600baf0e3635a3daf66fb7c55fc97bb6",
+    "served_alias": "default_model",
+    "base_url": "http://127.0.0.1:8766/v1",
+    "model_dir": "[LOCAL_MODEL_DIR]",
+    "format": "MLX safetensors",
+    "quantization": {
+      "group_size": 64,
+      "bits": 4,
+      "mode": "affine"
+    },
+    "artifacts": {
+      "README.md": {
+        "sha256": "e372a8b2775b02fecf5fe488fd494c561900910aa4ea2893f6ab52596c95b6bd",
+        "bytes": 3529
+      },
+      "config.json": {
+        "sha256": "fb3073b923ff444de21b48c8984745665280cc29354c368200aecd596bbf51c0",
+        "bytes": 1082
+      },
+      "model.safetensors": {
+        "sha256": "d0478edeb06bf18e5f4f7b50db77d89b839730b2d16cb1020015e6099e42074b",
+        "bytes": 4530491646
+      },
+      "model.safetensors.index.json": {
+        "sha256": "acbd6ca819d5f39ef920397429bfa3d04c77b288d0cddb4f97bf1a000bdd036d",
+        "bytes": 58759
+      },
+      "tokenizer.json": {
+        "sha256": "1f2f6198ea5789e5a90ec7c5ec5cf0d5242cf5b8de007105537c91d777581582",
+        "bytes": 44028400
+      },
+      "tokenizer_config.json": {
+        "sha256": "4e4125a5f2eb5bba3d8c55c8265c46ac566b50512d0a490b9d2a70cf6a142c7c",
+        "bytes": 2108
+      },
+      "chat_template.jinja": {
+        "sha256": "d23af2850029e9df88bb017e06e0c14a0462604588f1dbe4f519cdfac3e260e0",
+        "bytes": 16614
+      },
+      "generation_config.json": {
+        "sha256": "9131f56adebe0d591ba8ddc2d18d18edaf762a1ebce6750b24319c86b1d7d6d5",
+        "bytes": 157
+      }
+    },
+    "tensor_count": 839,
+    "v1_5_verified": true,
+    "alias_binding": "mlx_lm.server --model path; /v1/models advertises resolved path; MLX default_model mapping",
+    "provenance_limit": "Pinned locally downloaded conversion with publisher-declared base model; no independent conversion-equivalence test or signed runtime attestation"
+  },
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "source_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf",
+  "as_of": "2023-11-29",
+  "source_pdf_reverified": true,
+  "prompt_version": "gate0-span-selection-v5-source-actor-comparison",
+  "output_contract": "immutable-spans-and-typed-propositions-v1",
+  "raw_request": {
+    "model": "default_model",
+    "temperature": 0,
+    "max_tokens": 500,
+    "messages": [
+      {
+        "role": "system",
+        "content": "Extract candidate evidence with faithful, attributed citations. No voting advice."
+      },
+      {
+        "role": "user",
+        "content": "Answer from SOURCE only, knowledge basis 2023-11-29. No later knowledge, guesses or voting advice. Return ONLY one JSON object, with EXACTLY these fields: outcome (SUPPORTED, INSUFFICIENT_EVIDENCE or SOURCE_CONFLICT), span_ids (nonempty list of copied IDs supporting your answer), amount_chf (integer BASE CHF, convert billion/million units), horizon (INTRODUCTION or FIVE_YEARS). Do not add claims, explanations, quotes, money calculations for an employee, or any other field. outcome evaluates the QUESTION: an unknown burden is INSUFFICIENT_EVIDENCE; a false speaker premise is SOURCE_CONFLICT. Still extract the cited financing-specified flag or actual speaker to explain a refused question. False financing_specified means the initiative leaves financing open, not that the answer is missing. Choose the actual source actor, not one incorrectly suggested by the question.\nQUESTION: What additional annual cost is projected at introduction? Preserve the forecast status.\nSOURCE:\n{\"span_id\": \"sp-f2d89f437b4fb79c2216\", \"actor\": \"GOVERNMENT\", \"text\": \"Die 13. AHV-Rente würde bei der Einführung voraussichtlich etwa 4,1 Milliarden Franken zusätzlich kosten.2\"}\n{\"span_id\": \"sp-2275e83fa97bea1e8eee\", \"actor\": \"GOVERNMENT\", \"text\": \"Fünf Jahre nach Einführung würden die Kosten voraussichtlich rund 5 Milliarden Franken betragen.\"}"
+      }
+    ]
+  },
+  "request_sha256": "3da0c753022b5267f1c8361bbdf9ae76c205a8d0f735e945b0b879b88d1d13e5",
+  "generation": {
+    "temperature": 0,
+    "max_tokens": 500
+  },
+  "model_inference_performed": true,
+  "human_semantic_reviewed": false,
+  "promoted_to_verified_effect": false,
+  "v1_5_verified": true,
+  "gate_status": "REVIEW_REQUIRED",
+  "raw_response_text": "{\"id\": \"chatcmpl-9a0a0d5d-ac39-4e82-be74-62f6176b7bfb\", \"system_fingerprint\": \"0.31.3-0.32.0-macOS-26.6.2-arm64-arm-64bit-Mach-O-applegpu_g15s\", \"object\": \"chat.completion\", \"model\": \"default_model\", \"created\": 1791807749, \"choices\": [{\"index\": 0, \"finish_reason\": \"stop\", \"message\": {\"role\": \"assistant\", \"content\": \"{\\\"outcome\\\": \\\"SUPPORTED\\\", \\\"span_ids\\\": [\\\"sp-f2d89f437b4fb79c2216\\\", \\\"sp-2275e83fa97bea1e8eee\\\"], \\\"amount_chf\\\": 4100000000, \\\"horizon\\\": \\\"INTRODUCTION\\\"}\"}}], \"usage\": {\"prompt_tokens\": 380, \"completion_tokens\": 82, \"total_tokens\": 462, \"prompt_tokens_details\": {\"cached_tokens\": 107}}}",
+  "response_sha256": "dcb6c3db83e0a6c8fdc00063adc81f1d06f27a0e0c18e789917ed26a9180f73e",
+  "latency_seconds": 5.14382758300053,
+  "raw_api_response": {
+    "id": "chatcmpl-9a0a0d5d-ac39-4e82-be74-62f6176b7bfb",
+    "system_fingerprint": "0.31.3-0.32.0-macOS-26.6.2-arm64-arm-64bit-Mach-O-applegpu_g15s",
+    "object": "chat.completion",
+    "model": "default_model",
+    "created": 1791807749,
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"outcome\": \"SUPPORTED\", \"span_ids\": [\"sp-f2d89f437b4fb79c2216\", \"sp-2275e83fa97bea1e8eee\"], \"amount_chf\": 4100000000, \"horizon\": \"INTRODUCTION\"}"
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 380,
+      "completion_tokens": 82,
+      "total_tokens": 462,
+      "prompt_tokens_details": {
+        "cached_tokens": 107
+      }
+    }
+  },
+  "parsed_candidate": {
+    "outcome": "SUPPORTED",
+    "span_ids": [
+      "sp-f2d89f437b4fb79c2216",
+      "sp-2275e83fa97bea1e8eee"
+    ],
+    "amount_chf": 4100000000,
+    "horizon": "INTRODUCTION"
+  },
+  "validation": {
+    "mechanical_pass": true,
+    "errors": [],
+    "checks": [
+      {
+        "valid": true,
+        "errors": [],
+        "span_ids": [
+          "sp-f2d89f437b4fb79c2216",
+          "sp-2275e83fa97bea1e8eee"
+        ]
+      }
+    ],
+    "publication_state": "CANDIDATE_UNREVIEWED",
+    "semantic_support_verified": false
+  },
+  "mechanical_grounding_checks": [
+    {
+      "valid": true,
+      "errors": [],
+      "span_ids": [
+        "sp-f2d89f437b4fb79c2216",
+        "sp-2275e83fa97bea1e8eee"
+      ]
+    }
+  ],
+  "trial_id": "cost_projection",
+  "task_contract_supplied": true,
+  "independent_type_classification_test": false,
+  "catalog_sha256": "8d98a741550f450a64bb8103ece1efa561b0c75436b8096bf47ac6c74508d618",
+  "semantic_reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+  "canonical_candidate": {
+    "outcome": "SUPPORTED",
+    "claims": [
+      {
+        "predicate": "ADDITIONAL_ANNUAL_COST",
+        "kind": "COST_PROJECTION",
+        "actor": "GOVERNMENT",
+        "value": {
+          "amount_chf": 4100000000,
+          "horizon": "INTRODUCTION"
+        },
+        "span_ids": [
+          "sp-f2d89f437b4fb79c2216",
+          "sp-2275e83fa97bea1e8eee"
+        ]
+      }
+    ],
+    "missing_facts": [],
+    "personal_financing_chf": null
+  },
+  "adaptation": "Field mapping only; raw values and IDs preserved. Kind comes from the typed task; positive actor comes from source metadata; refusal reasons and null finance are application policy, not generated model explanations.",
+  "semantic_evaluation": {
+    "semantic_reference_pass": true,
+    "errors": [],
+    "checks": [
+      {
+        "predicate": "ADDITIONAL_ANNUAL_COST",
+        "reference_match": true
+      }
+    ],
+    "reference_version": "ahv13-semantic-reference-v1",
+    "reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+    "human_semantic_reviewed": false,
+    "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+    "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+    "publication_state": "CANDIDATE_UNREVIEWED"
+  },
+  "resolved_citations": [
+    {
+      "predicate": "ADDITIONAL_ANNUAL_COST",
+      "citations": [
+        {
+          "document_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "extraction_version": "blocks-v3",
+          "segmentation_version": "source-sentences-v1",
+          "pdf_page": 11,
+          "block_number": 2,
+          "start": 566,
+          "end": 672,
+          "text_sha256": "c3c9beecb067abe982749da32b306137228037e87db62aae3573bf2a768f55c3",
+          "role": "FEDERAL_COUNCIL_DETAIL_FINANCING",
+          "knowledge_cutoff_at": "2023-11-29",
+          "span_id": "sp-f2d89f437b4fb79c2216",
+          "identity_sha256": "f2d89f437b4fb79c22167caf74655564fe87a459f72e4f1995d6da1fc719e2f0",
+          "text": "Die 13. AHV-Rente würde bei der Einführung voraussichtlich etwa 4,1 Milliarden Franken zusätzlich kosten.2",
+          "bbox": [
+            121.8898,
+            173.9948,
+            393.4352,
+            268.6598
+          ],
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11",
+          "available_at": null,
+          "actor": "GOVERNMENT"
+        },
+        {
+          "document_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+          "extraction_version": "blocks-v3",
+          "segmentation_version": "source-sentences-v1",
+          "pdf_page": 11,
+          "block_number": 2,
+          "start": 869,
+          "end": 965,
+          "text_sha256": "67afcf5a0024f29bfbc7a58c2a6bd3b21a5da54e3158a58369cd5de2c6360951",
+          "role": "FEDERAL_COUNCIL_DETAIL_FINANCING",
+          "knowledge_cutoff_at": "2023-11-29",
+          "span_id": "sp-2275e83fa97bea1e8eee",
+          "identity_sha256": "2275e83fa97bea1e8eee821b3a0e4f4008d67601ccb4368b8d84f19aceb1be19",
+          "text": "Fünf Jahre nach Einführung würden die Kosten voraussichtlich rund 5 Milliarden Franken betragen.",
+          "bbox": [
+            121.8898,
+            173.9948,
+            393.4352,
+            268.6598
+          ],
+          "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11",
+          "available_at": null,
+          "actor": "GOVERNMENT"
+        }
+      ]
+    }
+  ],
+  "bounded_machine_test_pass": true,
+  "publication_state": "CANDIDATE_UNREVIEWED"
+}

@@ -1,0 +1,163 @@
+{
+  "reference_version": "ahv13-semantic-reference-v1",
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "knowledge_basis": "2023-11-29",
+  "authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+  "human_reviewed": false,
+  "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+  "facts": [
+    {
+      "predicate": "PAYMENT_FREQUENCY",
+      "kind": "DIRECT_PROVISION",
+      "actor": "GOVERNMENT",
+      "value": {
+        "before": 12,
+        "after": 13
+      },
+      "support": [
+        {
+          "pdf_page": 9,
+          "exact_text": "Die Initiative fordert, dass die monatliche Rente nicht nur 12 Mal, sondern 13 Mal pro Jahr ausbezahlt wird.",
+          "text_sha256": "d34cf1a2af61f1828459fb696b1a808b5ccd237470082a64c77d2b0061f96b66"
+        },
+        {
+          "pdf_page": 4,
+          "exact_text": "Zu den 12 Monatsrenten käme jedes Jahr eine 13. Rente dazu.",
+          "text_sha256": "bc048891774a398e49844ccdef2bd02928c1dbb850e6c53f8c6627e794874bc8"
+        }
+      ]
+    },
+    {
+      "predicate": "ADDITIONAL_ANNUAL_COST",
+      "kind": "COST_PROJECTION",
+      "actor": "GOVERNMENT",
+      "value": {
+        "amount_chf": 4100000000,
+        "horizon": "INTRODUCTION"
+      },
+      "support": [
+        {
+          "pdf_page": 11,
+          "exact_text": "Die 13. AHV-Rente würde bei der Einführung voraussichtlich etwa 4,1 Milliarden Franken zusätzlich kosten.2",
+          "text_sha256": "c3c9beecb067abe982749da32b306137228037e87db62aae3573bf2a768f55c3"
+        },
+        {
+          "pdf_page": 4,
+          "exact_text": "Durch diese Erhöhung würden die Kosten für die 13. AHV- Rente bei der Einführung voraussichtlich etwa 4,1 Milliarden Franken betragen; davon müsste der Bund rund 800 Millionen Franken bezahlen.",
+          "text_sha256": "b4d63038683014b09f8677ac2f3caff1541db22bd0ae8be20ae7067717f04c09"
+        }
+      ]
+    },
+    {
+      "predicate": "ADDITIONAL_ANNUAL_COST",
+      "kind": "COST_PROJECTION",
+      "actor": "GOVERNMENT",
+      "value": {
+        "amount_chf": 5000000000,
+        "horizon": "FIVE_YEARS"
+      },
+      "support": [
+        {
+          "pdf_page": 11,
+          "exact_text": "Fünf Jahre nach Einführung würden die Kosten voraussichtlich rund 5 Milliarden Franken betragen.",
+          "text_sha256": "67afcf5a0024f29bfbc7a58c2a6bd3b21a5da54e3158a58369cd5de2c6360951"
+        }
+      ]
+    },
+    {
+      "predicate": "FINANCING_SPECIFIED",
+      "kind": "UNRESOLVED",
+      "actor": "GOVERNMENT",
+      "value": {
+        "value": false
+      },
+      "support": [
+        {
+          "pdf_page": 11,
+          "exact_text": "Die Initiative macht keine Angaben dazu, wie die zusätzlichen Ausgaben für die 13. AHV-Rente finanziert werden sollen.",
+          "text_sha256": "849c5c2ebc67384d026b06f2dadf15006dc13050a8de5bde740a455142015da4"
+        },
+        {
+          "pdf_page": 4,
+          "exact_text": "Die Initiative lässt die Frage der Finanzierung offen.",
+          "text_sha256": "b2e55fbbff378f77e3217bba32ec1d2117f02dc71edec7831b1d271135e03689"
+        }
+      ]
+    },
+    {
+      "predicate": "BUDGET_TAX_OR_CUTS",
+      "kind": "ATTRIBUTED_PREDICTION",
+      "actor": "GOVERNMENT",
+      "value": {
+        "value": true
+      },
+      "support": [
+        {
+          "pdf_page": 16,
+          "exact_text": "Der Bund müsste seine Steuern erhöhen oder Ausgaben kürzen.",
+          "text_sha256": "44fbdebe189dc35d553fe5f87f1c5578f421830d687fd09700d66101851e897a"
+        }
+      ]
+    }
+  ],
+  "cases": {
+    "full_extraction": {
+      "required_values": {
+        "PAYMENT_FREQUENCY": {
+          "before": 12,
+          "after": 13
+        },
+        "ADDITIONAL_ANNUAL_COST": {
+          "amount_chf": 4100000000,
+          "horizon": "INTRODUCTION"
+        },
+        "FINANCING_SPECIFIED": {
+          "value": false
+        }
+      }
+    },
+    "direct_provision": {
+      "required_values": {
+        "PAYMENT_FREQUENCY": {
+          "before": 12,
+          "after": 13
+        }
+      }
+    },
+    "cost_projection": {
+      "required_values": {
+        "ADDITIONAL_ANNUAL_COST": {
+          "amount_chf": 4100000000,
+          "horizon": "INTRODUCTION"
+        }
+      }
+    },
+    "financing_refusal": {
+      "required_values": {
+        "FINANCING_SPECIFIED": {
+          "value": false
+        }
+      }
+    },
+    "fake_quote": {
+      "required_values": {}
+    },
+    "actor_mixup": {
+      "required_values": {
+        "BUDGET_TAX_OR_CUTS": {
+          "value": true
+        }
+      }
+    },
+    "unsupported_chf": {
+      "required_values": {
+        "FINANCING_SPECIFIED": {
+          "value": false
+        }
+      }
+    },
+    "temporal_leakage": {
+      "required_values": {}
+    }
+  }
+}

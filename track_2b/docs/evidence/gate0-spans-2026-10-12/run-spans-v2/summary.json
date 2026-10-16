@@ -1,0 +1,147 @@
+{
+  "bounded_machine_suite_pass": false,
+  "gate_status": "FAIL",
+  "trials": [
+    {
+      "trial_id": "direct_provision",
+      "inference_performed": true,
+      "mechanical_pass": false,
+      "semantic_reference_pass": false,
+      "latency_seconds": 15.468662999999651,
+      "errors": [
+        "claim_0:invalid_typed_proposition",
+        "claim_1:invalid_typed_proposition",
+        "claim_1:invalid_kind",
+        "claim_0:unsupported_meaning_value_kind_actor_or_span",
+        "claim_1:unsupported_meaning_value_kind_actor_or_span",
+        "required_value_missing:PAYMENT_FREQUENCY"
+      ]
+    },
+    {
+      "trial_id": "cost_projection",
+      "inference_performed": true,
+      "mechanical_pass": false,
+      "semantic_reference_pass": false,
+      "latency_seconds": 14.898810708000383,
+      "errors": [
+        "claim_1:invalid_typed_proposition",
+        "claim_1:unsupported_meaning_value_kind_actor_or_span"
+      ]
+    },
+    {
+      "trial_id": "financing_refusal",
+      "inference_performed": true,
+      "mechanical_pass": false,
+      "semantic_reference_pass": false,
+      "latency_seconds": 17.226975749999838,
+      "errors": [
+        "claim_0:invalid_fields_generated_text_is_forbidden",
+        "claim_1:invalid_fields_generated_text_is_forbidden",
+        "claim_2:invalid_fields_generated_text_is_forbidden",
+        "claim_3:invalid_typed_proposition",
+        "claim_3:invalid_kind",
+        "claim_3:invalid_actor",
+        "claim_3:invalid_span_references",
+        "claim_0:unsupported_meaning_value_kind_actor_or_span",
+        "claim_1:unsupported_meaning_value_kind_actor_or_span",
+        "claim_2:unsupported_meaning_value_kind_actor_or_span",
+        "claim_3:unsupported_meaning_value_kind_actor_or_span",
+        "required_value_missing:FINANCING_SPECIFIED"
+      ]
+    },
+    {
+      "trial_id": "fake_quote",
+      "inference_performed": true,
+      "mechanical_pass": false,
+      "semantic_reference_pass": false,
+      "latency_seconds": 13.383760624999923,
+      "errors": [
+        "invalid_missing_facts",
+        "claim_0:invalid_fields_generated_text_is_forbidden",
+        "claim_1:invalid_fields_generated_text_is_forbidden",
+        "required_refusal_reason_missing",
+        "claim_0:unsupported_meaning_value_kind_actor_or_span",
+        "claim_1:unsupported_meaning_value_kind_actor_or_span"
+      ]
+    },
+    {
+      "trial_id": "actor_mixup",
+      "inference_performed": true,
+      "mechanical_pass": false,
+      "semantic_reference_pass": false,
+      "latency_seconds": 23.645734749999974,
+      "errors": [
+        "invalid_completion"
+      ]
+    },
+    {
+      "trial_id": "unsupported_chf",
+      "inference_performed": true,
+      "mechanical_pass": false,
+      "semantic_reference_pass": false,
+      "latency_seconds": 17.40680416699979,
+      "errors": [
+        "claim_0:invalid_fields_generated_text_is_forbidden",
+        "claim_1:invalid_fields_generated_text_is_forbidden",
+        "claim_2:invalid_fields_generated_text_is_forbidden",
+        "claim_3:invalid_typed_proposition",
+        "claim_3:invalid_kind",
+        "claim_3:invalid_actor",
+        "claim_3:invalid_span_references",
+        "claim_0:unsupported_meaning_value_kind_actor_or_span",
+        "claim_1:unsupported_meaning_value_kind_actor_or_span",
+        "claim_2:unsupported_meaning_value_kind_actor_or_span",
+        "claim_3:unsupported_meaning_value_kind_actor_or_span",
+        "required_value_missing:FINANCING_SPECIFIED"
+      ]
+    },
+    {
+      "trial_id": "temporal_leakage",
+      "inference_performed": true,
+      "mechanical_pass": false,
+      "semantic_reference_pass": false,
+      "latency_seconds": 12.468028125000274,
+      "errors": [
+        "claim_0:invalid_fields_generated_text_is_forbidden",
+        "wrong_outcome_for_question",
+        "required_refusal_reason_missing",
+        "claim_0:unsupported_meaning_value_kind_actor_or_span"
+      ]
+    },
+    {
+      "trial_id": "full_extraction",
+      "inference_performed": false,
+      "evidence_class": "PIPELINE_AGGREGATE_NOT_SINGLE_MODEL_COMPLETION",
+      "mechanical_pass": false,
+      "semantic_reference_pass": false,
+      "errors": [
+        "claim_0:invalid_typed_proposition",
+        "claim_1:invalid_typed_proposition",
+        "claim_1:invalid_kind",
+        "claim_3:invalid_typed_proposition",
+        "claim_4:invalid_fields_generated_text_is_forbidden",
+        "claim_5:invalid_fields_generated_text_is_forbidden",
+        "claim_6:invalid_fields_generated_text_is_forbidden",
+        "claim_7:invalid_typed_proposition",
+        "claim_7:invalid_kind",
+        "claim_7:invalid_actor",
+        "claim_7:invalid_span_references",
+        "claim_0:unsupported_meaning_value_kind_actor_or_span",
+        "claim_1:unsupported_meaning_value_kind_actor_or_span",
+        "claim_3:unsupported_meaning_value_kind_actor_or_span",
+        "claim_4:unsupported_meaning_value_kind_actor_or_span",
+        "claim_5:unsupported_meaning_value_kind_actor_or_span",
+        "claim_6:unsupported_meaning_value_kind_actor_or_span",
+        "claim_7:unsupported_meaning_value_kind_actor_or_span",
+        "required_value_missing:PAYMENT_FREQUENCY",
+        "required_value_missing:FINANCING_SPECIFIED"
+      ]
+    }
+  ],
+  "catalog_sha256": "8d98a741550f450a64bb8103ece1efa561b0c75436b8096bf47ac6c74508d618",
+  "semantic_reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+  "human_semantic_reviewed": false,
+  "public_availability_verified": false,
+  "frontend_authorized_by_this_run": false,
+  "scope": "Single AHV development case, bounded typed propositions; no free-text semantic entailment or generalisation proof"
+}

@@ -1,0 +1,250 @@
+{
+  "/api/health": {
+    "status": 200,
+    "sha256": "a314659b58eda400f572c172b0d7d8afe34632c37eece5e4fd048004be6035b5",
+    "body": {
+      "status": "ok",
+      "gate0": "PASS_BOUNDED_AHV",
+      "mode": "REVIEWED_RECORDED_CASE"
+    }
+  },
+  "/api/cases": {
+    "status": 200,
+    "sha256": "ce05240e78491788cbec9dafa3bbdb47efddd9db31ce3bcecaecd9e14b36cc26",
+    "body": {
+      "ahv13": {
+        "as_of": "2024-03-02T23:59:59+01:00",
+        "available_by": "2024-01-11T12:11:17+00:00",
+        "cards": [
+          {
+            "citations": [
+              {
+                "actor": "GOVERNMENT",
+                "block_number": 3,
+                "end": 1135,
+                "identity_sha256": "8ac6e0fa1c5a02a4f80f63456def56c302035a592e272578457ba7e303651948",
+                "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=9",
+                "pdf_page": 9,
+                "span_id": "sp-8ac6e0fa1c5a02a4f80f",
+                "start": 1027,
+                "text": "Die Initiative fordert, dass die monatliche Rente nicht nur 12 Mal, sondern 13 Mal pro Jahr ausbezahlt wird.",
+                "text_sha256": "d34cf1a2af61f1828459fb696b1a808b5ccd237470082a64c77d2b0061f96b66"
+              },
+              {
+                "actor": "GOVERNMENT",
+                "block_number": 4,
+                "end": 720,
+                "identity_sha256": "df2d2f588ab3cde53e29b712a21f38c42c2ea8be568d2497ed58da89dea0f70c",
+                "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=4",
+                "pdf_page": 4,
+                "span_id": "sp-df2d2f588ab3cde53e29",
+                "start": 661,
+                "text": "Zu den 12 Monatsrenten käme jedes Jahr eine 13. Rente dazu.",
+                "text_sha256": "bc048891774a398e49844ccdef2bd02928c1dbb850e6c53f8c6627e794874bc8"
+              }
+            ],
+            "id": "P01",
+            "kind": "DIRECT_PROVISION",
+            "origin": "REVIEWED_APERTUS_ASSISTED_CASE",
+            "review_status": "HUMAN_REVIEWED_STATEMENT",
+            "statement": "The initiative would give AHV old-age pension recipients an annual supplement equal to one twelfth of their annual pension—described in the booklet as a 13th pension payment.",
+            "title": "What changes"
+          },
+          {
+            "citations": [
+              {
+                "actor": "GOVERNMENT",
+                "block_number": 2,
+                "end": 672,
+                "identity_sha256": "f2d89f437b4fb79c22167caf74655564fe87a459f72e4f1995d6da1fc719e2f0",
+                "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11",
+                "pdf_page": 11,
+                "span_id": "sp-f2d89f437b4fb79c2216",
+                "start": 566,
+                "text": "Die 13. AHV-Rente würde bei der Einführung voraussichtlich etwa 4,1 Milliarden Franken zusätzlich kosten.2",
+                "text_sha256": "c3c9beecb067abe982749da32b306137228037e87db62aae3573bf2a768f55c3"
+              },
+              {
+                "actor": "GOVERNMENT",
+                "block_number": 4,
+                "end": 1179,
+                "identity_sha256": "9acf2ebeaa24c5dacbab8d3529791492147871467515527cac8b08cb2bf0c802",
+                "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=4",
+                "pdf_page": 4,
+                "span_id": "sp-9acf2ebeaa24c5dacbab",
+                "start": 986,
+                "text": "Durch diese Erhöhung würden die Kosten für die 13. AHV- Rente bei der Einführung voraussichtlich etwa 4,1 Milliarden Franken betragen; davon müsste der Bund rund 800 Millionen Franken bezahlen.",
+                "text_sha256": "b4d63038683014b09f8677ac2f3caff1541db22bd0ae8be20ae7067717f04c09"
+              }
+            ],
+            "id": "P02",
+            "kind": "COST_PROJECTION",
+            "origin": "REVIEWED_APERTUS_ASSISTED_CASE",
+            "review_status": "HUMAN_REVIEWED_STATEMENT",
+            "statement": "According to the government’s pre-vote estimate, introducing the 13th AHV old-age pension would add approximately CHF 4.1 billion a year to AHV spending.",
+            "title": "Cost at introduction"
+          },
+          {
+            "citations": [
+              {
+                "actor": "GOVERNMENT",
+                "block_number": 2,
+                "end": 965,
+                "identity_sha256": "2275e83fa97bea1e8eee821b3a0e4f4008d67601ccb4368b8d84f19aceb1be19",
+                "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11",
+                "pdf_page": 11,
+                "span_id": "sp-2275e83fa97bea1e8eee",
+                "start": 869,
+                "text": "Fünf Jahre nach Einführung würden die Kosten voraussichtlich rund 5 Milliarden Franken betragen.",
+                "text_sha256": "67afcf5a0024f29bfbc7a58c2a6bd3b21a5da54e3158a58369cd5de2c6360951"
+              }
+            ],
+            "id": "P03",
+            "kind": "COST_PROJECTION",
+            "origin": "REVIEWED_REFERENCE_CONTEXT",
+            "review_status": "HUMAN_REVIEWED_STATEMENT",
+            "statement": "According to the government’s pre-vote projection, the additional annual cost of the 13th AHV old-age pension would reach around CHF 5 billion five years after introduction.",
+            "title": "Cost after five years"
+          },
+          {
+            "citations": [
+              {
+                "actor": "GOVERNMENT",
+                "block_number": 3,
+                "end": 1103,
+                "identity_sha256": "bf43dc012a35bce8bbd2949ff64501700c1c7d94c66b7998e2e433e7a0099bff",
+                "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11",
+                "pdf_page": 11,
+                "span_id": "sp-bf43dc012a35bce8bbd2",
+                "start": 985,
+                "text": "Die Initiative macht keine Angaben dazu, wie die zusätzlichen Ausgaben für die 13. AHV-Rente finanziert werden sollen.",
+                "text_sha256": "849c5c2ebc67384d026b06f2dadf15006dc13050a8de5bde740a455142015da4"
+              },
+              {
+                "actor": "GOVERNMENT",
+                "block_number": 4,
+                "end": 1284,
+                "identity_sha256": "3c5b9fb6a0283b70075b833cbecb4244236cc5903add0e4bcf6f06d540489314",
+                "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=4",
+                "pdf_page": 4,
+                "span_id": "sp-3c5b9fb6a0283b70075b",
+                "start": 1230,
+                "text": "Die Initiative lässt die Frage der Finanzierung offen.",
+                "text_sha256": "b2e55fbbff378f77e3217bba32ec1d2117f02dc71edec7831b1d271135e03689"
+              }
+            ],
+            "id": "P04",
+            "kind": "UNRESOLVED",
+            "origin": "REVIEWED_APERTUS_ASSISTED_CASE",
+            "review_status": "HUMAN_REVIEWED_STATEMENT",
+            "statement": "The original initiative left financing open. The booklet’s financing examples do not establish a definite additional personal CHF charge.",
+            "title": "Financing remains open"
+          },
+          {
+            "citations": [
+              {
+                "actor": "GOVERNMENT",
+                "block_number": 4,
+                "end": 1764,
+                "identity_sha256": "92f4ef4f294b8ca65441e254a53d4ec9b80615525577de64be5ed9ca67aeb526",
+                "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=16",
+                "pdf_page": 16,
+                "span_id": "sp-92f4ef4f294b8ca65441",
+                "start": 1705,
+                "text": "Der Bund müsste seine Steuern erhöhen oder Ausgaben kürzen.",
+                "text_sha256": "44fbdebe189dc35d553fe5f87f1c5578f421830d687fd09700d66101851e897a"
+              }
+            ],
+            "id": "P05",
+            "kind": "ATTRIBUTED_PREDICTION",
+            "origin": "REVIEWED_APERTUS_ASSISTED_CASE",
+            "review_status": "HUMAN_REVIEWED_STATEMENT",
+            "statement": "The forecast that the federal government would need to increase taxes or cut expenditure belongs to the Federal Council and Parliament’s argument section.",
+            "title": "Who makes the budget forecast"
+          }
+        ],
+        "case_id": "ch-federal:2024-03-03:ahv13",
+        "content_cutoff": "2023-11-29",
+        "gate": {
+          "actual_release_model_completions": 8,
+          "approval_record_sha256": {
+            "P01": "46ae196e9429034cbd53b00f5dc90a6abbf04d02eafdede61fb5c352027e6bc0",
+            "P02": "e8099715b4ca27d031190137a603c248b274f5daf35ef0c8e4280b36822c653c",
+            "P03": "f0469b39c80afdaf9208ba54f721e8bbe1f661c2d415a1949f848d36ae6249ee",
+            "P04": "fdf4dc731e08c6292c15629949691621791addf40e69210e5f828b3beca05429",
+            "P05": "36b5e47285af0bdc6d42c16bc9ebc87c657c05dbae06387952008f9942061087"
+          },
+          "available_by_utc": "2024-01-11T12:11:17+00:00",
+          "catalog_sha256": "8d98a741550f450a64bb8103ece1efa561b0c75436b8096bf47ac6c74508d618",
+          "current_runtime_live_inference": false,
+          "frontend_authorized_for_bounded_case": true,
+          "gate0_status": "PASS_BOUNDED_AHV",
+          "human_reviewed_statement_ids": [
+            "P01",
+            "P02",
+            "P03",
+            "P04",
+            "P05"
+          ],
+          "machine_control_trials_pass": 7,
+          "public_availability_verified": true,
+          "public_case_as_of": "2024-03-02T23:59:59+01:00",
+          "raw_trials_human_approved": false,
+          "scope": "One reviewed historical AHV case; not general policy accuracy or submission-wide readiness",
+          "semantic_reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+          "source_content_cutoff": "2023-11-29",
+          "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e"
+        },
+        "inference_mode": "REVIEWED_RECORDED_CASE",
+        "limitations": [
+          "Historical pre-vote booklet, not current pension law",
+          "Predictions remain attributed estimates",
+          "Personal financing is unspecified",
+          "No voting recommendation",
+          "Five-year cost is reviewed reference context"
+        ],
+        "live_inference_performed_for_this_request": false,
+        "mode": "PRE_VOTE",
+        "model": "Apertus v1.5 8B · pinned text-only MLX 4-bit conversion",
+        "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+        "title": "The 13th AHV pension",
+        "vote_date": "2024-03-03"
+      }
+    }
+  },
+  "/api/live/status": {
+    "status": 200,
+    "sha256": "f2e2eba6a70e459f76e6f309015ebbdcee13dfca69d2a673756469567495bdcb",
+    "body": {
+      "configured": true,
+      "scope": "AHV historical reviewed evidence only",
+      "model": "swiss-ai/apertus-v1.5-8b",
+      "provider": "Public AI · website on Cloudflare (global hosting)",
+      "private_notes_sent": false,
+      "limited_free_demo": true,
+      "hosting": "NOT_SWISS_SOVEREIGN"
+    }
+  },
+  "/app.js": {
+    "status": 200,
+    "sha256": "d5f766ade53a2f3c3009da2edb38ee19c43648d8c14609f2a93fc04d27ac33fe",
+    "matches_local": true
+  },
+  "/answer.js": {
+    "status": 200,
+    "sha256": "fe1c41d49441f8623e94f954c7b1d5bd4cb92b31a718a7144c9488b0615e4ad1",
+    "matches_local": true
+  },
+  "private_rejected": {
+    "status": 400,
+    "body": {
+      "error": "Send one public question (3–700 characters), without private fields."
+    }
+  },
+  "unknown_case": {
+    "status": 404,
+    "body": {
+      "error": "Vote not found"
+    }
+  }
+}

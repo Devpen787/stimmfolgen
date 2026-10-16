@@ -1,0 +1,65 @@
+{
+  "scope": "Fresh actual local Apertus v1.5 with public-frame admission; no model responses repaired",
+  "files": {
+    "run-release-v6/actor_mixup-grounding.json": {
+      "bytes": 12026,
+      "sha256": "615116e2d622c6190c72577c7b64ec5da95151b0f1a3fc3eb26aaf5b05e33e3f"
+    },
+    "run-release-v6/actor_mixup-intent.json": {
+      "bytes": 6355,
+      "sha256": "a57ea452101e164d095b87f2e55b272452dfb195ba7a0780d920333202a06d30"
+    },
+    "run-release-v6/actor_mixup.json": {
+      "bytes": 6839,
+      "sha256": "63f75e39db5f7cf651b65aca232eb49259c45d6af65ffcf0c796ca25d46b29e9"
+    },
+    "run-release-v6/availability-used.json": {
+      "bytes": 736,
+      "sha256": "37eb322e633a6f8f2445dcf50faceb1976eab20cba3851a573a8aef434f0d1da"
+    },
+    "run-release-v6/cost_projection.json": {
+      "bytes": 11621,
+      "sha256": "2834f0095fd6e5b8bb738dfb28a7a32ea647c6867a5964773f1689063665d29e"
+    },
+    "run-release-v6/direct_provision.json": {
+      "bytes": 10063,
+      "sha256": "a1038df0803b3c6f435892eba8ce2c85875c88f0449327cc03f661849cced4c0"
+    },
+    "run-release-v6/fake_quote.json": {
+      "bytes": 12319,
+      "sha256": "0edd1fa49b3f93be2ac28475f06cb0a1e41e76db7bdb743845b8bb65e303bd29"
+    },
+    "run-release-v6/financing_refusal.json": {
+      "bytes": 17707,
+      "sha256": "578c17ae0d06bcf45d6c92e999203fe8a2da7e29e025ffa7360537f7b57ebc38"
+    },
+    "run-release-v6/full_extraction.json": {
+      "bytes": 3391,
+      "sha256": "35026435668f0560d6ff3dd67bf4b1fa7eb4102eee0f8d7eebbd2b36d373bad3"
+    },
+    "run-release-v6/semantic-reference-used.json": {
+      "bytes": 4879,
+      "sha256": "f685432f71088edafe58233ca6f15149e13de213e1fb219d02395e7f610d44f2"
+    },
+    "run-release-v6/source-spans.json": {
+      "bytes": 90905,
+      "sha256": "90ed5d5bbc654741e84269a013ed4cfedb78d1df7a58e18c292c2b82cae20caa"
+    },
+    "run-release-v6/summary.json": {
+      "bytes": 2453,
+      "sha256": "fcb7779767eb3406f06df6f8c337408eea96bbd884df683ebecda2765003f52b"
+    },
+    "run-release-v6/temporal_leakage.json": {
+      "bytes": 17672,
+      "sha256": "b9bd7cef76bd8ddd2d11ff7bf97c579e2459a04bf08ad1ac7d96ab3f4d0d3921"
+    },
+    "run-release-v6/unsupported_chf.json": {
+      "bytes": 17710,
+      "sha256": "1f0a8867a4d620c547d9d6aa4d55fab3636428c5d6855bb1b3077c7add22feb3"
+    },
+    "source.json": {
+      "bytes": 34029,
+      "sha256": "3b715a77c050771abc3a5a0e537734e3a1dd035536a579d86472580ad381980b"
+    }
+  }
+}

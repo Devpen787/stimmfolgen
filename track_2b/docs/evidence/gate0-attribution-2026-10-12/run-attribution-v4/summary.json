@@ -1,0 +1,90 @@
+{
+  "bounded_machine_suite_pass": false,
+  "gate_status": "FAIL",
+  "trials": [
+    {
+      "trial_id": "direct_provision",
+      "inference_performed": true,
+      "mechanical_pass": true,
+      "semantic_reference_pass": true,
+      "latency_seconds": 4.6559773339977255,
+      "errors": []
+    },
+    {
+      "trial_id": "cost_projection",
+      "inference_performed": true,
+      "mechanical_pass": true,
+      "semantic_reference_pass": false,
+      "latency_seconds": 4.652175333998457,
+      "errors": [
+        "claim_0:unsupported_meaning_value_kind_actor_or_span",
+        "required_value_missing:ADDITIONAL_ANNUAL_COST"
+      ]
+    },
+    {
+      "trial_id": "financing_refusal",
+      "inference_performed": true,
+      "mechanical_pass": true,
+      "semantic_reference_pass": true,
+      "latency_seconds": 7.2451746250008,
+      "errors": []
+    },
+    {
+      "trial_id": "fake_quote",
+      "inference_performed": true,
+      "mechanical_pass": true,
+      "semantic_reference_pass": true,
+      "latency_seconds": 3.854720000002999,
+      "errors": []
+    },
+    {
+      "trial_id": "actor_mixup",
+      "inference_performed": true,
+      "mechanical_pass": false,
+      "semantic_reference_pass": false,
+      "latency_seconds": 11.963005041001452,
+      "errors": [
+        "claim_0:actor_does_not_match_source",
+        "claim_0:actor_does_not_match_source",
+        "claim_0:actor_does_not_match_source",
+        "wrong_outcome_for_question",
+        "required_refusal_reason_missing",
+        "claim_0:unsupported_meaning_value_kind_actor_or_span"
+      ]
+    },
+    {
+      "trial_id": "unsupported_chf",
+      "inference_performed": true,
+      "mechanical_pass": true,
+      "semantic_reference_pass": true,
+      "latency_seconds": 5.844662708001124,
+      "errors": []
+    },
+    {
+      "trial_id": "temporal_leakage",
+      "inference_performed": true,
+      "mechanical_pass": true,
+      "semantic_reference_pass": true,
+      "latency_seconds": 5.479531125001813,
+      "errors": []
+    },
+    {
+      "trial_id": "full_extraction",
+      "inference_performed": false,
+      "evidence_class": "PIPELINE_AGGREGATE_NOT_SINGLE_MODEL_COMPLETION",
+      "mechanical_pass": false,
+      "semantic_reference_pass": false,
+      "errors": [
+        "component_trial_not_qualified",
+        "claim_1:unsupported_meaning_value_kind_actor_or_span",
+        "required_value_missing:ADDITIONAL_ANNUAL_COST"
+      ]
+    }
+  ],
+  "catalog_sha256": "8d98a741550f450a64bb8103ece1efa561b0c75436b8096bf47ac6c74508d618",
+  "semantic_reference_sha256": "8cc5406564ff6ad27148a93e2372baf6669cbb0aceec9ec6b1446cd3fc08077b",
+  "human_semantic_reviewed": false,
+  "public_availability_verified": false,
+  "frontend_authorized_by_this_run": false,
+  "scope": "Single AHV development case, bounded typed propositions; no free-text semantic entailment or generalisation proof"
+}

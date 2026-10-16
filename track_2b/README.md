@@ -101,3 +101,13 @@ https://hackapertus.ch/terms-and-conditions
 
 ## Contact
 💬 In case you have questions, join the conversation on Discord or send an email to “hello@hackapertus.ch”
+
+## StimmFolgen: private vote tracker
+
+The app helps readers track selected Swiss votes, explore dated sources, updates and perspectives, and keep choices and notes in an optional encrypted browser vault. It does not recommend a voting choice.
+
+Start with the [judge run guide](docs/JUDGE_RUN.md), [runtime contract](docs/APP_CONTRACT.md) and [verification evidence](docs/evidence/README.md). Default `make run` serves authenticated reviewed AHV results in Docker; `make run ONPREM=1` adds actual native local Apertus inference after setup. The public demo uses finite hosted Apertus credit and is not Swiss-sovereign hosting. On-premise deployment is the mandatory architecture demonstrated here.
+
+The bounded AHV Gate passed with recorded human approvals. The second vote's source-bound candidate remains pending human review and is excluded from public analysis. Recorded tests are development evidence, not general model accuracy or an independent user study.
+
+The [technical report](technical_report.md) and `StimmFolgen_Report.pdf` are preserved from submitted commit `9e1c60845c64bbe2b810a08be67fe39d47e96904`. Later documentation clarifies the current branch without changing those submitted files.

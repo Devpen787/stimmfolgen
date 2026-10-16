@@ -1,0 +1,60 @@
+{
+  "request": {
+    "question": "Who made the taxes or spending-cuts argument?"
+  },
+  "status": 200,
+  "response": {
+    "outcome": "EVIDENCE_MATCH",
+    "claims": [
+      {
+        "text": "The forecast that the federal government would need to increase taxes or cut expenditure belongs to the Federal Council and Parliament’s argument section.",
+        "fact_ids": [
+          "P05"
+        ],
+        "citations": [
+          {
+            "actor": "GOVERNMENT",
+            "block_number": 4,
+            "end": 1764,
+            "identity_sha256": "92f4ef4f294b8ca65441e254a53d4ec9b80615525577de64be5ed9ca67aeb526",
+            "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=16",
+            "pdf_page": 16,
+            "span_id": "sp-92f4ef4f294b8ca65441",
+            "start": 1705,
+            "text": "Der Bund müsste seine Steuern erhöhen oder Ausgaben kürzen.",
+            "text_sha256": "44fbdebe189dc35d553fe5f87f1c5578f421830d687fd09700d66101851e897a"
+          }
+        ],
+        "evidence_kinds": [
+          "ATTRIBUTED_PREDICTION"
+        ]
+      }
+    ],
+    "unknowns": [],
+    "live_inference_performed_for_this_request": true,
+    "human_reviewed": false,
+    "case_id": "ch-federal:2024-03-03:ahv13",
+    "publication_state": "REVIEWED_STATEMENTS_WITH_UNREVIEWED_MODEL_MATCH",
+    "as_of": "2024-03-02T23:59:59+01:00",
+    "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+    "model": "swiss-ai/apertus-v1.5-8b",
+    "contract": "live-ahv-scoped-query-v10",
+    "execution_contract_sha256": "b2bdfd0a94eb355d2ad59e42ba53265ab28ecc74e8adf8802756e10ae7db107c",
+    "directness_checks_performed": 1,
+    "provider": "PUBLIC_AI",
+    "hosting": "CLOUDFLARE_GLOBAL_NOT_SWISS_SOVEREIGN",
+    "model_identity_basis": "PROVIDER_REPORTED_NOT_WEIGHT_ATTESTED",
+    "semantic_check": "IMMUTABLE_REVIEWED_WORDING_EXPLICIT_SCOPE_AND_LEXICAL_SUPPORT_WITH_DIRECTNESS",
+    "answer_mode": "REVIEWED_EVIDENCE",
+    "statements_human_reviewed": true,
+    "model_tasks": [
+      "QUERY_INTERPRETATION",
+      "OBSERVED_TIME_CHECK",
+      "ORIGINAL_QUESTION_DIRECTNESS_CHECK"
+    ],
+    "latency_seconds": 1.31,
+    "answered_at": "2026-10-15T21:09:02.712Z",
+    "receipt": "84363e8dad1835ebebbc2d17fb887933361e41f50a29ccd54398289354df03f6"
+  },
+  "execution_matches": true
+}

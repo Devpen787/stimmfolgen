@@ -1,0 +1,219 @@
+{
+  "evidence_class": "ACTUAL_MODEL_ATTEMPT_UNREVIEWED",
+  "observed_at_utc": "2026-10-12T10:15:30.762155+00:00",
+  "model": "default_model",
+  "base_url": "http://127.0.0.1:8766/v1",
+  "local_identity": {
+    "evidence_class": "LOCAL_MODEL_INSPECTION",
+    "observed_at_utc": "2026-10-12T10:15:30.760796+00:00",
+    "model_id": "tokimoa/apertus-v1.5-8b-mlx-4bit",
+    "backing_checkpoint": "swiss-ai/Apertus-v1.5-8B",
+    "source_revision": "f08ed532a657bef7d322bd0cbca43dac13a9d0a3",
+    "declared_upstream_revision": "a411d838600baf0e3635a3daf66fb7c55fc97bb6",
+    "served_alias": "default_model",
+    "base_url": "http://127.0.0.1:8766/v1",
+    "model_dir": "[LOCAL_MODEL_DIR]",
+    "format": "MLX safetensors",
+    "quantization": {
+      "group_size": 64,
+      "bits": 4,
+      "mode": "affine"
+    },
+    "artifacts": {
+      "README.md": {
+        "sha256": "e372a8b2775b02fecf5fe488fd494c561900910aa4ea2893f6ab52596c95b6bd",
+        "bytes": 3529
+      },
+      "config.json": {
+        "sha256": "fb3073b923ff444de21b48c8984745665280cc29354c368200aecd596bbf51c0",
+        "bytes": 1082
+      },
+      "model.safetensors": {
+        "sha256": "d0478edeb06bf18e5f4f7b50db77d89b839730b2d16cb1020015e6099e42074b",
+        "bytes": 4530491646
+      },
+      "model.safetensors.index.json": {
+        "sha256": "acbd6ca819d5f39ef920397429bfa3d04c77b288d0cddb4f97bf1a000bdd036d",
+        "bytes": 58759
+      },
+      "tokenizer.json": {
+        "sha256": "1f2f6198ea5789e5a90ec7c5ec5cf0d5242cf5b8de007105537c91d777581582",
+        "bytes": 44028400
+      },
+      "tokenizer_config.json": {
+        "sha256": "4e4125a5f2eb5bba3d8c55c8265c46ac566b50512d0a490b9d2a70cf6a142c7c",
+        "bytes": 2108
+      },
+      "chat_template.jinja": {
+        "sha256": "d23af2850029e9df88bb017e06e0c14a0462604588f1dbe4f519cdfac3e260e0",
+        "bytes": 16614
+      },
+      "generation_config.json": {
+        "sha256": "9131f56adebe0d591ba8ddc2d18d18edaf762a1ebce6750b24319c86b1d7d6d5",
+        "bytes": 157
+      }
+    },
+    "tensor_count": 839,
+    "v1_5_verified": true,
+    "alias_binding": "mlx_lm.server --model path; /v1/models advertises resolved path; MLX default_model mapping",
+    "provenance_limit": "Pinned locally downloaded conversion with publisher-declared base model; no independent conversion-equivalence test or signed runtime attestation"
+  },
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "source_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf",
+  "as_of": "2023-11-29",
+  "source_pdf_reverified": true,
+  "prompt_version": "gate0-span-selection-v1",
+  "output_contract": "immutable-spans-and-typed-propositions-v1",
+  "raw_request": {
+    "model": "default_model",
+    "temperature": 0,
+    "max_tokens": 500,
+    "messages": [
+      {
+        "role": "system",
+        "content": "Extract candidate evidence with faithful, attributed citations. No voting advice."
+      },
+      {
+        "role": "user",
+        "content": "You extract structured candidate propositions from an archived Swiss booklet. Use ONLY SOURCE_SPANS below. Do not generate any quotation, narrative statement, date, URL, or page reference. Select immutable span_ids; the application resolves exact text/attribution from the verified ledger. Never join quotes. No voting recommendations or post-vote knowledge.\nReturn ONLY JSON with exactly these keys: outcome, claims, missing_facts, personal_financing_chf. outcome is SUPPORTED when the question is supported, INSUFFICIENT_EVIDENCE when it cannot be determined, or SOURCE_CONFLICT when the premise contradicts the source. A false premise must not be confirmed. Unsupported personal finance amounts must remain null, never zero.\nEach claim has exactly predicate, kind, actor, value, span_ids. kind is DIRECT_PROVISION, COST_PROJECTION, ATTRIBUTED_PREDICTION or UNRESOLVED. actor is GOVERNMENT or COMMITTEE. span_ids is a nonempty list of identifiers copied from supporting sentences, not mere topically related sentences.\nAvailable typed predicates and value shapes (extract VALUES from the sources):\nPAYMENT_FREQUENCY: {\"before\":integer,\"after\":integer}.\nADDITIONAL_ANNUAL_COST: {\"amount_chf\":integer,\"horizon\":\"INTRODUCTION\" or \"FIVE_YEARS\"}.\nFINANCING_SPECIFIED: {\"value\":boolean}.\nBUDGET_TAX_OR_CUTS: {\"value\":boolean}.\nIf none of those propositions is supported, use claims=[]. Missing facts must use only FINANCING_METHOD, FINANCING_RATE, SOURCE_SUPPORT, PRE_VOTE_EVIDENCE. A refusal must explain the applicable missing facts using these codes. Do not treat possible financing alternatives as enacted rules. A projected cost can be a SUPPORTED source claim while remaining a COST_PROJECTION, not a future certainty.\nKnowledge basis: 2023-11-29; catalog_sha256=8d98a741550f450a64bb8103ece1efa561b0c75436b8096bf47ac6c74508d618\nQUESTION: What change to annual old-age pension payment frequency does the initiative propose?\nSOURCE_SPANS:\n{\"span_id\": \"sp-c0e8b5a2dd500316f0e4\", \"pdf_page\": 9, \"actor\": \"GOVERNMENT\", \"text\": \"Die Alters- und Hinterlassenenversicherung (AHV) ist das wichtigste Sozialwerk der Schweiz: Alle Menschen in der Schweiz haben im Alter Anspruch auf eine Rente der AHV.\"}\n{\"span_id\": \"sp-bb13f7156bbf6796ada1\", \"pdf_page\": 9, \"actor\": \"GOVERNMENT\", \"text\": \"Die Verfassung legt fest, dass die AHV-Renten den Existenzbedarf angemessen decken müssen.\"}\n{\"span_id\": \"sp-d43deed97380fd687adb\", \"pdf_page\": 9, \"actor\": \"GOVERNMENT\", \"text\": \"Die Mehrheit der Pensionierten bestreitet ihren Lebensunterhalt mit zusätzlichen Einkünften, insbesondere mit Renten aus der Pensionskasse.\"}\n{\"span_id\": \"sp-c31160ef03be6b5b88ac\", \"pdf_page\": 9, \"actor\": \"GOVERNMENT\", \"text\": \"Wer den Existenzbedarf damit nicht decken kann, hat Anspruch auf Ergänzungsleistungen (EL).\"}\n{\"span_id\": \"sp-18b8603d7682fcc53461\", \"pdf_page\": 9, \"actor\": \"GOVERNMENT\", \"text\": \"Die minimale ganze AHV-Altersrente beträgt zurzeit 1225 Franken, die maximale Rente 2450 Franken pro Monat.1\"}\n{\"span_id\": \"sp-c216b55ba0836569c6ad\", \"pdf_page\": 9, \"actor\": \"GOVERNMENT\", \"text\": \"Ehepaare und Paare in eingetragener Partnerschaft erhalten zusammen höchstens das Anderthalbfache einer maximalen Einzelrente, also 3675 Franken.\"}\n{\"span_id\": \"sp-2e88d06a3d54e8ae8796\", \"pdf_page\": 9, \"actor\": \"GOVERNMENT\", \"text\": \"Übersteigen die beiden Renten diesen Betrag, werden sie gekürzt.\"}\n{\"span_id\": \"sp-4beefb862c8012496bc7\", \"pdf_page\": 9, \"actor\": \"GOVERNMENT\", \"text\": \"Der Bundesrat passt alle AHV-Renten regelmässig an die Preis- und Lohnentwicklung an.\"}\n{\"span_id\": \"sp-d053bb32090656dc443d\", \"pdf_page\": 9, \"actor\": \"GOVERNMENT\", \"text\": \"Die letzte Anpassung erfolgte auf Anfang 2023.\"}\n{\"span_id\": \"sp-8ac6e0fa1c5a02a4f80f\", \"pdf_page\": 9, \"actor\": \"GOVERNMENT\", \"text\": \"Die Initiative fordert, dass die monatliche Rente nicht nur 12 Mal, sondern 13 Mal pro Jahr ausbezahlt wird.\"}\n{\"span_id\": \"sp-9c8a8400c8e8db18fd8f\", \"pdf_page\": 9, \"actor\": \"GOVERNMENT\", \"text\": \"Dies in Anlehnung an den 13. Monatslohn, den viele Arbeitnehmerinnen und Arbeitnehmer erhalten.\"}\n{\"span_id\": \"sp-24a1ba6f87a2c95d38b0\", \"pdf_page\": 9, \"actor\": \"GOVERNMENT\", \"text\": \"Dies entspricht einer Erhöhung der jährlichen AHV-Rente um 8,3 Prozent.\"}\n{\"span_id\": \"sp-942cefbb6f1dc75ece98\", \"pdf_page\": 9, \"actor\": \"GOVERNMENT\", \"text\": \"Die minimale jährliche Altersrente würde von 14 700 auf 15 925 Franken, die maximale Altersrente von 29 400 auf 31 850 Franken steigen.\"}\n{\"span_id\": \"sp-17b3774aaed38fd5c8dc\", \"pdf_page\": 9, \"actor\": \"GOVERNMENT\", \"text\": \"Paare hätten statt 44 100 Franken maximal 47 775 Franken zugut.\"}\n{\"span_id\": \"sp-10b707a418631d8da8d0\", \"pdf_page\": 9, \"actor\": \"GOVERNMENT\", \"text\": \"1 Die Höhe der AHV-Rente ist abhängig vom durchschnittlichen Einkommen während der Beitragspflicht sowie von Erziehungs- und Betreuungsgutschriften.\"}\n{\"span_id\": \"sp-2edee9651228e307631f\", \"pdf_page\": 9, \"actor\": \"GOVERNMENT\", \"text\": \"Personen, die Beitragslücken haben, also nicht jedes Jahr in die AHV einbezahlt haben, erhalten nicht eine ganze AHV-Rente, sondern eine Teilrente.\"}"
+      }
+    ]
+  },
+  "request_sha256": "0399c0c433ed26a9a434e3afdfa081ba9b7471788ce7f048dbf3d4430aac038b",
+  "generation": {
+    "temperature": 0,
+    "max_tokens": 500
+  },
+  "model_inference_performed": true,
+  "human_semantic_reviewed": false,
+  "promoted_to_verified_effect": false,
+  "v1_5_verified": true,
+  "gate_status": "FAIL",
+  "raw_response_text": "{\"id\": \"chatcmpl-b183204e-00d0-4d2c-88f8-68a3363a75b1\", \"system_fingerprint\": \"0.31.3-0.32.0-macOS-26.6.2-arm64-arm-64bit-Mach-O-applegpu_g15s\", \"object\": \"chat.completion\", \"model\": \"default_model\", \"created\": 1791800130, \"choices\": [{\"index\": 0, \"finish_reason\": \"stop\", \"message\": {\"role\": \"assistant\", \"content\": \"{\\\"outcome\\\": \\\"SUPPORTED\\\", \\\"claims\\\": [{\\\"predicate\\\": \\\"ADDITIONAL_ANNUAL_COST\\\", \\\"kind\\\": \\\"COST_PROJECTION\\\", \\\"actor\\\": \\\"GOVERNMENT\\\", \\\"value\\\": {\\\"amount_chf\\\": 830, \\\"horizon\\\": \\\"FIVE_YEARS\\\"}, \\\"span_ids\\\": [\\\"sp-24a1ba6f87a2c95d38b0\\\"]}, {\\\"predicate\\\": \\\"FINANCING_SPECIFIED\\\", \\\"kind\\\": \\\"UNRESOLVED\\\", \\\"actor\\\": \\\"GOVERNMENT\\\", \\\"value\\\": null, \\\"span_ids\\\": []}], \\\"missing_facts\\\": [], \\\"personal_financing_chf\\\": null}\"}}], \"usage\": {\"prompt_tokens\": 1748, \"completion_tokens\": 163, \"total_tokens\": 1911, \"prompt_tokens_details\": {\"cached_tokens\": 522}}}",
+  "response_sha256": "9d6711a863fbef0a739397940a2afe1a169ee74b39c814a60294d2cbb79c0e44",
+  "latency_seconds": 14.653240084000572,
+  "raw_api_response": {
+    "id": "chatcmpl-b183204e-00d0-4d2c-88f8-68a3363a75b1",
+    "system_fingerprint": "0.31.3-0.32.0-macOS-26.6.2-arm64-arm-64bit-Mach-O-applegpu_g15s",
+    "object": "chat.completion",
+    "model": "default_model",
+    "created": 1791800130,
+    "choices": [
+      {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"outcome\": \"SUPPORTED\", \"claims\": [{\"predicate\": \"ADDITIONAL_ANNUAL_COST\", \"kind\": \"COST_PROJECTION\", \"actor\": \"GOVERNMENT\", \"value\": {\"amount_chf\": 830, \"horizon\": \"FIVE_YEARS\"}, \"span_ids\": [\"sp-24a1ba6f87a2c95d38b0\"]}, {\"predicate\": \"FINANCING_SPECIFIED\", \"kind\": \"UNRESOLVED\", \"actor\": \"GOVERNMENT\", \"value\": null, \"span_ids\": []}], \"missing_facts\": [], \"personal_financing_chf\": null}"
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 1748,
+      "completion_tokens": 163,
+      "total_tokens": 1911,
+      "prompt_tokens_details": {
+        "cached_tokens": 522
+      }
+    }
+  },
+  "parsed_candidate": {
+    "outcome": "SUPPORTED",
+    "claims": [
+      {
+        "predicate": "ADDITIONAL_ANNUAL_COST",
+        "kind": "COST_PROJECTION",
+        "actor": "GOVERNMENT",
+        "value": {
+          "amount_chf": 830,
+          "horizon": "FIVE_YEARS"
+        },
+        "span_ids": [
+          "sp-24a1ba6f87a2c95d38b0"
+        ]
+      },
+      {
+        "predicate": "FINANCING_SPECIFIED",
+        "kind": "UNRESOLVED",
+        "actor": "GOVERNMENT",
+        "value": null,
+        "span_ids": []
+      }
+    ],
+    "missing_facts": [],
+    "personal_financing_chf": null
+  },
+  "validation": {
+    "mechanical_pass": false,
+    "errors": [
+      "claim_1:invalid_typed_proposition",
+      "claim_1:invalid_span_references"
+    ],
+    "checks": [
+      {
+        "valid": true,
+        "errors": [],
+        "span_ids": [
+          "sp-24a1ba6f87a2c95d38b0"
+        ]
+      },
+      {
+        "valid": false,
+        "errors": [
+          "invalid_typed_proposition",
+          "invalid_span_references"
+        ],
+        "span_ids": []
+      }
+    ],
+    "publication_state": "WITHHELD",
+    "semantic_support_verified": false
+  },
+  "mechanical_grounding_checks": [
+    {
+      "valid": true,
+      "errors": [],
+      "span_ids": [
+        "sp-24a1ba6f87a2c95d38b0"
+      ]
+    },
+    {
+      "valid": false,
+      "errors": [
+        "invalid_typed_proposition",
+        "invalid_span_references"
+      ],
+      "span_ids": []
+    }
+  ],
+  "trial_id": "direct_provision",
+  "catalog_sha256": "8d98a741550f450a64bb8103ece1efa561b0c75436b8096bf47ac6c74508d618",
+  "semantic_reference_sha256": "4f3d730b4fa121940e596bdec7d1f794b357cb2ac5993c057d6b55cfe31ad77a",
+  "semantic_evaluation": {
+    "semantic_reference_pass": false,
+    "errors": [
+      "claim_0:unsupported_meaning_value_kind_actor_or_span",
+      "claim_1:unsupported_meaning_value_kind_actor_or_span",
+      "required_proposition_missing"
+    ],
+    "checks": [
+      {
+        "predicate": "ADDITIONAL_ANNUAL_COST",
+        "reference_match": false
+      },
+      {
+        "predicate": "FINANCING_SPECIFIED",
+        "reference_match": false
+      }
+    ],
+    "reference_version": "ahv13-semantic-reference-v1",
+    "reference_sha256": "4f3d730b4fa121940e596bdec7d1f794b357cb2ac5993c057d6b55cfe31ad77a",
+    "human_semantic_reviewed": false,
+    "scope": "Only the listed propositions, not general semantic entailment or policy accuracy",
+    "reference_authoring": "Coding-agent-authored from the pinned primary booklet; separate from extraction code and never sent to the model",
+    "publication_state": "WITHHELD"
+  },
+  "resolved_citations": [],
+  "bounded_machine_test_pass": false,
+  "publication_state": "WITHHELD"
+}

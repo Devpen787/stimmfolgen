@@ -1,0 +1,39 @@
+{
+  "evidence_class": "EXTRACTIVE_BASELINE_NO_MODEL",
+  "source_sha256": "53c7cc72c28f80969ed56d7813ad8c05e505b1817923418d0dfa45368a6bd07e",
+  "as_of": "2023-11-29",
+  "model_inference_performed": false,
+  "selected_spans": [
+    {
+      "retrieval_label": "payment_candidate",
+      "pdf_page": 9,
+      "quote": "Die Initiative fordert, dass die monatliche Rente nicht nur 12 Mal, sondern 13 Mal pro Jahr ausbezahlt wird.",
+      "quote_start": 1027,
+      "quote_end": 1135,
+      "quote_sha256": "d34cf1a2af61f1828459fb696b1a808b5ccd237470082a64c77d2b0061f96b66",
+      "role": "FEDERAL_COUNCIL_DETAIL",
+      "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=9"
+    },
+    {
+      "retrieval_label": "cost_candidate",
+      "pdf_page": 11,
+      "quote": "Die 13. AHV-Rente würde bei der Einführung voraussichtlich etwa 4,1 Milliarden Franken zusätzlich kosten.2",
+      "quote_start": 566,
+      "quote_end": 672,
+      "quote_sha256": "c3c9beecb067abe982749da32b306137228037e87db62aae3573bf2a768f55c3",
+      "role": "FEDERAL_COUNCIL_DETAIL_FINANCING",
+      "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11"
+    },
+    {
+      "retrieval_label": "financing_gap_candidate",
+      "pdf_page": 11,
+      "quote": "Die Initiative macht keine Angaben dazu, wie die zusätzlichen Ausgaben für die 13. AHV-Rente finanziert werden sollen. Das müsste vom Parlament bestimmt werden.",
+      "quote_start": 985,
+      "quote_end": 1145,
+      "quote_sha256": "0495f58fa57b990cfbc738cf690ef4968ac70c6d931fe57cf2a21c7764f43ddb",
+      "role": "FEDERAL_COUNCIL_DETAIL_FINANCING",
+      "page_url": "https://www.bk.admin.ch/dam/de/sd-web/In9i5Kp4p64r/2024-03-03_erlaeuterungen_des_bundesrates.pdf#page=11"
+    }
+  ],
+  "limit": "Authored AHV retrieval cues. No generated interpretation, independent classification, or generalisation proof."
+}

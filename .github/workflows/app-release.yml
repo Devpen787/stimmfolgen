@@ -1,0 +1,44 @@
+name: Reviewed-case release checks
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  reviewed-case:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Test actual local-vault cryptography and failure boundaries
+        run: node track_2b/tests/test_private_vault.mjs
+      - run: python -m pip install pymupdf==1.28.2
+      - name: Test backend, provenance, semantic and privacy controls
+        run: python -m unittest discover -s track_2b/tests -p 'test*.py'
+      - name: Build authenticated reviewed-case image
+        run: make build
+      - name: Recheck actual recorded Gate evidence offline
+        run: docker run --rm --network none --read-only --tmpfs /tmp:rw,noexec,nosuid,size=16m stimmfolgen:local python track_2b/src/app/backend.py --source-pdf /app/booklet.pdf --check
+      - name: Verify fail-closed controls using the real source and temporary mutations
+        run: docker run --rm --network none --read-only --tmpfs /tmp:rw,noexec,nosuid,size=16m stimmfolgen:local python track_2b/tools/check_gate_failures.py --source-pdf /app/booklet.pdf
+      - name: Test the real HTTP journey without an LLM endpoint
+        run: |
+          docker run -d --name reviewed-case --read-only --tmpfs /tmp:rw,noexec,nosuid,size=16m -p 127.0.0.1:8770:8770 stimmfolgen:local
+          python track_2b/tools/check_app.py --url http://127.0.0.1:8770
+      - name: Authenticate the hosted bundle against native Gate and prompt contract
+        run: |
+          docker cp reviewed-case:/app/booklet.pdf /tmp/stimmfolgen-booklet.pdf
+          python track_2b/tools/export_hosted.py --source-pdf /tmp/stimmfolgen-booklet.pdf --check
+      - name: Execute hosted contract and actual Worker quota tests with a synthetic provider
+        run: |
+          npm ci --ignore-scripts --prefix track_2b/hosted
+          node track_2b/hosted/prepare-assets.mjs
+          track_2b/hosted/node_modules/.bin/wrangler deploy --dry-run --config track_2b/hosted/wrangler.jsonc --outdir /tmp/stimmfolgen-worker
+          WORKER_BUILD=/tmp/stimmfolgen-worker/worker.js node --test track_2b/hosted/test/*.test.mjs
+      - name: Stop test container
+        if: always()
+        run: docker rm -f reviewed-case || true
