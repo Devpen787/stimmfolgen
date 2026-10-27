@@ -1,3 +1,14 @@
+# StimmFolgen
+
+A prototype for exploring Swiss referendum proposals with Apertus. Built for Hack Apertus.
+
+[Read the technical report](https://devinsonpena.vercel.app/documents/stimmfolgen).
+
+This public repository currently contains the original hackathon scaffold, rather than the runnable StimmFolgen application.
+
+<details>
+<summary>Original Hack Apertus template instructions</summary>
+
 # Hack Apertus — project template
 
 Template repository for [Hack Apertus](https://hackapertus.ch/) submissions.
@@ -58,3 +69,5 @@ LLM_API_KEY — your API key
 ## License
 
 All Hack Apertus projects are open-sourced. Please check our Terms & Conditions for specific licensing details (6. What you build is open source): https://hackapertus.ch/terms-and-conditions
+
+</details>
